@@ -1,4 +1,4 @@
-import { useSession } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { useCallback } from 'react'
 
@@ -7,6 +7,7 @@ const AuthBtn = () => {
 
   const LogoutBtn = () => {
     console.log('로그아웃 로직 작성')
+    signOut({ callbackUrl: '/auth/login' })
   }
 
   const renderButton = useCallback(() => {
