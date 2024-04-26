@@ -1,9 +1,12 @@
+import AuthBtn from '@/components/button/AuthBtn'
 import styled from '@emotion/styled'
 
 export default function Home() {
   return (
     <>
-      <Container>홈</Container>
+      <Container>
+        홈<AuthBtn />
+      </Container>
     </>
   )
 }
