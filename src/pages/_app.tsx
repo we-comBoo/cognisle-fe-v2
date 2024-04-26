@@ -4,7 +4,7 @@ import globalStyles from '@/styles/globalStyles'
 import 'public/fonts/style.css'
 import Layout from '@/components/common/Layout'
 import { SessionProvider } from 'next-auth/react'
-import { Session } from 'inspector'
+import AuthGuard from '@/components/auth/AuthGuard'
 
 export default function App({
   Component,
@@ -14,7 +14,10 @@ export default function App({
     <Layout>
       <SessionProvider session={session}>
         <Global styles={globalStyles} />
-        <Component {...pageProps} />
+        <AuthGuard>
+          {' '}
+          <Component {...pageProps} />
+        </AuthGuard>
       </SessionProvider>
     </Layout>
   )

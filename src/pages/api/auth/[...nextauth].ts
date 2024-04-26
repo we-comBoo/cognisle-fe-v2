@@ -1,4 +1,5 @@
-import NextAuth from 'next-auth'
+import NextAuth, { Session } from 'next-auth'
+import { User } from '../../../types/user'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 export default NextAuth({
@@ -15,17 +16,34 @@ export default NextAuth({
           body: JSON.stringify(credentials),
           headers: { 'Content-Type': 'application/json' },
         })
-        const user = await res.json()
-        console.log(user)
+        const data = await res.json()
 
-        // If no error and we have user data, return it
-        /* if (res.ok && user) {
+        if (res.status === 200 && data.data) {
+          const user = data.data
           return user
+        } else {
+          // 로그인 처리 실패
+          // throw new Error('로그인 처리 실패')
+          return null
         }
-        // Return null if user data could not be retrieved
-        return null*/
-        return user
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token, user }) {
+      //console.log({ ...token, ...user })
+
+      return { ...token, ...user } // session의 token으로 내려옴
+    },
+    async session({ session, token }) {
+      session.user = token
+      return session
+    },
+  },
+  session: {
+    strategy: 'jwt',
+  },
+  pages: {
+    signIn: '/auth/signin',
+  },
 })

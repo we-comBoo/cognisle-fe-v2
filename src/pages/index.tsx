@@ -8,7 +8,6 @@ export default function Home() {
     signIn('credentials', {
       email,
       password,
-      callbackUrl: '/', // 로그인 성공 후 리다이렉션 할 URL
     })
   }
   return (
