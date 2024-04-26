@@ -3,12 +3,19 @@ import { Global } from '@emotion/react'
 import globalStyles from '@/styles/globalStyles'
 import 'public/fonts/style.css'
 import Layout from '@/components/common/Layout'
+import { SessionProvider } from 'next-auth/react'
+import { Session } from 'inspector'
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   return (
     <Layout>
-      <Global styles={globalStyles} />
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Global styles={globalStyles} />
+        <Component {...pageProps} />
+      </SessionProvider>
     </Layout>
   )
 }
