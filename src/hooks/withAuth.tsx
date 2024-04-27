@@ -1,8 +1,7 @@
 import { ComponentType } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { stat } from 'fs'
-type Props = Record<string, never>
+import { Props } from '@/types/react'
 
 const withAuth = (WrappedComponent: ComponentType<Props>) => {
   return function AuthenticatedComponent(props: Props) {
