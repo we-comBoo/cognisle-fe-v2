@@ -5,6 +5,9 @@ import 'public/fonts/style.css'
 import Layout from '@/components/common/Layout'
 import { SessionProvider } from 'next-auth/react'
 import AuthGuard from '@/components/auth/AuthGuard'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const client = new QueryClient({})
 
 export default function App({
   Component,
@@ -13,11 +16,13 @@ export default function App({
   return (
     <Layout>
       <SessionProvider session={session}>
-        <Global styles={globalStyles} />
-        <AuthGuard>
-          {' '}
-          <Component {...pageProps} />
-        </AuthGuard>
+        <QueryClientProvider client={client}>
+          <Global styles={globalStyles} />
+          <AuthGuard>
+            {' '}
+            <Component {...pageProps} />
+          </AuthGuard>
+        </QueryClientProvider>
       </SessionProvider>
     </Layout>
   )

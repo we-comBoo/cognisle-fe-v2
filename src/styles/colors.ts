@@ -16,7 +16,7 @@ export const colorPalette = css`
     --color-blue-300: rgba(36, 97, 186, 1);
     --color-blue-400: rgba(18, 49, 93, 1);
 
-    --color-grey-100: #cecece;
+    --color-gray-100: #cecece;
 
     --color-green-100: rgba(195, 235, 164, 1);
     --color-green-200: rgba(174, 216, 147, 1);
@@ -53,7 +53,7 @@ export const colors = {
   blue300: 'var(--color-blue-300)',
   blue400: 'var(--color-blue-400)',
 
-  grey100: 'var(--color-grey-100)',
+  gray100: 'var(--color-gray-100)',
 }
 
 const shadows = {
