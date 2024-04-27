@@ -1,12 +1,11 @@
 import { Props } from '@/types/react'
 import { ComponentType, ReactNode, Suspense } from 'react'
 
-interface suspenseProps {
-  WrappedComponent: ComponentType<Props>
-  options: { fallback: ReactNode }
-}
-
-const withSuspense = ({ WrappedComponent, options }: suspenseProps) => {
+const withSuspense = (
+  WrappedComponent: ComponentType<Props>,
+  options: { fallback: ReactNode },
+) => {
+  console.log('withSuspense', WrappedComponent)
   return function SuspendedComponent(props: Props) {
     return (
       <Suspense fallback={options.fallback}>
