@@ -1,5 +1,5 @@
-import NextAuth, { Session } from 'next-auth'
-import { User } from '../../../types/user'
+import NextAuth, { User } from 'next-auth'
+import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 export default NextAuth({
@@ -30,10 +30,12 @@ export default NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }) {
-      //console.log({ ...token, ...user })
-
-      return { ...token, ...user } // session의 token으로 내려옴
+    async jwt({ user, token }: { user: User; token: JWT }) {
+      if (user) {
+        token.access = user?.access
+        token.refresh = user.refresh
+      }
+      return token
     },
     async session({ session, token }) {
       session.user = token
@@ -44,6 +46,6 @@ export default NextAuth({
     strategy: 'jwt',
   },
   pages: {
-    signIn: '/auth/signin',
+    signIn: '/auth/login',
   },
 })
