@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
+  skipMiddlewareUrlNormalize: true,
 }
 
 export default nextConfig
