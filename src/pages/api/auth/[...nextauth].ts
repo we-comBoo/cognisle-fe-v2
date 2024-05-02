@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '@/lib/axios'
 import NextAuth, { User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -12,10 +12,7 @@ export default NextAuth({
         password: { label: 'password', type: 'password' },
       },
       async authorize(credentials) {
-        const res = await axios.post(
-          'https://www.cognisle.shop/users/login/',
-          credentials,
-        )
+        const res = await axios.post('/users/login/', credentials)
         /*const res = await fetch('https://www.cognisle.shop/users/login/', {
           method: 'POST',
           body: JSON.stringify(credentials),

@@ -27,4 +27,16 @@ declare module 'next-auth' {
     refresh: User['refresh']
     nickname: User['nickname']
   }
+  interface Session {
+    user: {
+      /** The user's postal address. */
+      email: User['email']
+      access: User['access']
+      refresh: User['refresh']
+      nickname: User['nickname']
+      exp: number
+      iat: number
+      jti: string
+    }
+  }
 }
