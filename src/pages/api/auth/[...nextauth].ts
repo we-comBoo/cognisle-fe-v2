@@ -33,6 +33,7 @@ export default NextAuth({
       },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ user, token }: { user: User; token: JWT }) {
       if (user) {
