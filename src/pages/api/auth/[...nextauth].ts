@@ -33,7 +33,7 @@ export default NextAuth({
       },
     }),
   ],
-  secret: 'say_lalisa_love_me_lalisa_love_me_hey',
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ user, token }: { user: User; token: JWT }) {
       if (user) {
