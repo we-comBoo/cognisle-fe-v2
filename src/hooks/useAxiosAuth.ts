@@ -5,8 +5,6 @@ import { useEffect } from 'react'
 const useAxiosAuth = () => {
   const { data: session } = useSession()
 
-  console.log(session)
-
   useEffect(() => {
     const requestIntercept = axiosAuth.interceptors.request.use((config) => {
       console.log(config.headers['Authorization'])
