@@ -1,11 +1,10 @@
 import { getToken } from 'next-auth/jwt'
 import { NextRequest, NextResponse } from 'next/server'
 
-const FALLBACK_URL = ''
-const withAuth = async (req: NextRequest, token: boolean) => {
+const FALLBACK_URL = '/'
+const withAuth = async (req: NextRequest, token: string | undefined) => {
   const url = req.nextUrl.clone()
   const { pathname } = req.nextUrl
-  //console.log(token)
 
   if (!token || token == undefined) {
     //토큰값이 falsy한 사용자가 withAuth페이지에 진입하려하면,
@@ -13,7 +12,7 @@ const withAuth = async (req: NextRequest, token: boolean) => {
     url.pathname = '/auth/login'
     //로그인하면 이전페이지로 이동하기 위해서 쿼리스트링사용하여 붙여줌.
     url.search = `callbackUrl=${pathname}`
-    //console.log('보호된 페이지 접근 실패')
+    console.log('보호된 페이지 접근 실패', url)
     return NextResponse.redirect(url)
   }
 }
@@ -23,13 +22,15 @@ const withOutAuth = async (
   token: boolean,
   to: string | null,
 ) => {
+  console.log(token)
   const url = req.nextUrl.clone()
   const { pathname } = req.nextUrl
 
   if (token) {
-    url.pathname = to ?? FALLBACK_URL
+    // 토큰 있는 경우
+    url.pathname = FALLBACK_URL
     url.search = ''
-    //console.log(url)
+    // console.log('토큰있는 경우', url)
 
     return NextResponse.redirect(url)
   }
@@ -40,13 +41,20 @@ const withOutAuthList = ['/auth/login', '/auth/signup']
 
 export default async function middleware(req: NextRequest) {
   const token = await getToken({ req })
+
   //미들웨어 쿠키
   //let cookie = req.cookies.get('Authroization')?.value || ''
 
+  // authorization 헤더 존재 여부
+  const isTokenHeader = req.headers.get('x-middleware-request-authorization')
+
   //setting Headers
-  if (token) {
-    const requestHeaders = new Headers(req.headers)
-    requestHeaders.set('Authroization', token.access)
+  const requestHeaders = new Headers(req.headers)
+  console.log(isTokenHeader, token)
+  if (token && !isTokenHeader) {
+    console.log('set header')
+    requestHeaders.set('authorization', token.access)
+    requestHeaders.set('x-hello-from-middleware1', 'hello')
   }
 
   const { searchParams } = req.nextUrl
@@ -55,13 +63,33 @@ export default async function middleware(req: NextRequest) {
 
   const isWithAuth = withAuthList.includes(pathname)
   const isWithOutAuth = withOutAuthList.includes(pathname)
+  console.log(pathname)
 
-  if (isWithAuth) return withAuth(req, Boolean(token?.access))
-  if (isWithOutAuth)
-    return withOutAuth(req, Boolean(token?.access), callbackUrl)
+  const response = NextResponse.next({
+    request: {
+      // New request headers
+      headers: requestHeaders,
+    },
+  })
+
+  if (isWithAuth) {
+    return withAuth(req, token?.access) || response
+  } else if (isWithOutAuth) {
+    return withOutAuth(req, Boolean(token?.access), callbackUrl) || response
+  }
+
+  console.log(
+    'else',
+    response.headers.get('x-middleware-request-x-hello-from-middleware1'),
+  )
+  console.log(
+    'else',
+    response.headers.get('x-middleware-request-authorization'),
+  )
+  return response
 }
 
 // 미들웨어가 실행될 특정 pathname을 지정하면, 해당 pathname에서만 실행 가능
 export const config = {
-  mathcher: [...withAuthList, ...withOutAuthList],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.png$).*)'],
 }
