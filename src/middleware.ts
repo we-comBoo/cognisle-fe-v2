@@ -28,7 +28,7 @@ const withOutAuth = async (
 
   if (token) {
     // 토큰 있는 경우
-    url.pathname = FALLBACK_URL
+    url.pathname = to ?? FALLBACK_URL
     url.search = ''
     // console.log('토큰있는 경우', url)
 
