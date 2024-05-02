@@ -22,6 +22,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+        # Github Repository Secrets 이용해 리액트 파일 내 환경 변수 파일 생성
+      - name: Generate Environment Variables File for Production
+        run: |
+          echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env.production
+          echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env.production
+        env:
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+
       # Authenticate with Google Cloud
       - id: "auth"
         uses: "google-github-actions/auth@v0"
