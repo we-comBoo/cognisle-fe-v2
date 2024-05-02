@@ -20,7 +20,7 @@ export default NextAuth({
         })
         const data = await res.json()*/
 
-        console.log(res.data)
+        // console.log(res.data)
         if (res.status === 200 && res.data) {
           const user = res.data
           // console.log('&&&', user.data)

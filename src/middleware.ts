@@ -12,7 +12,7 @@ const withAuth = async (req: NextRequest, token: string | undefined) => {
     url.pathname = '/auth/login'
     //로그인하면 이전페이지로 이동하기 위해서 쿼리스트링사용하여 붙여줌.
     url.search = `callbackUrl=${pathname}`
-    console.log('보호된 페이지 접근 실패', url)
+    // console.log('보호된 페이지 접근 실패', url)
     return NextResponse.redirect(url)
   }
 }
@@ -22,7 +22,7 @@ const withOutAuth = async (
   token: boolean,
   to: string | null,
 ) => {
-  console.log(token)
+  // console.log(token)
   const url = req.nextUrl.clone()
   const { pathname } = req.nextUrl
 
@@ -50,9 +50,9 @@ export default async function middleware(req: NextRequest) {
 
   //setting Headers
   const requestHeaders = new Headers(req.headers)
-  console.log(isTokenHeader, token)
+  // console.log(isTokenHeader, token)
   if (token && !isTokenHeader) {
-    console.log('set header')
+    // console.log('set header')
     requestHeaders.set('authorization', token.access)
     requestHeaders.set('x-hello-from-middleware1', 'hello')
   }
@@ -63,7 +63,7 @@ export default async function middleware(req: NextRequest) {
 
   const isWithAuth = withAuthList.includes(pathname)
   const isWithOutAuth = withOutAuthList.includes(pathname)
-  console.log(pathname)
+  // console.log(pathname)
 
   const response = NextResponse.next({
     request: {
@@ -77,7 +77,7 @@ export default async function middleware(req: NextRequest) {
   } else if (isWithOutAuth) {
     return withOutAuth(req, Boolean(token?.access), callbackUrl) || response
   }
-
+  /*
   console.log(
     'else',
     response.headers.get('x-middleware-request-x-hello-from-middleware1'),
@@ -85,7 +85,7 @@ export default async function middleware(req: NextRequest) {
   console.log(
     'else',
     response.headers.get('x-middleware-request-authorization'),
-  )
+  )*/
   return response
 }
 

@@ -7,11 +7,11 @@ const useAxiosAuth = () => {
 
   useEffect(() => {
     const requestIntercept = axiosAuth.interceptors.request.use((config) => {
-      console.log(config.headers['Authorization'])
+      //console.log(config.headers['Authorization'])
       if (!config.headers['Authorization']) {
         config.headers['Authorization'] = `Bearer ${session?.user.access}`
       }
-      console.log(config.headers['Authorization'])
+      // console.log(config.headers['Authorization'])
       return config
     })
     return () => {
