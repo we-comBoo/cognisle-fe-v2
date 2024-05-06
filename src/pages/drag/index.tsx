@@ -19,7 +19,7 @@ export default function Drag() {
       <DragComponent
         x={x}
         y={y}
-        onMouseDown={(e) => DragEventHandler({ e, setPosition, x, y })}
+        onMouseDown={(e) => mouseEventHander(e, setPosition, x, y)}
       >
         <Image
           src="https://i.ibb.co/jhCmmyx/F8-VNCi-Ja-QAAge-Mg.jpg"
