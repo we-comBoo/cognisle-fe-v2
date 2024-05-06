@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { mouseEventHander } from '@/lib/mouseEvent'
+import { mouseEventHandler } from '@/lib/mouseEvent'
+import { touchEventHandler } from '@/lib/touchEvent'
 import { DragPositionProps } from '@/types/drag'
 import { DragEventHandler } from '@/lib/registDragHandler'
 
@@ -19,7 +20,8 @@ export default function Drag() {
       <DragComponent
         x={x}
         y={y}
-        onMouseDown={(e) => mouseEventHander(e, setPosition, x, y)}
+        onTouchStart={(e) => touchEventHandler(e, setPosition, x, y)}
+        onMouseDown={(e) => mouseEventHandler(e, setPosition, x, y)}
       >
         <Image
           src="https://i.ibb.co/jhCmmyx/F8-VNCi-Ja-QAAge-Mg.jpg"
