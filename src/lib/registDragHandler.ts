@@ -1,5 +1,5 @@
 import { touchEventHandler } from '@/lib/touchEvent'
-import { mouseEventHander } from '@/lib/mouseEvent'
+import { mouseEventHandler } from '@/lib/mouseEvent'
 import { DragEventHandlerProps } from '@/types/drag'
 import React from 'react'
 const isTouchScreen =
@@ -20,7 +20,7 @@ export const DragEventHandler = ({
       y,
     )
   } else {
-    return mouseEventHander(
+    return mouseEventHandler(
       e as React.MouseEvent<HTMLDivElement>,
       setPosition,
       x,

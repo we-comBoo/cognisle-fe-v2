@@ -1,6 +1,6 @@
 import { DragPositionProps } from '@/types/drag'
 
-export const mouseEventHander = (
+export const mouseEventHandler = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   setPosition: React.Dispatch<React.SetStateAction<DragPositionProps>>,
   x: DragPositionProps['x'],
