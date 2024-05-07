@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   skipMiddlewareUrlNormalize: true,
   images: {
-    domains: ['i.ibb.co', 'localhost'],
+    domains: ['cdn-icons-png.flaticon.com'],
   },
 }
 

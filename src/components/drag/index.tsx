@@ -9,8 +9,14 @@ interface DragProps {
   originalX: DragPositionProps['x']
   originalY: DragPositionProps['y']
   originalZ: DragPositionProps['z']
+  src: string
 }
-export default function Drag({ originalX, originalY, originalZ }: DragProps) {
+export default function Drag({
+  originalX,
+  originalY,
+  originalZ,
+  src,
+}: DragProps) {
   const [{ x, y, z }, setPosition] = useState<DragPositionProps>({
     x: originalX,
     y: originalY,
@@ -26,7 +32,7 @@ export default function Drag({ originalX, originalY, originalZ }: DragProps) {
       onMouseDown={(e) => mouseEventHandler(e, setPosition, x, y, z)}
     >
       <Image
-        src="https://i.ibb.co/jhCmmyx/F8-VNCi-Ja-QAAge-Mg.jpg"
+        src={src}
         alt="sdads"
         draggable={'false'}
         width={300}
