@@ -1,40 +1,28 @@
+import Drag from '@/components/drag'
 import styled from '@emotion/styled'
-import React, { useState } from 'react'
-import Image from 'next/image'
-import { mouseEventHandler } from '@/lib/mouseEvent'
-import { touchEventHandler } from '@/lib/touchEvent'
-import { DragPositionProps } from '@/types/drag'
-import { DragEventHandler } from '@/lib/registDragHandler'
 
-export default function Drag() {
-  const [{ x, y }, setPosition] = useState<DragPositionProps>({
-    x: 0,
-    y: 0,
-  })
-
+const data = [
+  { originalX: 100, originalY: 100, originalZ: 3 },
+  { originalX: 150, originalY: 200, originalZ: 2 },
+  { originalX: 200, originalY: 300, originalZ: 1 },
+]
+export default function DragPage() {
   return (
-    <>
-      <span>
-        Drag : (x:{x} y:{y})
-      </span>
-      <DragComponent
-        x={x}
-        y={y}
-        onTouchStart={(e) => touchEventHandler(e, setPosition, x, y)}
-        onMouseDown={(e) => mouseEventHandler(e, setPosition, x, y)}
-      >
-        <Image
-          src="https://i.ibb.co/jhCmmyx/F8-VNCi-Ja-QAAge-Mg.jpg"
-          alt="sdads"
-          draggable={'false'}
-          width={300}
-          height={300}
-        />
-      </DragComponent>
-    </>
+    <div>
+      <span>fdnskankl</span>
+      <Container>
+        {data.map((d, idx) => (
+          <Drag
+            key={idx}
+            originalX={d.originalX}
+            originalY={d.originalY}
+            originalZ={d.originalZ}
+          />
+        ))}
+      </Container>
+    </div>
   )
 }
-
-const DragComponent = styled.div<{ x: number; y: number }>`
-  transform: ${({ x, y }) => `translateX(${x}px) translateY(${y}px)`};
+const Container = styled.div`
+  position: absolute;
 `

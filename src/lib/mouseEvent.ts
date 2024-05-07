@@ -5,15 +5,17 @@ export const mouseEventHandler = (
   setPosition: React.Dispatch<React.SetStateAction<DragPositionProps>>,
   x: DragPositionProps['x'],
   y: DragPositionProps['y'],
+  z: DragPositionProps['z'],
 ) => {
   const initX = e.screenX
   const initY = e.screenY
-
+  console.log(setPosition)
   const mouseMoveHandler = (e: MouseEvent) => {
-    console.log('mouseMovie')
+    console.log('mouseMove')
     setPosition({
       x: x + e.screenX - initX,
       y: y + e.screenY - initY,
+      z: z,
     })
   }
   const mouseDownHandler = (e: MouseEvent) => {

@@ -1,6 +1,7 @@
 export interface DragPositionProps {
   x: number
   y: number
+  z: number
 }
 
 export interface DragEventHandlerProps {
@@ -10,4 +11,5 @@ export interface DragEventHandlerProps {
   setPosition: React.Dispatch<React.SetStateAction<DragPositionProps>>
   x: DragPositionProps['x']
   y: DragPositionProps['y']
+  z: DragPositionProps['z']
 }

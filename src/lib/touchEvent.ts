@@ -5,17 +5,19 @@ export const touchEventHandler = (
   setPosition: React.Dispatch<React.SetStateAction<DragPositionProps>>,
   x: DragPositionProps['x'],
   y: DragPositionProps['y'],
+  z: DragPositionProps['z'],
 ) => {
   const initX = e.touches[0].pageX
   const initY = e.touches[0].pageY
 
   const touchMoveHandler = (e: TouchEvent) => {
-    console.log('mouseMovie')
+    console.log('mouseMove')
     // touch를 통해 스크롤 내리면서 drag가 발생하는 버그 방지용
     if (e.cancelable) e.preventDefault()
     setPosition({
       x: x + e.touches[0].pageX - initX,
       y: y + e.touches[0].pageY - initY,
+      z: z,
     })
   }
   const touchStartHandler = (e: TouchEvent) => {

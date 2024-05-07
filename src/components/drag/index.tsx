@@ -1,0 +1,43 @@
+import styled from '@emotion/styled'
+import { useState } from 'react'
+import Image from 'next/image'
+import { mouseEventHandler } from '@/lib/mouseEvent'
+import { touchEventHandler } from '@/lib/touchEvent'
+import { DragPositionProps } from '@/types/drag'
+
+interface DragProps {
+  originalX: DragPositionProps['x']
+  originalY: DragPositionProps['y']
+  originalZ: DragPositionProps['z']
+}
+export default function Drag({ originalX, originalY, originalZ }: DragProps) {
+  const [{ x, y, z }, setPosition] = useState<DragPositionProps>({
+    x: originalX,
+    y: originalY,
+    z: originalZ,
+  })
+
+  return (
+    <DragComponent
+      x={x}
+      y={y}
+      z={z}
+      onTouchStart={(e) => touchEventHandler(e, setPosition, x, y, z)}
+      onMouseDown={(e) => mouseEventHandler(e, setPosition, x, y, z)}
+    >
+      <Image
+        src="https://i.ibb.co/jhCmmyx/F8-VNCi-Ja-QAAge-Mg.jpg"
+        alt="sdads"
+        draggable={'false'}
+        width={300}
+        height={300}
+      />
+    </DragComponent>
+  )
+}
+
+const DragComponent = styled.div<{ x: number; y: number; z: number }>`
+  transform: ${({ x, y }) => `translateX(${x}px) translateY(${y}px)`};
+  z-index: ${({ z }) => `${z}`};
+  position: relative;
+`
