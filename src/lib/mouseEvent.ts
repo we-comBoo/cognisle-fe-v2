@@ -9,7 +9,7 @@ export const mouseEventHandler = (
 ) => {
   const initX = e.screenX
   const initY = e.screenY
-  console.log(setPosition)
+
   const mouseMoveHandler = (e: MouseEvent) => {
     console.log('mouseMove')
     setPosition({
