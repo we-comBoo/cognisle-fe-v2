@@ -36,3 +36,9 @@ export const mouseEventHandler = (
     once: true,
   })
 }
+
+export function isMouseEvent(
+  e: any,
+): e is React.MouseEvent<HTMLDivElement, MouseEvent> {
+  return e !== undefined
+}

@@ -29,10 +29,14 @@ export const touchEventHandler = (
     document.removeEventListener('touchmove', touchMoveHandler)
   }
 
-  document.addEventListener('touchmove', touchMoveHandler)
+  document.addEventListener('touchmove', touchMoveHandler, { passive: false })
   // 한번만 실행되면 되기에 { once: true } 옵션을 추가
   document.addEventListener('touchstart', touchStartHandler, { once: true })
   document.addEventListener('touchend', touchEndHandler, {
     once: true,
   })
+}
+
+export function isTouchEvent(e: any): e is React.TouchEvent<HTMLDivElement> {
+  return e !== undefined
 }

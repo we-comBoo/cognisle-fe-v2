@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { mouseEventHandler } from '@/lib/mouseEvent'
 import { touchEventHandler } from '@/lib/touchEvent'
 import { DragPositionProps } from '@/types/drag'
-
+import { dragEventHandler, isTouchScreen } from '@/lib/dragEvent'
 interface DragProps {
   originalX: DragPositionProps['x']
   originalY: DragPositionProps['y']
@@ -28,8 +28,7 @@ export default function Drag({
       x={x}
       y={y}
       z={z}
-      onTouchStart={(e) => touchEventHandler(e, setPosition, x, y, z)}
-      onMouseDown={(e) => mouseEventHandler(e, setPosition, x, y, z)}
+      {...dragEventHandler(setPosition, x, y, z)}
     >
       <Image
         src={src}
