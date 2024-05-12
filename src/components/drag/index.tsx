@@ -1,8 +1,6 @@
 import styled from '@emotion/styled'
 import { useState } from 'react'
 import Image from 'next/image'
-import { mouseEventHandler } from '@/lib/mouseEvent'
-import { touchEventHandler } from '@/lib/touchEvent'
 import { DragPositionProps } from '@/types/drag'
 import { dragEventHandler, isTouchScreen } from '@/lib/dragEvent'
 interface DragProps {

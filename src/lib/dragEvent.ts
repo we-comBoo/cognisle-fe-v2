@@ -1,5 +1,5 @@
-import { isMouseEvent, mouseEventHandler } from '@/lib/mouseEvent'
-import { isTouchEvent, touchEventHandler } from '@/lib/touchEvent'
+import { mouseEventHandler } from '@/lib/mouseEvent'
+import { touchEventHandler } from '@/lib/touchEvent'
 import { DragPositionProps } from '@/types/drag'
 
 export const isTouchScreen =
