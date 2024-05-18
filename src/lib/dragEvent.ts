@@ -1,11 +1,7 @@
 import { mouseEventHandler } from '@/lib/mouseEvent'
 import { touchEventHandler } from '@/lib/touchEvent'
 
-import {
-  ItemProps,
-  ItemsStateActions,
-  ItemsStoreProps,
-} from '@/types/island/item'
+import { ItemProps, ItemsStateActions } from '@/types/island/item'
 
 export const isTouchScreen =
   typeof window !== 'undefined' &&

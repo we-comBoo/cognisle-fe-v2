@@ -26,11 +26,11 @@ export const touchEventHandler = (
     })
   }
   const touchStartHandler = (e: TouchEvent) => {
-    console.log('mouseDown')
+    // console.log('mouseDown')
     // document.removeEventListener('mousemove', mouseMoveHandler)
   }
   const touchEndHandler = (e: TouchEvent) => {
-    console.log('mouseUp')
+    // console.log('mouseUp')
     document.removeEventListener('touchmove', touchMoveHandler)
   }
 

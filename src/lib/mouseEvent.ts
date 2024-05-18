@@ -1,4 +1,3 @@
-import { DragPositionProps } from '@/types/drag'
 import { ItemsStateActions, ItemProps } from '@/types/island/item'
 
 export const mouseEventHandler = (
@@ -14,13 +13,15 @@ export const mouseEventHandler = (
   const initY = e.screenY
 
   const mouseMoveHandler = (e: MouseEvent) => {
-    console.log('mouseMove', id, {
+    {
+      /*console.log('mouseMove', id, {
       x: x + e.screenX - initX,
       y: y + e.screenY - initY,
       z: z,
       id: id,
       src: src,
-    })
+    })*/
+    }
     updateItem({
       x: x + e.screenX - initX,
       y: y + e.screenY - initY,
@@ -30,12 +31,12 @@ export const mouseEventHandler = (
     })
   }
   const mouseDownHandler = (e: MouseEvent) => {
-    console.log('mouseDown')
+    // console.log('mouseDown')
     // 현재 가장 높은 z-index 값 가져와서 그거 보다 +1 처리해서 사용자가 움직일 때 모든 다른 아이템보다 위에 있게 하기
     // z-index 정규화 처리 필요
   }
   const mouseUpHandler = (e: MouseEvent) => {
-    console.log('mouseUp')
+    // console.log('mouseUp')
     document.removeEventListener('mousemove', mouseMoveHandler)
     // z-index 정규화 처리 필요
   }

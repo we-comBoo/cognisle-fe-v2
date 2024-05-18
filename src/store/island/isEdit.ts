@@ -1,8 +1,8 @@
-import { IIsEdit } from '@/types/island/edit'
+import { IsEditStoreProps } from '@/types/island/edit'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-export const IsEditStore = create<IIsEdit>()(
+export const IsEditStore = create<IsEditStoreProps>()(
   devtools((set) => ({
     isEdit: false,
     actions: {

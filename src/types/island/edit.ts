@@ -1,15 +1,15 @@
-interface IIsEdit extends IsEditState {
-  actions: IsEditActions
+interface IsEditStoreProps extends IsEditStateProps {
+  actions: IsEditActionsProps
 }
 
-interface IsEditState {
+interface IsEditStateProps {
   isEdit: boolean
 }
 
-interface IsEditActions {
+interface IsEditActionsProps {
   setIsEdit: (state: boolean) => void
   setRead: () => void
   setEdit: () => void
 }
 
-export type { IIsEdit }
+export type { IsEditStoreProps }

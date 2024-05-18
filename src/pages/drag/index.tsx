@@ -1,16 +1,15 @@
 import Drag from '@/components/drag'
 import { getMax } from '@/lib'
-import { useZIndex, useZIndexActions } from '@/store/island/zIndex'
+import { useZIndexActions } from '@/store/island/zIndex'
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
 import { useItems } from '@/store/island/items'
 export default function DragPage() {
-  const zIndex = useZIndex()
   const { setZIndex } = useZIndexActions()
   const items = useItems()
   useEffect(() => {
     const maxZ = getMax('z', items) + 1
-    console.log(maxZ)
+    // console.log(maxZ)
     setZIndex(maxZ)
   }, [items])
   return (
