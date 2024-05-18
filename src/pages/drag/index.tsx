@@ -9,7 +9,9 @@ export default function DragPage() {
   const { setZIndex } = useZIndexActions()
   const items = useItems()
   useEffect(() => {
-    console.log(items)
+    const maxZ = getMax('z', items) + 1
+    console.log(maxZ)
+    setZIndex(maxZ)
   }, [items])
   return (
     <div>

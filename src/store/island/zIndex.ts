@@ -1,8 +1,8 @@
-import { IZIndex } from '@/types/island/item'
+import { ZIndexStoreProps } from '@/types/island/item'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-export const ZIndexStore = create<IZIndex>()(
+export const ZIndexStore = create<ZIndexStoreProps>()(
   devtools((set) => ({
     zIndex: 2147483647, // 가장 최대값,
     actions: {
