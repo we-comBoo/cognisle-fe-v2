@@ -8,6 +8,7 @@ interface ZIndexState {
 
 interface ZIndexActions {
   setZIndex: (state: ZIndexState['zIndex']) => void
+  increaseZIndex: () => void
 }
 
 export type { IZIndex }

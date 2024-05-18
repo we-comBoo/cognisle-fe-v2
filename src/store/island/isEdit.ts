@@ -1,4 +1,4 @@
-import { IIsEdit } from '@/types/island'
+import { IIsEdit } from '@/types/island/edit'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
