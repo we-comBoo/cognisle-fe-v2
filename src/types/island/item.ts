@@ -12,9 +12,14 @@ interface ZIndexActionsProps {
 }
 
 interface ItemsStoreProps extends ItemsStateProps {
-  actions: any
+  actions: ItemsStateActions
 }
 
+interface ItemsStateActions {
+  addItem: (item: ItemProps) => void
+  removeItem: (id: ItemProps['id']) => void
+  updateItem: (item: ItemProps) => void
+}
 interface ItemsStateProps {
   items: ItemProps[]
 }
