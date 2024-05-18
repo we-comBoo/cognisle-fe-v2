@@ -32,4 +32,4 @@ interface ItemProps {
   src: string
 }
 
-export type { ZIndexStoreProps, ItemsStoreProps }
+export type { ZIndexStoreProps, ItemsStoreProps, ItemProps, ItemsStateActions }

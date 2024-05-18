@@ -1,11 +1,14 @@
 import { DragPositionProps } from '@/types/drag'
+import { ItemProps, ItemsStateActions } from '@/types/island/item'
 
 export const touchEventHandler = (
   e: React.TouchEvent<HTMLDivElement>,
-  setPosition: React.Dispatch<React.SetStateAction<DragPositionProps>>,
-  x: DragPositionProps['x'],
-  y: DragPositionProps['y'],
-  z: DragPositionProps['z'],
+  updateItem: ItemsStateActions['updateItem'],
+  x: ItemProps['x'],
+  y: ItemProps['y'],
+  z: ItemProps['z'],
+  id: ItemProps['id'],
+  src: ItemProps['src'],
 ) => {
   const initX = e.touches[0].pageX
   const initY = e.touches[0].pageY
@@ -14,10 +17,12 @@ export const touchEventHandler = (
     console.log('mouseMove')
     // touch를 통해 스크롤 내리면서 drag가 발생하는 버그 방지용
     if (e.cancelable) e.preventDefault()
-    setPosition({
+    updateItem({
       x: x + e.touches[0].pageX - initX,
       y: y + e.touches[0].pageY - initY,
       z: z,
+      id: id,
+      src: src,
     })
   }
   const touchStartHandler = (e: TouchEvent) => {

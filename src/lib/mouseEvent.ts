@@ -1,21 +1,32 @@
 import { DragPositionProps } from '@/types/drag'
+import { ItemsStateActions, ItemProps } from '@/types/island/item'
 
 export const mouseEventHandler = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  setPosition: React.Dispatch<React.SetStateAction<DragPositionProps>>,
-  x: DragPositionProps['x'],
-  y: DragPositionProps['y'],
-  z: DragPositionProps['z'],
+  updateItem: ItemsStateActions['updateItem'],
+  x: ItemProps['x'],
+  y: ItemProps['y'],
+  z: ItemProps['z'],
+  id: ItemProps['id'],
+  src: ItemProps['src'],
 ) => {
   const initX = e.screenX
   const initY = e.screenY
 
   const mouseMoveHandler = (e: MouseEvent) => {
-    console.log('mouseMove')
-    setPosition({
+    console.log('mouseMove', id, {
       x: x + e.screenX - initX,
       y: y + e.screenY - initY,
       z: z,
+      id: id,
+      src: src,
+    })
+    updateItem({
+      x: x + e.screenX - initX,
+      y: y + e.screenY - initY,
+      z: z,
+      id: id,
+      src: src,
     })
   }
   const mouseDownHandler = (e: MouseEvent) => {

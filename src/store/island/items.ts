@@ -1,7 +1,19 @@
 import { dataTemp } from '@/constants/islandItems'
-import { ItemsStoreProps } from '@/types/island/item'
+import { ItemProps, ItemsStoreProps } from '@/types/island/item'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
+
+function updateLst(list: ItemProps[], item: ItemProps) {
+  for (const t of list) {
+    if (t.id === item.id) {
+      t.x = item.x
+      t.y = item.y
+      t.z = item.z
+    }
+  }
+
+  return list
+}
 
 export const ItemsStore = create<ItemsStoreProps>()(
   devtools((set) => ({
@@ -12,9 +24,9 @@ export const ItemsStore = create<ItemsStoreProps>()(
       removeItem: (id) =>
         set((prev) => ({ items: prev.items.filter((e) => e.id !== id) })),
 
-      updateItem: (item) =>
+      updateItem: (newItem) =>
         set((prev) => ({
-          items: [...prev.items.filter((e) => e.id !== item.id), item],
+          items: [...updateLst(prev.items, newItem)],
         })),
     },
   })),
