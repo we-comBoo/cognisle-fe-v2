@@ -1,14 +1,30 @@
-interface IZIndex extends ZIndexState {
-  actions: ZIndexActions
+interface ZIndexStoreProps extends ZIndexStateProps {
+  actions: ZIndexActionsProps
 }
 
-interface ZIndexState {
+interface ZIndexStateProps {
   zIndex: number
 }
 
-interface ZIndexActions {
-  setZIndex: (state: ZIndexState['zIndex']) => void
+interface ZIndexActionsProps {
+  setZIndex: (state: ZIndexStateProps['zIndex']) => void
   increaseZIndex: () => void
 }
 
-export type { IZIndex }
+interface ItemsStoreProps extends ItemsStateProps {
+  actions: any
+}
+
+interface ItemsStateProps {
+  items: ItemProps[]
+}
+
+interface ItemProps {
+  id: number
+  x: number
+  y: number
+  z: number
+  src: string
+}
+
+export type { ZIndexStoreProps, ItemsStoreProps }
