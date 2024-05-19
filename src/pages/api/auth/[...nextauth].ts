@@ -1,4 +1,4 @@
-import axios from '@/lib/axios'
+import { axiosAuth } from '@/lib/axios'
 import NextAuth, { User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -12,7 +12,7 @@ export default NextAuth({
         password: { label: 'password', type: 'password' },
       },
       async authorize(credentials) {
-        const res = await axios.post('/users/login/', credentials)
+        const res = await axiosAuth.post('/users/login/', credentials)
         /*const res = await fetch('https://www.cognisle.shop/users/login/', {
           method: 'POST',
           body: JSON.stringify(credentials),
@@ -23,7 +23,7 @@ export default NextAuth({
         // console.log(res.data)
         if (res.status === 200 && res.data) {
           const user = res.data
-          // console.log('&&&', user.data)
+          console.log('&&&', user.data)
           return user.data
         } else {
           // 로그인 처리 실패
