@@ -15,7 +15,8 @@ export const dragEventHandler = (
   id: ItemProps['id'],
   src: ItemProps['src'],
 ) => {
-  if (isTouchScreen) {
+  console.log(isTouchScreen)
+  /*if (isTouchScreen) {
     return {
       onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) =>
         touchEventHandler(touchEvent, updateItem, x, y, z, id, src),
@@ -25,5 +26,11 @@ export const dragEventHandler = (
       onMouseDown: (mouseEvent: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
         mouseEventHandler(mouseEvent, updateItem, x, y, z, id, src),
     }
+  }*/
+  return {
+    onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) =>
+      touchEventHandler(touchEvent, updateItem, x, y, z, id, src),
+    onMouseDown: (mouseEvent: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+      mouseEventHandler(mouseEvent, updateItem, x, y, z, id, src),
   }
 }
