@@ -1,40 +1,28 @@
+import Drag from '@/components/drag'
+import { getMax } from '@/lib'
+import { useZIndexActions } from '@/store/island/zIndex'
 import styled from '@emotion/styled'
-import React, { useState } from 'react'
-import Image from 'next/image'
-import { mouseEventHandler } from '@/lib/mouseEvent'
-import { touchEventHandler } from '@/lib/touchEvent'
-import { DragPositionProps } from '@/types/drag'
-import { DragEventHandler } from '@/lib/registDragHandler'
-
-export default function Drag() {
-  const [{ x, y }, setPosition] = useState<DragPositionProps>({
-    x: 0,
-    y: 0,
-  })
-
+import { useEffect, useState } from 'react'
+import { useItems } from '@/store/island/items'
+export default function DragPage() {
+  const { setZIndex } = useZIndexActions()
+  const items = useItems()
+  useEffect(() => {
+    const maxZ = getMax('z', items) + 1
+    // console.log(maxZ)
+    setZIndex(maxZ)
+  }, [items])
   return (
-    <>
-      <span>
-        Drag : (x:{x} y:{y})
-      </span>
-      <DragComponent
-        x={x}
-        y={y}
-        onTouchStart={(e) => touchEventHandler(e, setPosition, x, y)}
-        onMouseDown={(e) => mouseEventHandler(e, setPosition, x, y)}
-      >
-        <Image
-          src="https://i.ibb.co/jhCmmyx/F8-VNCi-Ja-QAAge-Mg.jpg"
-          alt="sdads"
-          draggable={'false'}
-          width={300}
-          height={300}
-        />
-      </DragComponent>
-    </>
+    <div>
+      <span>fdnskankl</span>
+      <Container>
+        {items.map((d, idx) => (
+          <Drag key={idx} id={d.id} x={d.x} y={d.y} z={d.z} src={d.src} />
+        ))}
+      </Container>
+    </div>
   )
 }
-
-const DragComponent = styled.div<{ x: number; y: number }>`
-  transform: ${({ x, y }) => `translateX(${x}px) translateY(${y}px)`};
+const Container = styled.div`
+  position: absolute;
 `

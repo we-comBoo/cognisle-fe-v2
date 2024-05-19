@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import { Global } from '@emotion/react'
 import { SessionProvider } from 'next-auth/react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+
 import globalStyles from '@/styles/globalStyles'
 import 'public/fonts/style.css'
 

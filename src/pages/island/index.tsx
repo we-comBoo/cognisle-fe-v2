@@ -1,6 +1,5 @@
 import Skeleton from '@/components/common/Skeleton'
 import withSuspense from '@/hooks/withSuspense'
-import { ReactNode, Suspense, useState } from 'react'
 
 export function IslandSkeleton() {
   console.log('skeleton')
