@@ -13,6 +13,7 @@ export const mouseEventHandler = (
   const initY = e.screenY
 
   const mouseMoveHandler = (e: MouseEvent) => {
+    if (e.cancelable) e.preventDefault()
     {
       /*console.log('mouseMove', id, {
       x: x + e.screenX - initX,
