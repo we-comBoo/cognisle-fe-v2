@@ -2,7 +2,7 @@ import { signIn } from 'next-auth/react'
 
 const Login = () => {
   const handleLogin = () => {
-    const email = '0321minji@daum.net'
+    const email = '0321minji@naver.com'
     const password = '12341234'
     signIn('credentials', {
       email,
