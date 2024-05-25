@@ -1,12 +1,12 @@
-const background = {
+const BACKGROUND_INFO = {
   login: {
     img: { src: '/assets/background/triangle.png', width: 43, height: 84.9 },
     color: {
-      start: '--gradient-yellow',
-      end: '--color-green-03',
+      start: '--gradient-yellow-100',
+      end: '--color-green-300',
       degree: '180deg',
     },
   },
 }
 
-export default background
+export default BACKGROUND_INFO
