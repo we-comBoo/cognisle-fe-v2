@@ -1,4 +1,4 @@
-import BACKGROUND_INFO from '@/constants/background'
+import { BACKGROUND_INFO } from '@/constants'
 import styled from '@emotion/styled'
 
 interface backgroundProps {

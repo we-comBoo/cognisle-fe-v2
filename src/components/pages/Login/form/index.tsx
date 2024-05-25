@@ -1,6 +1,7 @@
 import useLoginForm from '@/components/pages/Login/form/hook'
-import LOCAL_STORAGE from '@/constants/localStorageKey'
-import IMAGE_ADDRESS from '@/constants/imageAddress'
+import { LOCAL_STORAGE, IMAGE_ADDRESS } from '@/constants'
+
+import { St } from './style'
 import { useRouter } from 'next/router'
 import styled from '@emotion/styled'
 
@@ -37,29 +38,34 @@ const LoginForm = () => {
   }, [emailFlagCheck])
 
   return (
-    <section onSubmit={submitLoginForm}>
-      <form>
-        <label>이메일</label>
-        <input
+    <St.Section onSubmit={submitLoginForm}>
+      <St.Form>
+        <St.Input
           id="email"
           type="text"
+          placeholder="이메일"
+          name="email"
+          autoComplete="email"
           ref={(el) => {
             if (el !== null) inputRefs.current[0] = el
           }}
           defaultValue={localStorage.getItem('LS_EMAIL')}
         />
         {errorMsg.email && <p>{errorMsg.email}</p>}
-        <label htmlFor="password">비밀번호</label>
-        <input
+
+        <St.Input
           id="password"
           type="password"
+          placeholder="비밀번호"
+          name="password"
+          autoComplete="current-password"
           ref={(el) => {
             if (el !== null) inputRefs.current[1] = el
           }}
         />
         {errorMsg.password && <p>{errorMsg.password}</p>}
-        <div>
-          <CheckBox
+        <St.CheckBoxWrapper>
+          <St.CheckBox
             type="checkbox"
             id="rememberEmail"
             checked={emailFlagCheck}
@@ -67,31 +73,17 @@ const LoginForm = () => {
             imgSrc={IMAGE_ADDRESS['emailCheckBox']}
           />
           <label htmlFor="rememberId">아이디 기억하기</label>
-        </div>
+        </St.CheckBoxWrapper>
         <button type="submit">로그인 하기</button>
-      </form>
+      </St.Form>
       <div>
         <button type="button" onClick={goSignupPage}>
           {' '}
           회원가입
         </button>
       </div>
-    </section>
+    </St.Section>
   )
 }
 
 export default LoginForm
-
-const CheckBox = styled.input<{ checked: boolean; imgSrc: string }>`
-  border: solid 0.3rem var(--color-green-400);
-  width: 2.2rem;
-  height: 2.2rem;
-  background-color: ${({ checked }) =>
-    checked ? `var(--color-green-400)` : 'transparent'};
-  background-image: ${({ checked, imgSrc }) =>
-    checked ? `url(${imgSrc})` : 'none'};
-
-  background-size: 1.5rem 1.2rem;
-  background-repeat: no-repeat;
-  background-position: center;
-`
