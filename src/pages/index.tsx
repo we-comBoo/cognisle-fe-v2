@@ -15,6 +15,4 @@ export default function Home() {
   )
 }
 
-const Container = styled.div`
-  background-color: rebeccapurple;
-`
+const Container = styled.div``
