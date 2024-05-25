@@ -1,6 +1,10 @@
 import useLoginForm from '@/components/pages/Login/form/hook'
+import LOCAL_STORAGE from '@/constants/localStorageKey'
+import IMAGE_ADDRESS from '@/constants/imageAddress'
 import { useRouter } from 'next/router'
-import { useRef } from 'react'
+import styled from '@emotion/styled'
+
+import { useRef, useState, useEffect } from 'react'
 const LoginForm = () => {
   const router = useRouter()
   const goSignupPage = () => {
@@ -8,17 +12,29 @@ const LoginForm = () => {
   }
 
   const { inputRefs, errorMsg, submitLoginForm } = useLoginForm()
-  const checkBoxRef = useRef<HTMLInputElement>(null)
-
+  const [emailFlagCheck, setEmailFlagCheck] = useState(false)
+  const LS_EMAIL = localStorage.getItem('LS_EMAIL')
   const handleEmailFlagCheck = () => {
-    const emailFlagCheck = checkBoxRef.current.checked
-    // console.log(emailFlagCheck, inputRefs.current[0].value)
+    setEmailFlagCheck((prev) => !prev)
+  }
+  const handleLocalStorageEmail = () => {
     if (emailFlagCheck) {
-      localStorage.setItem('LS_EMAIL', inputRefs.current[0].value)
+      localStorage.setItem(
+        LOCAL_STORAGE['emailCheckBox'],
+        inputRefs.current[0].value,
+      )
     } else {
-      localStorage.removeItem('LS_EMAIL')
+      localStorage.removeItem(LOCAL_STORAGE['emailCheckBox'])
     }
   }
+  useEffect(() => {
+    if (LS_EMAIL) {
+      setEmailFlagCheck(true)
+    }
+  }, [])
+  useEffect(() => {
+    handleLocalStorageEmail()
+  }, [emailFlagCheck])
 
   return (
     <section onSubmit={submitLoginForm}>
@@ -43,12 +59,12 @@ const LoginForm = () => {
         />
         {errorMsg.password && <p>{errorMsg.password}</p>}
         <div>
-          <input
+          <CheckBox
             type="checkbox"
             id="rememberEmail"
-            ref={checkBoxRef}
-            defaultChecked={false}
-            onChange={handleEmailFlagCheck}
+            checked={emailFlagCheck}
+            onChange={() => handleEmailFlagCheck()}
+            imgSrc={IMAGE_ADDRESS['emailCheckBox']}
           />
           <label htmlFor="rememberId">아이디 기억하기</label>
         </div>
@@ -65,3 +81,17 @@ const LoginForm = () => {
 }
 
 export default LoginForm
+
+const CheckBox = styled.input<{ checked: boolean; imgSrc: string }>`
+  border: solid 0.3rem var(--color-green-400);
+  width: 2.2rem;
+  height: 2.2rem;
+  background-color: ${({ checked }) =>
+    checked ? `var(--color-green-400)` : 'transparent'};
+  background-image: ${({ checked, imgSrc }) =>
+    checked ? `url(${imgSrc})` : 'none'};
+
+  background-size: 1.5rem 1.2rem;
+  background-repeat: no-repeat;
+  background-position: center;
+`
