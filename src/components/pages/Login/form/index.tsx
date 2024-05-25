@@ -31,6 +31,12 @@ const LoginForm = () => {
         {errorMsg.password && <p>{errorMsg.password}</p>}
         <button type="submit">로그인 하기</button>
       </form>
+      <div>
+        <button type="button" onClick={goSignupPage}>
+          {' '}
+          회원가입
+        </button>
+      </div>
     </section>
   )
 }
