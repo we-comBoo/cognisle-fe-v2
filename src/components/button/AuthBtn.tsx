@@ -7,7 +7,7 @@ const AuthBtn = () => {
 
   const LogoutBtn = () => {
     console.log('로그아웃 로직 작성')
-    signOut({ callbackUrl: '/auth/login' })
+    signOut({ callbackUrl: '/login' })
   }
 
   const renderButton = useCallback(() => {
@@ -22,7 +22,7 @@ const AuthBtn = () => {
       // 로그 아웃된 경우
       return (
         <>
-          <Link href="/auth/login">로그인</Link>
+          <Link href="/login">로그인</Link>
         </>
       )
     }

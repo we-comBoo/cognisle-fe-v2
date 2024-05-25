@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { axiosAuth } from '@/lib/axios'
 import NextAuth, { User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
@@ -12,24 +13,37 @@ export default NextAuth({
         password: { label: 'password', type: 'password' },
       },
       async authorize(credentials) {
-        const res = await axiosAuth.post('/users/login/', credentials)
+        try {
+          const res = await axiosAuth.post('/users/login/', credentials)
+
+          if (res.status === 200 && res.data) {
+            const user = res.data
+            return user.data
+          }
+        } catch (error) {
+          if (axios.isAxiosError(error)) {
+            console.log(
+              'next Auth signin Axios Erroz',
+              error.response.status,
+              error.response.data,
+            )
+            // 서버 에러 메세지만 잡기 (401)
+            throw new Error(error.response.data.detail)
+          }
+        }
+
         /*const res = await fetch('https://www.cognisle.shop/users/login/', {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { 'Content-Type': 'application/json' },
         })
-        const data = await res.json()*/
+        const data = await res.json()
 
-        // console.log(res)
-        if (res.status === 200 && res.data) {
-          const user = res.data
-          // console.log('&&&', user.data)
-          return user.data
-        } else {
+ else {
           // 로그인 처리 실패
           // throw new Error('로그인 처리 실패')
           return null
-        }
+        }*/
       },
     }),
   ],

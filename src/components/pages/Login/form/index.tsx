@@ -2,10 +2,11 @@ import useLoginForm from '@/components/pages/Login/form/hook'
 import { useRouter } from 'next/router'
 
 const LoginForm = () => {
-  const route = useRouter()
+  const router = useRouter()
   const goSignupPage = () => {
-    route.push('/signup')
+    router.push('/signup')
   }
+
   const { inputRefs, errorMsg, submitLoginForm } = useLoginForm()
   return (
     <section onSubmit={submitLoginForm}>
