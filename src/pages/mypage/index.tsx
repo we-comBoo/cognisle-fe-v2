@@ -1,47 +1,22 @@
 import useAxiosAuth from '@/hooks/useAxiosAuth'
+import { useRefreshToken } from '@/hooks/useRefreshToken'
 import { axiosServer } from '@/lib'
 
 import { useSession } from 'next-auth/react'
 
 const Mypage = () => {
   const { data: session } = useSession()
-  const axiosAuth = useAxiosAuth()
+  const refreshToken = useRefreshToken()
 
-  const fetchAxiosAuth = async () => {
-    const res = await axiosAuth.post('/users/token/refresh/', {
-      email: session?.user.email,
-      password: 12341234,
-      refresh: session?.user.refresh,
-    })
+  async function getMyInfo(): Promise<void> {
+    const response = await refreshToken()
+    console.log(response)
   }
-  const fetchAxiosLogin = async () => {
-    const email = '0321minji@naver.com'
-    const password = '12341234'
-    const res = await axiosServer.post('/users/login/', {
-      email,
-      password,
-    })
-  }
-  /*
-  const email = '0321minji@daum.net'
-  const password = '12341234'
-  const credentials = {
-    email,
-    password,
-  }
-  async function get() {
-    await axiosAuth.post('/users/login/', credentials)
-  }
-
-  useEffect(() => {
-    get()
-  }, [])*/
 
   return (
     <div>
       마이페이지
-      <button onClick={fetchAxiosAuth}> refresh 토큰 </button>{' '}
-      <button onClick={fetchAxiosLogin}> 로그인 </button>
+      <button onClick={getMyInfo}> 나의 정보 보기 </button>
     </div>
   )
 }

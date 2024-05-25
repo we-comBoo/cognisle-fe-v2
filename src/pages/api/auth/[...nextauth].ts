@@ -20,10 +20,10 @@ export default NextAuth({
         })
         const data = await res.json()*/
 
-        // console.log(res.data)
+        // console.log(res)
         if (res.status === 200 && res.data) {
           const user = res.data
-          console.log('&&&', user.data)
+          // console.log('&&&', user.data)
           return user.data
         } else {
           // 로그인 처리 실패
@@ -43,7 +43,7 @@ export default NextAuth({
       }
       return token
     },
-    async session({ session, token }) {
+    async session({ session, token, user }) {
       session.user = token
       return session
     },
