@@ -1,7 +1,7 @@
 import useAxiosAuth from '@/hooks/useAxiosAuth'
 import { useRefreshToken } from '@/hooks/useRefreshToken'
 import { axiosServer } from '@/lib'
-
+import AuthBtn from '@/components/button/AuthBtn'
 import { useSession } from 'next-auth/react'
 
 const Mypage = () => {
@@ -17,6 +17,7 @@ const Mypage = () => {
     <div>
       마이페이지
       <button onClick={getMyInfo}> 나의 정보 보기 </button>
+      <AuthBtn />
     </div>
   )
 }

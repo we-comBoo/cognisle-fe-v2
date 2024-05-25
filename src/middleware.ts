@@ -36,8 +36,8 @@ const withOutAuth = async (
   }
 }
 
-const withAuthList = ['/mypage']
-const withOutAuthList = ['/auth/login', '/auth/signup']
+const withAuthList = ['/mypage', '/home']
+const withOutAuthList = ['/auth/login', '/auth/signup', '/login']
 
 export default async function middleware(req: NextRequest) {
   const token = await getToken({ req })
