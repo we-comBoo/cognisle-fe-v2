@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
+import { FormBtn } from '@/components/common/Button'
 
 export const St = {
   Section: styled.section`
@@ -11,6 +12,7 @@ export const St = {
   Form: styled.form`
     display: flex;
     flex-direction: column;
+    width: 28rem;
     gap: 2.4rem;
     margin-bottom: 4.8rem;
   `,
@@ -40,7 +42,7 @@ export const St = {
 
   Input: styled.input`
     background-color: var(--color-yellow-100);
-    width: 28rem;
+
     height: 4rem;
     ${FONTS.body4};
     padding: 0 1.6rem;
@@ -49,6 +51,7 @@ export const St = {
       color: var(--color-green-400);
     }
   `,
+  LoginBtn: FormBtn,
 
   Link: styled.div`
     text-decoration: underline;

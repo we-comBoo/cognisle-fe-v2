@@ -19,7 +19,12 @@ export const FONTS = {
   //h2: FONT({ weight: 400, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
   //body1: FONT({ weight: 600, size: 1.6, lineHeight: 140, letterSpacing: 3 }),
   //body2: FONT({ weight: 400, size: 2.4, lineHeight: 140, letterSpacing: 4 }),
-  //body3: FONT({ weight: 700, size: 1.5, lineHeight: 140, letterSpacing: 3 }),
+  body3: FONT({
+    weight: 700,
+    size: 1.6,
+    lineHeight: 'normal',
+    letterSpacing: 'normal',
+  }),
   body4: FONT({
     weight: 400,
     size: 1.6,

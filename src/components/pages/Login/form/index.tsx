@@ -74,7 +74,7 @@ const LoginForm = () => {
           />
           <label htmlFor="rememberId">아이디 기억하기</label>
         </St.CheckBoxWrapper>
-        <button type="submit">로그인 하기</button>
+        <St.LoginBtn type="submit">로그인</St.LoginBtn>
       </St.Form>
 
       <St.Link type="button" onClick={goSignupPage}>
