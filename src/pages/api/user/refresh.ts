@@ -1,9 +1,5 @@
 import { axiosAuth } from '@/lib'
-import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
-// This is an example of how to read a JSON Web Token from an API route
 import { getToken } from 'next-auth/jwt'
 export default async function handler(
   req: NextApiRequest,
