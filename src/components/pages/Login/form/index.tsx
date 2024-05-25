@@ -76,12 +76,11 @@ const LoginForm = () => {
         </St.CheckBoxWrapper>
         <button type="submit">로그인 하기</button>
       </St.Form>
-      <div>
-        <button type="button" onClick={goSignupPage}>
-          {' '}
-          회원가입
-        </button>
-      </div>
+
+      <St.Link type="button" onClick={goSignupPage}>
+        {' '}
+        회원가입
+      </St.Link>
     </St.Section>
   )
 }

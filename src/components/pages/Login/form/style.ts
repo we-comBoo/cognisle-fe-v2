@@ -4,6 +4,9 @@ import { FONTS } from '@/styles/font'
 export const St = {
   Section: styled.section`
     color: var(--color-green-400);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   `,
   Form: styled.form`
     display: flex;
@@ -45,5 +48,10 @@ export const St = {
     &::placeholder {
       color: var(--color-green-400);
     }
+  `,
+
+  Link: styled.div`
+    text-decoration: underline;
+    ${FONTS.body4};
   `,
 }
