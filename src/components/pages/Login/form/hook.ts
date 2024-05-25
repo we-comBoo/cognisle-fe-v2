@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
 import { signIn } from 'next-auth/react'
+import useRouter from 'next/router'
 const useLoginForm = () => {
+  const router = useRouter
   const inputRefs = useRef<HTMLInputElement[]>([]) // [이메일, 비밀번호]
   const [errorMsg, setErrorMsg] = useState({
     email: '',
@@ -34,6 +36,8 @@ const useLoginForm = () => {
         const errorStatus = res.status
         console.log('Error', errorMsg, errorStatus)
         setErrorMsg({ email: '', password: errorMsg })
+      } else {
+        router.replace('/home')
       }
     } catch (e) {
       console.log(e)
