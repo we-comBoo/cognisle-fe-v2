@@ -1,12 +1,13 @@
 import useLoginForm from '@/components/pages/Login/form/hook'
+import { useRouter } from 'next/router'
 
 const LoginForm = () => {
   const route = useRouter()
   const goSignupPage = () => {
     route.push('/signup')
   }
-  const { inputRefs, errorrMsg, submitLoginForm } = useLoginForm()
-  rerurn(
+  const { inputRefs, errorMsg, submitLoginForm } = useLoginForm()
+  return (
     <section onSubmit={submitLoginForm}>
       <form>
         <label>이메일</label>
@@ -17,7 +18,7 @@ const LoginForm = () => {
             if (el !== null) inputRefs.current[0] = el
           }}
         />
-        {errorrMsg.email && <p>{errorrMsg.email}</p>}
+        {errorMsg.email && <p>{errorMsg.email}</p>}
         <label htmlFor="password">비밀번호</label>
         <input
           id="password"
@@ -26,10 +27,10 @@ const LoginForm = () => {
             if (el !== null) inputRefs.current[1] = el
           }}
         />
-        {errorrMsg.password && <p>{errorrMsg.password}</p>}
+        {errorMsg.password && <p>{errorMsg.password}</p>}
         <button type="submit">로그인 하기</button>
       </form>
-    </section>,
+    </section>
   )
 }
 
