@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import SEO from '@/components/common'
+import { SEO } from '@/components/common'
 
 interface LayoutProps {
   children: React.ReactNode

@@ -1,6 +1,6 @@
 import LoginForm from '@/components/pages/Login/form'
 
-import Background from '@/components/common'
+import { Background } from '@/components/common'
 
 const Login = () => {
   return (

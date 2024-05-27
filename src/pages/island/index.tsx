@@ -1,4 +1,4 @@
-import Skeleton from '@/components/common'
+import { Skeleton } from '@/components/common'
 import withSuspense from '@/hooks/withSuspense'
 
 export function IslandSkeleton() {
