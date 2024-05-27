@@ -14,7 +14,7 @@ const Background = ({ type, children }: backgroundProps) => {
 export default Background
 
 /*width: ${({ width }) => ( `${width}rem` : 'auto')};*/
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   min-height: inherit;
 
   background: ${({ img, color }) => `linear-gradient(
