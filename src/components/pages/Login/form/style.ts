@@ -31,7 +31,6 @@ export const St = {
     height: 4rem;
     ${FONTS.body4};
     padding: 0 1.6rem;
-    // margin: 2.4rem;
     &::placeholder {
       color: var(--color-green-400);
     }
