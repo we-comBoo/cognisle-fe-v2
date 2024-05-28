@@ -1,7 +1,7 @@
 import { getToken } from 'next-auth/jwt'
 import { NextRequest, NextResponse } from 'next/server'
+import { FALLBACK_URL, withAuthList, withOutAuthList } from './constants'
 
-const FALLBACK_URL = '/'
 const withAuth = async (req: NextRequest, token: string | undefined) => {
   const url = req.nextUrl.clone()
   const { pathname } = req.nextUrl
@@ -35,9 +35,6 @@ const withOutAuth = async (
     return NextResponse.redirect(url)
   }
 }
-
-const withAuthList = ['/mypage', '/home']
-const withOutAuthList = ['/auth/login', '/auth/signup', '/login']
 
 export default async function middleware(req: NextRequest) {
   const token = await getToken({ req })
