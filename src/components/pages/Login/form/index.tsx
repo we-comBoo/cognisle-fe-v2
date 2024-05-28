@@ -14,7 +14,7 @@ const LoginForm = () => {
 
   const { inputRefs, errorMsg, submitLoginForm } = useLoginForm()
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
-  const LS_EMAIL = localStorage.getItem('LS_EMAIL')
+  const LS_EMAIL = localStorage.getItem('LS_EMAIL') || ''
   const handleEmailFlagCheck = () => {
     setEmailFlagCheck((prev) => !prev)
   }
@@ -49,7 +49,7 @@ const LoginForm = () => {
           ref={(el) => {
             if (el !== null) inputRefs.current[0] = el
           }}
-          defaultValue={localStorage.getItem('LS_EMAIL')}
+          defaultValue={LS_EMAIL}
         />
         {errorMsg.email && <p>{errorMsg.email}</p>}
 
@@ -77,10 +77,7 @@ const LoginForm = () => {
         <St.LoginBtn type="submit">로그인</St.LoginBtn>
       </St.Form>
 
-      <St.Link type="button" onClick={goSignupPage}>
-        {' '}
-        회원가입
-      </St.Link>
+      <St.Link onClick={goSignupPage}> 회원가입</St.Link>
     </St.Section>
   )
 }
