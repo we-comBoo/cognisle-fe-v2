@@ -7,7 +7,7 @@ const Logo = ({ type, padding }: LogoProps) => {
   const { src, width, height, alt } = LOGO_TYPE_INFO[type]
 
   return (
-    <St.LogoWrapper padding={padding}>
+    <St.LogoWrapper padding={padding ?? 0}>
       <Image src={src} width={width} height={height} alt={alt} priority />
     </St.LogoWrapper>
   )

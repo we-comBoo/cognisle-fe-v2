@@ -1,6 +1,6 @@
 export interface LogoProps {
   type: 'primary' | 'header'
-  padding: number
+  padding?: number
 }
 
 export interface logoTypeInfoProps {
