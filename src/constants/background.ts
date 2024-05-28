@@ -1,3 +1,5 @@
+import { backgroundTypeProps } from '@/types'
+
 export const BACKGROUND_TYPE: backgroundTypeProps = {
   login: {
     img: { src: '/assets/background/triangle.png', width: 43, height: 84.9 },

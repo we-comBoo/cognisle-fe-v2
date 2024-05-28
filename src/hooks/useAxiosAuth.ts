@@ -42,7 +42,7 @@ const useAxiosAuth = () => {
       axiosAuth.interceptors.response.eject(responseIntercept)
     }
   }, [session])
-  cosole.log('useAxiosHook', axiosAuth)
+  // console.log('useAxiosHook', axiosAuth)
   return axiosAuth
 }
 

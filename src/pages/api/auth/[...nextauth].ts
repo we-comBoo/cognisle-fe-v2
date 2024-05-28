@@ -24,11 +24,13 @@ export default NextAuth({
           if (axios.isAxiosError(error)) {
             console.log(
               'next Auth signin Axios Erroz',
-              error.response.status,
-              error.response.data,
+              error?.response?.status,
+              error?.response?.data,
             )
             // 서버 에러 메세지만 잡기 (401)
-            throw new Error(error.response.data.detail)
+            throw new Error(
+              error?.response?.data.detail || '로그인 오류 발생 재시도 요청',
+            )
           }
         }
 
