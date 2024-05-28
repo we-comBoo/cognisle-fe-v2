@@ -20,9 +20,8 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
           <Global styles={globalStyles} />
-          <AuthGuard>
-            <Component {...pageProps} />
-          </AuthGuard>
+
+          <Component {...pageProps} />
         </QueryClientProvider>
       </SessionProvider>
     </Layout>
