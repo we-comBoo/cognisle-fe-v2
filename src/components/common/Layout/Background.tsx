@@ -1,4 +1,5 @@
-import { BACKGROUND_INFO, BACKGROUND_PROPS } from '@/constants'
+import { BACKGROUND_TYPE } from '@/constants'
+import { backgroundInfoProps } from '@/types'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 
@@ -8,7 +9,7 @@ interface backgroundProps {
 }
 
 const Background = ({ type, children }: backgroundProps) => {
-  const { img, color } = BACKGROUND_INFO[type]
+  const { img, color } = BACKGROUND_TYPE[type]
   return (
     <Wrapper img={img} backgroundColor={color}>
       {children}
@@ -20,8 +21,8 @@ export default Background
 
 /*width: ${({ width }) => ( `${width}rem` : 'auto')};*/
 export const Wrapper = styled.div<{
-  backgroundColor: BACKGROUND_PROPS['color']
-  img: BACKGROUND_PROPS['img']
+  backgroundColor: backgroundInfoProps['color']
+  img: backgroundInfoProps['img']
 }>`
   min-height: inherit;
 

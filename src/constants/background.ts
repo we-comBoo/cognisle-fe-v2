@@ -1,21 +1,6 @@
-export interface BACKGROUND_INFO_PROPS {
-  [key: string]: BACKGROUND_PROPS
-}
+import { backgroundTypeProps } from '@/types'
 
-export interface BACKGROUND_PROPS {
-  img: {
-    src: string
-    width: number
-    height: number
-  }
-  color: {
-    start: string
-    end: string
-    degree: string
-  }
-}
-
-export const BACKGROUND_INFO: BACKGROUND_INFO_PROPS = {
+export const BACKGROUND_TYPE: backgroundTypeProps = {
   login: {
     img: { src: '/assets/background/triangle.png', width: 43, height: 84.9 },
     color: {

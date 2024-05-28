@@ -1,4 +1,6 @@
-const LOGO_INFO = {
+import { logoTypeInfoProps } from '@/types'
+
+export const LOGO_TYPE_INFO: logoTypeInfoProps = {
   primary: {
     src: '/assets/logo/primary.png',
     width: 240,
@@ -12,5 +14,3 @@ const LOGO_INFO = {
     alt: 'secondary/horizontal logo',
   },
 }
-
-export default LOGO_INFO

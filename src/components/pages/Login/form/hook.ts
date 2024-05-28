@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { FormEvent, useRef, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import useRouter from 'next/router'
 const useLoginForm = () => {
@@ -26,13 +26,14 @@ const useLoginForm = () => {
       return setErrorMsg({ email: '', password: '비밀번호를 입력하시오' })
     }
     try {
-      const res = await signIn('credentials', {
+      const res = await signIn<'credentials'>('credentials', {
         email: inputRefs.current[0].value,
         password: inputRefs.current[1].value,
         redirect: false,
       })
-      if (res.status != 200) {
-        const errorMsg = res.error || res.response.data
+      if (res && res.status != 200) {
+        //const errorMsg = res.error || res.response.data
+        const errorMsg = res.error || '로그인 재시도 요청'
         const errorStatus = res.status
         console.log('Error', errorMsg, errorStatus)
         setErrorMsg({ email: '', password: errorMsg })
