@@ -1,10 +1,11 @@
-function FONT({
-  weight,
-  size,
-  lineHeight,
-  letterSpacing,
-  notoSans,
-}: Font): string {
+interface fontProps {
+  weight: number
+  size: number
+  lineHeight: string
+  letterSpacing: string
+}
+
+function FONT({ weight, size, lineHeight, letterSpacing }: fontProps): string {
   return `
     font-family:inherit;
     font-weight: ${weight};
@@ -75,4 +76,4 @@ export const FONTS = {
   }),*/
 }
 
-export type Fonts = keyof typeof fonts
+export type FontsKeyType = keyof typeof FONTS
