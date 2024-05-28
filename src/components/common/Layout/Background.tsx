@@ -1,26 +1,34 @@
-import { BACKGROUND_INFO } from '@/constants'
+import { BACKGROUND_INFO, BACKGROUND_PROPS } from '@/constants'
 import styled from '@emotion/styled'
+import { ReactNode } from 'react'
 
 interface backgroundProps {
-  type?: string
+  type: string
   children: ReactNode
 }
 
 const Background = ({ type, children }: backgroundProps) => {
-  const styles = BACKGROUND_INFO[type]
-  return <Wrapper {...styles}>{children}</Wrapper>
+  const { img, color } = BACKGROUND_INFO[type]
+  return (
+    <Wrapper img={img} backgroundColor={color}>
+      {children}
+    </Wrapper>
+  )
 }
 
 export default Background
 
 /*width: ${({ width }) => ( `${width}rem` : 'auto')};*/
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{
+  backgroundColor: BACKGROUND_PROPS['color']
+  img: BACKGROUND_PROPS['img']
+}>`
   min-height: inherit;
 
-  background: ${({ img, color }) => `linear-gradient(
- ${color['degree']},
-      var(${color['start']}),
-      var(${color['end']})
+  background: ${({ img, backgroundColor }) => `linear-gradient(
+ ${backgroundColor['degree']},
+      var(${backgroundColor['start']}),
+      var(${backgroundColor['end']})
     ),
     url(${img['src']})`};
   background-size: ${({ img }) => `${img['width']}rem auto`};
