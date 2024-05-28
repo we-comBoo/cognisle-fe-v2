@@ -1,9 +1,4 @@
-interface fontProps {
-  weight: number
-  size: number
-  lineHeight: string
-  letterSpacing: string
-}
+import { fontProps } from '@/types'
 
 function FONT({ weight, size, lineHeight, letterSpacing }: fontProps): string {
   return `
