@@ -1,5 +1,6 @@
-import SEO from '@/components/common/SEO'
 import Head from 'next/head'
+import styled from '@emotion/styled'
+import { SEO } from '@/components/common'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -13,9 +14,17 @@ function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {children}
+      <Container> {children}</Container>
     </>
   )
 }
 
 export default Layout
+
+const Container = styled.div`
+  width: 43rem;
+  scrollbar-width: none;
+  min-height: 100dvh;
+  margin: auto;
+  background-color: var(--color-yellow-100);
+`
