@@ -5,6 +5,7 @@ import Background, { Wrapper as BackgroundWrapper } from './Layout/Background'
 import SEO from './Layout/SEO'
 import Skeleton from './Layout/Skeleton'
 import Logo from './Logo'
+import Triangle from './Triangle'
 
 export {
   Button,
@@ -17,4 +18,5 @@ export {
   SEO,
   Skeleton,
   Logo,
+  Triangle,
 }
