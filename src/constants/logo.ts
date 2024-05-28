@@ -8,7 +8,7 @@ export const LOGO_TYPE_INFO: logoTypeInfoProps = {
     alt: 'primary/vertical logo',
   },
   secondary: {
-    src: '/assets/logo/secondary.svg',
+    src: '/assets/logo/secondary.png',
     width: 185,
     height: 32,
     alt: 'secondary/horizontal logo',

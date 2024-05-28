@@ -6,6 +6,7 @@ import SEO from './Layout/SEO'
 import Skeleton from './Layout/Skeleton'
 import Logo from './Logo'
 import Triangle from './Triangle'
+import Header from './Header'
 
 export {
   Button,
@@ -19,4 +20,5 @@ export {
   Skeleton,
   Logo,
   Triangle,
+  Header,
 }
