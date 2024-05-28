@@ -1,4 +1,5 @@
-import { BACKGROUND_TYPE, backgroundInfoProps } from '@/constants'
+import { BACKGROUND_TYPE } from '@/constants'
+import { backgroundInfoProps } from '@/types'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
 
