@@ -1,4 +1,4 @@
-export interface backgroundTypeProps {
+export interface backgroundTypeInfoProps {
   [key: string]: backgroundInfoProps
 }
 

@@ -1,6 +1,6 @@
-import { backgroundTypeProps } from '@/types'
+import { backgroundTypeInfoProps } from '@/types'
 
-export const BACKGROUND_TYPE: backgroundTypeProps = {
+export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
   login: {
     img: { src: '/assets/background/triangle.png', width: 43, height: 84.9 },
     color: {
