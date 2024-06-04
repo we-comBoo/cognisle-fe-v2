@@ -1,8 +1,7 @@
-import AuthBtn from '@/components/button/AuthBtn'
 import styled from '@emotion/styled'
-import { useRouter } from 'next/router'
+
 import { useEffect } from 'react'
-import Image from 'next/image'
+
 import { Logo, Triangle } from '@/components/common'
 
 export default function Home() {
