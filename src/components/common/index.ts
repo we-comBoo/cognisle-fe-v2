@@ -7,6 +7,8 @@ import Skeleton from './Layout/Skeleton'
 import Logo from './Logo'
 import Triangle from './Triangle'
 import Header from './Header'
+import BottomMenu from './BottomMenu'
+import Divider from './Divider'
 
 export {
   Button,
@@ -21,4 +23,6 @@ export {
   Logo,
   Triangle,
   Header,
+  BottomMenu,
+  Divider,
 }

@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import globalStyles from '@/styles/globalStyles'
 import 'public/fonts/style.css'
 
-import AuthGuard from '@/components/auth/AuthGuard'
 import { Layout } from '@/components/common'
 
 const client = new QueryClient({})

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import { Header, SEO } from '@/components/common'
+import { Header, SEO, BottomMenu } from '@/components/common'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -19,7 +19,7 @@ function Layout({ children }: LayoutProps) {
         {' '}
         <Header />
         {children}
-        <Header />
+        <BottomMenu />
       </Container>
     </>
   )
