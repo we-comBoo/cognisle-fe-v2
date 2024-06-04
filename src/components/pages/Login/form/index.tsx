@@ -3,9 +3,8 @@ import { LOCAL_STORAGE, IMAGE_ADDRESS } from '@/constants'
 
 import { St } from './style'
 import { useRouter } from 'next/router'
-import styled from '@emotion/styled'
 
-import { useRef, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 const LoginForm = () => {
   const router = useRouter()
   const goSignupPage = () => {
@@ -14,7 +13,8 @@ const LoginForm = () => {
 
   const { inputRefs, errorMsg, submitLoginForm } = useLoginForm()
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
-  const LS_EMAIL = localStorage.getItem('LS_EMAIL') || ''
+  const LS_EMAIL =
+    typeof window !== 'undefined' ? localStorage.getItem('LS_EMAIL') ?? '' : ''
   const handleEmailFlagCheck = () => {
     setEmailFlagCheck((prev) => !prev)
   }

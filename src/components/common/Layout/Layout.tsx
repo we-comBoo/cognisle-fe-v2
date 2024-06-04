@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import { SEO } from '@/components/common'
+import { Header, SEO, BottomMenu } from '@/components/common'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -14,7 +14,13 @@ function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container> {children}</Container>
+
+      <Container>
+        {' '}
+        <Header />
+        {children}
+        <BottomMenu />
+      </Container>
     </>
   )
 }

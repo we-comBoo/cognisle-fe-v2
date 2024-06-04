@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import globalStyles from '@/styles/globalStyles'
 import 'public/fonts/style.css'
 
-import AuthGuard from '@/components/auth/AuthGuard'
 import { Layout } from '@/components/common'
 
 const client = new QueryClient({})
@@ -20,9 +19,8 @@ export default function App({
       <SessionProvider session={session}>
         <QueryClientProvider client={client}>
           <Global styles={globalStyles} />
-          <AuthGuard>
-            <Component {...pageProps} />
-          </AuthGuard>
+
+          <Component {...pageProps} />
         </QueryClientProvider>
       </SessionProvider>
     </Layout>

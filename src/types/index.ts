@@ -1,11 +1,21 @@
 import { LogoProps, logoTypeInfoProps, logoInfoProps } from './logo'
-import { backgroundTypeProps, backgroundInfoProps } from './background'
+import { backgroundTypeInfoProps, backgroundInfoProps } from './background'
 import { fontProps } from './font'
+import {
+  triangleInfoProps,
+  triangleTypeInfoProps,
+  TriangleProps,
+} from './triangle'
+import { BottomMenuInfoProps } from './bottomMenu'
 export type {
   LogoProps,
   logoTypeInfoProps,
   logoInfoProps,
-  backgroundTypeProps,
+  backgroundTypeInfoProps,
   backgroundInfoProps,
   fontProps,
+  triangleInfoProps,
+  triangleTypeInfoProps,
+  TriangleProps,
+  BottomMenuInfoProps,
 }

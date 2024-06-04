@@ -4,7 +4,7 @@ const St = {
   LogoWrapper: styled.div<{ padding: number }>`
     width: fit-content;
     height: fit-content;
-    padding-top: ${({ padding }) => `${padding}rem`};
+    padding: ${({ padding }) => `${padding}rem`};
   `,
 }
 

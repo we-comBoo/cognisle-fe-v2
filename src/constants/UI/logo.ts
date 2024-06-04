@@ -2,7 +2,7 @@ import { logoTypeInfoProps } from '@/types'
 
 export const LOGO_TYPE_INFO: logoTypeInfoProps = {
   primary: {
-    src: '/assets/logo/primary.png',
+    src: '/assets/logo/primary.svg',
     width: 240,
     height: 124,
     alt: 'primary/vertical logo',

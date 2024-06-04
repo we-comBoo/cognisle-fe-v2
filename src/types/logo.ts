@@ -1,5 +1,5 @@
 export interface LogoProps {
-  type: 'primary' | 'header'
+  type: 'primary' | 'secondary'
   padding?: number
 }
 
