@@ -1,4 +1,4 @@
-import { BACKGROUND_TYPE } from '@/constants'
+import { BACKGROUND_TYPE_INFO } from '@/constants'
 import { backgroundInfoProps } from '@/types'
 import styled from '@emotion/styled'
 import { ReactNode } from 'react'
@@ -9,7 +9,7 @@ interface backgroundProps {
 }
 
 const Background = ({ type, children }: backgroundProps) => {
-  const { img, color } = BACKGROUND_TYPE[type]
+  const { img, color } = BACKGROUND_TYPE_INFO[type]
   return (
     <Wrapper img={img} backgroundColor={color}>
       {children}
