@@ -17,9 +17,9 @@ function Layout({ children }: LayoutProps) {
 
       <Container>
         {' '}
-        <Header />
+        {/*<Header />*/}
         {children}
-        <BottomMenu />
+        {/*<BottomMenu />*/}
       </Container>
     </>
   )
