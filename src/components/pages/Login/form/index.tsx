@@ -5,7 +5,7 @@ import { St } from './style'
 import { useRouter } from 'next/router'
 
 import { useState, useEffect } from 'react'
-import { Notification } from '@/components/common'
+import { StateModal } from '@/components/common'
 import { useModalActions, useModalStore } from '@/store/modal'
 
 const LoginForm = () => {
@@ -62,7 +62,7 @@ const LoginForm = () => {
         />
         {errorMsg.email && (
           <>
-            <Notification
+            <StateModal
               content={errorMsg.email}
               type="warning"
               isOpen={isOpen}
@@ -83,7 +83,7 @@ const LoginForm = () => {
         />
         {errorMsg.password && (
           <>
-            <Notification
+            <StateModal
               content={errorMsg.password}
               type="warning"
               isOpen={isOpen}

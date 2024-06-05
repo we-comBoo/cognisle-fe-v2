@@ -40,13 +40,16 @@ const useLoginForm = () => {
         const errorMsg = res.error || '로그인 재시도 요청'
         const errorStatus = res.status
         console.log('Error', errorMsg, errorStatus)
-        setErrorMsg({ email: '', password: errorMsg })
+        setErrorMsg({ email: '', password: '등록되지 않은 계정 입니다' })
+        return openModal()
       } else {
         router.replace('/home')
       }
     } catch (e) {
       console.log(e)
       alert('로그인 오류')
+      setErrorMsg({ email: '', password: '관리자 문의 요청 드립니다' })
+      return openModal()
       //const errorMsg = e.error || e.response.data
       //const errorStatus = e.status
       //console.log('Error', errorMsg, errorStatus)
