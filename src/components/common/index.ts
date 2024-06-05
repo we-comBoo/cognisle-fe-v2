@@ -9,6 +9,7 @@ import Triangle from './Triangle'
 import Header from './Header'
 import BottomMenu from './BottomMenu'
 import Divider from './Divider'
+import Notification from './Modal/Notification'
 
 export {
   Button,
@@ -25,4 +26,5 @@ export {
   Header,
   BottomMenu,
   Divider,
+  Notification,
 }

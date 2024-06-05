@@ -1,6 +1,7 @@
 import { FormEvent, useRef, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import useRouter from 'next/router'
+import { useModalActions } from '@/store/modal'
 const useLoginForm = () => {
   const router = useRouter
   const inputRefs = useRef<HTMLInputElement[]>([]) // [이메일, 비밀번호]
@@ -8,6 +9,7 @@ const useLoginForm = () => {
     email: '',
     password: '',
   })
+  const { openModal } = useModalActions()
 
   /**
    * 
@@ -20,10 +22,12 @@ const useLoginForm = () => {
     e.preventDefault()
     console.log(inputRefs.current[0].value, inputRefs.current[1].value)
     if (!inputRefs.current[0].value) {
-      return setErrorMsg({ email: '이메일 주소를 입력하시오', password: '' })
+      setErrorMsg({ email: '이메일 주소를 입력하시오', password: '' })
+      return openModal()
     }
     if (!inputRefs.current[1].value) {
-      return setErrorMsg({ email: '', password: '비밀번호를 입력하시오' })
+      setErrorMsg({ email: '', password: '비밀번호를 입력하시오' })
+      return openModal()
     }
     try {
       const res = await signIn<'credentials'>('credentials', {

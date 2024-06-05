@@ -5,32 +5,41 @@ import { St } from './style'
 import { useRouter } from 'next/router'
 
 import { useState, useEffect } from 'react'
+import { Notification } from '@/components/common'
+import { useModalActions, useModalStore } from '@/store/modal'
+
 const LoginForm = () => {
   const router = useRouter()
   const goSignupPage = () => {
     router.push('/signup')
   }
+  const isOpen = useModalStore()
+  const { closeModal } = useModalActions()
 
   const { inputRefs, errorMsg, submitLoginForm } = useLoginForm()
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
   const LS_EMAIL =
     typeof window !== 'undefined' ? localStorage.getItem('LS_EMAIL') ?? '' : ''
+
   const handleEmailFlagCheck = () => {
     setEmailFlagCheck((prev) => !prev)
   }
   const handleLocalStorageEmail = () => {
     if (emailFlagCheck) {
+      console.log('add')
       localStorage.setItem(
         LOCAL_STORAGE['emailCheckBox'],
         inputRefs.current[0].value,
       )
     } else {
+      console.log('remove')
       localStorage.removeItem(LOCAL_STORAGE['emailCheckBox'])
     }
   }
   useEffect(() => {
     if (LS_EMAIL) {
       setEmailFlagCheck(true)
+      handleLocalStorageEmail()
     }
   }, [])
   useEffect(() => {
@@ -51,7 +60,16 @@ const LoginForm = () => {
           }}
           defaultValue={LS_EMAIL}
         />
-        {errorMsg.email && <p>{errorMsg.email}</p>}
+        {errorMsg.email && (
+          <>
+            <Notification
+              content={errorMsg.email}
+              type="warning"
+              isOpen={isOpen}
+              handleClose={closeModal}
+            />
+          </>
+        )}
 
         <St.Input
           id="password"
@@ -63,7 +81,16 @@ const LoginForm = () => {
             if (el !== null) inputRefs.current[1] = el
           }}
         />
-        {errorMsg.password && <p>{errorMsg.password}</p>}
+        {errorMsg.password && (
+          <>
+            <Notification
+              content={errorMsg.password}
+              type="warning"
+              isOpen={isOpen}
+              handleClose={closeModal}
+            />
+          </>
+        )}
         <St.CheckBoxWrapper>
           <St.CheckBox
             type="checkbox"
