@@ -1,4 +1,17 @@
 import { PointBtnInfoProps } from '@/types'
+const MENU_POINT_BTN: PointBtnInfoProps = {
+  size: {
+    width: 10.8,
+  },
+  point: {
+    width: 2,
+  },
+  color: {
+    main: '--color-green-400',
+    point: '--color-pink-100',
+  },
+  round: true,
+}
 
 const USER_POINT_BTN: PointBtnInfoProps = {
   size: {
@@ -15,4 +28,4 @@ const USER_POINT_BTN: PointBtnInfoProps = {
   },
   round: true,
 }
-export { USER_POINT_BTN }
+export { MENU_POINT_BTN, USER_POINT_BTN }

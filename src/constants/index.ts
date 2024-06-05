@@ -4,9 +4,9 @@ import LOCAL_STORAGE from './localStorageKey'
 import { LOGO_TYPE_INFO } from './common/logo'
 import { TRIANGLE_TYPE_INFO } from './common/triangle'
 import { withAuthList, withOutAuthList, FALLBACK_URL } from './routeUrl'
-import { BOTTOM_MENU_INFO } from './common/bottomMenu'
+import { BOTTOM_MENU_INFO } from './menu/bottom'
 import { STATE_MODAL_TYPE_INFO } from './modal/state'
-import { USER_POINT_BTN } from './common/pointBtn'
+import { USER_POINT_BTN, MENU_POINT_BTN } from './common/pointBtn'
 
 export {
   BACKGROUND_TYPE_INFO,
@@ -20,4 +20,5 @@ export {
   BOTTOM_MENU_INFO,
   STATE_MODAL_TYPE_INFO,
   USER_POINT_BTN,
+  MENU_POINT_BTN,
 }
