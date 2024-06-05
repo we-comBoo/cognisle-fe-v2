@@ -22,12 +22,17 @@
         "src/*"
       ],
       "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"],
-      "@pages/*": ["src/pages/*"],
-      "@constants/*": ["src/constants/*"],
-      "@utils/*": ["src/utils/*"],
-      "@contexts/*": ["src/contexts/*"],
-      "@hooks/*": ["src/hooks/*"],   
+        "@constants/*": ["src/constants/*"],
+       "@hooks/*": ["src/hooks/*"], 
+        "@lib/*": ["src/lib/*"],
+         "@pages/*": ["src/pages/*"],
+     
+      "@store/*": ["src/store/*"],  
+       "@styles/*": ["src/styles/*"],
+    
+   
+
+       
       "@types/*": ["src/types/*"]
     },
     "jsxImportSource": "@emotion/react",
