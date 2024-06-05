@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import {
   STATE_MODAL_TYPE_INFO,
   STATE_MODAL_TYPE_OVERLAY,
-} from '@/constants/UI/stateModal'
+} from '@/constants/modal/state'
 import { ModalStateKeyProps } from '@/types'
 
 interface StateModalProp {
