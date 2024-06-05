@@ -7,6 +7,12 @@ import {
   TriangleProps,
 } from './triangle'
 import { BottomMenuInfoProps } from './bottomMenu'
+import {
+  ModalStateTypeInfoProps,
+  ModalStateTypeOverlayInfoProps,
+  ModalStateKeyProps,
+  ModalStateInfoProps,
+} from './stateModal'
 export type {
   LogoProps,
   logoTypeInfoProps,
@@ -18,4 +24,8 @@ export type {
   triangleTypeInfoProps,
   TriangleProps,
   BottomMenuInfoProps,
+  ModalStateTypeInfoProps,
+  ModalStateTypeOverlayInfoProps,
+  ModalStateKeyProps,
+  ModalStateInfoProps,
 }
