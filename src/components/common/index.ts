@@ -1,4 +1,4 @@
-import { Button, FormBtn } from './Button'
+import { PointBtn, FormBtn } from './Button'
 import { CheckBox, CheckBoxWrapper } from './CheckBox'
 import Layout from './Layout/Layout'
 import Background, { Wrapper as BackgroundWrapper } from './Layout/Background'
@@ -12,7 +12,7 @@ import Divider from './Divider'
 import StateModal from './Modal/State'
 
 export {
-  Button,
+  PointBtn,
   FormBtn,
   CheckBox,
   CheckBoxWrapper,

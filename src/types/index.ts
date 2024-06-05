@@ -13,6 +13,7 @@ import {
   ModalStateKeyProps,
   ModalStateInfoProps,
 } from './stateModal'
+import { PointBtnInfoProps } from './button/point'
 export type {
   LogoProps,
   logoTypeInfoProps,
@@ -28,4 +29,5 @@ export type {
   ModalStateTypeOverlayInfoProps,
   ModalStateKeyProps,
   ModalStateInfoProps,
+  PointBtnInfoProps,
 }
