@@ -1,6 +1,7 @@
 import { FormEvent, useRef, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import useRouter from 'next/router'
+import { useModalActions } from '@/store/modal'
 const useLoginForm = () => {
   const router = useRouter
   const inputRefs = useRef<HTMLInputElement[]>([]) // [이메일, 비밀번호]
@@ -8,6 +9,7 @@ const useLoginForm = () => {
     email: '',
     password: '',
   })
+  const { openModal } = useModalActions()
 
   /**
    * 
@@ -20,10 +22,12 @@ const useLoginForm = () => {
     e.preventDefault()
     console.log(inputRefs.current[0].value, inputRefs.current[1].value)
     if (!inputRefs.current[0].value) {
-      return setErrorMsg({ email: '이메일 주소를 입력하시오', password: '' })
+      setErrorMsg({ email: '이메일 주소를 입력하시오', password: '' })
+      return openModal()
     }
     if (!inputRefs.current[1].value) {
-      return setErrorMsg({ email: '', password: '비밀번호를 입력하시오' })
+      setErrorMsg({ email: '', password: '비밀번호를 입력하시오' })
+      return openModal()
     }
     try {
       const res = await signIn<'credentials'>('credentials', {
@@ -36,13 +40,16 @@ const useLoginForm = () => {
         const errorMsg = res.error || '로그인 재시도 요청'
         const errorStatus = res.status
         console.log('Error', errorMsg, errorStatus)
-        setErrorMsg({ email: '', password: errorMsg })
+        setErrorMsg({ email: '', password: '등록되지 않은 계정 입니다' })
+        return openModal()
       } else {
         router.replace('/home')
       }
     } catch (e) {
       console.log(e)
       alert('로그인 오류')
+      setErrorMsg({ email: '', password: '관리자 문의 요청 드립니다' })
+      return openModal()
       //const errorMsg = e.error || e.response.data
       //const errorStatus = e.status
       //console.log('Error', errorMsg, errorStatus)

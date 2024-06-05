@@ -5,7 +5,7 @@ import { LOGO_TYPE_INFO } from './UI/logo'
 import { TRIANGLE_TYPE_INFO } from './UI/triangle'
 import { withAuthList, withOutAuthList, FALLBACK_URL } from './routeUrl'
 import { BOTTOM_MENU_INFO } from './UI/bottomMenu'
-
+import { STATE_MODAL_TYPE_INFO } from './UI/stateModal'
 export {
   BACKGROUND_TYPE_INFO,
   IMAGE_ADDRESS,
@@ -16,4 +16,5 @@ export {
   withOutAuthList,
   FALLBACK_URL,
   BOTTOM_MENU_INFO,
+  STATE_MODAL_TYPE_INFO,
 }
