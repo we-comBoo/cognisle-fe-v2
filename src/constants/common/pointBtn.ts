@@ -4,7 +4,7 @@ const MENU_POINT_BTN: PointBtnInfoProps = {
     width: 10.8,
   },
   point: {
-    width: 2,
+    width: 30,
   },
   color: {
     main: '--color-green-400',
