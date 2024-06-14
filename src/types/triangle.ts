@@ -1,5 +1,5 @@
 export interface TriangleProps {
-  type: 'original' | 'reversed' | 'header'
+  type: 'original' | 'reversed' | 'header' | 'authTitle'
 }
 
 export interface triangleTypeInfoProps {
