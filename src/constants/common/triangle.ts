@@ -19,4 +19,10 @@ export const TRIANGLE_TYPE_INFO: triangleTypeInfoProps = {
     height: 72,
     alt: 'Upper Triangle Image',
   },
+  authTitle: {
+    src: '/assets/triangle/original.svg',
+    width: 85,
+    height: 50,
+    alt: 'Upper Triangle Image',
+  },
 }
