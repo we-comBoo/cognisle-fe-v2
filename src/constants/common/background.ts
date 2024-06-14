@@ -2,7 +2,7 @@ import { backgroundTypeInfoProps } from '@/types'
 
 export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
   login: {
-    img: { src: '/assets/background/triangle.png', width: 43, height: 84.9 },
+    img: { src: '/assets/background/triangle.svg', width: 43, height: 84.9 },
     color: {
       start: '--gradient-yellow-100',
       end: '--color-green-300',
@@ -10,7 +10,7 @@ export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
     },
   },
   home: {
-    img: { src: '/assets/background/island.png', width: 25, height: 25 },
+    img: { src: '/assets/background/island.svg', width: 25, height: 25 },
     color: {
       start: '--gradient-yellow-100',
       end: '--color-pink-100',
