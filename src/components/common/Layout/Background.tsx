@@ -32,7 +32,7 @@ export const Wrapper = styled.div<{
       var(${backgroundColor['end']})
     ),
     url(${img['src']})`};
-  background-size: ${({ img }) => `${img['width']}rem auto`};
+  background-size: ${({ img }) => `43rem, ${img['width']}rem auto`};
   background-blend-mode: overlay;
   background-position: left bottom;
   background-repeat: no-repeat;
