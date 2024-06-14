@@ -1,4 +1,6 @@
+import LogoutBtn from '@/components/button/LogoutBtn'
 import { Background, Logo } from '@/components/common'
+import MenuBtn from '@/components/pages/Home/MenuBtn'
 import UserPointBtn from '@/components/pages/Home/UserPointBtn'
 
 import styled from '@emotion/styled'
@@ -9,12 +11,8 @@ const Home = () => {
       <Container>
         <Logo type="primary" />
         <UserPointBtn />
-        {/*
-        <div>
-          {FACK.map((item, idx) => (
-            <PointBtn key={idx} item={item} />
-          ))}
-        </div>*/}
+        <MenuBtn />
+        <LogoutBtn />
       </Container>
     </Background>
   )
@@ -28,5 +26,5 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 9.6rem;
+  gap: 4.6rem;
 `
