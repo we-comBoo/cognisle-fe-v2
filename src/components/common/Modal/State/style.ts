@@ -17,7 +17,7 @@ const St = {
     padding: 40px 20px 20px;
   `,
   Content: styled.div<{ colorStyle: ModalStateInfoProps['color'] }>`
-    width: 28rem;
+    width: 25rem;
     height: 6.4rem;
     border-radius: 0 1.5rem 1.5rem 1.5rem;
     background-color: ${({ colorStyle: { background } }) =>
@@ -27,6 +27,7 @@ const St = {
     align-items: center;
     justify-content: center;
     font-size: 2rem;
+    padding: 0 2.4rem;
   `,
   TextWrapper: styled.div`
     ${FONTS.body5}
