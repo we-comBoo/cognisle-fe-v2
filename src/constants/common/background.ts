@@ -10,7 +10,7 @@ export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
     },
   },
   home: {
-    img: { src: '/assets/background/island.png', width: 43, height: 84.9 },
+    img: { src: '/assets/background/island.png', width: 25, height: 25 },
     color: {
       start: '--gradient-yellow-100',
       end: '--color-pink-100',
