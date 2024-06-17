@@ -45,6 +45,30 @@ export const FONTS = {
     lineHeight: 'normal',
     letterSpacing: 'normal',
   }),
+  body7: FONT({
+    weight: 700,
+    size: 1.4,
+    lineHeight: 'normal',
+    letterSpacing: 'normal',
+  }),
+  body8: FONT({
+    weight: 400,
+    size: 1.4,
+    lineHeight: 'normal',
+    letterSpacing: 'normal',
+  }),
+  body9: FONT({
+    weight: 700,
+    size: 1.2,
+    lineHeight: 'normal',
+    letterSpacing: 'normal',
+  }),
+  body10: FONT({
+    weight: 400,
+    size: 1.2,
+    lineHeight: 'normal',
+    letterSpacing: 'normal',
+  }),
   //body5: FONT({ weight: 700, size: 2.4, lineHeight: 140, letterSpacing: 4 }),
   //body6: FONT({ weight: 400, size: 1.4, lineHeight: 140, letterSpacing: 3 }),
   //body7: FONT({ weight: 500, size: 1.6, lineHeight: 140, letterSpacing: 4 }),
@@ -59,12 +83,12 @@ export const FONTS = {
   //body10: FONT({ weight: 600, size: 2.4, lineHeight: 130, letterSpacing: 4 }),
   //body11: FONT({ weight: 400, size: 1.5, lineHeight: 140, letterSpacing: 4 }),
   //body12: FONT({ weight: 400, size: 1.6, lineHeight: 140, letterSpacing: 4 }),
-  caption1: FONT({
+  /*caption1: FONT({
     weight: 400,
     size: 1.2,
     lineHeight: 'normal',
     letterSpacing: 'normal',
-  }),
+  }),*/
   //caption2: FONT({ weight: 500, size: 1, lineHeight: 130, letterSpacing: 4 }),
   //caption3: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 4 }),
   //caption4: FONT({ weight: 400, size: 1.2, lineHeight: 140, letterSpacing: 3 }),
