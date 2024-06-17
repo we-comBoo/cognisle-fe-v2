@@ -22,7 +22,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 9.6rem;
 `
 
 const Input = styled.input`

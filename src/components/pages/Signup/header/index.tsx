@@ -22,4 +22,6 @@ const TitleWrapper = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
+  margin-top: 9.3rem;
+  margin-bottom: 2.4rem;
 `

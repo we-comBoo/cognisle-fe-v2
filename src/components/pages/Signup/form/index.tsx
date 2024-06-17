@@ -4,6 +4,7 @@ import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
 import useSignupForm from './hook'
+import { SIGNUP_FORM } from '@/constants'
 
 const SignupForm = () => {
   const router = useRouter()
@@ -26,44 +27,30 @@ const SignupForm = () => {
           />
         </>
       )}
+
       <Form>
-        <InputWrapper>
-          <span>이메일</span>
-          <Input
-            id="email"
-            type="text"
-            placeholder="이메일"
-            name="email"
-            autoComplete="email"
-            ref={(el) => {
-              if (el !== null) inputRefs.current[0] = el
-            }}
-          />
-        </InputWrapper>
-        <InputWrapper>
-          <span>비밀번호</span>
-          <Input
-            id="password"
-            type="password"
-            placeholder="비밀번호"
-            name="password"
-            ref={(el) => {
-              if (el !== null) inputRefs.current[1] = el
-            }}
-          />
-        </InputWrapper>
-        <InputWrapper>
-          <span>이름</span>
-          <Input
-            id="name"
-            type="text"
-            placeholder="이름"
-            name="name"
-            ref={(el) => {
-              if (el !== null) inputRefs.current[2] = el
-            }}
-          />
-        </InputWrapper>
+        {SIGNUP_FORM.map(({ label, id, type, placeholder, name }, idx) => (
+          <InputWrapper key={idx}>
+            <InputLabel>{label}</InputLabel>
+            <Input
+              id={id}
+              type={type}
+              placeholder={placeholder}
+              name={name}
+              style={{ width: name == 'discordId' ? '14rem' : '20rem' }}
+              ref={(el) => {
+                if (el !== null) inputRefs.current[idx] = el
+              }}
+            />
+            {name == 'discordId' && (
+              <DiscordIdBtn>
+                아이디 <br />
+                찾기
+              </DiscordIdBtn>
+            )}
+          </InputWrapper>
+        ))}
+
         <SignupBtn>회원가입</SignupBtn>
       </Form>
       <Link onClick={goLoginPage}> 로그인</Link>
@@ -77,11 +64,17 @@ const Section = styled.section`
   color: var(--color-green-400);
 `
 
-const Form = styled.form`
-  margin-bottom: 4.8rem;
+const Form = styled.form``
+
+const DiscordIdBtn = styled(FormBtn)`
+  width: 5rem;
+  height: 4rem;
+  ${FONTS.body9}
 `
 
-const SignupBtn = FormBtn
+const SignupBtn = styled(FormBtn)`
+  margin: 3.2rem 0;
+`
 
 const InputWrapper = styled.div`
   display: flex;
@@ -90,16 +83,21 @@ const InputWrapper = styled.div`
   justify-content: flex-end;
   gap: 1rem;
   width: 28rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 
   ${FONTS.body5}
+`
+const InputLabel = styled.div`
+  text-align: end;
+  width: 6.4rem;
+  display: inline-block;
 `
 const Input = styled.input`
   ${FONTS.body4};
   background-color: transparent;
   border-bottom: 0.1rem solid var(--color-green-400);
   height: 4rem;
-  width: 20rem;
+  /*width: 20rem;*/
   &::placeholder {
     color: var(--color-green-400);
   }
