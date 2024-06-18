@@ -3,17 +3,28 @@ import { useModalActions, useModalStore } from '@/store/modal'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
-import useSignupForm from './hook'
+import useSignupForm from './useSignupForm'
 import { SIGNUP_FORM } from '@/constants'
+import useDiscordOAuth from './useDiscordOAuth'
+import { useEffect } from 'react'
 
 const SignupForm = () => {
   const router = useRouter()
   const goLoginPage = () => {
     router.push('/login')
   }
+
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
-  const { inputRefs, errorMsg, submitSignupForm } = useSignupForm()
+  const { values, errorMsg, handleInputChange, submitSignupForm } =
+    useSignupForm()
+  const { handleDiscordOAuthPopup, dsUser } = useDiscordOAuth()
+  useEffect(() => {
+    if (dsUser.dsId && dsUser.dsName) {
+      handleInputChange('dsId', dsUser.dsId)
+      handleInputChange('dsName', dsUser.dsName)
+    }
+  }, [dsUser])
 
   return (
     <Section onSubmit={submitSignupForm}>
@@ -37,13 +48,12 @@ const SignupForm = () => {
               type={type}
               placeholder={placeholder}
               name={name}
-              style={{ width: name == 'discordId' ? '14rem' : '20rem' }}
-              ref={(el) => {
-                if (el !== null) inputRefs.current[idx] = el
-              }}
+              style={{ width: name == 'dsName' ? '14rem' : '20rem' }}
+              value={values[name]}
+              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
             />
-            {name == 'discordId' && (
-              <DiscordIdBtn>
+            {name == 'dsName' && (
+              <DiscordIdBtn onClick={handleDiscordOAuthPopup}>
                 아이디 <br />
                 찾기
               </DiscordIdBtn>
@@ -94,6 +104,7 @@ const InputLabel = styled.div`
 `
 const Input = styled.input`
   ${FONTS.body4};
+  color: var(--color-green-400);
   background-color: transparent;
   border-bottom: 0.1rem solid var(--color-green-400);
   height: 4rem;
