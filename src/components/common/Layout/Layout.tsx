@@ -1,12 +1,15 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
 import { Header, SEO, BottomMenu } from '@/components/common'
+import { useRouter } from 'next/router'
+import { withOutTabbar } from '@/constants/routeUrl'
 
 interface LayoutProps {
   children: React.ReactNode
 }
 
 function Layout({ children }: LayoutProps) {
+  const { pathname } = useRouter()
   return (
     <>
       <SEO title="Cognisle" description="지혜의 숲" image="" />
@@ -17,9 +20,9 @@ function Layout({ children }: LayoutProps) {
 
       <Container>
         {' '}
-        <Header />
+        {!withOutTabbar.includes(pathname) && <Header />}
         {children}
-        <BottomMenu />
+        {!withOutTabbar.includes(pathname) && <BottomMenu />}
       </Container>
     </>
   )
