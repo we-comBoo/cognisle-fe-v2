@@ -1,3 +1,20 @@
+export interface signupProps {
+  [index: string]: string | number
+  email: string
+  password: string
+  name: string
+  dsId: string
+  dsName: string
+}
+
+export const SIGNUP_INITIAL_VALUES: signupProps = {
+  email: '',
+  password: '',
+  name: '',
+  dsId: '',
+  dsName: '',
+}
+
 export const SIGNUP_FORM = [
   {
     label: '이메일',
@@ -22,9 +39,9 @@ export const SIGNUP_FORM = [
   },
   {
     label: '디스코드 아이디',
-    id: 'discordId',
+    id: 'dsName',
     type: 'text',
     placeholder: '디스코드 아이디',
-    name: 'discordId',
+    name: 'dsName',
   },
 ]
