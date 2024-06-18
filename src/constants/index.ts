@@ -15,6 +15,12 @@ import {
   signupProps,
   signupValidationProps,
 } from './form/signup'
+import {
+  visitProps,
+  visitValidationProps,
+  VISIT_VALIDATION,
+  VISIT_INITIAL_VALUE,
+} from './form/visit'
 export {
   BACKGROUND_TYPE_INFO,
   IMAGE_ADDRESS,
@@ -32,5 +38,12 @@ export {
   SIGNUP_INITIAL_VALUES,
   SIGNUP_VALIDATION,
   Bounce,
+  VISIT_VALIDATION,
+  VISIT_INITIAL_VALUE,
 }
-export type { signupProps, signupValidationProps }
+export type {
+  signupProps,
+  signupValidationProps,
+  visitProps,
+  visitValidationProps,
+}
