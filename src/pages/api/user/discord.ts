@@ -13,11 +13,11 @@ export default async function handler(
       const output = await axios.post(
         'https://discord.com/api/v10/oauth2/token',
         {
-          client_id: process.env.DISCORD_CLIENT_ID,
-          client_secret: process.env.DISCORD_CLIENT_SECRET,
+          client_id: process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID,
+          client_secret: process.env.NEXT_PUBLIC_DISCORD_CLIENT_SECRET,
           grant_type: 'authorization_code',
           code: code.toString(),
-          redirect_uri: process.env.DISCORD_REDIRECT_URI,
+          redirect_uri: process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI,
         },
         {
           headers: {
@@ -25,7 +25,11 @@ export default async function handler(
           },
         },
       )
-      console.log(output.data, code, process.env.DISCORD_REDIRECT_URI)
+      console.log(
+        output.data,
+        code,
+        process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI,
+      )
       const { data } = output
 
       if (data) {

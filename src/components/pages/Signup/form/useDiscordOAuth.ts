@@ -9,7 +9,7 @@ const useDiscordOAuth = () => {
 
   // 팝업 열어서 코드 요청
   const handleDiscordOAuthPopup = useCallback((): void => {
-    const url = `https://discord.com/oauth2/authorize?client_id=${process.env.DISCORD_CLIENT_ID}&response_type=code&redirect_uri=${process.env.DISCORD_REDIRECT_URI}d&scope=identify+email`
+    const url = `https://discord.com/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID}&response_type=code&redirect_uri=${process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI}&scope=identify+email`
     // 사용자를 Discord 로그인 페이지로 리디렉션합니다.
     const width = 500
     const height = 400
