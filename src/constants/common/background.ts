@@ -17,4 +17,12 @@ export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
       degree: '180deg',
     },
   },
+  signup: {
+    img: { src: '/assets/background/triangle.svg', width: 43, height: 84.9 },
+    color: {
+      start: '--gradient-yellow-100',
+      end: '--color-blue-100',
+      degree: '180deg',
+    },
+  },
 }

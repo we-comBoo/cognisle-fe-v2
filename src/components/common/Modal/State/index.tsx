@@ -21,7 +21,8 @@ const StateModal = ({ isOpen, type, handleClose, content }: StateModalProp) => {
   const router = useRouter()
   const contentRef = useRef<HTMLDivElement>(null) //내부 버튼 영역
   const { img, color } = STATE_MODAL_TYPE_INFO[type]
-  useOutsideClick(contentRef, handleClose)
+  useOutsideClick(isOpen ? contentRef : null, handleClose)
+
   useEffect(() => {
     const timer = setTimeout(() => {
       handleClose()

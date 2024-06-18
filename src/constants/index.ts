@@ -7,7 +7,7 @@ import { withAuthList, withOutAuthList, FALLBACK_URL } from './routeUrl'
 import { BOTTOM_MENU_INFO } from './menu/bottom'
 import { STATE_MODAL_TYPE_INFO } from './modal/state'
 import { USER_POINT_BTN, MENU_POINT_BTN } from './common/pointBtn'
-
+import { SIGNUP_FORM, SIGNUP_INITIAL_VALUES, signupProps } from './form/signup'
 export {
   BACKGROUND_TYPE_INFO,
   IMAGE_ADDRESS,
@@ -21,4 +21,7 @@ export {
   STATE_MODAL_TYPE_INFO,
   USER_POINT_BTN,
   MENU_POINT_BTN,
+  SIGNUP_FORM,
+  SIGNUP_INITIAL_VALUES,
 }
+export type { signupProps }

@@ -20,7 +20,7 @@ export const St = {
     margin-bottom: 2.4rem;
     label {
       margin-left: 0.8rem;
-      ${FONTS.caption1}
+      ${FONTS.body10}
     }
   `,
   CheckBox: styled(CheckBox)``,
