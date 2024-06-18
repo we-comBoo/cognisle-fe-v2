@@ -25,4 +25,20 @@ export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
       degree: '180deg',
     },
   },
+  'visit/loading': {
+    img: { src: '/assets/background/bubble.svg', width: 43, height: 84.9 },
+    color: {
+      start: '--color-blue-100',
+      end: '--color-green-300',
+      degree: '180deg',
+    },
+  },
+  'visit/form': {
+    img: { src: '', width: 43, height: 84.9 },
+    color: {
+      start: '--color-blue-100',
+      end: '--color-green-300',
+      degree: '180deg',
+    },
+  },
 }
