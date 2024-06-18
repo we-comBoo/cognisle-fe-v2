@@ -1,12 +1,15 @@
-import { FormEvent, useRef, useState } from 'react'
-
-import useRouter from 'next/router'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 import { useModalActions } from '@/store/modal'
+import { signupProps, SIGNUP_INITIAL_VALUES } from '@/constants'
+
 const useSignupForm = () => {
-  const router = useRouter
-  const inputRefs = useRef<HTMLInputElement[]>([]) // [이메일, 비밀번호]
+  const [values, setValues] = useState<signupProps>(SIGNUP_INITIAL_VALUES)
   const [errorMsg, setErrorMsg] = useState('')
   const { openModal } = useModalActions()
+  const handleInputChange = (name: string, value: string) => {
+    console.log(name, value)
+    setValues((prev) => ({ ...prev, [name]: value }))
+  }
 
   /**
    * 
@@ -19,8 +22,8 @@ const useSignupForm = () => {
 
   const submitSignupForm = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault()
-    console.log(inputRefs.current[0].value)
-    if (!inputRefs.current[0].value) {
+    console.log(values)
+    /* if (!inputRefs.current[0].value) {
       setErrorMsg('이메일 주소를 입력하시오')
       return openModal()
     } else {
@@ -28,7 +31,7 @@ const useSignupForm = () => {
         setErrorMsg('올바른 형식의 이메일을 입력해 주세요')
         return openModal()
       }
-    }
+    }*/
     /*
     if (!inputRefs.current[1].value) {
       setErrorMsg('비밀번호를 입력하시오')
@@ -70,7 +73,7 @@ const useSignupForm = () => {
     }*/
   }
 
-  return { inputRefs, errorMsg, submitSignupForm }
+  return { values, errorMsg, handleInputChange, submitSignupForm }
 }
 
 export default useSignupForm
