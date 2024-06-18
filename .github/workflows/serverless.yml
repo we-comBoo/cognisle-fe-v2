@@ -1,6 +1,10 @@
 cognisleServerless:
-  component: '@sls-next/serverless-component@1.18.0'
+  component: '@sls-next/serverless-component@latest'
   inputs:
+    runtime:
+      defaultLambda: "nodejs14.x"
+      apiLambda: "nodejs14.x"
+      imageLambda: "nodejs14.x"
     bucketName: 'cognisle'
     name:
       defaultLambda: DefaultLambda	#Default Lambda의 이름 설정 
