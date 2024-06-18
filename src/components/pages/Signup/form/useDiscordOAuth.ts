@@ -42,7 +42,7 @@ const useDiscordOAuth = () => {
       }
       const { dsName, dsId } = e.data
       if (dsName && dsId) {
-        console.log(` ${dsName} ${dsId} `)
+        // console.log(` ${dsName} ${dsId} `)
         setDsUser({ dsName, dsId })
       }
       clearPopup()

@@ -23,7 +23,7 @@ const Discord = () => {
   }, [code])
 
   const handleOkay = () => {
-    console.log('확인', discordUser)
+    // console.log('확인', discordUser)
     window.opener.postMessage(discordUser)
   }
   return (
