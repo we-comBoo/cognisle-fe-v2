@@ -4,7 +4,11 @@ import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
 import useSignupForm from './useSignupForm'
-import { SIGNUP_FORM } from '@/constants'
+import {
+  SIGNUP_FORM,
+  SIGNUP_INITIAL_VALUES,
+  SIGNUP_VALIDATION,
+} from '@/constants'
 import useDiscordOAuth from './useDiscordOAuth'
 import { useEffect } from 'react'
 
@@ -17,7 +21,10 @@ const SignupForm = () => {
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
   const { values, errorMsg, handleInputChange, submitSignupForm } =
-    useSignupForm()
+    useSignupForm({
+      initialValues: SIGNUP_INITIAL_VALUES,
+      validate: SIGNUP_VALIDATION,
+    })
   const { handleDiscordOAuthPopup, dsUser } = useDiscordOAuth()
   useEffect(() => {
     if (dsUser.dsId && dsUser.dsName) {

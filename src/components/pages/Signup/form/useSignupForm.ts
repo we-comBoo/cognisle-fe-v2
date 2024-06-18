@@ -1,13 +1,19 @@
 import { FormEvent, useEffect, useRef, useState } from 'react'
-import { useModalActions } from '@/store/modal'
-import { signupProps, SIGNUP_INITIAL_VALUES } from '@/constants'
+import { useModalActions, useModalStore } from '@/store/modal'
+import { signupProps, signupValidationProps } from '@/constants'
 
-const useSignupForm = () => {
-  const [values, setValues] = useState<signupProps>(SIGNUP_INITIAL_VALUES)
+interface useSignupFormProps {
+  initialValues: signupProps
+  validate: signupValidationProps
+}
+
+const useSignupForm = ({ initialValues, validate }: useSignupFormProps) => {
+  const [values, setValues] = useState<signupProps>(initialValues)
   const [errorMsg, setErrorMsg] = useState('')
+  const isOpen = useModalStore()
   const { openModal } = useModalActions()
   const handleInputChange = (name: string, value: string) => {
-    console.log(name, value)
+    // console.log(name, value)
     setValues((prev) => ({ ...prev, [name]: value }))
   }
 
@@ -17,12 +23,22 @@ const useSignupForm = () => {
    *     const email = '0321minji@naver.com'
     const password = '12341234'
    */
-  const email_format =
-    /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
-
+  useEffect(() => {
+    if (!isOpen) {
+      setErrorMsg('')
+    }
+  }, [isOpen])
   const submitSignupForm = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault()
-    console.log(values)
+    const error = validate(values)
+    console.log(error)
+    if (error) {
+      setErrorMsg(error)
+      return openModal()
+    } else {
+      console.log(values)
+    }
+
     /* if (!inputRefs.current[0].value) {
       setErrorMsg('이메일 주소를 입력하시오')
       return openModal()
