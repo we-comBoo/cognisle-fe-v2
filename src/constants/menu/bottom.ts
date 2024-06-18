@@ -4,8 +4,8 @@ export const BOTTOM_MENU_INFO: BottomMenuInfoProps[] = [
   {
     link: '/game',
     image: {
-      active: '/assets/yellow/game.svg',
-      inactive: '/assets/green/game.svg',
+      active: '/assets/green/game.svg',
+      inactive: '/assets/yellow/game.svg',
       height: 36,
       width: 27,
       alt: 'game',
@@ -14,8 +14,8 @@ export const BOTTOM_MENU_INFO: BottomMenuInfoProps[] = [
   {
     link: '/island',
     image: {
-      active: '/assets/yellow/island.svg',
-      inactive: '/assets/green/island.svg',
+      active: '/assets/green/island.svg',
+      inactive: '/assets/yellow/island.svg',
       height: 36,
       width: 47,
       alt: 'island',
@@ -24,8 +24,8 @@ export const BOTTOM_MENU_INFO: BottomMenuInfoProps[] = [
   {
     link: '/visit',
     image: {
-      active: '/assets/yellow/visit.svg',
-      inactive: '/assets/green/visit.svg',
+      active: '/assets/green/visit.svg',
+      inactive: '/assets/yellow/visit.svg',
       height: 36,
       width: 63,
       alt: 'visit',
@@ -34,8 +34,8 @@ export const BOTTOM_MENU_INFO: BottomMenuInfoProps[] = [
   {
     link: '/collection',
     image: {
-      active: '/assets/yellow/collection.svg',
-      inactive: '/assets/green/collection.svg',
+      active: '/assets/green/collection.svg',
+      inactive: '/assets/yellow/collection.svg',
       height: 36,
       width: 34,
       alt: 'collection',
