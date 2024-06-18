@@ -1,12 +1,13 @@
 import LoginForm from '@/components/pages/Login/form'
 import { Background, Logo } from '@/components/common'
 import styled from '@emotion/styled'
+import Header from '@/components/pages/Login/header'
 
 const Login = () => {
   return (
     <Background type="login">
       <Container>
-        <Logo type="primary" />
+        <Header />
         <LoginForm />
       </Container>
     </Background>
@@ -21,5 +22,4 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 9.6rem;
 `

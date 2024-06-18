@@ -7,7 +7,7 @@ const Header = () => {
     <>
       <Logo type="primary" />
       <TitleWrapper>
-        JOIN US
+        LOGIN
         <Triangle type="authTitle" />
       </TitleWrapper>
     </>
@@ -15,7 +15,6 @@ const Header = () => {
 }
 
 export default Header
-
 const TitleWrapper = styled.div`
   ${FONTS.body2}
   color: var(--color-green-400);

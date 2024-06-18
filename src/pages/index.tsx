@@ -6,11 +6,11 @@ import { Logo, Triangle } from '@/components/common'
 
 export default function Home() {
   // 2초 뒤에 홈 메뉴 화면으로 이동
-  /*useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       location.href = 'home'
     }, 2000)
-  }, [])*/
+  }, [])
 
   return (
     <>
