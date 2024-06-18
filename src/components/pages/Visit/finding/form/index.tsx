@@ -18,7 +18,7 @@ const VisitForm = () => {
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
   return (
-    <Background type="visit/form">
+    <>
       {errorMsg && (
         <>
           <StateModal
@@ -39,10 +39,15 @@ const VisitForm = () => {
           onChange={(e) => handleInputChange(e.target.value)}
         />
         <button>
-          <Image src={IMAGE_ADDRESS.landForm} width={21} height={21} />
+          <Image
+            src={IMAGE_ADDRESS.landForm}
+            width={21}
+            height={21}
+            alt="돋보기 아이콘"
+          />
         </button>
       </Form>
-    </Background>
+    </>
   )
 }
 

@@ -39,7 +39,7 @@ const BottomMenu = () => {
 export default BottomMenu
 
 const TabsWrapper = styled.div`
-  position: fixed;
+  /*position: fixed;*/
   bottom: 0;
   width: inherit;
 
