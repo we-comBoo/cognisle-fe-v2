@@ -3,6 +3,7 @@ import IMAGE_ADDRESS from './imageAddress'
 import LOCAL_STORAGE from './localStorageKey'
 import { LOGO_TYPE_INFO } from './common/logo'
 import { TRIANGLE_TYPE_INFO } from './common/triangle'
+import { Bounce } from './common/animations'
 import { withAuthList, withOutAuthList, FALLBACK_URL } from './routeUrl'
 import { BOTTOM_MENU_INFO } from './menu/bottom'
 import { STATE_MODAL_TYPE_INFO } from './modal/state'
@@ -14,6 +15,12 @@ import {
   signupProps,
   signupValidationProps,
 } from './form/signup'
+import {
+  visitProps,
+  visitValidationProps,
+  VISIT_VALIDATION,
+  VISIT_INITIAL_VALUE,
+} from './form/visit'
 export {
   BACKGROUND_TYPE_INFO,
   IMAGE_ADDRESS,
@@ -30,5 +37,13 @@ export {
   SIGNUP_FORM,
   SIGNUP_INITIAL_VALUES,
   SIGNUP_VALIDATION,
+  Bounce,
+  VISIT_VALIDATION,
+  VISIT_INITIAL_VALUE,
 }
-export type { signupProps, signupValidationProps }
+export type {
+  signupProps,
+  signupValidationProps,
+  visitProps,
+  visitValidationProps,
+}

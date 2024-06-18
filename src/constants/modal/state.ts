@@ -5,6 +5,7 @@ import {
 export const STATE_MODAL_TYPE_OVERLAY: ModalStateTypeOverlayInfoProps = {
   '/login': 'rgba(115, 216, 156, 0.6)',
   '/signup': 'rgba(145, 206, 237, 0.6)',
+  '/visit': 'rgba(145, 206, 237, 0.6)',
 }
 
 export const STATE_MODAL_TYPE_INFO: ModalStateTypeInfoProps = {
