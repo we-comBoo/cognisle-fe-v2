@@ -27,4 +27,4 @@ jobs:
 
       - name: Deploy Next.js app
         run: |
-          yar run deploy
+          yarn run deploy
