@@ -21,7 +21,7 @@ export const TRIANGLE_TYPE_INFO: triangleTypeInfoProps = {
   },
   authTitle: {
     src: '/assets/triangle/original.svg',
-    width: 85,
+    width: 90,
     height: 50,
     alt: 'Upper Triangle Image',
   },
