@@ -25,11 +25,7 @@ export default async function handler(
           },
         },
       )
-      console.log(
-        output.data,
-        code,
-        process.env.NEXT_PUBLIC_DISCORD_REDIRECT_URI,
-      )
+
       const { data } = output
 
       if (data) {
