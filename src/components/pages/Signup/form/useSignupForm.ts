@@ -1,6 +1,6 @@
-import { FormEvent, useEffect, useRef, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useModalActions, useModalStore } from '@/store/modal'
-import { signupProps, signupValidationProps } from '@/constants'
+import { signupProps, signupValidationProps } from '@/types'
 
 interface useSignupFormProps {
   initialValues: signupProps

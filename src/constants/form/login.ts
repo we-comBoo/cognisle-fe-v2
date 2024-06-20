@@ -1,12 +1,7 @@
-import { signupProps, signupValidationProps } from '@/types'
+import { loginProps, loginValidationProps } from '@/types'
+import LOCAL_STORAGE_KEY from '../localStorageKey'
 
-export const SIGNUP_VALIDATION: signupValidationProps = ({
-  name,
-  email,
-  password,
-  dsId,
-  dsName,
-}) => {
+export const LOGIN_VALIDATION: loginValidationProps = ({ email, password }) => {
   if (!email) {
     return '이메일이 입력되지 않았습니다.'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
@@ -21,22 +16,19 @@ export const SIGNUP_VALIDATION: signupValidationProps = ({
     return '8~16자의 영문, 숫자, 특수문자 사용해 주세요.'
   }
 
-  if (!name) {
-    return '이름이 입력되지 않았습니다.'
-  }
-
   return ''
 }
+export const LS_EMAIL =
+  typeof window !== 'undefined'
+    ? localStorage.getItem(LOCAL_STORAGE_KEY['emailCheckBox']) ?? ''
+    : ''
 
-export const SIGNUP_INITIAL_VALUES: signupProps = {
+export const LOGIN_INITIAL_VALUES: loginProps = {
   email: '',
   password: '',
-  name: '',
-  dsId: '',
-  dsName: '',
 }
 
-export const SIGNUP_FORM = [
+export const LOGIN_FORM = [
   {
     label: '이메일',
     id: 'email',
@@ -50,19 +42,5 @@ export const SIGNUP_FORM = [
     type: 'password',
     placeholder: '비밀번호',
     name: 'password',
-  },
-  {
-    label: '이름',
-    id: 'name',
-    type: 'text',
-    placeholder: '이름',
-    name: 'name',
-  },
-  {
-    label: '디스코드 아이디',
-    id: 'dsName',
-    type: 'text',
-    placeholder: '디스코드 아이디',
-    name: 'dsName',
   },
 ]

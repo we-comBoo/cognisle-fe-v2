@@ -1,5 +1,5 @@
 const IMAGE_ADDRESS = {
-  emailCheckBox: '/assets/yellow/marked.png',
+  emailCheckBox: '/assets/yellow/marked.svg',
   landLoading: '/assets/land/loading.svg',
   landForm: '/assets/green/search.svg',
   landTitle: '/assets/green/squiggly.svg',
