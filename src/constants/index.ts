@@ -1,6 +1,6 @@
 import { BACKGROUND_TYPE_INFO } from './common/background'
 import IMAGE_ADDRESS from './imageAddress'
-import LOCAL_STORAGE from './localStorageKey'
+import LOCAL_STORAGE_KEY from './localStorageKey'
 import { LOGO_TYPE_INFO } from './common/logo'
 import { TRIANGLE_TYPE_INFO } from './common/triangle'
 import { Bounce } from './common/animations'
@@ -13,16 +13,12 @@ import {
   SIGNUP_INITIAL_VALUES,
   SIGNUP_VALIDATION,
 } from './form/signup'
-import {
-  visitProps,
-  visitValidationProps,
-  VISIT_VALIDATION,
-  VISIT_INITIAL_VALUE,
-} from './form/visit'
+import { LS_EMAIL, LOGIN_INITIAL_VALUES, LOGIN_VALIDATION } from './form/login'
+import { VISIT_VALIDATION, VISIT_INITIAL_VALUE } from './form/visit'
 export {
   BACKGROUND_TYPE_INFO,
   IMAGE_ADDRESS,
-  LOCAL_STORAGE,
+  LOCAL_STORAGE_KEY,
   LOGO_TYPE_INFO,
   TRIANGLE_TYPE_INFO,
   withAuthList,
@@ -38,5 +34,8 @@ export {
   Bounce,
   VISIT_VALIDATION,
   VISIT_INITIAL_VALUE,
+  LS_EMAIL,
+  LOGIN_INITIAL_VALUES,
+  LOGIN_VALIDATION,
 }
 export type { visitProps, visitValidationProps }

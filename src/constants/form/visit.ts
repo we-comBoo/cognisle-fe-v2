@@ -1,6 +1,4 @@
-export type visitProps = string
-
-export type visitValidationProps = (value: visitProps) => string
+import { visitProps, visitValidationProps } from '@/types'
 
 export const VISIT_VALIDATION: visitValidationProps = (value) => {
   if (!value) {
