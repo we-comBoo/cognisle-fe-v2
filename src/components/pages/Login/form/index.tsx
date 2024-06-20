@@ -1,12 +1,13 @@
-import useLoginForm from '@/components/pages/Login/form/hook'
-import { LOCAL_STORAGE, IMAGE_ADDRESS } from '@/constants'
+import useLoginForm from '@/components/pages/Login/form/useLoginForm'
+import { IMAGE_ADDRESS } from '@/constants'
 
 import { St } from './style'
 import { useRouter } from 'next/router'
 
-import { useState, useEffect } from 'react'
 import { StateModal } from '@/components/common'
 import { useModalActions, useModalStore } from '@/store/modal'
+import { LOGIN_INITIAL_VALUES, LOGIN_VALIDATION } from '@/constants'
+import { LOGIN_FORM } from '@/constants/form/login'
 
 const LoginForm = () => {
   const router = useRouter()
@@ -16,91 +17,56 @@ const LoginForm = () => {
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
 
-  const { inputRefs, errorMsg, submitLoginForm } = useLoginForm()
-  const [emailFlagCheck, setEmailFlagCheck] = useState(false)
-  const LS_EMAIL =
-    typeof window !== 'undefined' ? localStorage.getItem('LS_EMAIL') ?? '' : ''
-
-  const handleEmailFlagCheck = () => {
-    setEmailFlagCheck((prev) => !prev)
-  }
-  const handleLocalStorageEmail = () => {
-    if (emailFlagCheck) {
-      console.log('add')
-      localStorage.setItem(
-        LOCAL_STORAGE['emailCheckBox'],
-        inputRefs.current[0].value,
-      )
-    } else {
-      console.log('remove')
-      localStorage.removeItem(LOCAL_STORAGE['emailCheckBox'])
-    }
-  }
-  useEffect(() => {
-    if (LS_EMAIL) {
-      setEmailFlagCheck(true)
-      handleLocalStorageEmail()
-    }
-  }, [])
-  useEffect(() => {
-    handleLocalStorageEmail()
-  }, [emailFlagCheck])
+  const {
+    values,
+    emailFlagCheck,
+    handleEmailFlagCheck,
+    errorMsg,
+    handleInputChange,
+    submitLoginForm,
+  } = useLoginForm({
+    initialValues: LOGIN_INITIAL_VALUES,
+    validate: LOGIN_VALIDATION,
+  })
 
   return (
     <St.Section onSubmit={submitLoginForm}>
-      <St.Form>
-        <St.Input
-          id="email"
-          type="text"
-          placeholder="이메일"
-          name="email"
-          autoComplete="email"
-          ref={(el) => {
-            if (el !== null) inputRefs.current[0] = el
-          }}
-          defaultValue={LS_EMAIL}
-        />
-        {errorMsg.email && (
-          <>
-            <StateModal
-              content={errorMsg.email}
-              type="warning"
-              isOpen={isOpen}
-              handleClose={closeModal}
-            />
-          </>
-        )}
-
-        <St.Input
-          id="password"
-          type="password"
-          placeholder="비밀번호"
-          name="password"
-          autoComplete="current-password"
-          ref={(el) => {
-            if (el !== null) inputRefs.current[1] = el
-          }}
-        />
-        {errorMsg.password && (
-          <>
-            <StateModal
-              content={errorMsg.password}
-              type="warning"
-              isOpen={isOpen}
-              handleClose={closeModal}
-            />
-          </>
-        )}
-        <St.CheckBoxWrapper>
-          <St.CheckBox
-            type="checkbox"
-            id="rememberEmail"
-            checked={emailFlagCheck}
-            onChange={() => handleEmailFlagCheck()}
-            imgSrc={IMAGE_ADDRESS['emailCheckBox']}
+      {errorMsg && (
+        <>
+          <StateModal
+            content={errorMsg}
+            type="warning"
+            isOpen={isOpen}
+            handleClose={closeModal}
           />
-          <label htmlFor="rememberId">아이디 기억하기</label>
-        </St.CheckBoxWrapper>
+        </>
+      )}
+      <St.Form>
+        {LOGIN_FORM.map(({ label, id, type, placeholder, name }, idx) => (
+          <div key={idx}>
+            <St.Input
+              id={id}
+              type={type}
+              placeholder={placeholder}
+              name={name}
+              value={values[name]}
+              onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+            />
+            {idx == LOGIN_FORM.length - 1 && (
+              <St.CheckBoxWrapper>
+                <St.CheckBox
+                  type="checkbox"
+                  id="rememberEmail"
+                  checked={emailFlagCheck}
+                  onChange={() => handleEmailFlagCheck()}
+                  imgSrc={IMAGE_ADDRESS['emailCheckBox']}
+                />
+                <label htmlFor="rememberId">아이디 기억하기</label>
+              </St.CheckBoxWrapper>
+            )}
+          </div>
+        ))}
+
         <St.LoginBtn type="submit">로그인</St.LoginBtn>
       </St.Form>
 
