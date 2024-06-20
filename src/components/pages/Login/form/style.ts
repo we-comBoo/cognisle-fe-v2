@@ -17,7 +17,7 @@ export const St = {
     margin-bottom: 4.8rem;
   `,
   CheckBoxWrapper: styled(CheckBoxWrapper)`
-    margin-bottom: 2.4rem;
+    margin-top: 2.4rem;
     label {
       margin-left: 0.8rem;
       ${FONTS.body10}
