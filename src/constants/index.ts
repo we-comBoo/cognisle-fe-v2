@@ -12,8 +12,6 @@ import {
   SIGNUP_FORM,
   SIGNUP_INITIAL_VALUES,
   SIGNUP_VALIDATION,
-  signupProps,
-  signupValidationProps,
 } from './form/signup'
 import {
   visitProps,
@@ -41,9 +39,4 @@ export {
   VISIT_VALIDATION,
   VISIT_INITIAL_VALUE,
 }
-export type {
-  signupProps,
-  signupValidationProps,
-  visitProps,
-  visitValidationProps,
-}
+export type { visitProps, visitValidationProps }

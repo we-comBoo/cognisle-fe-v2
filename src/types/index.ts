@@ -14,6 +14,7 @@ import {
   ModalStateInfoProps,
 } from './stateModal'
 import { PointBtnInfoProps } from './button/point'
+import { signupProps, signupValidationProps } from './form/signup'
 export type {
   LogoProps,
   logoTypeInfoProps,
@@ -30,4 +31,6 @@ export type {
   ModalStateKeyProps,
   ModalStateInfoProps,
   PointBtnInfoProps,
+  signupProps,
+  signupValidationProps,
 }
