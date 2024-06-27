@@ -1,10 +1,10 @@
 import { Background } from '@/components/common'
-import PlayBoard from '@/components/pages/Game/play'
+import PlayCards from '@/components/pages/Game/playCards'
 
 const Game = () => {
   return (
     <Background type="game">
-      <PlayBoard />
+      <PlayCards />
     </Background>
   )
 }
