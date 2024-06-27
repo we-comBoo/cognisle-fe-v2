@@ -1,5 +1,12 @@
+import { Background } from '@/components/common'
+import PlayBoard from '@/components/pages/Game/play'
+
 const Game = () => {
-  return <div>game</div>
+  return (
+    <Background type="game">
+      <PlayBoard />
+    </Background>
+  )
 }
 
 export default Game
