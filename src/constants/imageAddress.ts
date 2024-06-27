@@ -5,6 +5,7 @@ const IMAGE_ADDRESS = {
   landTitle: '/assets/green/squiggly.svg',
   landFriend: '/assets/land/friend.svg',
   gameClear: '/assets/card/clear.svg',
+  cardFaceDown: '/assets/card/faceDown.svg',
 }
 
 export default IMAGE_ADDRESS
