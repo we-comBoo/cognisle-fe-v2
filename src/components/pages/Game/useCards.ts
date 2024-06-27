@@ -1,10 +1,12 @@
 import { shuffle } from '@/lib/game'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 const useCards = () => {
   const [cards, setCards] = useState(shuffle())
   const disabled = useRef(false)
   const prevIndex = useRef(-1)
+  const [clicked, setClicked] = useState(0)
+  const [obtain, setObtain] = useState(0)
 
   const updateStatus = (
     cardArr: { status: string; symbol: string }[],
@@ -20,7 +22,7 @@ const useCards = () => {
     if (disabled.current) {
       return
     }
-
+    setClicked((prev) => prev + 1)
     const curr = cards[currIndex]
     const prev = cards[prevIndex.current]
     console.log(curr, prev)
@@ -41,6 +43,7 @@ const useCards = () => {
     if (curr.symbol === prev.symbol) {
       console.log('짝 맞음')
       updateStatus([curr, prev], 'matched')
+      setObtain((prev) => prev + 1)
     }
 
     // 짝이 안 맞는 경우
@@ -56,7 +59,7 @@ const useCards = () => {
     prevIndex.current = -1
   }
 
-  return { cards, handleClick }
+  return { cards, handleClick, clicked, obtain }
 }
 
 export default useCards
