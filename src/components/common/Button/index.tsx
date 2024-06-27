@@ -51,6 +51,7 @@ const Container = styled.div<{
   position: relative;
   background-color: ${({ color }) => `var(${color})`};
   border-radius: ${({ round }) => (round ? '1.5rem' : '0rem')};
+  box-shadow: 0rem 0.3rem 0.6rem var(--color-pink-100);
 `
 
 const Point = styled.div<{
