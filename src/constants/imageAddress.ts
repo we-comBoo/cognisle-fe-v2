@@ -4,6 +4,7 @@ const IMAGE_ADDRESS = {
   landForm: '/assets/green/search.svg',
   landTitle: '/assets/green/squiggly.svg',
   landFriend: '/assets/land/friend.svg',
+  gameClear: '/assets/card/clear.svg',
 }
 
 export default IMAGE_ADDRESS

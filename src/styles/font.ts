@@ -11,7 +11,12 @@ function FONT({ weight, size, lineHeight, letterSpacing }: fontProps): string {
 }
 
 export const FONTS = {
-  //h1: FONT({ weight: 600, size: 2.6, lineHeight: 140, letterSpacing: 4 }),
+  h1: FONT({
+    weight: 700,
+    size: 3.6,
+    lineHeight: 'normal',
+    letterSpacing: 'normal',
+  }),
   //h2: FONT({ weight: 400, size: 1.4, lineHeight: 140, letterSpacing: 4 }),
   //body1: FONT({ weight: 600, size: 1.6, lineHeight: 140, letterSpacing: 3 }),
   body2: FONT({
