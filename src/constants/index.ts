@@ -38,4 +38,3 @@ export {
   LOGIN_INITIAL_VALUES,
   LOGIN_VALIDATION,
 }
-export type { visitProps, visitValidationProps }

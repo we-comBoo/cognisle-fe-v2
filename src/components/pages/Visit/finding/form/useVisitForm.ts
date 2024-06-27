@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useModalActions, useModalStore } from '@/store/modal'
-import { visitProps, visitValidationProps } from '@/constants'
+import { visitProps, visitValidationProps } from '@/types'
 
 interface useVisitFormProps {
   initialValue: visitProps
