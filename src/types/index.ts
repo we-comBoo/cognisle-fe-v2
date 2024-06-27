@@ -17,7 +17,7 @@ import { PointBtnInfoProps } from './button/point'
 import { signupProps, signupValidationProps } from './form/signup'
 import { loginProps, loginValidationProps } from './form/login'
 import { visitProps, visitValidationProps } from './visit'
-
+import { GameStateKeyProps } from './game'
 export type {
   LogoProps,
   logoTypeInfoProps,
@@ -40,4 +40,5 @@ export type {
   loginValidationProps,
   visitProps,
   visitValidationProps,
+  GameStateKeyProps,
 }
