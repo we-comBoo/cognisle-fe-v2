@@ -9,13 +9,8 @@ import { useRef, useEffect } from 'react'
 import { PointBtn } from '../../Button'
 import PortalModal from '../PortalModal'
 import Image from 'next/image'
-import { GameStateKeyProps } from '@/types'
-
-interface StateModalProp {
-  isOpen: boolean
-  handleClose: () => void
-  type: GameStateKeyProps
-}
+import { GameStateKeyProps, StateModalProps, GameResultProps } from '@/types'
+import { getDuration } from '@/lib'
 
 const Start = () => {
   return (
@@ -36,11 +31,13 @@ const Clear = () => {
   )
 }
 
-const Result = () => {
-  return <div> 게임 결과 보이기 모달 </div>
+const Result = ({ result }: { result: GameResultProps }) => {
+  const duration = getDuration(result.time)
+  console.log('게임 경과 시간: ', duration)
+  return <div> 게임 결과 보이기 모달 {duration?.second} </div>
 }
 
-const StateModal = ({ type, isOpen, handleClose }: StateModalProp) => {
+const StateModal = ({ type, isOpen, result, handleClose }: StateModalProps) => {
   const router = useRouter()
   const contentRef = useRef<HTMLDivElement>(null) //내부 버튼 영역
 
@@ -62,7 +59,7 @@ const StateModal = ({ type, isOpen, handleClose }: StateModalProp) => {
         <Content ref={contentRef}>
           {type == 'start' && <Start />}
           {type == 'clear' && <Clear />}
-          {type == 'result' && <Result />}
+          {type == 'result' && result && <Result result={result} />}
         </Content>
       </ModalWrapper>
     </PortalModal>
