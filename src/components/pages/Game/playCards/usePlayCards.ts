@@ -1,10 +1,14 @@
-import { shuffle } from '@/lib/game'
-import { GameStateKeyProps } from '@/types'
+import { shuffle } from '@/lib'
+import { GameStateKeyProps, TimeStateProps } from '@/types'
 import { useEffect, useRef, useState } from 'react'
 
 const usePlayCards = () => {
   const [cards, setCards] = useState(shuffle())
   const [status, setStatus] = useState<GameStateKeyProps>('start')
+  const [time, setTime] = useState<TimeStateProps>({
+    start: new Date(),
+    end: null,
+  })
   const disabled = useRef(false)
   const prevIndex = useRef(-1)
   const [clicked, setClicked] = useState(0)
@@ -14,9 +18,10 @@ const usePlayCards = () => {
   useEffect(() => {
     if (obtain === MAX_OBTAIN_COUNT) {
       setStatus('clear')
+      setTime((prev) => ({ ...prev, end: new Date() }))
       setTimeout(() => {
         setStatus('result')
-      }, 70000)
+      }, 3000)
     }
   }, [obtain])
 
@@ -71,7 +76,7 @@ const usePlayCards = () => {
     prevIndex.current = -1
   }
 
-  return { cards, handleClick, clicked, obtain, status }
+  return { cards, handleClick, clicked, obtain, status, time }
 }
 
 export default usePlayCards
