@@ -4,6 +4,7 @@ import StateModal from '@/components/common/Modal/Game'
 import { useModalStore, useModalActions } from '@/store/modal'
 import { useEffect } from 'react'
 import styled from '@emotion/styled'
+import Status from './status'
 
 const PlayCards = () => {
   const { cards, handleClick, clicked, obtain, status } = usePlayCards()
@@ -14,14 +15,14 @@ const PlayCards = () => {
     openModal()
   }, [status])
   return (
-    <div>
+    <GameWrapper>
       {isOpen && (
         <>
           <StateModal type={status} isOpen={isOpen} handleClose={closeModal} />
         </>
       )}
-      <div>획득한 아이템 수 : {obtain}</div>
-      <div>클릭한 아이템 수 : {clicked}</div>
+      <Status obtain={obtain} />
+      {/*<div>클릭한 아이템 수 : {clicked}</div>*/}
       <CardsContainer>
         {cards.map(({ symbol, status }, idx) => (
           <CardContainer
@@ -32,11 +33,15 @@ const PlayCards = () => {
           />
         ))}
       </CardsContainer>
-    </div>
+    </GameWrapper>
   )
 }
 
 export default PlayCards
+
+const GameWrapper = styled.div`
+  margin-top: 6rem;
+`
 
 const CardsContainer = styled.div`
   display: grid;
