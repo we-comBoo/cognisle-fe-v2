@@ -10,6 +10,8 @@ export interface GameBoardProps {
   cards: GameCardsProps
 }
 
+export type GameCardStatusProps = 'faceDown' | 'faceUp' | 'matched'
+
 export type GameStateKeyProps =
   | 'start'
   | 'clear'

@@ -24,6 +24,7 @@ import {
   GameResultProps,
   GameStateContentProps,
   GameBoardProps,
+  GameCardStatusProps,
 } from './game'
 export type {
   LogoProps,
@@ -53,4 +54,5 @@ export type {
   GameResultProps,
   GameStateContentProps,
   GameBoardProps,
+  GameCardStatusProps,
 }
