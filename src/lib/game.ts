@@ -32,12 +32,30 @@ export const symbols = [
   '😎',
   '🤥',
 ]
-
+//selecting random index without same element
+const selectIndex = (totalIndex: number, selectingNumber: number) => {
+  let randomIndexArray = []
+  for (let i = 0; i < selectingNumber; i++) {
+    //check if there is any duplicate index
+    const randomNum = Math.floor(Math.random() * totalIndex)
+    if (randomIndexArray.indexOf(randomNum) === -1) {
+      randomIndexArray.push(randomNum)
+    } else {
+      //if the randomNum is already in the array retry
+      i--
+    }
+  }
+  return randomIndexArray
+}
 export function shuffle() {
-  const picked = symbols.slice(0, 8)
-  return [...picked, ...picked]
+  const pickedIndex = selectIndex(symbols.length, 8)
+  console.log(pickedIndex)
+  const picked = pickedIndex.map((index) => symbols[index])
+  const cards = [...picked, ...picked]
     .sort(() => Math.random() - 0.5)
     .map((symbol) => ({ symbol, status: 'faceDown' }))
+
+  return { items: pickedIndex, cards }
 }
 
 export function getDuration(time: GameResultProps['time']) {
