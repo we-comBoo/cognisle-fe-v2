@@ -9,7 +9,11 @@ import { useRef, useEffect } from 'react'
 import { PointBtn } from '../../Button'
 import PortalModal from '../PortalModal'
 import Image from 'next/image'
-import { GameStateContentProps, StateModalProps } from '@/types'
+import {
+  GameStateContentProps,
+  GameStateKeyProps,
+  StateModalProps,
+} from '@/types'
 import { getDuration } from '@/lib'
 
 const Start = () => {
@@ -33,12 +37,24 @@ const Clear = () => {
 
 const Result = ({ content }: { content: GameStateContentProps }) => {
   const duration = getDuration(content.time)
-  console.log('게임 경과 시간: ', duration)
+  console.log('게임 경과 시간: ', duration, '획득한 아이템', content.items)
   return <div> 게임 결과 보이기 모달 {duration?.second} </div>
 }
 
-const Matched = () => {
-  return <div>dsafd</div>
+const Matched = ({ content }: { content: GameStateContentProps }) => {
+  return <div>현재 획득한 아이템 정보 {content.currentMatched}</div>
+}
+
+const closeTime = (type: GameStateKeyProps) => {
+  if (type == 'start') {
+    return 2000
+  } else if (type == 'matched') {
+    return 3000
+  } else if (type == 'clear') {
+    return 3000
+  } else if (type == 'result') {
+    return 5000
+  }
 }
 
 const StateModal = ({
@@ -55,7 +71,8 @@ const StateModal = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       handleClose()
-    }, 3000)
+      console.log('모달 닫기')
+    }, closeTime(type))
     return () => clearTimeout(timer)
   }, [])
   if (!isOpen || !router.isReady) return null
@@ -66,7 +83,7 @@ const StateModal = ({
           Close
         </button>*/}
         <Content ref={contentRef}>
-          {type == 'matched' && <Matched />}
+          {type == 'matched' && content && <Matched content={content} />}
           {type == 'start' && <Start />}
           {type == 'clear' && <Clear />}
           {type == 'result' && content && <Result content={content} />}
