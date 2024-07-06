@@ -1,9 +1,16 @@
 import { shuffle } from '@/lib'
-import { GameStateKeyProps, GameStateContentProps } from '@/types'
+import {
+  GameStateKeyProps,
+  GameStateContentProps,
+  GameBoardProps,
+} from '@/types'
 import { useEffect, useRef, useState } from 'react'
 
 const usePlayCards = () => {
-  const [cards, setCards] = useState(shuffle())
+  const [{ items, cards }, setCards] = useState<GameBoardProps>({
+    items: [],
+    cards: [],
+  })
   const [status, setStatus] = useState<GameStateKeyProps>('start')
   const [time, setTime] = useState<GameStateContentProps['time']>({
     start: new Date(),
@@ -14,37 +21,44 @@ const usePlayCards = () => {
   const disabled = useRef(false)
   const prevIndex = useRef(-1)
   const [clicked, setClicked] = useState<GameStateContentProps['clicked']>(0)
-  const [obtain, setObtain] = useState(7)
+  const [obtain, setObtain] = useState(0)
   const MAX_OBTAIN_COUNT = 8
 
   useEffect(() => {
-    if (0 < obtain && obtain <= MAX_OBTAIN_COUNT) {
-      setTimeout(() => {
-        setStatus('choosing')
-      }, 3000)
-    }
-  }, [obtain])
+    const { items, cards } = shuffle()
+    console.log(cards)
+    setCards({ items, cards })
+  }, [])
 
   useEffect(() => {
+    if (status == 'matched' && 0 < obtain && obtain <= MAX_OBTAIN_COUNT) {
+      setTimeout(() => {
+        setStatus('choosing')
+        console.log('choosing 상태 변경')
+      }, 4000)
+    }
     if (status == 'choosing' && obtain === MAX_OBTAIN_COUNT) {
       setTime((prev) => ({ ...prev, end: new Date() }))
+
       setStatus('clear')
+      console.log('clear 상태 변경')
       setTimeout(() => {
         setStatus('result')
-      }, 3000)
+        console.log('result 상태 변경')
+      }, 4000)
     }
-  }, [status])
+  }, [obtain, status])
 
   const updateStatus = (
     cardArr: { status: string; symbol: string }[],
     status: string,
   ) => {
     cardArr.forEach((card) => (card.status = status))
-    setCards([...cards])
+    setCards((prev) => ({ ...prev, cards: [...cards] }))
   }
 
   const handleClick = (currIndex: number) => {
-    console.log(disabled.current, currIndex)
+    console.log(disabled.current, currIndex, items)
     // 카드 누르면 안되는 상황
     if (disabled.current) {
       return
@@ -88,7 +102,16 @@ const usePlayCards = () => {
     prevIndex.current = -1
   }
 
-  return { cards, handleClick, currentMatched, clicked, obtain, status, time }
+  return {
+    cards,
+    items,
+    handleClick,
+    currentMatched,
+    clicked,
+    obtain,
+    status,
+    time,
+  }
 }
 
 export default usePlayCards

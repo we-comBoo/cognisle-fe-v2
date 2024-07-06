@@ -1,3 +1,15 @@
+type GameItemsProps = [] | Number[]
+type GameCardsProps =
+  | {
+      symbol: string
+      status: string
+    }[]
+  | []
+export interface GameBoardProps {
+  items: GameItemsProps
+  cards: GameCardsProps
+}
+
 export type GameStateKeyProps =
   | 'start'
   | 'clear'
@@ -14,6 +26,7 @@ export interface GameStateContentProps {
   currentMatched: string | number
   time: GameResultProps['time']
   clicked: GameResultProps['clicked']
+  items: GameItemsProps
 }
 
 export interface GameResultProps {

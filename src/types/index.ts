@@ -23,6 +23,7 @@ import {
   StateModalProps,
   GameResultProps,
   GameStateContentProps,
+  GameBoardProps,
 } from './game'
 export type {
   LogoProps,
@@ -51,4 +52,5 @@ export type {
   StateModalProps,
   GameResultProps,
   GameStateContentProps,
+  GameBoardProps,
 }
