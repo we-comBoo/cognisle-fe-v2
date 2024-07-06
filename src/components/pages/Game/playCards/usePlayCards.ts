@@ -1,29 +1,39 @@
 import { shuffle } from '@/lib'
-import { GameStateKeyProps, TimeStateProps } from '@/types'
+import { GameStateKeyProps, GameStateContentProps } from '@/types'
 import { useEffect, useRef, useState } from 'react'
 
 const usePlayCards = () => {
   const [cards, setCards] = useState(shuffle())
   const [status, setStatus] = useState<GameStateKeyProps>('start')
-  const [time, setTime] = useState<TimeStateProps>({
+  const [time, setTime] = useState<GameStateContentProps['time']>({
     start: new Date(),
     end: null,
   })
+  const [currentMatched, setCurrentMatched] =
+    useState<GameStateContentProps['currentMatched']>(-1)
   const disabled = useRef(false)
   const prevIndex = useRef(-1)
-  const [clicked, setClicked] = useState(0)
-  const [obtain, setObtain] = useState(0)
+  const [clicked, setClicked] = useState<GameStateContentProps['clicked']>(0)
+  const [obtain, setObtain] = useState(7)
   const MAX_OBTAIN_COUNT = 8
 
   useEffect(() => {
-    if (obtain === MAX_OBTAIN_COUNT) {
-      setStatus('clear')
+    if (0 < obtain && obtain <= MAX_OBTAIN_COUNT) {
+      setTimeout(() => {
+        setStatus('choosing')
+      }, 3000)
+    }
+  }, [obtain])
+
+  useEffect(() => {
+    if (status == 'choosing' && obtain === MAX_OBTAIN_COUNT) {
       setTime((prev) => ({ ...prev, end: new Date() }))
+      setStatus('clear')
       setTimeout(() => {
         setStatus('result')
       }, 3000)
     }
-  }, [obtain])
+  }, [status])
 
   const updateStatus = (
     cardArr: { status: string; symbol: string }[],
@@ -59,8 +69,10 @@ const usePlayCards = () => {
     // 5. If card symbols match
     if (curr.symbol === prev.symbol) {
       console.log('짝 맞음')
+      setCurrentMatched(curr.symbol)
       updateStatus([curr, prev], 'matched')
       setObtain((prev) => prev + 1)
+      setStatus('matched')
     }
 
     // 짝이 안 맞는 경우
@@ -76,7 +88,7 @@ const usePlayCards = () => {
     prevIndex.current = -1
   }
 
-  return { cards, handleClick, clicked, obtain, status, time }
+  return { cards, handleClick, currentMatched, clicked, obtain, status, time }
 }
 
 export default usePlayCards

@@ -7,13 +7,16 @@ import styled from '@emotion/styled'
 import Status from './status'
 
 const PlayCards = () => {
-  const { cards, handleClick, clicked, obtain, status, time } = usePlayCards()
+  const { cards, handleClick, clicked, currentMatched, obtain, status, time } =
+    usePlayCards()
   console.log(cards)
   const isOpen = useModalStore()
   const { closeModal, openModal } = useModalActions()
   useEffect(() => {
+    if (status != 'choosing') {
+      openModal()
+    }
     console.log('게임 상태', status)
-    openModal()
   }, [status])
   return (
     <GameWrapper>
@@ -22,7 +25,7 @@ const PlayCards = () => {
           <StateModal
             type={status}
             isOpen={isOpen}
-            result={{ clicked, time }}
+            content={{ currentMatched, clicked, time }}
             handleClose={closeModal}
           />
         </>

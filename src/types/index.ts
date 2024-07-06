@@ -22,6 +22,7 @@ import {
   TimeStateProps,
   StateModalProps,
   GameResultProps,
+  GameStateContentProps,
 } from './game'
 export type {
   LogoProps,
@@ -49,4 +50,5 @@ export type {
   TimeStateProps,
   StateModalProps,
   GameResultProps,
+  GameStateContentProps,
 }
