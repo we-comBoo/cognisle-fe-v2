@@ -28,4 +28,20 @@ const USER_POINT_BTN: PointBtnInfoProps = {
   },
   round: true,
 }
-export { MENU_POINT_BTN, USER_POINT_BTN }
+
+const GAME_START_POINT_BTN: PointBtnInfoProps = {
+  size: {
+    width: 23.3,
+    height: 10.7,
+  },
+  point: {
+    width: 20,
+    height: 50,
+  },
+  color: {
+    main: '--color-yellow-100',
+    point: '--color-orange-300',
+  },
+  round: true,
+}
+export { MENU_POINT_BTN, USER_POINT_BTN, GAME_START_POINT_BTN }

@@ -14,7 +14,6 @@ const St = {
     transition: all 0.3s ease-in-out;
     overflow: hidden;
     z-index: 999;
-    padding: 40px 20px 20px;
   `,
   Content: styled.div<{ colorStyle: ModalStateInfoProps['color'] }>`
     width: 25rem;

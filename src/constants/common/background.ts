@@ -41,4 +41,12 @@ export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
       degree: '180deg',
     },
   },
+  game: {
+    img: { src: '', width: 43, height: 84.9 },
+    color: {
+      start: '--color-orange-100',
+      end: '--color-pink-100',
+      degree: '180deg',
+    },
+  },
 }
