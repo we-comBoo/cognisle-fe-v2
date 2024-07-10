@@ -1,9 +1,10 @@
 import { FONTS } from '@/styles/font'
+import { GameCardsProps } from '@/types'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 
 interface StatusProps {
-  obtain: number
+  obtain: GameCardsProps
 }
 
 const Status = ({ obtain }: StatusProps) => {
@@ -15,7 +16,7 @@ const Status = ({ obtain }: StatusProps) => {
         height={35}
         width={26}
       />
-      <Text>획득한 아이템 개수 : {obtain}</Text>
+      <Text>획득한 아이템 개수 : {obtain.length}</Text>
     </Wrapper>
   )
 }

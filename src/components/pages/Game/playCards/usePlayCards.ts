@@ -1,81 +1,146 @@
 import { shuffle } from '@/lib'
 import {
-  GameStateKeyProps,
-  GameStateContentProps,
-  GameBoardProps,
-  GameCardStatusProps,
+  GameStatusKey,
+  GameCardsProps,
+  GameCardStatusKey,
+  playStateProps,
+  playStateActionProps,
+  playStateActionKey,
 } from '@/types'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 
+/**
+ *
+ * @전체카드리스트: cards
+ * @게임진행상태: status
+ * @소요시간: time
+ * @이전에선택한카드번호
+ * @가장최근에매칭된카드번호
+ * @클릭횟수
+ * @획득한카드번호s
+ *
+ *
+ */
+
+// 초기 플레이 상태 정의
+const playInitialState: playStateProps = {
+  currentMatched: null, //가장최근에매칭된카드번호
+  obtained: [], // 획득한카드번호s
+  clicked: 0, // 클릭횟수
+  userStatus: GameStatusKey.START, //유저의플레이상태
+  time: {
+    start: new Date(), //게임시작시간
+    end: null, //게임종료시간
+  },
+}
+
+// 플레이 리듀서 함수 정의
+const playReducer = (
+  state: playStateProps,
+  action: playStateActionProps,
+): playStateProps => {
+  switch (action.type) {
+    case playStateActionKey.INCREASE_CLICKED:
+      return {
+        ...state,
+        clicked: state.clicked + 1,
+      }
+    case playStateActionKey.OBTAIN_CARD:
+      const obtainedCard = action.payload.card
+      const status = action.payload.status
+      //console.log(obtainedCard)
+      return {
+        ...state,
+        userStatus: status,
+        currentMatched: action.payload.card,
+        obtained: [...state.obtained, obtainedCard],
+      }
+    case playStateActionKey.CHANGE_USER_STATUS:
+      const userStatus = action.payload.status
+
+      return userStatus === GameStatusKey.RESULT
+        ? {
+            // 게임 종료된 상태로 업데이트
+            ...state,
+            time: { ...state.time, end: new Date() },
+            userStatus,
+          }
+        : {
+            // 게임 종료가 아닌 단순 카드 획득 업데이트
+            ...state,
+            userStatus,
+          }
+
+    default:
+      return state
+  }
+}
 const usePlayCards = () => {
-  const [{ items, cards }, setCards] = useState<GameBoardProps>({
-    items: [],
-    cards: [],
-  })
-  const [status, setStatus] = useState<GameStateKeyProps>('start')
-  const [time, setTime] = useState<GameStateContentProps['time']>({
-    start: new Date(),
-    end: null,
-  })
-  const [currentMatched, setCurrentMatched] =
-    useState<GameStateContentProps['currentMatched']>(-1)
   const disabled = useRef(false)
   const prevIndex = useRef(-1)
-  const [clicked, setClicked] = useState<GameStateContentProps['clicked']>(0)
-  const [obtain, setObtain] = useState(0)
   const MAX_OBTAIN_COUNT = 8
+  const [cards, setCards] = useState<GameCardsProps>([])
+  const [playState, dispatch] = useReducer(playReducer, playInitialState)
 
   useEffect(() => {
-    const { items, cards } = shuffle()
-    console.log(cards)
-    setCards({ items, cards })
+    const cards = shuffle()
+    //console.log(cards)
+    setCards(cards)
   }, [])
 
   useEffect(() => {
-    if (status == 'matched' && 0 < obtain && obtain <= MAX_OBTAIN_COUNT) {
+    console.log(playState)
+    const { userStatus, obtained } = playState
+    if (userStatus === GameStatusKey.MATCHED) {
       setTimeout(() => {
-        setStatus('choosing')
-        console.log('choosing 상태 변경')
-      }, 4000)
-    }
-    if (status == 'choosing' && obtain === MAX_OBTAIN_COUNT) {
-      setTime((prev) => ({ ...prev, end: new Date() }))
-
-      setStatus('clear')
-      console.log('clear 상태 변경')
+        dispatch({
+          type: playStateActionKey.CHANGE_USER_STATUS,
+          payload: { status: GameStatusKey.CHOOSING },
+        })
+      }, 3000)
+    } else if (
+      userStatus === GameStatusKey.CHOOSING &&
+      obtained.length === MAX_OBTAIN_COUNT
+    ) {
+      dispatch({
+        type: playStateActionKey.CHANGE_USER_STATUS,
+        payload: { status: GameStatusKey.CLEAR },
+      })
+    } else if (userStatus === GameStatusKey.CLEAR) {
       setTimeout(() => {
-        setStatus('result')
-        console.log('result 상태 변경')
-      }, 4000)
+        dispatch({
+          type: playStateActionKey.CHANGE_USER_STATUS,
+          payload: { status: GameStatusKey.RESULT },
+        })
+      }, 5000)
     }
-  }, [obtain, status])
+  }, [playState.obtained, playState.userStatus])
 
-  const updateStatus = (
-    cardArr: GameBoardProps['cards'],
-    status: GameCardStatusProps,
-  ) => {
+  const updateStatus = (cardArr: GameCardsProps, status: GameCardStatusKey) => {
     cardArr.forEach((card) => (card.status = status))
-    setCards((prev) => ({ ...prev, cards: [...cards] }))
+    //console.log([...cards])
+    setCards([...cards])
   }
 
   const handleClick = (currIndex: number) => {
-    // console.log(disabled.current, currIndex, items)
+    //(disabled.current, currIndex)
     // 카드 누르면 안되는 상황
     if (disabled.current) {
       return
     }
-    setClicked((prev) => prev + 1)
+
     const curr = cards[currIndex]
     const prev = cards[prevIndex.current]
     // console.log(curr, prev)
     // 선택한 카드가 이미 매칭된 상황
-    if (curr.status === 'matched') return
+    dispatch({ type: playStateActionKey.INCREASE_CLICKED })
+    if (curr.status === GameCardStatusKey.MATCHED) return
     // 카드 뒤집는 상태로 업데이트
-    updateStatus([curr], 'faceUp')
+    updateStatus([curr], GameCardStatusKey.FACE_UP)
 
     // 짝맞는 상황은 아니고 그냥 한쪽만 업데이트
     if (!prev || prevIndex.current === currIndex) {
-      // console.log('짝 안 맞음')
+      //console.log('짝 안 맞음')
       prevIndex.current = currIndex
       return
     }
@@ -83,18 +148,19 @@ const usePlayCards = () => {
     // 짝이 맞는 경우
     // 5. If card symbols match
     if (curr.symbol === prev.symbol) {
-      // console.log('짝 맞음')
-      setCurrentMatched(curr.symbol)
-      updateStatus([curr, prev], 'matched')
-      setObtain((prev) => prev + 1)
-      setStatus('matched')
+      //console.log('짝 맞음')
+      updateStatus([curr, prev], GameCardStatusKey.MATCHED)
+      dispatch({
+        type: playStateActionKey.OBTAIN_CARD,
+        payload: { card: curr, status: GameStatusKey.MATCHED },
+      })
     }
 
     // 짝이 안 맞는 경우
     else {
       disabled.current = true
       setTimeout(() => {
-        updateStatus([curr, prev], 'faceDown')
+        updateStatus([curr, prev], GameCardStatusKey.FACE_DOWN)
         disabled.current = false
       }, 2000)
     }
@@ -105,13 +171,8 @@ const usePlayCards = () => {
 
   return {
     cards,
-    items,
+    playState,
     handleClick,
-    currentMatched,
-    clicked,
-    obtain,
-    status,
-    time,
   }
 }
 
