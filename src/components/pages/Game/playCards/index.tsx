@@ -5,37 +5,41 @@ import { useModalStore, useModalActions } from '@/store/modal'
 import { useEffect } from 'react'
 import styled from '@emotion/styled'
 import Status from './status'
-import { GameStatusKey } from '@/types'
 
 const PlayCards = () => {
   const {
     cards,
-    playState: { currentMatched, obtained, clicked, userStatus, time },
+    items,
     handleClick,
+    clicked,
+    currentMatched,
+    obtain,
+    status,
+    time,
   } = usePlayCards()
   // console.log(cards)
   const isOpen = useModalStore()
   const { closeModal, openModal } = useModalActions()
   useEffect(() => {
-    if (userStatus != GameStatusKey.CHOOSING) {
+    if (status != 'choosing') {
       openModal()
-      console.log(userStatus, '모달 열기')
+      console.log(status, '모달 열기')
     }
-  }, [userStatus])
-
+  }, [status])
   return (
     <GameWrapper>
       {isOpen && (
         <>
           <StateModal
-            type={userStatus}
+            type={status}
             isOpen={isOpen}
-            content={{ currentMatched, obtained, clicked, userStatus, time }}
+            content={{ currentMatched, clicked, time, items }}
             handleClose={closeModal}
           />
         </>
       )}
-      <Status obtain={obtained} />
+      <Status obtain={obtain} />
+      {/*<div>클릭한 아이템 수 : {clicked}</div>*/}
       <CardsContainer>
         {cards.map(({ symbol, status }, idx) => (
           <CardContainer
