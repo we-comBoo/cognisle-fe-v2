@@ -7,6 +7,3 @@ export const IMAGE_ADDRESS = {
   GAME_CLEAR: '/assets/card/clear.svg',
   CARD_FACE_DOWN: '/assets/card/faceDown.svg',
 } as const
-
-export type IMAGE_ADDRESS_KEY =
-  (typeof IMAGE_ADDRESS)[keyof typeof IMAGE_ADDRESS]

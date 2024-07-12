@@ -6,7 +6,7 @@ import {
   triangleTypeInfoProps,
   TriangleProps,
 } from './triangle'
-import { IMAGE_ADDRESS, IMAGE_ADDRESS_KEY } from './styles/imageAddress'
+import { IMAGE_ADDRESS_KEY } from './styles'
 import { BottomMenuInfoProps } from './bottomMenu'
 import {
   ModalStateTypeInfoProps,
@@ -34,7 +34,7 @@ import {
   playStateActionProps,
 } from './game'
 
-export { playStateAction, GameStatus, GameCardStatus, IMAGE_ADDRESS }
+export { playStateAction, GameStatus, GameCardStatus }
 export type {
   LogoProps,
   logoTypeInfoProps,

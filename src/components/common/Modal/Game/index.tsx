@@ -14,8 +14,8 @@ import {
   GameStatusKey,
   playStateProps,
   StateModalProps,
-  IMAGE_ADDRESS,
 } from '@/types'
+import { IMAGE_ADDRESS } from '@/constants'
 import { getDuration } from '@/lib'
 
 const Start = () => {

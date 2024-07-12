@@ -6,8 +6,7 @@ import { useRouter } from 'next/router'
 import { StateModal } from '@/components/common'
 import { useModalActions, useModalStore } from '@/store/modal'
 import { LOGIN_INITIAL_VALUES, LOGIN_VALIDATION } from '@/constants'
-import { LOGIN_FORM } from '@/constants/form/login'
-import { IMAGE_ADDRESS } from '@/types'
+import { LOGIN_FORM, IMAGE_ADDRESS } from '@/constants'
 
 const LoginForm = () => {
   const router = useRouter()

@@ -2,6 +2,7 @@ import { BACKGROUND_TYPE_INFO } from './common/background'
 import LOCAL_STORAGE_KEY from './localStorageKey'
 import { LOGO_TYPE_INFO } from './common/logo'
 import { TRIANGLE_TYPE_INFO } from './common/triangle'
+import { IMAGE_ADDRESS } from '@/constants/common/imageAddress'
 import { Bounce } from './common/animations'
 import { withAuthList, withOutAuthList, FALLBACK_URL } from './routeUrl'
 import { BOTTOM_MENU_INFO } from './menu/bottom'
@@ -16,9 +17,15 @@ import {
   SIGNUP_INITIAL_VALUES,
   SIGNUP_VALIDATION,
 } from './form/signup'
-import { LS_EMAIL, LOGIN_INITIAL_VALUES, LOGIN_VALIDATION } from './form/login'
+import {
+  LS_EMAIL,
+  LOGIN_INITIAL_VALUES,
+  LOGIN_VALIDATION,
+  LOGIN_FORM,
+} from './form/login'
 import { VISIT_VALIDATION, VISIT_INITIAL_VALUE } from './form/visit'
 export {
+  IMAGE_ADDRESS,
   BACKGROUND_TYPE_INFO,
   LOCAL_STORAGE_KEY,
   LOGO_TYPE_INFO,
@@ -40,4 +47,5 @@ export {
   LS_EMAIL,
   LOGIN_INITIAL_VALUES,
   LOGIN_VALIDATION,
+  LOGIN_FORM,
 }

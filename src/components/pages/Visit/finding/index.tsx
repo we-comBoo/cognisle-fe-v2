@@ -3,7 +3,7 @@ import VisitForm from './form'
 import Header from './header'
 import Image from 'next/image'
 import styled from '@emotion/styled'
-import { IMAGE_ADDRESS } from '@/types'
+import { IMAGE_ADDRESS } from '@/constants'
 
 const VistFinding = () => {
   return (

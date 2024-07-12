@@ -5,7 +5,7 @@ import useVisitForm from './useVisitForm'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
-import { IMAGE_ADDRESS } from '@/types'
+import { IMAGE_ADDRESS } from '@/constants'
 
 const VisitForm = () => {
   const { value, errorMsg, handleInputChange, submitVisitForm } = useVisitForm({

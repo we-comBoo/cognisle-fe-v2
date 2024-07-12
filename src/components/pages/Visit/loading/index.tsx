@@ -1,6 +1,5 @@
 import { Background } from '@/components/common'
-import { Bounce } from '@/constants'
-import { IMAGE_ADDRESS } from '@/types'
+import { Bounce, IMAGE_ADDRESS } from '@/constants'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 
