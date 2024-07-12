@@ -22,15 +22,18 @@ import {
   TimeStateProps,
   StateModalProps,
   GameResultProps,
-  GameCardStatusKey,
+  GameCardStatus,
   GameCardsProps,
   GameCardProps,
   playStateProps,
   playStateActionKey,
+  GameCardStatusKey,
+  playStateAction,
+  GameStatus,
   playStateActionProps,
 } from './game'
 
-export { playStateActionKey, GameStatusKey, GameCardStatusKey }
+export { playStateAction, GameStatus, GameCardStatus }
 export type {
   LogoProps,
   logoTypeInfoProps,
@@ -60,4 +63,7 @@ export type {
   GameCardProps,
   playStateProps,
   playStateActionProps,
+  GameCardStatusKey,
+  playStateActionKey,
+  GameStatusKey,
 }

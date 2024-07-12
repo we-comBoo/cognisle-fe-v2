@@ -9,7 +9,12 @@ import { useRef, useEffect } from 'react'
 import { PointBtn } from '../../Button'
 import PortalModal from '../PortalModal'
 import Image from 'next/image'
-import { GameStatusKey, playStateProps, StateModalProps } from '@/types'
+import {
+  GameStatus,
+  GameStatusKey,
+  playStateProps,
+  StateModalProps,
+} from '@/types'
 import { getDuration } from '@/lib'
 
 const Start = () => {
@@ -42,7 +47,7 @@ const Matched = ({ content }: { content: playStateProps }) => {
 }
 
 const closeTime = (type: GameStatusKey) => {
-  if (type == GameStatusKey.RESULT) {
+  if (type == GameStatus.RESULT) {
     return 5000
   } else {
     return 3000
@@ -75,14 +80,12 @@ const StateModal = ({
           Close
         </button>*/}
         <Content ref={contentRef}>
-          {type == GameStatusKey.MATCHED && content && (
+          {type == GameStatus.MATCHED && content && (
             <Matched content={content} />
           )}
-          {type == GameStatusKey.START && <Start />}
-          {type == GameStatusKey.CLEAR && <Clear />}
-          {type == GameStatusKey.RESULT && content && (
-            <Result content={content} />
-          )}
+          {type == GameStatus.START && <Start />}
+          {type == GameStatus.CLEAR && <Clear />}
+          {type == GameStatus.RESULT && content && <Result content={content} />}
         </Content>
       </ModalWrapper>
     </PortalModal>

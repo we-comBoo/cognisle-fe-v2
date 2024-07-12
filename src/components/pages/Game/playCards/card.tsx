@@ -2,7 +2,7 @@ import { IMAGE_ADDRESS } from '@/constants'
 import styled from '@emotion/styled'
 import { MouseEventHandler } from 'react'
 import Image from 'next/image'
-import { GameCardStatusKey } from '@/types'
+import { GameCardStatus, GameCardStatusKey } from '@/types'
 interface CardProps {
   onClick?: MouseEventHandler<HTMLButtonElement>
   status: GameCardStatusKey
@@ -10,10 +10,10 @@ interface CardProps {
 }
 
 const CardContent = ({ status, symbol }: CardProps) => {
-  console.log(status, status === GameCardStatusKey.FACE_DOWN)
+  console.log(status, status === GameCardStatus.FACE_DOWN)
   return (
     <St.ContentContainer>
-      {status === GameCardStatusKey.FACE_DOWN ? (
+      {status === GameCardStatus.FACE_DOWN ? (
         <Image
           src={IMAGE_ADDRESS.cardFaceDown}
           alt="card faceDown"
@@ -40,7 +40,7 @@ export default CardContainer
 const St = {
   CardContainer: styled.button<{ status: string }>`
     background-color: ${({ status }) =>
-      status === GameCardStatusKey.FACE_DOWN
+      status === GameCardStatus.FACE_DOWN
         ? 'transparent'
         : `var(--color-green-100)`};
 
