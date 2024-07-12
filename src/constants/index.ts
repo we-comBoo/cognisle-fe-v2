@@ -1,9 +1,10 @@
-import { BACKGROUND_TYPE_INFO } from './common/background'
+import { BACKGROUND_TYPE_INFO } from './styles/background'
+import { colors, shadows, gradients } from './styles/colors'
 import LOCAL_STORAGE_KEY from './localStorageKey'
-import { LOGO_TYPE_INFO } from './common/logo'
-import { TRIANGLE_TYPE_INFO } from './common/triangle'
-import { IMAGE_ADDRESS } from '@/constants/common/imageAddress'
-import { Bounce } from './common/animations'
+import { LOGO_TYPE_INFO } from './styles/logo'
+import { TRIANGLE_TYPE_INFO } from './styles/triangle'
+import { IMAGE_ADDRESS } from '@/constants/styles/imageAddress'
+import { Bounce } from './styles/animations'
 import { withAuthList, withOutAuthList, FALLBACK_URL } from './routeUrl'
 import { BOTTOM_MENU_INFO } from './menu/bottom'
 import { STATE_MODAL_TYPE_INFO } from './modal/state'
@@ -11,7 +12,7 @@ import {
   USER_POINT_BTN,
   MENU_POINT_BTN,
   GAME_START_POINT_BTN,
-} from './common/pointBtn'
+} from './styles/pointBtn'
 import {
   SIGNUP_FORM,
   SIGNUP_INITIAL_VALUES,
@@ -48,4 +49,7 @@ export {
   LOGIN_INITIAL_VALUES,
   LOGIN_VALIDATION,
   LOGIN_FORM,
+  colors,
+  shadows,
+  gradients,
 }

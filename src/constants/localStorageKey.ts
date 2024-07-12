@@ -1,5 +1,5 @@
 const LOCAL_STORAGE_KEY = {
-  emailCheckBox: 'LS_EMAIL',
+  EMAIL_CHECK_BOX: 'LS_EMAIL',
 }
 
 export default LOCAL_STORAGE_KEY

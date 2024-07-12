@@ -20,7 +20,7 @@ export const LOGIN_VALIDATION: loginValidationProps = ({ email, password }) => {
 }
 export const LS_EMAIL =
   typeof window !== 'undefined'
-    ? localStorage.getItem(LOCAL_STORAGE_KEY['emailCheckBox']) ?? ''
+    ? localStorage.getItem(LOCAL_STORAGE_KEY.EMAIL_CHECK_BOX) ?? ''
     : ''
 
 export const LOGIN_INITIAL_VALUES: loginProps = {
