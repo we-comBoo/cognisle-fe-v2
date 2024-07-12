@@ -1,34 +1,31 @@
-type GameItemsProps = [] | Number[]
-type GameCardsProps =
-  | {
-      symbol: string
-      status: string
-    }[]
-  | []
-export interface GameBoardProps {
-  items: GameItemsProps
-  cards: GameCardsProps
+export enum GameCardStatusKey {
+  FACE_DOWN = 'FACE_DOWN',
+  FACE_UP = 'FACE_UP',
+  MATCHED = 'MATCHED',
 }
 
-export type GameCardStatusProps = 'faceDown' | 'faceUp' | 'matched'
+export enum playStateActionKey {
+  INCREASE_CLICKED = 'INCREASE_CLICKED',
+  OBTAIN_CARD = 'OBTAIN_CARD',
+  CHANGE_USER_STATUS = 'CHANGE_USER_STATUS',
+}
 
-export type GameStateKeyProps =
-  | 'start'
-  | 'clear'
-  | 'result'
-  | 'matched'
-  | 'choosing'
+export type GameCardProps = {
+  symbol: string
+  status: GameCardStatusKey
+}
+export type GameCardsProps = GameCardProps[] | []
 
+export enum GameStatusKey {
+  START = 'START',
+  CLEAR = 'CLEAR',
+  RESULT = 'RESULT',
+  MATCHED = 'MATCHED',
+  CHOOSING = 'CHOOSING',
+}
 export interface TimeStateProps {
   start: null | Date
   end: null | Date
-}
-
-export interface GameStateContentProps {
-  currentMatched: string | number
-  time: GameResultProps['time']
-  clicked: GameResultProps['clicked']
-  items: GameItemsProps
 }
 
 export interface GameResultProps {
@@ -38,6 +35,24 @@ export interface GameResultProps {
 export interface StateModalProps {
   isOpen: boolean
   handleClose: () => void
-  type: GameStateKeyProps
-  content?: GameStateContentProps
+  type: GameStatusKey
+  content?: playStateProps
 }
+export interface playStateProps {
+  currentMatched: GameCardProps | null
+  obtained: GameCardsProps
+  clicked: number
+  userStatus: GameStatusKey
+  time: TimeStateProps
+}
+
+export type playStateActionProps =
+  | { type: playStateActionKey.INCREASE_CLICKED }
+  | {
+      type: playStateActionKey.OBTAIN_CARD
+      payload: { card: GameCardProps; status: GameStatusKey }
+    }
+  | {
+      type: playStateActionKey.CHANGE_USER_STATUS
+      payload: { status: GameStatusKey }
+    }

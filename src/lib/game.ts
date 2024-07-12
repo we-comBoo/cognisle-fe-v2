@@ -1,4 +1,4 @@
-import { GameResultProps } from '@/types'
+import { GameCardStatusKey, GameResultProps } from '@/types'
 
 export const symbols = [
   '🍏',
@@ -53,9 +53,9 @@ export function shuffle() {
   const picked = pickedIndex.map((index) => symbols[index])
   const cards = [...picked, ...picked]
     .sort(() => Math.random() - 0.5)
-    .map((symbol) => ({ symbol, status: 'faceDown' }))
+    .map((symbol) => ({ symbol, status: GameCardStatusKey.FACE_DOWN }))
 
-  return { items: pickedIndex, cards }
+  return cards
 }
 
 export function getDuration(time: GameResultProps['time']) {

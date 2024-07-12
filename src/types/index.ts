@@ -18,14 +18,19 @@ import { signupProps, signupValidationProps } from './form/signup'
 import { loginProps, loginValidationProps } from './form/login'
 import { visitProps, visitValidationProps } from './visit'
 import {
-  GameStateKeyProps,
+  GameStatusKey,
   TimeStateProps,
   StateModalProps,
   GameResultProps,
-  GameStateContentProps,
-  GameBoardProps,
-  GameCardStatusProps,
+  GameCardStatusKey,
+  GameCardsProps,
+  GameCardProps,
+  playStateProps,
+  playStateActionKey,
+  playStateActionProps,
 } from './game'
+
+export { playStateActionKey, GameStatusKey, GameCardStatusKey }
 export type {
   LogoProps,
   logoTypeInfoProps,
@@ -48,11 +53,11 @@ export type {
   loginValidationProps,
   visitProps,
   visitValidationProps,
-  GameStateKeyProps,
   TimeStateProps,
   StateModalProps,
   GameResultProps,
-  GameStateContentProps,
-  GameBoardProps,
-  GameCardStatusProps,
+  GameCardsProps,
+  GameCardProps,
+  playStateProps,
+  playStateActionProps,
 }
