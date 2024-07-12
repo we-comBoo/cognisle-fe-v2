@@ -1,11 +1,12 @@
 import { shuffle } from '@/lib'
 import {
-  GameStatusKey,
   GameCardsProps,
+  GameCardStatus,
   GameCardStatusKey,
   playStateProps,
   playStateActionProps,
-  playStateActionKey,
+  playStateAction,
+  GameStatus,
 } from '@/types'
 import { useEffect, useReducer, useRef, useState } from 'react'
 
@@ -27,7 +28,7 @@ const playInitialState: playStateProps = {
   currentMatched: null, //가장최근에매칭된카드번호
   obtained: [], // 획득한카드번호s
   clicked: 0, // 클릭횟수
-  userStatus: GameStatusKey.START, //유저의플레이상태
+  userStatus: GameStatus.START, //유저의플레이상태
   time: {
     start: new Date(), //게임시작시간
     end: null, //게임종료시간
@@ -40,12 +41,12 @@ const playReducer = (
   action: playStateActionProps,
 ): playStateProps => {
   switch (action.type) {
-    case playStateActionKey.INCREASE_CLICKED:
+    case playStateAction.INCREASE_CLICKED:
       return {
         ...state,
         clicked: state.clicked + 1,
       }
-    case playStateActionKey.OBTAIN_CARD:
+    case playStateAction.OBTAIN_CARD:
       const obtainedCard = action.payload.card
       const status = action.payload.status
       //console.log(obtainedCard)
@@ -55,10 +56,10 @@ const playReducer = (
         currentMatched: action.payload.card,
         obtained: [...state.obtained, obtainedCard],
       }
-    case playStateActionKey.CHANGE_USER_STATUS:
+    case playStateAction.CHANGE_USER_STATUS:
       const userStatus = action.payload.status
 
-      return userStatus === GameStatusKey.RESULT
+      return userStatus === GameStatus.RESULT
         ? {
             // 게임 종료된 상태로 업데이트
             ...state,
@@ -91,26 +92,26 @@ const usePlayCards = () => {
   useEffect(() => {
     console.log(playState)
     const { userStatus, obtained } = playState
-    if (userStatus === GameStatusKey.MATCHED) {
+    if (userStatus === GameStatus.MATCHED) {
       setTimeout(() => {
         dispatch({
-          type: playStateActionKey.CHANGE_USER_STATUS,
-          payload: { status: GameStatusKey.CHOOSING },
+          type: playStateAction.CHANGE_USER_STATUS,
+          payload: { status: GameStatus.CHOOSING },
         })
       }, 3000)
     } else if (
-      userStatus === GameStatusKey.CHOOSING &&
+      userStatus === GameStatus.CHOOSING &&
       obtained.length === MAX_OBTAIN_COUNT
     ) {
       dispatch({
-        type: playStateActionKey.CHANGE_USER_STATUS,
-        payload: { status: GameStatusKey.CLEAR },
+        type: playStateAction.CHANGE_USER_STATUS,
+        payload: { status: GameStatus.CLEAR },
       })
-    } else if (userStatus === GameStatusKey.CLEAR) {
+    } else if (userStatus === GameStatus.CLEAR) {
       setTimeout(() => {
         dispatch({
-          type: playStateActionKey.CHANGE_USER_STATUS,
-          payload: { status: GameStatusKey.RESULT },
+          type: playStateAction.CHANGE_USER_STATUS,
+          payload: { status: GameStatus.RESULT },
         })
       }, 5000)
     }
@@ -133,10 +134,10 @@ const usePlayCards = () => {
     const prev = cards[prevIndex.current]
     // console.log(curr, prev)
     // 선택한 카드가 이미 매칭된 상황
-    dispatch({ type: playStateActionKey.INCREASE_CLICKED })
-    if (curr.status === GameCardStatusKey.MATCHED) return
+    dispatch({ type: playStateAction.INCREASE_CLICKED })
+    if (curr.status === GameCardStatus.MATCHED) return
     // 카드 뒤집는 상태로 업데이트
-    updateStatus([curr], GameCardStatusKey.FACE_UP)
+    updateStatus([curr], GameCardStatus.FACE_UP)
 
     // 짝맞는 상황은 아니고 그냥 한쪽만 업데이트
     if (!prev || prevIndex.current === currIndex) {
@@ -149,10 +150,10 @@ const usePlayCards = () => {
     // 5. If card symbols match
     if (curr.symbol === prev.symbol) {
       //console.log('짝 맞음')
-      updateStatus([curr, prev], GameCardStatusKey.MATCHED)
+      updateStatus([curr, prev], GameCardStatus.MATCHED)
       dispatch({
-        type: playStateActionKey.OBTAIN_CARD,
-        payload: { card: curr, status: GameStatusKey.MATCHED },
+        type: playStateAction.OBTAIN_CARD,
+        payload: { card: curr, status: GameStatus.MATCHED },
       })
     }
 
@@ -160,7 +161,7 @@ const usePlayCards = () => {
     else {
       disabled.current = true
       setTimeout(() => {
-        updateStatus([curr, prev], GameCardStatusKey.FACE_DOWN)
+        updateStatus([curr, prev], GameCardStatus.FACE_DOWN)
         disabled.current = false
       }, 2000)
     }

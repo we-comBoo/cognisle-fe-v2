@@ -1,14 +1,27 @@
-export enum GameCardStatusKey {
-  FACE_DOWN = 'FACE_DOWN',
-  FACE_UP = 'FACE_UP',
-  MATCHED = 'MATCHED',
-}
+export const GameCardStatus = {
+  FACE_DOWN: 'FACE_DOWN',
+  FACE_UP: 'FACE_UP',
+  MATCHED: 'MATCHED',
+} as const
+export type GameCardStatusKey =
+  (typeof GameCardStatus)[keyof typeof GameCardStatus]
 
-export enum playStateActionKey {
-  INCREASE_CLICKED = 'INCREASE_CLICKED',
-  OBTAIN_CARD = 'OBTAIN_CARD',
-  CHANGE_USER_STATUS = 'CHANGE_USER_STATUS',
+export const playStateAction = {
+  INCREASE_CLICKED: 'INCREASE_CLICKED',
+  OBTAIN_CARD: 'OBTAIN_CARD',
+  CHANGE_USER_STATUS: 'CHANGE_USER_STATUS',
+} as const
+export type playStateActionKey =
+  (typeof playStateAction)[keyof typeof playStateAction]
+
+export const GameStatus = {
+  START: 'START',
+  CLEAR: 'CLEAR',
+  RESULT: 'RESULT',
+  MATCHED: 'MATCHED',
+  CHOOSING: 'CHOOSING',
 }
+export type GameStatusKey = (typeof GameStatus)[keyof typeof GameStatus]
 
 export type GameCardProps = {
   symbol: string
@@ -16,13 +29,6 @@ export type GameCardProps = {
 }
 export type GameCardsProps = GameCardProps[] | []
 
-export enum GameStatusKey {
-  START = 'START',
-  CLEAR = 'CLEAR',
-  RESULT = 'RESULT',
-  MATCHED = 'MATCHED',
-  CHOOSING = 'CHOOSING',
-}
 export interface TimeStateProps {
   start: null | Date
   end: null | Date
@@ -47,12 +53,12 @@ export interface playStateProps {
 }
 
 export type playStateActionProps =
-  | { type: playStateActionKey.INCREASE_CLICKED }
+  | { type: 'INCREASE_CLICKED' }
   | {
-      type: playStateActionKey.OBTAIN_CARD
+      type: 'OBTAIN_CARD'
       payload: { card: GameCardProps; status: GameStatusKey }
     }
   | {
-      type: playStateActionKey.CHANGE_USER_STATUS
+      type: 'CHANGE_USER_STATUS'
       payload: { status: GameStatusKey }
     }

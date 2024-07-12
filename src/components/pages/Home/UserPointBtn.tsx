@@ -1,5 +1,5 @@
 import { PointBtn } from '@/components/common'
-import { USER_POINT_BTN } from '@/constants/common/pointBtn'
+import { USER_POINT_BTN } from '@/constants/styles/pointBtn'
 import { FONTS } from '@styles/font'
 import styled from '@emotion/styled'
 

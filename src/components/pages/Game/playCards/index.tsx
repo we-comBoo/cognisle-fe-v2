@@ -5,7 +5,7 @@ import { useModalStore, useModalActions } from '@/store/modal'
 import { useEffect } from 'react'
 import styled from '@emotion/styled'
 import Status from './status'
-import { GameStatusKey } from '@/types'
+import { GameStatus } from '@/types'
 
 const PlayCards = () => {
   const {
@@ -17,7 +17,7 @@ const PlayCards = () => {
   const isOpen = useModalStore()
   const { closeModal, openModal } = useModalActions()
   useEffect(() => {
-    if (userStatus != GameStatusKey.CHOOSING) {
+    if (userStatus != GameStatus.CHOOSING) {
       openModal()
       console.log(userStatus, '모달 열기')
     }

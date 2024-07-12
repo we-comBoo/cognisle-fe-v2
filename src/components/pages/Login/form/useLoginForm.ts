@@ -25,9 +25,9 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
   }
   const handleLocalStorageEmail = () => {
     if (emailFlagCheck) {
-      localStorage.setItem(LOCAL_STORAGE_KEY['emailCheckBox'], values.email)
+      localStorage.setItem(LOCAL_STORAGE_KEY.EMAIL_CHECK_BOX, values.email)
     } else {
-      localStorage.removeItem(LOCAL_STORAGE_KEY['emailCheckBox'])
+      localStorage.removeItem(LOCAL_STORAGE_KEY.EMAIL_CHECK_BOX)
     }
   }
   /**

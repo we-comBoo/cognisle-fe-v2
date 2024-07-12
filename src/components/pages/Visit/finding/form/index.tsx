@@ -1,14 +1,11 @@
 import { Background, StateModal } from '@/components/common'
-import {
-  VISIT_VALIDATION,
-  VISIT_INITIAL_VALUE,
-  IMAGE_ADDRESS,
-} from '@/constants'
+import { VISIT_VALIDATION, VISIT_INITIAL_VALUE } from '@/constants'
 import { useModalStore, useModalActions } from '@/store/modal'
 import useVisitForm from './useVisitForm'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
+import { IMAGE_ADDRESS } from '@/constants'
 
 const VisitForm = () => {
   const { value, errorMsg, handleInputChange, submitVisitForm } = useVisitForm({
@@ -40,7 +37,7 @@ const VisitForm = () => {
         />
         <button>
           <Image
-            src={IMAGE_ADDRESS.landForm}
+            src={IMAGE_ADDRESS.LAND_FORM}
             width={21}
             height={21}
             alt="돋보기 아이콘"

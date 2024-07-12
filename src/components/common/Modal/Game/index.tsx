@@ -1,4 +1,4 @@
-import { GAME_START_POINT_BTN, IMAGE_ADDRESS } from '@/constants'
+import { GAME_START_POINT_BTN } from '@/constants'
 import { STATE_MODAL_TYPE_OVERLAY } from '@/constants/modal/state'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import { FONTS } from '@/styles/font'
@@ -9,7 +9,13 @@ import { useRef, useEffect } from 'react'
 import { PointBtn } from '../../Button'
 import PortalModal from '../PortalModal'
 import Image from 'next/image'
-import { GameStatusKey, playStateProps, StateModalProps } from '@/types'
+import {
+  GameStatus,
+  GameStatusKey,
+  playStateProps,
+  StateModalProps,
+} from '@/types'
+import { IMAGE_ADDRESS } from '@/constants'
 import { getDuration } from '@/lib'
 
 const Start = () => {
@@ -23,7 +29,7 @@ const Start = () => {
 const Clear = () => {
   return (
     <Image
-      src={IMAGE_ADDRESS['gameClear']}
+      src={IMAGE_ADDRESS.GAME_CLEAR}
       width={254}
       height={254}
       alt="gameClear"
@@ -42,7 +48,7 @@ const Matched = ({ content }: { content: playStateProps }) => {
 }
 
 const closeTime = (type: GameStatusKey) => {
-  if (type == GameStatusKey.RESULT) {
+  if (type == GameStatus.RESULT) {
     return 5000
   } else {
     return 3000
@@ -75,14 +81,12 @@ const StateModal = ({
           Close
         </button>*/}
         <Content ref={contentRef}>
-          {type == GameStatusKey.MATCHED && content && (
+          {type == GameStatus.MATCHED && content && (
             <Matched content={content} />
           )}
-          {type == GameStatusKey.START && <Start />}
-          {type == GameStatusKey.CLEAR && <Clear />}
-          {type == GameStatusKey.RESULT && content && (
-            <Result content={content} />
-          )}
+          {type == GameStatus.START && <Start />}
+          {type == GameStatus.CLEAR && <Clear />}
+          {type == GameStatus.RESULT && content && <Result content={content} />}
         </Content>
       </ModalWrapper>
     </PortalModal>

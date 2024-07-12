@@ -9,7 +9,7 @@ const Loading = () => {
       <IconWrapper>
         <div>
           <Image
-            src={IMAGE_ADDRESS.landLoading}
+            src={IMAGE_ADDRESS.LAND_LOADING}
             width="240"
             height="245"
             alt="loading"
