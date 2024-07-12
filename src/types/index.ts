@@ -1,19 +1,27 @@
-import { LogoProps, logoTypeInfoProps, logoInfoProps } from './logo'
-import { backgroundTypeInfoProps, backgroundInfoProps } from './background'
-import { fontProps } from './font'
+import { LogoProps, logoTypeInfoProps, logoInfoProps } from './styles/logo'
+import {
+  backgroundTypeInfoProps,
+  backgroundInfoProps,
+} from './styles/background'
+import { fontProps } from './styles/font'
 import {
   triangleInfoProps,
   triangleTypeInfoProps,
   TriangleProps,
-} from './triangle'
-import { IMAGE_ADDRESS_KEY } from './styles'
-import { BottomMenuInfoProps } from './bottomMenu'
+} from './styles/triangle'
+import { IMAGE_ADDRESS_KEY } from './styles/styleSheet'
+import { BottomMenuInfoProps } from './styles/bottomMenu'
+import {
+  ModalStoreProps,
+  ModalStateProps,
+  ModalActionsProps,
+} from './modal/root'
 import {
   ModalStateTypeInfoProps,
   ModalStateTypeOverlayInfoProps,
   ModalStateKeyProps,
   ModalStateInfoProps,
-} from './stateModal'
+} from './modal/stateModal'
 import { PointBtnInfoProps } from './button/point'
 import { signupProps, signupValidationProps } from './form/signup'
 import { loginProps, loginValidationProps } from './form/login'
@@ -68,4 +76,7 @@ export type {
   playStateActionKey,
   GameStatusKey,
   IMAGE_ADDRESS_KEY,
+  ModalStoreProps,
+  ModalStateProps,
+  ModalActionsProps,
 }
