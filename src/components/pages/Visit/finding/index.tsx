@@ -1,9 +1,9 @@
 import { Background } from '@/components/common'
-import { IMAGE_ADDRESS } from '@/constants'
 import VisitForm from './form'
 import Header from './header'
 import Image from 'next/image'
 import styled from '@emotion/styled'
+import { IMAGE_ADDRESS } from '@/types'
 
 const VistFinding = () => {
   return (
@@ -15,7 +15,7 @@ const VistFinding = () => {
         </div>
 
         <Image
-          src={IMAGE_ADDRESS.landFriend}
+          src={IMAGE_ADDRESS.LAND_FRIEND}
           width={280}
           height={381}
           alt="friend"

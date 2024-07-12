@@ -1,5 +1,4 @@
 import useLoginForm from '@/components/pages/Login/form/useLoginForm'
-import { IMAGE_ADDRESS } from '@/constants'
 
 import { St } from './style'
 import { useRouter } from 'next/router'
@@ -8,6 +7,7 @@ import { StateModal } from '@/components/common'
 import { useModalActions, useModalStore } from '@/store/modal'
 import { LOGIN_INITIAL_VALUES, LOGIN_VALIDATION } from '@/constants'
 import { LOGIN_FORM } from '@/constants/form/login'
+import { IMAGE_ADDRESS } from '@/types'
 
 const LoginForm = () => {
   const router = useRouter()
@@ -59,7 +59,7 @@ const LoginForm = () => {
                   id="rememberEmail"
                   checked={emailFlagCheck}
                   onChange={() => handleEmailFlagCheck()}
-                  imgSrc={IMAGE_ADDRESS['emailCheckBox']}
+                  imgSrc={IMAGE_ADDRESS.EMAIL_CHECK_BOX}
                 />
                 <label htmlFor="rememberId">아이디 기억하기</label>
               </St.CheckBoxWrapper>

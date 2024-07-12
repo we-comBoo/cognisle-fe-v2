@@ -1,5 +1,6 @@
 import { Background } from '@/components/common'
-import { Bounce, IMAGE_ADDRESS } from '@/constants'
+import { Bounce } from '@/constants'
+import { IMAGE_ADDRESS } from '@/types'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 
@@ -9,7 +10,7 @@ const Loading = () => {
       <IconWrapper>
         <div>
           <Image
-            src={IMAGE_ADDRESS.landLoading}
+            src={IMAGE_ADDRESS.LAND_LOADING}
             width="240"
             height="245"
             alt="loading"

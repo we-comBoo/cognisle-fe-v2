@@ -1,4 +1,4 @@
-import { IMAGE_ADDRESS } from '@/constants'
+import { IMAGE_ADDRESS } from '@/types'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 import Image from 'next/image'
@@ -8,7 +8,7 @@ const Header = () => {
     <TitleWrapper>
       <p>친구의 섬 ID</p>
       <Image
-        src={IMAGE_ADDRESS.landTitle}
+        src={IMAGE_ADDRESS.LAND_TITLE}
         width={51}
         height={21}
         alt="친구섬 찾기 아이콘"

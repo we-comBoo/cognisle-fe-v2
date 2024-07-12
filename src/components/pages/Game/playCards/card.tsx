@@ -1,8 +1,7 @@
-import { IMAGE_ADDRESS } from '@/constants'
 import styled from '@emotion/styled'
 import { MouseEventHandler } from 'react'
 import Image from 'next/image'
-import { GameCardStatus, GameCardStatusKey } from '@/types'
+import { GameCardStatus, GameCardStatusKey, IMAGE_ADDRESS } from '@/types'
 interface CardProps {
   onClick?: MouseEventHandler<HTMLButtonElement>
   status: GameCardStatusKey
@@ -15,7 +14,7 @@ const CardContent = ({ status, symbol }: CardProps) => {
     <St.ContentContainer>
       {status === GameCardStatus.FACE_DOWN ? (
         <Image
-          src={IMAGE_ADDRESS.cardFaceDown}
+          src={IMAGE_ADDRESS.CARD_FACE_DOWN}
           alt="card faceDown"
           width={82}
           height={124}

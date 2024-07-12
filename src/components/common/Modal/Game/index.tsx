@@ -1,4 +1,4 @@
-import { GAME_START_POINT_BTN, IMAGE_ADDRESS } from '@/constants'
+import { GAME_START_POINT_BTN } from '@/constants'
 import { STATE_MODAL_TYPE_OVERLAY } from '@/constants/modal/state'
 import useOutsideClick from '@/hooks/useOutsideClick'
 import { FONTS } from '@/styles/font'
@@ -14,6 +14,7 @@ import {
   GameStatusKey,
   playStateProps,
   StateModalProps,
+  IMAGE_ADDRESS,
 } from '@/types'
 import { getDuration } from '@/lib'
 
@@ -28,7 +29,7 @@ const Start = () => {
 const Clear = () => {
   return (
     <Image
-      src={IMAGE_ADDRESS['gameClear']}
+      src={IMAGE_ADDRESS.GAME_CLEAR}
       width={254}
       height={254}
       alt="gameClear"
