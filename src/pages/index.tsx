@@ -3,14 +3,12 @@ import styled from '@emotion/styled'
 import { useEffect } from 'react'
 
 import { Logo, Triangle } from '@/components/common'
+import { useTimer } from '@/hooks'
 
 export default function Home() {
   // 2초 뒤에 홈 메뉴 화면으로 이동
-  useEffect(() => {
-    setTimeout(() => {
-      location.href = 'home'
-    }, 2000)
-  }, [])
+
+  useTimer(2000, () => (location.href = 'home'))
 
   return (
     <>

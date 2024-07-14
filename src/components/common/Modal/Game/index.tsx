@@ -1,11 +1,10 @@
 import { GAME_START_POINT_BTN } from '@/constants'
 import { STATE_MODAL_TYPE_OVERLAY } from '@/constants/modal/state'
-import useOutsideClick from '@/hooks/useOutsideClick'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 import { useRouter } from 'next/router'
 
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { PointBtn } from '../../Button'
 import PortalModal from '../PortalModal'
 import Image from 'next/image'
@@ -17,6 +16,7 @@ import {
 } from '@/types'
 import { IMAGE_ADDRESS } from '@/constants'
 import { getDuration } from '@/lib'
+import { useKeyEscape, useTimer, useOutsideClick } from '@/hooks'
 
 const Start = () => {
   return (
@@ -64,15 +64,10 @@ const StateModal = ({
   const router = useRouter()
   const contentRef = useRef<HTMLDivElement>(null) //내부 버튼 영역
 
-  useOutsideClick(isOpen ? contentRef : null, handleClose)
+  useOutsideClick(contentRef, handleClose)
+  useKeyEscape('escape', handleClose)
+  useTimer(closeTime(type), handleClose)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      handleClose()
-      console.log('모달 닫기')
-    }, closeTime(type))
-    return () => clearTimeout(timer)
-  }, [])
   if (!isOpen || !router.isReady) return null
   return (
     <PortalModal>
