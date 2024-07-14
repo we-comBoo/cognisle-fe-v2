@@ -1,5 +1,4 @@
-import useAxiosAuth from '@/hooks/useAxiosAuth'
-import { useRefreshToken } from '@/hooks/useRefreshToken'
+import { useRefreshToken, useAxiosAuth } from '@/hooks'
 import { axiosServer } from '@/lib'
 import AuthBtn from '@/components/button/AuthBtn'
 import { useSession } from 'next-auth/react'
