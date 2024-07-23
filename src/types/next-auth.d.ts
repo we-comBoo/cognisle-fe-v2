@@ -34,6 +34,7 @@ declare module 'next-auth' {
       access: User['access']
       refresh: User['refresh']
       nickname: User['nickname']
+      name?: User['nickname']
       exp: number
       iat: number
       jti: string

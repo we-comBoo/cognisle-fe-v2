@@ -30,12 +30,6 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
       localStorage.removeItem(LOCAL_STORAGE_KEY.EMAIL_CHECK_BOX)
     }
   }
-  /**
-   * 
-   * 
-   *     const email = '0321minji@naver.com'
-    const password = '12341234'
-   */
   useEffect(() => {
     if (!isOpen) {
       setErrorMsg('')
@@ -43,7 +37,7 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
   }, [isOpen])
 
   useEffect(() => {
-    console.log('adf', emailFlagCheck)
+    console.log('emailFlagCheck', emailFlagCheck)
     handleLocalStorageEmail()
   }, [emailFlagCheck])
 
@@ -77,7 +71,11 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
           setErrorMsg('등록되지 않은 계정 입니다')
           return openModal()
         } else {
-          router.replace('/home')
+          const {
+            query: { callbackUrl },
+          } = router
+          const url = typeof callbackUrl == 'string' ? callbackUrl : '/home'
+          router.replace(url)
         }
       } catch (e) {
         console.log(e)
@@ -96,7 +94,6 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
     emailFlagCheck,
     errorMsg,
     handleEmailFlagCheck,
-
     handleInputChange,
     submitLoginForm,
   }

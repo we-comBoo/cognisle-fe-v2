@@ -53,10 +53,11 @@ export default NextAuth({
   callbacks: {
     async jwt({ user, token }: { user: User; token: JWT }) {
       if (user) {
-        // console.log('###', user)
+        console.log('###', user)
         token.access = user?.access
         token.refresh = user.refresh
       }
+      // console.log('JWT', token)
       return token
     },
     async session({ session, token, user }) {

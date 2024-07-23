@@ -48,8 +48,10 @@ const Matched = ({ content }: { content: playStateProps }) => {
 }
 
 const closeTime = (type: GameStatusKey) => {
-  if (type == GameStatus.RESULT) {
+  if (type === GameStatus.RESULT) {
     return 5000
+  } else if (type === GameStatus.CLEAR) {
+    return 4000
   } else {
     return 3000
   }
