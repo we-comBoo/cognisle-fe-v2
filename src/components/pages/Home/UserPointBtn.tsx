@@ -2,11 +2,13 @@ import { PointBtn } from '@/components/common'
 import { USER_POINT_BTN } from '@/constants/styles/pointBtn'
 import { FONTS } from '@styles/font'
 import styled from '@emotion/styled'
+import { useSession } from 'next-auth/react'
 
 const UserPointBtn = () => {
+  const { data } = useSession()
   return (
     <PointBtn item={USER_POINT_BTN}>
-      <Text>유저 이름이 이름</Text>
+      <Text>{data?.user.name}</Text>
     </PointBtn>
   )
 }

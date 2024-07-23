@@ -15,14 +15,13 @@ export default function App({
   pageProps: { session, ...pageProps },
 }: AppProps) {
   return (
-    <Layout>
-      <SessionProvider session={session}>
-        <QueryClientProvider client={client}>
+    <SessionProvider session={session}>
+      <QueryClientProvider client={client}>
+        <Layout>
           <Global styles={globalStyles} />
-
           <Component {...pageProps} />
-        </QueryClientProvider>
-      </SessionProvider>
-    </Layout>
+        </Layout>
+      </QueryClientProvider>
+    </SessionProvider>
   )
 }
