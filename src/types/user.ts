@@ -3,6 +3,7 @@ export interface User {
   refresh: string
   access: string
   name: string
+  pk: string
   // dsId: string
   // dsName: string
 }

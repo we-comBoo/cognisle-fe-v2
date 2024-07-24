@@ -56,12 +56,14 @@ export default NextAuth({
         console.log('###', user)
         token.access = user?.access
         token.refresh = user.refresh
+        token.pk = user.pk
       }
-      // console.log('JWT', token)
+      console.log('JWT', token)
       return token
     },
     async session({ session, token, user }) {
       session.user = token
+      console.log('Session', session)
       return session
     },
   },

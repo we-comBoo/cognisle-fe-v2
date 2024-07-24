@@ -1,6 +1,6 @@
 import { User } from '@/types/user'
 import { JWT } from 'next-auth/jwt'
-
+import NextAuth, { DefaultSession } from 'next-auth'
 declare module 'next-auth/jwt' {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   interface JWT {
@@ -8,13 +8,12 @@ declare module 'next-auth/jwt' {
     access: User['access']
     refresh: User['refresh']
     nickname: User['nickname']
+    pk: User['pk']
     exp: number
     iat: number
     jti: string
   }
 }
-
-import NextAuth, { DefaultSession } from 'next-auth'
 
 declare module 'next-auth' {
   /**
@@ -26,6 +25,7 @@ declare module 'next-auth' {
     access: User['access']
     refresh: User['refresh']
     nickname: User['nickname']
+    pk: User['pk']
   }
   interface Session {
     user: {
@@ -35,6 +35,7 @@ declare module 'next-auth' {
       refresh: User['refresh']
       nickname: User['nickname']
       name?: User['nickname']
+      pk: User['pk']
       exp: number
       iat: number
       jti: string

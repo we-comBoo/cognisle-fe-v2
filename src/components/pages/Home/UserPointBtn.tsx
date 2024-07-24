@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 
 const UserPointBtn = () => {
   const { data } = useSession()
+  console.log('UserPointBtn', data)
   return (
     <PointBtn item={USER_POINT_BTN}>
       <Text>{data?.user.name}</Text>
