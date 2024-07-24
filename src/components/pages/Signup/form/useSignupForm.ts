@@ -81,7 +81,7 @@ const useSignupForm = ({ initialValues, validate }: useSignupFormProps) => {
     } catch (e) {
       console.log(e)
       alert('로그인 오류')
-      setErrorMsg('관리자 문의 요청 드립니다')
+      setErrorMsg('관리자 문의 부탁 드립니다')
       return openModal()
       //const errorMsg = e.error || e.response.data
       //const errorStatus = e.status

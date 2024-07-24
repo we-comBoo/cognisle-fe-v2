@@ -63,13 +63,19 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
           password: values.password,
           redirect: false,
         })
-        if (res && res.status != 200) {
+        console.log(res, res?.status)
+        if (!res || (res && res.status != 200)) {
           //const errorMsg = res.error || res.response.data
+          /*
           const errorMsg = res.error || '로그인 재시도 요청'
           const errorStatus = res.status
           console.log('Error', errorMsg, errorStatus)
           setErrorMsg('등록되지 않은 계정 입니다')
-          return openModal()
+          return openModal()*/
+          // 400 { datail: '아이디나 비밀번호가 올바르지 않습니다.' }
+          //  404 { detail: 'Not found.' }
+
+          throw new Error(res?.error ?? '관리자 문의 부탁 드립니다')
         } else {
           const {
             query: { callbackUrl },
@@ -79,8 +85,10 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
         }
       } catch (e) {
         console.log(e)
-        alert('로그인 오류')
-        setErrorMsg('관리자 문의 요청 드립니다')
+        // alert('로그인 오류')
+        if (e instanceof Error) {
+          setErrorMsg(e.message)
+        }
         return openModal()
         //const errorMsg = e.error || e.response.data
         //const errorStatus = e.status

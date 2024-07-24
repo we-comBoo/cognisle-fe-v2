@@ -27,10 +27,18 @@ export default NextAuth({
               error?.response?.status,
               error?.response?.data,
             )
+            // 400 { datail: '아이디나 비밀번호가 올바르지 않습니다.' }
+            //  404 { detail: 'Not found.' }
             // 서버 에러 메세지만 잡기 (401)
-            throw new Error(
-              error?.response?.data.detail || '로그인 오류 발생 재시도 요청',
-            )
+            if (error.response?.status === 400) {
+              throw new Error('이메일이나 비밀번호가 올바르지 않습니다.')
+            } else if (error.response?.status === 404) {
+              throw new Error('존재하지 않는 계정입니다.')
+            } else {
+              throw new Error('관리자 문의 부탁 드립니다')
+            }
+          } else {
+            throw new Error('관리자 문의 부탁 드립니다')
           }
         }
 

@@ -21,5 +21,10 @@
     // ARIA 속성은 지원되는 role에서만 사용
     "jsx-a11y/role-supports-aria-props": "warn"
     // DOM에 정의되지 않은 속성을 사용했는지 체크 (emotion css 속성 등 예외 케이스가 있으므로 기본은 off)
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
   }
 }
