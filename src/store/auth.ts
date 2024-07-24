@@ -11,6 +11,7 @@ const initialState: AuthInfoProps = {
     access: '',
     refresh: '',
     expires: '',
+    pk: '',
   },
 }
 
@@ -24,6 +25,7 @@ export const AuthStore = create<AuthStoreProps>()(
             email: '',
             // dsId: '',
             // dsName: '',
+            pk: '',
             name: '',
             access: '',
             refresh: '',
