@@ -38,7 +38,8 @@
     "__mocks__/handlers.ts",
     "__mocks__/server.ts",
     "jest.setup.ts",
-    "jest.config.js"
+    "jest.config.js",
+    "cypress/e2e/login.cy.js"
   ],
   "exclude": ["cypress.config.js", "cypress", "node_modules"]
 }
