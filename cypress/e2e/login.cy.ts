@@ -138,7 +138,10 @@ describe('Login Modal Test', () => {
     //wait the response of your GET, then check
     cy.get('#modal-root').then(($modal) => {
       // 모달의 클래스 또는 선택자를 사용합니다.
-      cy.wrap($modal).should('contain.text', '') // 모달에 표시된 메시지가 예상한 것인지 확인합니다.
+      cy.wrap($modal).should(
+        'contain.text',
+        '이메일이나 비밀번호가 올바르지 않습니다.',
+      ) // 모달에 표시된 메시지가 예상한 것인지 확인합니다.
     })
   })
 
