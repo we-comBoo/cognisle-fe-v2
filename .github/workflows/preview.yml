@@ -35,7 +35,7 @@ jobs:
           NEXT_PUBLIC_DISCORD_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI }}
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --no-immutable
       - name: Check Lint
         run: yarn lint
       - name: Build Application
@@ -66,8 +66,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: .
-          install: yarn cache clean --all && yarn install
-          command: yarn run --binaries-only start-test start 3000 cypress run
+          install: false
+          command: yarn run --binaries-only cypress run
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
@@ -79,5 +79,5 @@ jobs:
         uses: actions/upload-artifact@v4
         if: failure()
         with:
-          name: cypress-videos
+          name: cypress-videos-d
           path: .
