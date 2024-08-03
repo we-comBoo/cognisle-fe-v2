@@ -43,7 +43,6 @@ jobs:
         with:
           name: build
           build: yarn run build
-          if-no-files-found: error
           path: ./next
 
   test:
