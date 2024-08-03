@@ -47,10 +47,9 @@ jobs:
         run: yarn test:jest
 
       - name: Cypress run
-      - run: yarn add cypress -wD
       - uses: cypress-io/github-action@v2
 
         with:
-          build: yarn run build
-          start: yarn run dev
+          install-command: yarn install
+          command-prefix: yarn dlx
           browser: chrome
