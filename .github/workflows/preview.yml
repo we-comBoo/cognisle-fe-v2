@@ -60,6 +60,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
+          path: .
+          github-token: ${{ secrets.TOKEN_GIT_ACTIONS }}
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
