@@ -12,5 +12,11 @@ Cypress E2E Test Check Failed. Make the required changes listed above, add chang
 false;
 )
 
+yarn run build ||
+(
+echo '😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤
+Cypress E2E Test Check Failed. Make the required changes listed above, add changes and try to commit again!!'
+false;
+)
 
 echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
