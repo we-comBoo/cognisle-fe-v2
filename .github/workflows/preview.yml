@@ -66,8 +66,10 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: .
-          install-command:  yarn cache clean --all && yarn install
-          command: yarn run --binaries-only start-test start 3000 cypress:run 
+          install: false
+          start: yarn start &
+          command: yarn run --binaries-only cypress run --browser chrome
+
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
