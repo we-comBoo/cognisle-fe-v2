@@ -67,7 +67,11 @@ jobs:
         with:
           working-directory: .
           install: false
-          command: yarn run --binaries-only start-server-and-test start http://localhost:3000 cypress:run
+          start: yarn run dev
+          command: yarn run --binaries-only cypress run
+
+          wait-on: 'http://localhost:3000'
+          browser: chrome
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
