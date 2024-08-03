@@ -48,5 +48,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm start
-          browser: chrome
+          working-directory: .
+          install-command: yarn install
+          command: yarn run --binaries-only cypress run
