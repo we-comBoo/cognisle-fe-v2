@@ -75,7 +75,7 @@ jobs:
         with:
           name: cypress-snapshots
           path: .
-      - name: Upload vide
+      - name: Upload video !!
         uses: actions/upload-artifact@v4
         if: failure()
         with:
