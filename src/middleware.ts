@@ -40,20 +40,8 @@ const withOutAuth = async (
 export default async function middleware(req: NextRequest) {
   const token = await getToken({ req })
 
-  //미들웨어 쿠키
-  //let cookie = req.cookies.get('Authroization')?.value || ''
-
-  // authorization 헤더 존재 여부
-  const isTokenHeader = req.headers.get('x-middleware-request-authorization')
-
   //setting Headers
   const requestHeaders = new Headers(req.headers)
-  // console.log(isTokenHeader, token)
-  if (token && !isTokenHeader) {
-    // console.log('set header')
-    requestHeaders.set('authorization', token.access)
-    requestHeaders.set('x-hello-from-middleware1', 'hello')
-  }
 
   const { searchParams } = req.nextUrl
   const callbackUrl = searchParams.get('callbackUrl')
@@ -75,15 +63,7 @@ export default async function middleware(req: NextRequest) {
   } else if (isWithOutAuth) {
     return withOutAuth(req, Boolean(token?.access), callbackUrl) || response
   }
-  /*
-  console.log(
-    'else',
-    response.headers.get('x-middleware-request-x-hello-from-middleware1'),
-  )
-  console.log(
-    'else',
-    response.headers.get('x-middleware-request-authorization'),
-  )*/
+
   return response
 }
 
