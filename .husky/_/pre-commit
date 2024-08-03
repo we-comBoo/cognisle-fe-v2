@@ -7,3 +7,10 @@ yarn run lint ||
                 ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
         false; 
 )
+
+yarn run cypress:run ||
+(
+        echo '😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤 
+                ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+        false; 
+)
