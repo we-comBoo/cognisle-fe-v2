@@ -67,7 +67,7 @@ jobs:
         with:
           working-directory: .
           install: false
-          start: yarn start
+          start: next start
           wait-on: 'http://localhost:3000'
           command: yarn run --binaries-only cypress run --browser chrome
           browser: chrome
