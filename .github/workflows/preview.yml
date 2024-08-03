@@ -47,8 +47,8 @@ jobs:
         run: yarn test:jest
 
       - name: Cypress run
-        uses: cypress-io/github-action@v6
+        uses: cypress-io/github-action@v2
         with:
-          build: yarn run build
-          start: yarn start
-          browser: chrome
+          install: false
+          # https://docs.cypress.io/guides/guides/command-line#cypress-run-browser-lt-browser-name-or-path-gt
+          command: yarn test:e2e --browser chrome
