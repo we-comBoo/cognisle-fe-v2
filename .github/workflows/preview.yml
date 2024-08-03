@@ -20,15 +20,15 @@ jobs:
           node-version: '20'
       - name: Generate Environment Variables File for Production
         run: |
-          echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env.production
-          echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env.production
-          echo "NEXT_PUBLIC_DISCORD_CLIENT_ID=$NEXT_PUBLIC_DISCORD_CLIENT_ID" >> .env.production
-          echo "NEXT_PUBLIC_DISCORD_CLIENT_SECRET=$NEXT_PUBLIC_DISCORD_CLIENT_SECRET" >> .env.production
-          echo "NEXT_PUBLIC_DISCORD_TOKEN=$NEXT_PUBLIC_DISCORD_TOKEN" >> .env.production
-          echo "NEXT_PUBLIC_DISCORD_REDIRECT_URI=$NEXT_PUBLIC_DISCORD_REDIRECT_URI" >> .env.production
+          echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env
+          echo "NEXTAUTH_URL=$NEXTAUTH_LOCAL_URL" >> .env
+          echo "NEXT_PUBLIC_DISCORD_CLIENT_ID=$NEXT_PUBLIC_DISCORD_CLIENT_ID" >> .env
+          echo "NEXT_PUBLIC_DISCORD_CLIENT_SECRET=$NEXT_PUBLIC_DISCORD_CLIENT_SECRET" >> .env
+          echo "NEXT_PUBLIC_DISCORD_TOKEN=$NEXT_PUBLIC_DISCORD_TOKEN" >> .env
+          echo "NEXT_PUBLIC_DISCORD_REDIRECT_URI=$NEXT_PUBLIC_DISCORD_REDIRECT_URI" >> .env
         env:
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_LOCAL_URL }}
           NEXT_PUBLIC_DISCORD_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_DISCORD_CLIENT_ID }}
           NEXT_PUBLIC_DISCORD_CLIENT_SECRET: ${{ secrets.NEXT_PUBLIC_DISCORD_CLIENT_SECRET }}
           NEXT_PUBLIC_DISCORD_TOKEN: ${{ secrets.NEXT_PUBLIC_DISCORD_TOKEN }}
@@ -67,7 +67,7 @@ jobs:
         with:
           name: cypress-snapshots
           path: .
-      - name: Upload video !!
+      - name: Upload video
         uses: actions/upload-artifact@v4
         if: failure()
         with:
