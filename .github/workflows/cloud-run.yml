@@ -8,8 +8,8 @@ on:
     branches: ['main']
 
 env:
-  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }} ## 아마 지워도 되지 않을까??
-  NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }} ## 아마 지워도 되지 않을까??
+  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+  NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
   PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
   REGION: us-east1
   # project-name but it can be anything you want
