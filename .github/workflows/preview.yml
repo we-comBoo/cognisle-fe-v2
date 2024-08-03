@@ -67,7 +67,7 @@ jobs:
         with:
           working-directory: .
           install: false
-          start: yarn start &
+          start: yarn --binaries-only start &
           command: yarn run --binaries-only cypress run --browser chrome
 
 
