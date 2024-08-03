@@ -45,3 +45,5 @@ jobs:
 
       - name: Check Unit Test
         run: yarn test:jest
+      - name: Check E2E Test
+        run: yarn test:e2e
