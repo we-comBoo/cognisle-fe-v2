@@ -9,7 +9,7 @@ env:
   REGION: us-east1
 
 jobs:
-  preview:
+  install:
     runs-on: ubuntu-latest # 실행환경 ubuntu 최신버전
     steps:
       - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
@@ -36,15 +36,16 @@ jobs:
           NEXT_PUBLIC_DISCORD_TOKEN: ${{ secrets.NEXT_PUBLIC_DISCORD_TOKEN }}
           NEXT_PUBLIC_DISCORD_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI }}
 
-      - name: Install dependencies
-        run: yarn install
-      - name: Build Application
-        run: yarn run build
-    - name: Run Cypress e2e tests
-      uses: cypress-io/github-action@v4
-      with:
-        # we have already installed all dependencies above
-        install: false
-        start: yarn test:server
-        wait-on: 'http://localhost:3000'
-        command: yarn cypress run
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
+        with:
+          # Disable running of tests within install job
+          runTests: false
+          build: yarn run build
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          if-no-files-found: error
+          path: build
