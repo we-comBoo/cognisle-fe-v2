@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { axiosAuth } from '@/lib/axios'
+import { createDefatultAxios } from '@/lib/axios'
 import NextAuth, { User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -14,7 +14,8 @@ export default NextAuth({
       },
       async authorize(credentials) {
         try {
-          const res = await axiosAuth.post('/users/login/', credentials)
+          const defaultAxios = createDefatultAxios()
+          const res = await defaultAxios.post('/users/login/', credentials)
 
           if (res.status === 200 && res.data) {
             const user = res.data
@@ -41,19 +42,6 @@ export default NextAuth({
             throw new Error('관리자 문의 부탁 드립니다')
           }
         }
-
-        /*const res = await fetch('https://www.cognisle.shop/users/login/', {
-          method: 'POST',
-          body: JSON.stringify(credentials),
-          headers: { 'Content-Type': 'application/json' },
-        })
-        const data = await res.json()
-
- else {
-          // 로그인 처리 실패
-          // throw new Error('로그인 처리 실패')
-          return null
-        }*/
       },
     }),
   ],

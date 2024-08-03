@@ -1,4 +1,3 @@
-import { axiosAuth } from '@/lib'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getToken, JWT } from 'next-auth/jwt'
 export default async function handler(
@@ -6,6 +5,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   // console.log('req', req)
+  /*
   const response = await getToken({ req })
   // console.log('getServerSession : refresh', refresh)
   if (response?.refresh) {
@@ -18,4 +18,5 @@ export default async function handler(
   }
 
   // console.log('get access token by refresh token API ', data)
+  */
 }

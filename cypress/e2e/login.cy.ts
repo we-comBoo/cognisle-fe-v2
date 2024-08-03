@@ -1,6 +1,6 @@
 import { MENU_INFO } from '../../src/constants/menu/home'
 
-describe('Login Test', () => {
+describe('Login Modal Test', () => {
   beforeEach(() => {
     // 테스트할 페이지를 방문합니다.
     cy.visit('/login')
@@ -133,7 +133,7 @@ describe('Login Test', () => {
 
     // 모달이 나타날 때까지 기다립니다.
     cy.get('#modal-root') // 모달의 클래스 또는 선택자를 사용합니다.
-      .should('contain.text', '존재하지 않는 계정입니다.') // 모달에 표시된 메시지가 예상한 것인지 확인합니다.
+      .should('contain.text', '이메일이나 비밀번호가 올바르지 않습니다.') // 모달에 표시된 메시지가 예상한 것인지 확인합니다.
   })
   it('로그인 성공 시 home 화면 이동', () => {
     // 로그인 폼의 인풋 요소에 값을 입력합니다.
