@@ -1,11 +1,13 @@
 name: nextjs-cloud-run
 
 on:
+  pull_request:
+    branches:
+      - develop
+    types: [opened, synchronize, reopened]
   push:
     branches:
       - main
-  pull_request:
-    branches: ['main']
 
 env:
   NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
@@ -16,6 +18,32 @@ env:
   REPO_NAME: nextjs-cloud-run
 
 jobs:
+  test-and-build:
+    name: Cypress Tests and Build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
+
+    - name: Run Cypress e2e tests
+      uses: cypress-io/github-action@v4
+      with:
+        # we have already installed all dependencies above
+        install: false
+        start: yarn test:server
+        wait-on: 'http://localhost:3000'
+        command: yarn cypress run
+
+
   build-and-deploy:
     name: Setup, Build, and Deploy
     runs-on: ubuntu-latest
