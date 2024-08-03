@@ -46,7 +46,4 @@ jobs:
       - name: Check Unit Test
         run: yarn test:jest
       - name: Check e2e Test
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          command: yarn test:e2e
+        run: yarn test:e2e
