@@ -66,9 +66,8 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: .
-          install: false
-          start: yarn run --binaries-only next start &
-          command: yarn run --binaries-only cypress run --browser chrome
+          install-command: yarn install
+          command: yarn run --binaries-only cypress run
 
 
       - name: Upload screenshots
