@@ -45,5 +45,10 @@ jobs:
 
       - name: Check Unit Test
         run: yarn test:jest
-      - name: start server
-        run: yarn run dev
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          build: yarn run build
+          start: yarn run dev
+          browser: chrome
