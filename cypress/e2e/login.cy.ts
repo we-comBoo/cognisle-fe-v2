@@ -115,10 +115,14 @@ describe('Login Modal Test', () => {
     // 폼을 제출합니다.
     cy.get('button').click()
 
-    cy.wait('@login').then(() => {
-      //wait the response of your GET, then check
-      cy.get('#modal-root') // 모달의 클래스 또는 선택자를 사용합니다.
-        .should('contain.text', '이메일이나 비밀번호가 올바르지 않습니다.') // 모달에 표시된 메시지가 예상한 것인지 확인합니다.
+    cy.wait('@login')
+    //wait the response of your GET, then check
+    cy.get('#modal-root').then(($modal) => {
+      // 모달의 클래스 또는 선택자를 사용합니다.
+      cy.wrap($modal).should(
+        'contain.text',
+        '이메일이나 비밀번호가 올바르지 않습니다.',
+      ) // 모달에 표시된 메시지가 예상한 것인지 확인합니다.
     })
   })
   it('유효한 이메일 입력 함 & 유효한 비밀번호 입력 & 틀린 비밀번호 로그인 | 틀린 계정 안내 모달', () => {
