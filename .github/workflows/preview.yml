@@ -35,9 +35,10 @@ jobs:
           NEXT_PUBLIC_DISCORD_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI }}
 
       - name: Install dependencies
-        # install 옵션에 대해서는 yarn 공식 문서를 참고해주세요.
-        # https://yarnpkg.com/cli/install
         run: yarn install
+
+      - name: Build Application
+        run: yarn run build
 
       - name: Check Lint
         run: yarn lint
