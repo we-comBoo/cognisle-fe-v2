@@ -1,11 +1,9 @@
-name: nextjs-cloud-run
+name: production CI/CD
 
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches: ['main']
+      - main # main 브랜치에 "push"될 때만 본 workflow 실행
 
 env:
   NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}

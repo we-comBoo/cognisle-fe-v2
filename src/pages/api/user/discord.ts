@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   const { code } = req.body
 
-  console.log(code)
+  // console.log(code)
   if (code) {
     try {
       const output = await axios.post(
@@ -46,7 +46,7 @@ export default async function handler(
       }
     } catch (error) {
       const msg = `Error in get Token and user Data from discord API`
-      console.log(error)
+      //console.log(error)
       res.status(404).json({ message: '디스코드 아이디 조회 오류 발생' })
     }
     // res.redirect(process.env.REDIRECT_APP);

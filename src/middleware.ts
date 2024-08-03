@@ -25,7 +25,7 @@ const withOutAuth = async (
   // console.log(token)
   const url = req.nextUrl.clone()
   const { pathname } = req.nextUrl
-  console.log(token, url, 'withoutAuth')
+  // console.log(token, url, 'withoutAuth')
 
   if (token) {
     // 토큰 있는 경우

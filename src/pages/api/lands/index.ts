@@ -5,6 +5,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  console.log('land API req', req.query)
+  //console.log('land API req', req.query)
   res.status(200).json({ name: 'John Doe' })
 }

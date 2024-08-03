@@ -4,7 +4,7 @@ import withBundleAnalyzer from '@next/bundle-analyzer'
 
 const nextConfig = {
   reactStrictMode: false,
-  skipMiddlewareUrlNormalize: true,
+  /*skipMiddlewareUrlNormalize: true,*/
   images: {
     domains: ['cdn-icons-png.flaticon.com', 's3.amazonaws.com'],
   },

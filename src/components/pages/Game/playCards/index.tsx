@@ -19,7 +19,7 @@ const PlayCards = () => {
   useEffect(() => {
     if (userStatus != GameStatus.CHOOSING) {
       openModal()
-      console.log(userStatus, '모달 열기')
+      // console.log(userStatus, '모달 열기')
     }
   }, [userStatus])
 
