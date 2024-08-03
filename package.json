@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "husky",
     "test:jest": "jest --verbose",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run --browser chrome",
