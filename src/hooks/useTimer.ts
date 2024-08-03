@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 const useTimer = (time: number, handler: () => void) => {
   useEffect(() => {
-    console.log('start time')
+    // console.log('start time')
     const timer = setTimeout(() => {
       handler()
     }, time)
