@@ -45,5 +45,9 @@ jobs:
 
       - name: Check Unit Test
         run: yarn test:jest
-      - name: Check E2E Test
-        run: yarn test:e2e
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          build: yarn run build
+          start: yarn run dev
+          browser: chrome
