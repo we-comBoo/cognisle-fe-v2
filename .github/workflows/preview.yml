@@ -67,3 +67,5 @@ jobs:
         with:
           name: cypress-videos
           path: .
+      - name: Publish Test Summary Results
+        run: npx github-actions-ctrf ctrf/ctrf-report.json
