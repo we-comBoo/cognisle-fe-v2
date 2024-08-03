@@ -9,7 +9,7 @@ env:
   REGION: us-east1
 
 jobs:
-  continuous-integration:
+  install:
     runs-on: ubuntu-latest # 실행환경 ubuntu 최신버전
     steps:
       - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
@@ -48,6 +48,7 @@ jobs:
 
   test:
     runs-on: ubuntu-22.04
+    needs: install
     steps:
       - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
         uses: actions/checkout@v4
@@ -65,7 +66,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: .
-
+          install: false
           start: yarn start
           wait-on: 'http://localhost:3000'
           command: yarn run --binaries-only cypress run --browser chrome
