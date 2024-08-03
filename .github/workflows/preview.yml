@@ -53,11 +53,11 @@ jobs:
           build: yarn run build
           start: yarn start
           wait-on: 'http://localhost:3000'
-          command: yarn run --binaries-only cypress run
+          command: yarn run --binaries-only cypress run --browser chrome
           browser: chrome
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-snapshots
-          path: cypress/snapshots
+          path: .
