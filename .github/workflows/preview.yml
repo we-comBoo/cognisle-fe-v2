@@ -38,12 +38,13 @@ jobs:
         run: yarn install
       - name: Check Lint
         run: yarn lint
+      - name: Build Application
+        run: yarn run build
       - name: Save build folder
         uses: actions/upload-artifact@v4
         with:
-          name: build
-          build: yarn run build
-          path: .
+          name: static-next-build
+          path: .next/
 
   test:
     runs-on: ubuntu-22.04
@@ -58,7 +59,7 @@ jobs:
       - name: Download the build folder
         uses: actions/download-artifact@v4
         with:
-          name: build
-          path: .
+          name: static-next-build
+
       - name: Check Unit Test
         run: yarn test:jest
