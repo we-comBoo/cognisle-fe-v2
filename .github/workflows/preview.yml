@@ -50,4 +50,7 @@ jobs:
         with:
           working-directory: .
           install-command: yarn install
+          build: yarn run build
+          start: yarn start
+          wait-on: 'http://localhost:3000'
           command: yarn run --binaries-only cypress run
