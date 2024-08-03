@@ -34,30 +34,42 @@ jobs:
           NEXT_PUBLIC_DISCORD_TOKEN: ${{ secrets.NEXT_PUBLIC_DISCORD_TOKEN }}
           NEXT_PUBLIC_DISCORD_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI }}
 
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Build Application
-        run: yarn run build
-
       - name: Check Lint
         run: yarn lint
 
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Save build folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          build: yarn run build
+          if-no-files-found: error
+          path: ./next
+
+"""
+  test:    
+    runs-on: ubuntu-22.04
+    needs: install
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download the build folder
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: ./next
       - name: Check Unit Test
         run: yarn test:jest
-      - name: Cypress run with ENV
+
+      - name: Cypress run 
         uses: cypress-io/github-action@v6
-        env:
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-          NEXT_PUBLIC_DISCORD_CLIENT_ID: ${{ secrets.NEXT_PUBLIC_DISCORD_CLIENT_ID }}
-          NEXT_PUBLIC_DISCORD_CLIENT_SECRET: ${{ secrets.NEXT_PUBLIC_DISCORD_CLIENT_SECRET }}
-          NEXT_PUBLIC_DISCORD_TOKEN: ${{ secrets.NEXT_PUBLIC_DISCORD_TOKEN }}
-          NEXT_PUBLIC_DISCORD_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI }}
         with:
           working-directory: .
-          install-command: yarn install
-          build: yarn run build
+
           start: yarn start
           wait-on: 'http://localhost:3000'
           command: yarn run --binaries-only cypress run --browser chrome
@@ -74,5 +86,4 @@ jobs:
         with:
           name: cypress-videos
           path: .
-      - name: Publish Test Summary Results
-        run: npx github-actions-ctrf ctrf/ctrf-report.json
+"""
