@@ -40,3 +40,11 @@ jobs:
         run: yarn install
       - name: Build Application
         run: yarn run build
+    - name: Run Cypress e2e tests
+      uses: cypress-io/github-action@v4
+      with:
+        # we have already installed all dependencies above
+        install: false
+        start: yarn test:server
+        wait-on: 'http://localhost:3000'
+        command: yarn cypress run
