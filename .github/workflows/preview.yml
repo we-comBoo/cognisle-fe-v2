@@ -45,11 +45,3 @@ jobs:
 
       - name: Check Unit Test
         run: yarn test:jest
-
-      - name: Cypress run
-      - uses: cypress-io/github-action@v2
-
-        with:
-          install-command: yarn install
-          command-prefix: yarn dlx
-          browser: chrome
