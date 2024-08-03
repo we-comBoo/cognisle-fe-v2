@@ -41,6 +41,7 @@ jobs:
         with:
           # Disable running of tests within install job
           runTests: false
+          install-command: yarn install
           build: yarn run build
 
       - name: Save build folder
@@ -64,6 +65,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          install-command: yarn --frozen-lockfile --silent
+          install-command: yarn install
           start: yarn run dev
           browser: chrome
