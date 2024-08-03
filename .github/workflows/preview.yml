@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest # 실행환경 ubuntu 최신버전
     steps:
       - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
@@ -50,10 +50,13 @@ jobs:
 
   test:
     runs-on: ubuntu-22.04
-    needs: install
     steps:
-      - name: Checkout
+      - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
 
       - name: Download the build folder
         uses: actions/download-artifact@v4
