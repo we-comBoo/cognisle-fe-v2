@@ -14,12 +14,6 @@ jobs:
     steps:
       - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
         uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version:
-            '18'
-            # Github Repository Secrets 이용해 리액트 파일 내 환경 변수 파일 생성
       - name: Generate Environment Variables File for Production
         run: |
           echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env.production
@@ -41,7 +35,6 @@ jobs:
         with:
           # Disable running of tests within install job
           runTests: false
-          install-command: yarn install
           build: yarn run build
 
       - name: Save build folder
@@ -65,6 +58,5 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          install-command: yarn install
           start: yarn run dev
           browser: chrome
