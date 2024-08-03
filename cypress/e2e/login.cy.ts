@@ -112,7 +112,8 @@ describe('Login Modal Test', () => {
       .should('have.value', 'testDEV123!')
     cy.intercept('POST', '/api/auth/callback/credentials').as('login')
     // 폼을 제출합니다.
-    cy.get('form').submit()
+    // 폼을 제출합니다.
+    cy.get('button').click()
 
     cy.wait('@login').then(() => {
       //wait the response of your GET, then check
@@ -131,7 +132,8 @@ describe('Login Modal Test', () => {
       .should('have.value', 'testDEV123!')
     cy.intercept('POST', '/api/auth/callback/credentials').as('login')
     // 폼을 제출합니다.
-    cy.get('form').submit()
+    // 폼을 제출합니다.
+    cy.get('button').click()
 
     // 모달이 나타날 때까지 기다립니다.
     cy.wait('@login')

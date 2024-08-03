@@ -38,13 +38,6 @@ jobs:
         run: yarn install --no-immutable
       - name: Check Lint
         run: yarn lint
-      - name: Build Application
-        run: yarn run build
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: static-next-build
-          path: .next/
 
   test:
     runs-on: ubuntu-22.04
@@ -57,17 +50,16 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Download the build folder
-        uses: actions/download-artifact@v4
-        with:
-          name: static-next-build
-
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           working-directory: .
-          install: false
-          command: yarn run --binaries-only cypress run
+          install-command: yarn install
+          build: yarn run build
+          start: yarn start
+          wait-on: 'http://localhost:3000'
+          command: yarn run --binaries-only cypress run --browser chrome
+          browser: chrome
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
