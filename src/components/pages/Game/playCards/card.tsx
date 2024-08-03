@@ -10,7 +10,7 @@ interface CardProps {
 }
 
 const CardContent = ({ status, symbol }: CardProps) => {
-  console.log(status, status === GameCardStatus.FACE_DOWN)
+  // console.log(status, status === GameCardStatus.FACE_DOWN)
   return (
     <St.ContentContainer>
       {status === GameCardStatus.FACE_DOWN ? (

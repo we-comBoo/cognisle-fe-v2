@@ -9,11 +9,15 @@ env:
   REGION: us-east1
 
 jobs:
-  install:
+  continuous-integration:
     runs-on: ubuntu-latest # 실행환경 ubuntu 최신버전
     steps:
       - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
         uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
       - name: Generate Environment Variables File for Production
         run: |
           echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env.production
@@ -30,32 +34,18 @@ jobs:
           NEXT_PUBLIC_DISCORD_TOKEN: ${{ secrets.NEXT_PUBLIC_DISCORD_TOKEN }}
           NEXT_PUBLIC_DISCORD_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI }}
 
-      - name: Cypress install
-        uses: cypress-io/github-action@v6
-        with:
-          # Disable running of tests within install job
-          runTests: false
-          build: yarn run build
+      - name: Install dependencies
+        # install 옵션에 대해서는 yarn 공식 문서를 참고해주세요.
+        # https://yarnpkg.com/cli/install
+        run: yarn install --immutable --immutable-cache
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: static-next-build
-          ##if-no-files-found: error
-          path: .next/
-  cypress-run:
-    runs-on: ubuntu-latest
-    needs: install
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Check Lint
+        run: yarn lint
 
-      - name: Download the build folder
-        uses: actions/download-artifact@v4
+      - name: Check Unit Test
+        run: yarn test:jest
+      - name: Check e2e Test
+        uses: cypress-io/github-action@v2
         with:
-          name: static-next-build
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          browser: chrome
+          install: false
+          command: yarn test:e2e

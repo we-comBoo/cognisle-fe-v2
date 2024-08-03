@@ -7,8 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --verbose",
-    "cypress:open": "cypress open"
+    "test:jest": "jest --verbose",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cypress:run"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -41,6 +43,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "msw": "1",
     "prettier": "^3.2.5",
+    "start-server-and-test": "^2.0.5",
     "ts-node": "^10.9.2",
     "typescript": "4.9.5"
   },

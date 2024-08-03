@@ -14,7 +14,7 @@ export const touchEventHandler = (
   const initY = e.touches[0].pageY
 
   const touchMoveHandler = (e: TouchEvent) => {
-    console.log('mouseMove')
+    // console.log('mouseMove')
     // touch를 통해 스크롤 내리면서 drag가 발생하는 버그 방지용
     if (e.cancelable) e.preventDefault()
     updateItem({

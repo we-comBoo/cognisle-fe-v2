@@ -17,7 +17,7 @@ const Discord = () => {
   }
   useEffect(() => {
     if (typeof code == 'string') {
-      console.log(code)
+      // console.log(code)
       getUser(code)
     }
   }, [code])

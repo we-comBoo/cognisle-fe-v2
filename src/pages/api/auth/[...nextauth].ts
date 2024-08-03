@@ -23,11 +23,11 @@ export default NextAuth({
           }
         } catch (error) {
           if (axios.isAxiosError(error)) {
-            console.log(
+            /*console.log(
               'next Auth signin Axios Erroz',
               error?.response?.status,
               error?.response?.data,
-            )
+            )*/
             // 400 { datail: '아이디나 비밀번호가 올바르지 않습니다.' }
             //  404 { detail: 'Not found.' }
             // 서버 에러 메세지만 잡기 (401)
@@ -49,17 +49,17 @@ export default NextAuth({
   callbacks: {
     async jwt({ user, token }: { user: User; token: JWT }) {
       if (user) {
-        console.log('###', user)
+        //console.log('###', user)
         token.access = user?.access
         token.refresh = user.refresh
         token.pk = user.pk
       }
-      console.log('JWT', token)
+      //console.log('JWT', token)
       return token
     },
     async session({ session, token, user }) {
       session.user = token
-      console.log('Session', session)
+      //console.log('Session', session)
       return session
     },
   },

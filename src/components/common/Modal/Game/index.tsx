@@ -39,7 +39,7 @@ const Clear = () => {
 
 const Result = ({ content }: { content: playStateProps }) => {
   const duration = getDuration(content.time)
-  console.log('게임 경과 시간: ', duration, '획득한 아이템', content.obtained)
+  // console.log('게임 경과 시간: ', duration, '획득한 아이템', content.obtained)
   return <div> 게임 결과 보이기 모달 {duration?.second} </div>
 }
 
