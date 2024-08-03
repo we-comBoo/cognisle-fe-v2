@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         # install 옵션에 대해서는 yarn 공식 문서를 참고해주세요.
         # https://yarnpkg.com/cli/install
-        run: yarn install --immutable --immutable-cache
+        run: yarn install
 
       - name: Check Lint
         run: yarn lint
