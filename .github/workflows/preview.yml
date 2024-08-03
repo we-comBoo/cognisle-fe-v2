@@ -64,5 +64,6 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
+          install-command: yarn --frozen-lockfile --silent
           start: yarn run dev
           browser: chrome
