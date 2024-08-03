@@ -37,7 +37,6 @@ jobs:
       - name: Check Lint
         run: yarn lint
 
-
       - name: Install dependencies
         run: yarn install
 
@@ -49,8 +48,7 @@ jobs:
           if-no-files-found: error
           path: ./next
 
-"""
-  test:    
+  test:
     runs-on: ubuntu-22.04
     needs: install
     steps:
@@ -64,26 +62,3 @@ jobs:
           path: ./next
       - name: Check Unit Test
         run: yarn test:jest
-
-      - name: Cypress run 
-        uses: cypress-io/github-action@v6
-        with:
-          working-directory: .
-
-          start: yarn start
-          wait-on: 'http://localhost:3000'
-          command: yarn run --binaries-only cypress run --browser chrome
-          browser: chrome
-      - name: Upload screenshots
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-snapshots
-          path: .
-      - name: Upload video
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: cypress-videos
-          path: .
-"""
