@@ -46,20 +46,39 @@ jobs:
           name: static-next-build
           path: .next/
 
-  test:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
+    test:
+      runs-on: ubuntu-22.04
+      steps:
+        - name: Checkout branch # 레포지토리 소스를 runner로 가져오기
+          uses: actions/checkout@v4
+        - name: Set up Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: '20'
 
-      - name: Download the build folder
-        uses: actions/download-artifact@v4
-        with:
-          name: static-next-build
+        - name: Download the build folder
+          uses: actions/download-artifact@v4
+          with:
+            name: static-next-build
 
-      - name: Check Unit Test
-        run: yarn test:jest
+        - name: Cypress run
+          uses: cypress-io/github-action@v6
+          with:
+            working-directory: .
+
+            start: yarn start
+            wait-on: 'http://localhost:3000'
+            command: yarn run --binaries-only cypress run --browser chrome
+            browser: chrome
+        - name: Upload screenshots
+          uses: actions/upload-artifact@v4
+          if: failure()
+          with:
+            name: cypress-snapshots
+            path: .
+        - name: Upload video
+          uses: actions/upload-artifact@v4
+          if: failure()
+          with:
+            name: cypress-videos
+            path: .
