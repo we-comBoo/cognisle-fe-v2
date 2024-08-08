@@ -7,8 +7,11 @@ declare module 'next-auth/jwt' {
     email: User['email']
     access: User['access']
     refresh: User['refresh']
-    nickname: User['nickname']
-    pk: User['pk']
+
+    user_id: User['user_id']
+    name: User['name']
+    dsName: User['dsName']
+    dsId: User['dsId']
     exp: number
     iat: number
     jti: string
@@ -24,8 +27,11 @@ declare module 'next-auth' {
     email: User['email']
     access: User['access']
     refresh: User['refresh']
-    nickname: User['nickname']
-    pk: User['pk']
+
+    user_id: User['user_id']
+    name: User['name']
+    dsName: User['dsName']
+    dsId: User['dsId']
   }
   interface Session {
     user: {
@@ -33,9 +39,10 @@ declare module 'next-auth' {
       email: User['email']
       access: User['access']
       refresh: User['refresh']
-      nickname: User['nickname']
-      name?: User['nickname']
-      pk: User['pk']
+      user_id: User['user_id']
+      name: User['name']
+      dsName: User['dsName']
+      dsId: User['dsId']
       exp: number
       iat: number
       jti: string

@@ -5,13 +5,13 @@ import { devtools } from 'zustand/middleware'
 const initialState: AuthInfoProps = {
   loginInfo: {
     email: '',
-    // dsId: '',
-    // dsName: '',
+    dsId: '',
+    dsName: '',
     name: '',
     access: '',
     refresh: '',
     expires: '',
-    pk: '',
+    user_id: '',
   },
 }
 
@@ -23,9 +23,9 @@ export const AuthStore = create<AuthStoreProps>()(
         set(() => ({
           loginInfo: {
             email: '',
-            // dsId: '',
-            // dsName: '',
-            pk: '',
+            dsId: '',
+            dsName: '',
+            user_id: '',
             name: '',
             access: '',
             refresh: '',

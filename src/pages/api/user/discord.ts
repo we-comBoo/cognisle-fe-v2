@@ -40,9 +40,10 @@ export default async function handler(
           },
         )
         // console.log({ dsId: userInfo.data.id, dsName: userInfo.data.username })
-        res
-          .status(200)
-          .json({ dsId: userInfo.data.id, dsName: userInfo.data.username })
+        res.status(200).json({
+          dsId: userInfo.data.id,
+          dsName: userInfo.data.username,
+        })
       }
     } catch (error) {
       const msg = `Error in get Token and user Data from discord API`

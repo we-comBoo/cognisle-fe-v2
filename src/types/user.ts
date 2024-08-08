@@ -3,9 +3,9 @@ export interface User {
   refresh: string
   access: string
   name: string
-  pk: string
-  // dsId: string
-  // dsName: string
+  user_id: string
+  dsId: string
+  dsName: string
 }
 
 export interface LoginInfoProps extends User {
