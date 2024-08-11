@@ -20,7 +20,7 @@ const Edit = () => {
 export default Edit
 
 const EditWrapper = styled.div`
-  z-index: 9998;
+  /*z-index: 9998;*/
   position: absolute;
   bottom: -7.5rem;
   width: inherit;
