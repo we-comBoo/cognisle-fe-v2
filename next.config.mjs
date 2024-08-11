@@ -6,7 +6,7 @@ const nextConfig = {
   reactStrictMode: false,
   /*skipMiddlewareUrlNormalize: true,*/
   images: {
-    domains: ['cdn-icons-png.flaticon.com', 's3.amazonaws.com'],
+    domains: ['cdn-icons-png.flaticon.com', 's3.ap-northeast-2.amazonaws.com'],
   },
 }
 

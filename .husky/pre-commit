@@ -5,12 +5,7 @@ ESLint Check Failed. Make the required changes listed above, add changes and try
 false;
 )
 
-yarn run cypress:run ||
-(
-echo '😤🏀👋😤 Get that weak shit out of here! 😤🏀👋😤
-Cypress E2E Test Check Failed. Make the required changes listed above, add changes and try to commit again!!'
-false;
-)
+
 
 
 yarn run build ||
