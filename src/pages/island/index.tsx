@@ -7,6 +7,7 @@ import { Background } from '@/components/common'
 import { useLandActions, useLandStore } from '@/store/island/land'
 import { useEffect } from 'react'
 import IslandContent from '@/components/common/Island/Content'
+import IslandControl from '@/components/common/Island/Control'
 
 const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
@@ -15,6 +16,7 @@ const Island = () => {
   // the "Posts"-page, data will be available immediately either way
   const { data: session } = useSession()
   const ownerId = session?.user.user_id
+  const ownerName = session?.user.name
   const { queryKey, queryFn, enabled } = queryOptions.island(ownerId)
   const { data: island } = useQuery({ queryKey, queryFn, enabled })
 
@@ -31,6 +33,7 @@ const Island = () => {
   return (
     <>
       <Background type={`island/${land.type}`}>
+        <IslandControl name={ownerName} />
         <IslandContent />
       </Background>
       <IslandEdit />

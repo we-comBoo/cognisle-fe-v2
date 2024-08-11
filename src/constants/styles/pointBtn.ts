@@ -28,6 +28,22 @@ const EDIT_TAB_POINT_BTN: PointBtnInfoProps = {
   round: false,
 }
 
+const Name_POINT_BTN: PointBtnInfoProps = {
+  size: {
+    width: 20,
+    height: 5,
+  },
+  point: {
+    width: 20,
+    height: 50,
+  },
+  color: {
+    main: '--color-yellow-100',
+    point: '--color-green-400',
+  },
+  round: true,
+}
+
 const USER_POINT_BTN: PointBtnInfoProps = {
   size: {
     width: 20,
@@ -61,6 +77,7 @@ const GAME_START_POINT_BTN: PointBtnInfoProps = {
 }
 export {
   EDIT_TAB_POINT_BTN,
+  Name_POINT_BTN,
   MENU_POINT_BTN,
   USER_POINT_BTN,
   GAME_START_POINT_BTN,
