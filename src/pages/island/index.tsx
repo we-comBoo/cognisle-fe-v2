@@ -2,49 +2,35 @@ import Status from '@/components/pages/Island/status'
 import { NextPageContext } from 'next'
 import axios from 'axios'
 import { getSession } from 'next-auth/react'
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
+import { queryOptions } from '@/lib/ReactQuery/queryOptions'
 
-const Island = () => {
-  return <>disland</>
+const Island = (props: any) => {
+  // This useQuery could just as well happen in some deeper child to
+  // the "Posts"-page, data will be available immediately either way
+  const { queryKey, queryFn } = queryOptions.island(1)
+  const { data } = useQuery({ queryKey, queryFn })
+
+  console.log(data)
+  return <>island</>
 }
 
-export default Island
-/*
 export const getServerSideProps = async (ctx: NextPageContext) => {
-  const session = await getSession(ctx)
-  // console.log(session?.user.pk, session?.user.access)
+  console.log(ctx.query)
 
- const { data: response } = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/lands/${session?.user.pk}/`,
-    {
-      headers: { Authorization: `Bearer ${session?.user.access}` },
-    },
-  )
-  console.log(
-    session?.user.pk,
-    session?.user.access,
-    response.data,
-    response.status
-  )
-  const data = {
-    'user or land': 'test@gmail.com',
-    'land&item': [
-      {
-        lands: {
-          state: '1',
-          land_img:
-            'https://s3.amazonaws.com/cognisle.shop/media/lands/background/land1',
-          bg_img:
-            'https://s3.amazonaws.com/cognisle.shop/media/lands/background/bg1',
-        },
-        items: [],
-      },
-    ],
-  }
+  const session = await getSession({ req: ctx.req })
+  const ownerId = session?.user.user_id
+
+  const queryClient = new QueryClient()
+  const { queryKey, queryFn } = queryOptions.island(ownerId)
+
+  await queryClient.prefetchQuery({ queryKey, queryFn })
 
   return {
     props: {
-      data: response.data,
+      dehydratedState: dehydrate(queryClient),
     },
   }
 }
-*/
+
+export default Island
