@@ -1,8 +1,9 @@
 import axios from 'axios'
-import { createDefatultAxios } from '@/lib/axios'
-import NextAuth, { User } from 'next-auth'
+
+import NextAuth, { Awaitable, User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import { createDefatultAxios } from '@/lib/axios'
 
 export default NextAuth({
   providers: [
@@ -15,12 +16,8 @@ export default NextAuth({
       async authorize(credentials) {
         try {
           const defaultAxios = createDefatultAxios()
-          const res = await defaultAxios.post('/users/login/', credentials)
-
-          if (res.status === 200 && res.data) {
-            const user = res.data
-            return user.data
-          }
+          const { data } = await defaultAxios.post('/users/login/', credentials)
+          return data.data as Awaitable<any>
         } catch (error) {
           if (axios.isAxiosError(error)) {
             /*console.log(
@@ -49,17 +46,21 @@ export default NextAuth({
   callbacks: {
     async jwt({ user, token }: { user: User; token: JWT }) {
       if (user) {
-        //console.log('###', user)
+        console.log('###', user)
         token.access = user?.access
         token.refresh = user.refresh
-        token.pk = user.pk
+        token.email = user.email
+        token.name = user.name
+        token.dsName = user.dsName
+        token.dsId = user.dsId
+        token.user_id = user.user_id
       }
       //console.log('JWT', token)
       return token
     },
     async session({ session, token, user }) {
       session.user = token
-      //console.log('Session', session)
+      console.log('Session', session, token)
       return session
     },
   },

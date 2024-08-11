@@ -19,4 +19,5 @@ export default async function handler(
 
   // console.log('get access token by refresh token API ', data)
   */
+  res.status(200).json({ access: 'refresh tjdrhd' })
 }
