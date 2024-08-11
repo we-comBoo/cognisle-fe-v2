@@ -13,7 +13,7 @@ export default async function handler(
     const { data } = await authAxios.get(`/lands/${user_id}/`)
     console.log(data)
 
-    res.status(200).json({ data: data.data })
+    res.status(200).json({ ...data.data })
   } catch (error) {
     console.log(error)
     res.status(404).json({ data: error })
