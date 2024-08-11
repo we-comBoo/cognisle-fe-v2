@@ -21,6 +21,7 @@ import {
   ModalStateTypeOverlayInfoProps,
   ModalStateKeyProps,
   ModalStateInfoProps,
+  StateModalContentProps,
 } from './modal/stateModal'
 import { PointBtnInfoProps } from './button/point'
 import { signupProps, signupValidationProps } from './form/signup'
@@ -61,6 +62,7 @@ export type {
   PointBtnInfoProps,
   signupProps,
   signupValidationProps,
+  StateModalContentProps,
   loginProps,
   loginValidationProps,
   visitProps,
