@@ -112,8 +112,7 @@ describe('Login Modal Test', () => {
       .should('have.value', 'testDEV123!')
     cy.intercept('POST', '/api/auth/callback/credentials').as('login')
     // 폼을 제출합니다.
-    // 폼을 제출합니다.
-    cy.get('button').click()
+    cy.get('form').submit()
 
     cy.wait('@login')
     //wait the response of your GET, then check
@@ -137,7 +136,7 @@ describe('Login Modal Test', () => {
     cy.intercept('POST', '/api/auth/callback/credentials').as('login')
     // 폼을 제출합니다.
     // 폼을 제출합니다.
-    cy.get('button').click()
+    cy.get('form').submit()
 
     // 모달이 나타날 때까지 기다립니다.
     cy.wait('@login')
@@ -156,8 +155,8 @@ describe('Login Modal Test', () => {
     cy.get('input[name="email"]').type('test@gmail.com')
     cy.get('input[name="password"]').type('testDEV1234!')
 
-    // 로그인 버튼을 클릭합니다.
-    cy.get('button').click()
+    // 폼을 제출합니다.
+    cy.get('form').submit()
 
     // 로그인 후 페이지가 대시보드로 이동했는지 확인합니다.
     cy.url().should('include', '/home')
