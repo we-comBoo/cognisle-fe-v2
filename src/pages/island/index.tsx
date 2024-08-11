@@ -1,23 +1,44 @@
-import Status from '@/components/pages/Island/status'
 import { NextPageContext } from 'next'
-import axios from 'axios'
-import { getSession } from 'next-auth/react'
+import dynamic from 'next/dynamic'
+import { getSession, useSession } from 'next-auth/react'
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { queryOptions } from '@/lib/ReactQuery/queryOptions'
+import { Background } from '@/components/common'
+import { useLandActions, useLandStore } from '@/store/island/land'
+import { useEffect } from 'react'
+import IslandContent from '@/components/common/Island/Content'
 
-const Island = (props: any) => {
+const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
+
+const Island = () => {
   // This useQuery could just as well happen in some deeper child to
   // the "Posts"-page, data will be available immediately either way
-  const { queryKey, queryFn } = queryOptions.island(1)
-  const { data } = useQuery({ queryKey, queryFn })
+  const { data: session } = useSession()
+  const ownerId = session?.user.user_id
+  const { queryKey, queryFn, enabled } = queryOptions.island(ownerId)
+  const { data: island } = useQuery({ queryKey, queryFn, enabled })
 
-  console.log(data)
-  return <>island</>
+  const { setLand } = useLandActions()
+  const land = useLandStore()
+
+  useEffect(() => {
+    if (island) {
+      console.log(island.land)
+      setLand({ type: island.land.state, src: island.land.land_img })
+    }
+  }, [island])
+
+  return (
+    <>
+      <Background type={`island/${land.type}`}>
+        <IslandContent />
+      </Background>
+      <IslandEdit />
+    </>
+  )
 }
 
 export const getServerSideProps = async (ctx: NextPageContext) => {
-  console.log(ctx.query)
-
   const session = await getSession({ req: ctx.req })
   const ownerId = session?.user.user_id
 
