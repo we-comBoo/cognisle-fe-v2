@@ -4,17 +4,18 @@ import { useEffect } from 'react'
 
 import { Logo, Triangle } from '@/components/common'
 import { useTimer } from '@/hooks'
+import { useRouter } from 'next/router'
 
 export default function Home() {
   // 2초 뒤에 홈 메뉴 화면으로 이동
+  const router = useRouter()
 
-  useTimer(2000, () => (location.href = 'home'))
+  useTimer(2000, () => router.push('/home'))
 
   return (
     <>
       <Container>
         <Triangle type="original" />
-
         <Logo type="primary" />
         <Triangle type="reversed" />
       </Container>
