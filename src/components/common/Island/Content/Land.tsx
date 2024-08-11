@@ -1,20 +1,11 @@
-import styled from '@emotion/styled'
 import Image from 'next/image'
 import { useLandStore } from '@/store/island/land'
 
 const Land = () => {
-  const land = useLandStore()
+  const { src, type } = useLandStore()
   return (
-    <Wrppaer>
-      <Image src={land.src} alt={`${land.type}`} fill priority sizes="100%" />
-    </Wrppaer>
+    <>{src && <Image src={src} alt={`${type}`} fill priority sizes="100%" />}</>
   )
 }
 
 export default Land
-
-const Wrppaer = styled.div`
-  width: 43rem;
-  height: 78rem;
-  position: relative;
-`

@@ -55,6 +55,7 @@ export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
       degree: '180deg',
     },
   },
+
   'island/1': {
     img: {
       src: '',
