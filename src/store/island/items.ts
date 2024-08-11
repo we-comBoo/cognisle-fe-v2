@@ -1,5 +1,5 @@
 import { dataTemp } from '@/constants/islandItems'
-import { ItemProps, ItemsStoreProps } from '@/types/island/item'
+import { ItemProps, ItemsStoreProps } from '@/types/island'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
