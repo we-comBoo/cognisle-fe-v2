@@ -7,7 +7,7 @@ import ReactQueryProviders from '@/lib/ReactQuery/providers'
 import globalStyles from '@/styles/globalStyles'
 import 'public/fonts/style.css'
 
-import { Layout } from '@/components/common'
+import { Layout } from '@/components/common/Layout'
 
 export default function App({
   Component,

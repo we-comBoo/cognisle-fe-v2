@@ -1,13 +1,13 @@
 import { NextPageContext } from 'next'
 import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
 import { getSession, useSession } from 'next-auth/react'
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { queryOptions } from '@/lib/ReactQuery/queryOptions'
-import { Background } from '@/components/common'
 import { useLandActions, useLandStore } from '@/store/island/land'
-import { useEffect } from 'react'
-import IslandContent from '@/components/common/Island/Content'
-import IslandControl from '@/components/common/Island/Control'
+import { Background } from '@/components/common/Layout'
+import { IslandContent, IslandControl } from '@/components/common/Island'
+import { useIsEdit } from '@/store/island/isEdit'
 
 const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
@@ -22,6 +22,7 @@ const Island = () => {
 
   const { setLand } = useLandActions()
   const land = useLandStore()
+  const isEdit = useIsEdit()
 
   useEffect(() => {
     if (island) {
@@ -36,7 +37,7 @@ const Island = () => {
         <IslandControl name={ownerName} />
         <IslandContent />
       </Background>
-      <IslandEdit />
+      {isEdit && <IslandEdit />}
     </>
   )
 }

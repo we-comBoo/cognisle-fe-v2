@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styled from '@emotion/styled'
-import { Header, SEO, BottomMenu } from '@/components/common'
+import { SEO } from '@/components/common/Layout'
+import Header from '@/components/common/Header'
+import BottomMenu from '@/components/common/BottomMenu'
 import { useRouter } from 'next/router'
 import { withOutTabbar } from '@/constants/routeUrl'
 

@@ -1,6 +1,6 @@
 import { TabMenuProps } from '@/types/island/edit'
 import { Dispatch, SetStateAction } from 'react'
-import { PointBtn } from '@/components/common'
+import { PointBtn } from '@/components/common/Button'
 import { EDIT_TAB_POINT_BTN } from '@/constants'
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'

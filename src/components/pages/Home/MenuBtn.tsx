@@ -1,4 +1,4 @@
-import { PointBtn } from '@/components/common'
+import { PointBtn } from '@/components/common/Button'
 import { MENU_POINT_BTN } from '@/constants'
 import Link from 'next/link'
 import Image from 'next/image'

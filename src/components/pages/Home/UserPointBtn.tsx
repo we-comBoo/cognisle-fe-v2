@@ -1,4 +1,4 @@
-import { PointBtn } from '@/components/common'
+import { PointBtn } from '@/components/common/Button'
 import { USER_POINT_BTN } from '@/constants/styles/pointBtn'
 import { FONTS } from '@styles/font'
 import styled from '@emotion/styled'

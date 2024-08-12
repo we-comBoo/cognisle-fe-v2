@@ -1,4 +1,4 @@
-import { Background, StateModal } from '@/components/common'
+import { StateModal } from '@/components/common/Modal'
 import { VISIT_VALIDATION, VISIT_INITIAL_VALUE } from '@/constants'
 import { useModalStore, useModalActions } from '@/store/modal'
 import useVisitForm from './useVisitForm'

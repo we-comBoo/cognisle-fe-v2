@@ -1,4 +1,4 @@
-import { Background } from '@/components/common'
+import { Background } from '@/components/common/Layout'
 import { Bounce, IMAGE_ADDRESS } from '@/constants'
 import styled from '@emotion/styled'
 import Image from 'next/image'

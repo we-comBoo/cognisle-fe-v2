@@ -1,4 +1,4 @@
-import { Background } from '@/components/common'
+import { Background } from '@/components/common/Layout'
 import VisitForm from './form'
 import Header from './header'
 import Image from 'next/image'

@@ -1,8 +1,7 @@
 import styled from '@emotion/styled'
 
-import { useEffect } from 'react'
-
-import { Logo, Triangle } from '@/components/common'
+import Logo from '@/components/common/Logo'
+import Triangle from '@/components/common/Triangle'
 import { useTimer } from '@/hooks'
 import { useRouter } from 'next/router'
 

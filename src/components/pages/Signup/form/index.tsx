@@ -1,4 +1,5 @@
-import { FormBtn, StateModal } from '@/components/common'
+import { FormBtn } from '@/components/common/Button'
+import { StateModal } from '@/components/common/Modal'
 import { useModalActions, useModalStore } from '@/store/modal'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
