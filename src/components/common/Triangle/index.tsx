@@ -1,5 +1,5 @@
 import { TRIANGLE_TYPE_INFO } from '@/constants'
-import { TriangleProps } from '@/types'
+import { TriangleProps } from '@/types/styles'
 import Image from 'next/image'
 
 const Triangle = ({ type }: TriangleProps) => {

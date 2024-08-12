@@ -11,9 +11,9 @@ import Image from 'next/image'
 import {
   GameStatus,
   GameStatusKey,
-  playStateProps,
+  PlayStateProps,
   StateModalProps,
-} from '@/types'
+} from '@/types/game'
 import { IMAGE_ADDRESS } from '@/constants'
 import { getDuration } from '@/lib'
 import { useKeyEscape, useTimer, useOutsideClick } from '@/hooks'
@@ -37,13 +37,13 @@ const Clear = () => {
   )
 }
 
-const Result = ({ content }: { content: playStateProps }) => {
+const Result = ({ content }: { content: PlayStateProps }) => {
   const duration = getDuration(content.time)
   // console.log('게임 경과 시간: ', duration, '획득한 아이템', content.obtained)
   return <div> 게임 결과 보이기 모달 {duration?.second} </div>
 }
 
-const Matched = ({ content }: { content: playStateProps }) => {
+const Matched = ({ content }: { content: PlayStateProps }) => {
   return <div>현재 획득한 아이템 정보 {content.currentMatched?.symbol}</div>
 }
 

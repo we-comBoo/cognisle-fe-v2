@@ -3,11 +3,11 @@ import {
   GameCardsProps,
   GameCardStatus,
   GameCardStatusKey,
-  playStateProps,
-  playStateActionProps,
-  playStateAction,
+  PlayStateProps,
+  PlayStateActionProps,
+  PlayStateAction,
   GameStatus,
-} from '@/types'
+} from '@/types/game'
 import { useEffect, useReducer, useRef, useState } from 'react'
 
 /**
@@ -24,7 +24,7 @@ import { useEffect, useReducer, useRef, useState } from 'react'
  */
 
 // 초기 플레이 상태 정의
-const playInitialState: playStateProps = {
+const playInitialState: PlayStateProps = {
   currentMatched: null, //가장최근에매칭된카드번호
   obtained: [], // 획득한카드번호s
   clicked: 0, // 클릭횟수
@@ -37,16 +37,16 @@ const playInitialState: playStateProps = {
 
 // 플레이 리듀서 함수 정의
 const playReducer = (
-  state: playStateProps,
-  action: playStateActionProps,
-): playStateProps => {
+  state: PlayStateProps,
+  action: PlayStateActionProps,
+): PlayStateProps => {
   switch (action.type) {
-    case playStateAction.INCREASE_CLICKED:
+    case PlayStateAction.INCREASE_CLICKED:
       return {
         ...state,
         clicked: state.clicked + 1,
       }
-    case playStateAction.OBTAIN_CARD:
+    case PlayStateAction.OBTAIN_CARD:
       const obtainedCard = action.payload.card
       const status = action.payload.status
       //console.log(obtainedCard)
@@ -56,7 +56,7 @@ const playReducer = (
         currentMatched: action.payload.card,
         obtained: [...state.obtained, obtainedCard],
       }
-    case playStateAction.CHANGE_USER_STATUS:
+    case PlayStateAction.CHANGE_USER_STATUS:
       const userStatus = action.payload.status
 
       return userStatus === GameStatus.RESULT
@@ -95,7 +95,7 @@ const usePlayCards = () => {
     if (userStatus === GameStatus.MATCHED) {
       setTimeout(() => {
         dispatch({
-          type: playStateAction.CHANGE_USER_STATUS,
+          type: PlayStateAction.CHANGE_USER_STATUS,
           payload: { status: GameStatus.CHOOSING },
         })
       }, 3000)
@@ -104,13 +104,13 @@ const usePlayCards = () => {
       obtained.length === MAX_OBTAIN_COUNT
     ) {
       dispatch({
-        type: playStateAction.CHANGE_USER_STATUS,
+        type: PlayStateAction.CHANGE_USER_STATUS,
         payload: { status: GameStatus.CLEAR },
       })
     } else if (userStatus === GameStatus.CLEAR) {
       setTimeout(() => {
         dispatch({
-          type: playStateAction.CHANGE_USER_STATUS,
+          type: PlayStateAction.CHANGE_USER_STATUS,
           payload: { status: GameStatus.RESULT },
         })
       }, 5000)
@@ -134,7 +134,7 @@ const usePlayCards = () => {
     const prev = cards[prevIndex.current]
     // console.log(curr, prev)
     // 선택한 카드가 이미 매칭된 상황
-    dispatch({ type: playStateAction.INCREASE_CLICKED })
+    dispatch({ type: PlayStateAction.INCREASE_CLICKED })
     if (curr.status === GameCardStatus.MATCHED) return
     // 카드 뒤집는 상태로 업데이트
     updateStatus([curr], GameCardStatus.FACE_UP)
@@ -152,7 +152,7 @@ const usePlayCards = () => {
       //console.log('짝 맞음')
       updateStatus([curr, prev], GameCardStatus.MATCHED)
       dispatch({
-        type: playStateAction.OBTAIN_CARD,
+        type: PlayStateAction.OBTAIN_CARD,
         payload: { card: curr, status: GameStatus.MATCHED },
       })
     }

@@ -1,6 +1,6 @@
-import { fontProps } from '@/types'
+import { FontProps } from '@/types/styles'
 
-function FONT({ weight, size, lineHeight, letterSpacing }: fontProps): string {
+function FONT({ weight, size, lineHeight, letterSpacing }: FontProps): string {
   return `
     font-family:inherit;
     font-weight: ${weight};

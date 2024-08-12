@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { MouseEventHandler } from 'react'
 import Image from 'next/image'
-import { GameCardStatus, GameCardStatusKey } from '@/types'
+import { GameCardStatus, GameCardStatusKey } from '@/types/game'
 import { IMAGE_ADDRESS } from '@/constants'
 interface CardProps {
   onClick?: MouseEventHandler<HTMLButtonElement>

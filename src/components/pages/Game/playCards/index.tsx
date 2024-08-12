@@ -5,7 +5,7 @@ import { useModalStore, useModalActions } from '@/store/modal'
 import { useEffect } from 'react'
 import styled from '@emotion/styled'
 import Status from './status'
-import { GameStatus } from '@/types'
+import { GameStatus } from '@/types/game'
 
 const PlayCards = () => {
   const {

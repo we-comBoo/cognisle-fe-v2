@@ -1,4 +1,4 @@
-import { PointBtnInfoProps } from '@/types'
+import { PointBtnInfoProps } from '@/types/button'
 const MENU_POINT_BTN: PointBtnInfoProps = {
   size: {
     width: 10.8,

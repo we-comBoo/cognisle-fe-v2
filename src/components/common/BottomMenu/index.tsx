@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { BOTTOM_MENU_INFO } from '@/constants'
-import { BottomMenuInfoProps } from '@/types'
+import { BottomMenuInfoProps } from '@/types/styles'
 import Divider from '../Divider'
 
 const BottomMenu = () => {

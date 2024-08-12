@@ -1,4 +1,4 @@
-import { backgroundTypeInfoProps } from '@/types'
+import { BackgroundTypeInfoProps } from '@/types/styles'
 
 const BACKGROUND_COLOR = {
   1: { startColor: '--color-blue-100', endColor: '--color-green-300' },
@@ -6,7 +6,7 @@ const BACKGROUND_COLOR = {
   3: { startColor: '--color-blue-300', endColor: '--color-blue-400' },
 }
 
-export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
+export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
   login: {
     img: { src: '/assets/background/triangle.svg', width: 43, height: 84.9 },
     color: {

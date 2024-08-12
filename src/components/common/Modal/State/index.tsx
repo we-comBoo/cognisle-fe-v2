@@ -8,7 +8,7 @@ import {
   STATE_MODAL_TYPE_INFO,
   STATE_MODAL_TYPE_OVERLAY,
 } from '@/constants/modal/state'
-import { ModalStateKeyProps } from '@/types'
+import { ModalStateKeyProps } from '@/types/modal'
 
 interface StateModalProp {
   isOpen: boolean

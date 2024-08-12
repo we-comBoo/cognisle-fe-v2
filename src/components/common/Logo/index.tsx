@@ -1,7 +1,7 @@
 import { LOGO_TYPE_INFO } from '@/constants'
 import Image from 'next/image'
 import St from './style'
-import { LogoProps } from '@/types'
+import { LogoProps } from '@/types/styles'
 
 const Logo = ({ type, padding }: LogoProps) => {
   const { src, width, height, alt } = LOGO_TYPE_INFO[type]

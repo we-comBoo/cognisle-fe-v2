@@ -1,4 +1,4 @@
-export interface fontProps {
+export interface FontProps {
   weight: number
   size: number
   lineHeight: string

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { StateModalContentProps } from '@/types'
+import { StateModalContentProps } from '@/types/modal'
 import { useModalActions } from '@/store/modal'
 const useIslandContol = () => {
   const [showSaveBtn, setShowSave] = useState(false)

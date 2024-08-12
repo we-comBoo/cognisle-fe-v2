@@ -1,4 +1,4 @@
-import { GameCardStatus, GameResultProps } from '@/types'
+import { GameCardStatus, GameResultProps } from '@/types/game'
 
 export const symbols = [
   '🍏',

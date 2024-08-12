@@ -2,11 +2,11 @@ export interface TriangleProps {
   type: 'original' | 'reversed' | 'header' | 'authTitle'
 }
 
-export interface triangleTypeInfoProps {
-  [key: string]: triangleInfoProps
+export interface TriangleTypeInfoProps {
+  [key: string]: TriangleInfoProps
 }
 
-export interface triangleInfoProps {
+export interface TriangleInfoProps {
   src: string
   width: number
   height: number

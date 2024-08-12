@@ -1,4 +1,4 @@
-import { loginProps, loginValidationProps } from '@/types'
+import { loginProps, loginValidationProps } from '@/types/form'
 import LOCAL_STORAGE_KEY from '../localStorageKey'
 
 export const LOGIN_VALIDATION: loginValidationProps = ({ email, password }) => {

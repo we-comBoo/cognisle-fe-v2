@@ -1,5 +1,5 @@
 import { FONTS } from '@/styles/font'
-import { ModalStateInfoProps } from '@/types'
+import { ModalStateInfoProps } from '@/types/modal'
 import styled from '@emotion/styled'
 
 const St = {

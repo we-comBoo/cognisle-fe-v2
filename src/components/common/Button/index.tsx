@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
-import { PointBtnInfoProps } from '@/types'
+import { PointBtnInfoProps } from '@/types/button'
 import { ReactNode } from 'react'
 
 const DefaultBtn = styled.button`

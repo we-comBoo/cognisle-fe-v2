@@ -1,10 +1,8 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useModalActions, useModalStore } from '@/store/modal'
-import {
-  StateModalContentProps,
-  signupProps,
-  signupValidationProps,
-} from '@/types'
+import { signupProps, signupValidationProps } from '@/types/form'
+
+import { StateModalContentProps } from '@/types/modal'
 
 import axios from 'axios'
 

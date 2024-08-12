@@ -1,5 +1,5 @@
 import { FONTS } from '@/styles/font'
-import { GameCardsProps } from '@/types'
+import { GameCardsProps } from '@/types/game'
 import styled from '@emotion/styled'
 import Image from 'next/image'
 
