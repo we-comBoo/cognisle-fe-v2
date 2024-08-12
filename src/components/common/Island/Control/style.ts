@@ -8,6 +8,7 @@ const Root = styled.div`
   justify-content: space-between;
   position: relative;
   top: 2.4rem;
+  width: 90%;
 `
 
 const Btn = {
@@ -23,6 +24,10 @@ const Btn = {
     border-radius: 50%;
     width: 4.8rem;
     height: 4.8rem;
+    cursor: pointer;
+  `,
+  Mode: styled.button`
+    cursor: pointer;
   `,
 }
 

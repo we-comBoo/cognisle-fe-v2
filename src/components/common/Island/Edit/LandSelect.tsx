@@ -1,4 +1,4 @@
-import { LAND_CHOICE, LAND_INFO } from '@/constants/island/land'
+import { LAND_CHOICE, LAND_INFO } from '@/constants/island'
 import Image from 'next/image'
 import St from './style'
 import { useLandActions } from '@/store/island/land'

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Tab from './Tab'
 import LandSelect from './LandSelect'
 import ItemSelect from './ItemSelect'
-import { TAB_MENU } from '@/constants/island/edit'
+import { TAB_MENU } from '@/constants/island'
 import St from './style'
 
 const Edit = () => {

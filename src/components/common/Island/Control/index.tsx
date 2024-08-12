@@ -30,14 +30,14 @@ const IslandControl = ({ name }: { name: string }) => {
       </PointBtn>
       <St.Btn.Wrapper>
         {isEdit && <St.Btn.Save onClick={handleSaveBtn}>저장</St.Btn.Save>}
-        <button onClick={handleModeBtn}>
+        <St.Btn.Mode onClick={handleModeBtn}>
           <Image
             src={`/assets/${isEdit ? 'green' : 'yellow'}/edit.svg`}
             alt="dfsd"
             height={48}
             width={48}
           />
-        </button>
+        </St.Btn.Mode>
       </St.Btn.Wrapper>
     </St.Root>
   )

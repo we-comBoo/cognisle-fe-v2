@@ -1,4 +1,4 @@
-import { dataTemp } from '@/constants/islandItems'
+import { items } from '@/constants/island'
 import { ItemProps, ItemsStoreProps } from '@/types/island'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
@@ -17,7 +17,7 @@ function updateLst(list: ItemProps[], item: ItemProps) {
 
 export const ItemsStore = create<ItemsStoreProps>()(
   devtools((set) => ({
-    items: dataTemp,
+    items: items,
     actions: {
       addItem: (item) => set((prev) => ({ items: [...prev.items, item] })),
 
