@@ -3,7 +3,8 @@ import { signIn } from 'next-auth/react'
 import { loginProps, loginValidationProps } from '@/types/form'
 import { useModalActions, useModalStore } from '@/store/modal'
 import { useRouter } from 'next/router'
-import { LOCAL_STORAGE_KEY, LS_EMAIL } from '@/constants'
+import { LS_EMAIL } from '@/constants/form'
+import { LOCAL_STORAGE_KEY } from '@/constants/localStorage'
 
 interface useLoginFormProps {
   initialValues: loginProps

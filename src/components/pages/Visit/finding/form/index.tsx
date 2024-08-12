@@ -1,11 +1,11 @@
 import { StateModal } from '@/components/common/Modal'
-import { VISIT_VALIDATION, VISIT_INITIAL_VALUE } from '@/constants'
+import { VISIT_VALIDATION, VISIT_INITIAL_VALUE } from '@/constants/form'
 import { useModalStore, useModalActions } from '@/store/modal'
 import useVisitForm from './useVisitForm'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
-import { IMAGE_ADDRESS } from '@/constants'
+import { IMAGE_ADDRESS } from '@/constants/styles'
 
 const VisitForm = () => {
   const { value, errorMsg, handleInputChange, submitVisitForm } = useVisitForm({

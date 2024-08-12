@@ -1,20 +1,13 @@
 import Land from './Land'
 import Items from './Items'
-import styled from '@emotion/styled'
-
+import St from './style'
 const IslandContent = () => {
   return (
-    <StyledRoot>
+    <St.Root>
       <Land />
       <Items />
-    </StyledRoot>
+    </St.Root>
   )
 }
 
 export default IslandContent
-
-const StyledRoot = styled.div`
-  position: relative;
-  height: 78rem;
-  width: 43rem;
-`

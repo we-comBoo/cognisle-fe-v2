@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { MouseEventHandler } from 'react'
 import Image from 'next/image'
 import { GameCardStatus, GameCardStatusKey } from '@/types/game'
-import { IMAGE_ADDRESS } from '@/constants'
+import { IMAGE_ADDRESS } from '@/constants/styles'
 interface CardProps {
   onClick?: MouseEventHandler<HTMLButtonElement>
   status: GameCardStatusKey

@@ -1,6 +1,6 @@
 import { LAND_CHOICE, LAND_INFO } from '@/constants/island/land'
 import Image from 'next/image'
-import styled from '@emotion/styled'
+import St from './style'
 import { useLandActions } from '@/store/island/land'
 
 const LandSelect = () => {
@@ -10,22 +10,14 @@ const LandSelect = () => {
     setLand(selectedLand)
   }
   return (
-    <Wrapper>
+    <St.Land.Root>
       {LAND_CHOICE.map(({ id, title, img }, idx) => (
         <div key={idx} onClick={() => handleClick(id)}>
           <Image src={img.thumbnail} alt={title} width={112} height={112} />
         </div>
       ))}
-    </Wrapper>
+    </St.Land.Root>
   )
 }
 
 export default LandSelect
-
-const Wrapper = styled.div`
-  padding: 2.7rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`

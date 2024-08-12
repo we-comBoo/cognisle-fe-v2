@@ -1,12 +1,7 @@
-import styled from '@emotion/styled'
+import St from './style'
 
 const Divider = () => {
-  return <DividerWrapper></DividerWrapper>
+  return <St.Root></St.Root>
 }
 
 export default Divider
-const DividerWrapper = styled.div`
-  height: 3.5rem;
-  width: 0.1rem;
-  background-color: var(--color-green-200);
-`

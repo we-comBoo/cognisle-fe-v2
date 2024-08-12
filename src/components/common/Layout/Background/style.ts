@@ -1,26 +1,7 @@
-import { BACKGROUND_TYPE_INFO } from '@/constants'
 import { BackgroundInfoProps } from '@/types/styles'
 import styled from '@emotion/styled'
-import { ReactNode } from 'react'
 
-interface backgroundProps {
-  type: string
-  children: ReactNode
-}
-
-const Background = ({ type, children }: backgroundProps) => {
-  const { img, color } = BACKGROUND_TYPE_INFO[type]
-  return (
-    <Wrapper img={img} backgroundColor={color}>
-      {children}
-    </Wrapper>
-  )
-}
-
-export default Background
-
-/*width: ${({ width }) => ( `${width}rem` : 'auto')};*/
-export const Wrapper = styled.div<{
+export const Root = styled.div<{
   backgroundColor: BackgroundInfoProps['color']
   img: BackgroundInfoProps['img']
 }>`
@@ -41,3 +22,9 @@ export const Wrapper = styled.div<{
   align-items: center;
   flex-direction: column;
 `
+
+const St = {
+  Root,
+}
+
+export default St

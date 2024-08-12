@@ -1,9 +1,9 @@
 import { TabMenuProps } from '@/types/island/edit'
 import { Dispatch, SetStateAction } from 'react'
-import { PointBtn } from '@/components/common/Button'
-import { EDIT_TAB_POINT_BTN } from '@/constants'
-import styled from '@emotion/styled'
-import { FONTS } from '@/styles/font'
+import PointBtn from '@/components/common/Button'
+import { EDIT_TAB_POINT_BTN } from '@/constants/styles'
+import St from './style'
+
 interface TabProps {
   menu: TabMenuProps[]
   tabId: TabMenuProps['id']
@@ -15,24 +15,14 @@ const Tab = ({ menu, tabId, setId }: TabProps) => {
     setId(id)
   }
   return (
-    <Wrapper>
+    <St.Tab.Root>
       {menu.map(({ id, title, value }, idx) => (
         <PointBtn item={EDIT_TAB_POINT_BTN} key={id}>
-          <Text onClick={() => handleTabClick(id)}>{title}</Text>
+          <St.Tab.Text onClick={() => handleTabClick(id)}>{title}</St.Tab.Text>
         </PointBtn>
       ))}
-    </Wrapper>
+    </St.Tab.Root>
   )
 }
 
 export default Tab
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const Text = styled.span`
-  ${FONTS.body5}
-  color:var(--color-green-400)
-`

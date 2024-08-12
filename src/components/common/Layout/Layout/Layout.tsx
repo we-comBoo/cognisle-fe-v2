@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import styled from '@emotion/styled'
+
 import { SEO } from '@/components/common/Layout'
 import Header from '@/components/common/Header'
 import BottomMenu from '@/components/common/BottomMenu'
 import { useRouter } from 'next/router'
-import { withOutTabbar } from '@/constants/routeUrl'
-
+import { WITHOUT_Tabbar } from '@/constants/route'
+import St from './style'
 interface LayoutProps {
   children: React.ReactNode
 }
@@ -20,22 +20,14 @@ function Layout({ children }: LayoutProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Container>
+      <St.Root>
         {' '}
-        {!withOutTabbar.includes(pathname) && <Header />}
+        {!WITHOUT_Tabbar.includes(pathname) && <Header />}
         {children}
-        {!withOutTabbar.includes(pathname) && <BottomMenu />}
-      </Container>
+        {!WITHOUT_Tabbar.includes(pathname) && <BottomMenu />}
+      </St.Root>
     </>
   )
 }
 
 export default Layout
-
-const Container = styled.div`
-  width: 43rem;
-  scrollbar-width: none;
-  min-height: 100dvh;
-  margin: auto;
-  background-color: var(--color-yellow-100);
-`

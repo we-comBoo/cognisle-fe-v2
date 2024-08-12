@@ -1,4 +1,4 @@
-import { IMAGE_ADDRESS } from '@/constants'
+import { IMAGE_ADDRESS } from '@/constants/styles'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 import Image from 'next/image'

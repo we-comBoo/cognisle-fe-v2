@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import {
   STATE_MODAL_TYPE_INFO,
   STATE_MODAL_TYPE_OVERLAY,
-} from '@/constants/modal/state'
+} from '@/constants/modal'
 import { ModalStateKeyProps } from '@/types/modal'
 
 interface StateModalProp {
@@ -28,7 +28,7 @@ const StateModal = ({ isOpen, type, handleClose, content }: StateModalProp) => {
   if (!isOpen || !router.isReady) return null
   return (
     <PortalModal>
-      <St.ModalWrapper color={STATE_MODAL_TYPE_OVERLAY[router.pathname]}>
+      <St.Root color={STATE_MODAL_TYPE_OVERLAY[router.pathname]}>
         {/*<button onClick={handleClose} className="close-btn">
           Close
         </button>*/}
@@ -43,7 +43,7 @@ const StateModal = ({ isOpen, type, handleClose, content }: StateModalProp) => {
           </St.IconWrapper>
           <St.TextWrapper>{content}</St.TextWrapper>
         </St.Content>
-      </St.ModalWrapper>
+      </St.Root>
     </PortalModal>
   )
 }

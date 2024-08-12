@@ -4,6 +4,8 @@ import { getMax } from '@/lib'
 import { useZIndexActions } from '@/store/island/zIndex'
 import { useEffect } from 'react'
 import { useItems } from '@/store/island/items'
+import St from './style'
+
 const Items = () => {
   const { setZIndex } = useZIndexActions()
   const items = useItems()
@@ -13,19 +15,12 @@ const Items = () => {
     setZIndex(maxZ)
   }, [items])
   return (
-    <Container>
+    <St.Items.Root>
       {items.map((d, idx) => (
         <Drag key={idx} id={d.id} x={d.x} y={d.y} z={d.z} src={d.src} />
       ))}
-    </Container>
+    </St.Items.Root>
   )
 }
 
 export default Items
-
-const Container = styled.div`
-  position: relative;
-  top: 0;
-  left: 0;
-  height: inherit;
-`

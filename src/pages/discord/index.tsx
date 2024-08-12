@@ -1,4 +1,4 @@
-import { FormBtn } from '@/components/common/Button'
+import { FormBtn } from '@/components/common/Button/style'
 
 import axios from 'axios'
 

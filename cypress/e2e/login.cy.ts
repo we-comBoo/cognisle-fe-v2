@@ -1,4 +1,4 @@
-import { MENU_INFO } from '../../src/constants/menu/home'
+import { HOME_MENU_INFO } from '../../src/constants/menu'
 
 describe('Login Modal Test', () => {
   beforeEach(() => {
@@ -162,7 +162,7 @@ describe('Login Modal Test', () => {
     cy.url().should('include', '/home')
 
     // 홈 페이지에서 메뉴 모두 확인합니다.
-    for (const menu of MENU_INFO)
+    for (const menu of HOME_MENU_INFO)
       cy.get('div').should('contain.text', menu.text)
   })
 })

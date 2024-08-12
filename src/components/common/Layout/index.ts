@@ -1,6 +1,6 @@
-import Layout from './Layout'
-import Background, { Wrapper as BackgroundWrapper } from './Background'
+import Layout from './Layout/Layout'
+import Background from './Background/Background'
+import { Root as BackgroundWrapper } from './Background/style'
 import SEO from './SEO'
-import Skeleton from './Skeleton'
 
-export { Layout, Background, BackgroundWrapper, SEO, Skeleton }
+export { Layout, Background, BackgroundWrapper, SEO }

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
-import { FormBtn } from '@/components/common/Button'
+import { FormBtn } from '@/components/common/Button/style'
 import { CheckBox, CheckBoxWrapper } from '@/components/common/CheckBox'
 
 export const St = {

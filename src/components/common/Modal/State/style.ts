@@ -3,7 +3,7 @@ import { ModalStateInfoProps } from '@/types/modal'
 import styled from '@emotion/styled'
 
 const St = {
-  ModalWrapper: styled.div<{ color: string }>`
+  Root: styled.div<{ color: string }>`
     position: fixed;
     inset: 0; /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
     background-color: ${({ color }) => `${color}`};
