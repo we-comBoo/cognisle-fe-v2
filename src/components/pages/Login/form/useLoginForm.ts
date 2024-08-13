@@ -79,6 +79,7 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
           console.log(
             '라우터 이동!!',
             callbackUrl,
+            router,
             typeof callbackUrl == 'string',
           )
           return router.push(url)
