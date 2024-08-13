@@ -8,7 +8,6 @@ import globalStyles from '@/styles/globalStyles'
 import 'public/fonts/style.css'
 
 import { Layout } from '@/components/common/Layout'
-import { useEffect } from 'react'
 
 export default function App({
   Component,
