@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import Drag from '@/components/drag'
 import { getMax } from '@/lib'
 import { useZIndexActions } from '@/store/island/zIndex'
