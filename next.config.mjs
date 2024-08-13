@@ -1,6 +1,12 @@
 import withBundleAnalyzer from '@next/bundle-analyzer'
+import nextPwa from 'next-pwa'
 
 /** @type {import('next').NextConfig} */
+
+const withPWA = nextPwa({
+  dest: 'public',
+  register: true,
+})
 
 const nextConfig = {
   reactStrictMode: false,
@@ -15,4 +21,4 @@ const bundleAnalyzer = withBundleAnalyzer({
   openAnalyzer: false, // 브라우저에 자동으로 분석결과를 새 탭으로 Open하는 것을 방지
 })
 
-export default bundleAnalyzer(nextConfig)
+export default withPWA({ ...nextConfig })
