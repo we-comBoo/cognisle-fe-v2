@@ -1,6 +1,8 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useModalActions, useModalStore } from '@/store/modal'
-import { ModalStateKeyProps, signupProps, signupValidationProps } from '@/types'
+import { signupProps, signupValidationProps } from '@/types/form'
+
+import { StateModalContentProps } from '@/types/modal'
 
 import axios from 'axios'
 
@@ -9,14 +11,9 @@ interface useSignupFormProps {
   validate: signupValidationProps
 }
 
-interface signupFormStateModalProps {
-  content: string
-  type: ModalStateKeyProps
-}
-
 const useSignupForm = ({ initialValues, validate }: useSignupFormProps) => {
   const [values, setValues] = useState<signupProps>(initialValues)
-  const [modalContent, setModalContent] = useState<signupFormStateModalProps>({
+  const [modalContent, setModalContent] = useState<StateModalContentProps>({
     type: 'warning',
     content: '',
   })

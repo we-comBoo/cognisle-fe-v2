@@ -1,4 +1,4 @@
-import { colors, shadows, gradients } from '@/constants'
+import { Colors, Shadows, Gradients } from '@/constants/styles'
 import { css } from '@emotion/react'
 
 export const colorPalette = css`

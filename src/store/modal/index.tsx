@@ -1,4 +1,4 @@
-import { ModalStoreProps } from '@/types'
+import { ModalStoreProps } from '@/types/modal'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 

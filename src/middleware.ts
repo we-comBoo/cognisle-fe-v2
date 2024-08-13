@@ -1,6 +1,10 @@
 import { getToken } from 'next-auth/jwt'
 import { NextRequest, NextResponse } from 'next/server'
-import { FALLBACK_URL, withAuthList, withOutAuthList } from './constants'
+import {
+  FALLBACK_URL,
+  WITH_AUTH_URLs,
+  WITHOUT_AUTH_URLs,
+} from './constants/route'
 
 const withAuth = async (req: NextRequest, token: string | undefined) => {
   const url = req.nextUrl.clone()
@@ -47,8 +51,8 @@ export default async function middleware(req: NextRequest) {
   const callbackUrl = searchParams.get('callbackUrl')
   const pathname = req.nextUrl.pathname
 
-  const isWithAuth = withAuthList.includes(pathname)
-  const isWithOutAuth = withOutAuthList.includes(pathname)
+  const isWithAuth = WITH_AUTH_URLs.includes(pathname)
+  const isWithOutAuth = WITHOUT_AUTH_URLs.includes(pathname)
   // console.log(pathname)
 
   const response = NextResponse.next({

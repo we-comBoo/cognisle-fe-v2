@@ -1,6 +1,6 @@
-import { logoTypeInfoProps } from '@/types'
+import { LogoTypeInfoProps } from '@/types/styles'
 
-export const LOGO_TYPE_INFO: logoTypeInfoProps = {
+export const LOGO_TYPE_INFO: LogoTypeInfoProps = {
   primary: {
     src: '/assets/logo/primary.svg',
     width: 240,

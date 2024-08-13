@@ -20,8 +20,8 @@ export default function Drag({ id, x, y, z, src }: ItemProps) {
         src={src}
         alt={`item_${id}`}
         draggable={'false'}
-        width={300}
-        height={300}
+        width={30}
+        height={30}
       />
     </DragComponent>
   )
@@ -35,4 +35,6 @@ const DragComponent = styled.div<{
   transform: ${({ x, y }) => `translateX(${x}px) translateY(${y}px)`};
   z-index: ${({ z }) => `${z}`};
   position: relative;
+  width: fit-content;
+  height: fit-content;
 `

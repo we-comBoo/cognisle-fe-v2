@@ -1,6 +1,6 @@
-import { visitProps, visitValidationProps } from '@/types'
+import { VisitProps, VisitValidationProps } from '@/types/visit'
 
-export const VISIT_VALIDATION: visitValidationProps = (value) => {
+export const VISIT_VALIDATION: VisitValidationProps = (value) => {
   if (!value) {
     return '친구 코드가 입력되지 않았습니다.'
   }
@@ -8,4 +8,4 @@ export const VISIT_VALIDATION: visitValidationProps = (value) => {
   return ''
 }
 
-export const VISIT_INITIAL_VALUE: visitProps = ''
+export const VISIT_INITIAL_VALUE: VisitProps = ''

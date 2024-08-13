@@ -1,9 +1,9 @@
-import { Background } from '@/components/common'
+import { Background } from '@/components/common/Layout'
 import VisitForm from './form'
 import Header from './header'
 import Image from 'next/image'
 import styled from '@emotion/styled'
-import { IMAGE_ADDRESS } from '@/constants'
+import { IMAGE_ADDRESS } from '@/constants/styles'
 
 const VistFinding = () => {
   return (

@@ -3,10 +3,14 @@ import useLoginForm from '@/components/pages/Login/form/useLoginForm'
 import { St } from './style'
 import { useRouter } from 'next/router'
 
-import { StateModal } from '@/components/common'
+import { StateModal } from '@/components/common/Modal'
 import { useModalActions, useModalStore } from '@/store/modal'
-import { LOGIN_INITIAL_VALUES, LOGIN_VALIDATION } from '@/constants'
-import { LOGIN_FORM, IMAGE_ADDRESS } from '@/constants'
+import {
+  LOGIN_INITIAL_VALUES,
+  LOGIN_VALIDATION,
+  LOGIN_FORM,
+} from '@/constants/form'
+import { IMAGE_ADDRESS } from '@/constants/styles'
 
 const LoginForm = () => {
   const router = useRouter()

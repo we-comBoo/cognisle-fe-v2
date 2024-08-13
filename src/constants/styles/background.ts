@@ -1,6 +1,12 @@
-import { backgroundTypeInfoProps } from '@/types'
+import { BackgroundTypeInfoProps } from '@/types/styles'
 
-export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
+const BACKGROUND_COLOR = {
+  1: { startColor: '--color-blue-100', endColor: '--color-green-300' },
+  2: { startColor: '--color-orange-300', endColor: '--color-pink-100' },
+  3: { startColor: '--color-blue-300', endColor: '--color-blue-400' },
+}
+
+export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
   login: {
     img: { src: '/assets/background/triangle.svg', width: 43, height: 84.9 },
     color: {
@@ -46,6 +52,43 @@ export const BACKGROUND_TYPE_INFO: backgroundTypeInfoProps = {
     color: {
       start: '--color-orange-100',
       end: '--color-pink-100',
+      degree: '180deg',
+    },
+  },
+
+  'island/1': {
+    img: {
+      src: '',
+      width: 43,
+      height: 100,
+    },
+    color: {
+      start: BACKGROUND_COLOR[1].startColor,
+      end: BACKGROUND_COLOR[1].endColor,
+      degree: '180deg',
+    },
+  },
+  'island/2': {
+    img: {
+      src: '',
+      width: 43,
+      height: 100,
+    },
+    color: {
+      start: BACKGROUND_COLOR[2].startColor,
+      end: BACKGROUND_COLOR[2].endColor,
+      degree: '180deg',
+    },
+  },
+  'island/3': {
+    img: {
+      src: '',
+      width: 43,
+      height: 100,
+    },
+    color: {
+      start: BACKGROUND_COLOR[3].startColor,
+      end: BACKGROUND_COLOR[3].endColor,
       degree: '180deg',
     },
   },

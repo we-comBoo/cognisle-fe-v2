@@ -1,4 +1,4 @@
-export const colors = {
+export const Colors = {
   yellow100: 'var( --color-yellow-100)',
   yellow200: 'var( --color-yellow-200)',
   orange100: 'var( --color-orange-100)',
@@ -20,13 +20,13 @@ export const colors = {
   gray100: 'var(--color-gray-100)',
 }
 
-export const shadows = {
+export const Shadows = {
   orange100: 'var( --shadow-orange-100)',
   pink100: 'var( --shadow-pink-100)',
   pink200: 'var( --shadow-pink-200)',
   blue100: 'var( --shadow-blue-100)',
 }
 
-export const gradients = {
+export const Gradients = {
   yellow100: 'var(--gradient-yellow-100)',
 }

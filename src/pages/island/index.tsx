@@ -1,50 +1,61 @@
-import Status from '@/components/pages/Island/status'
 import { NextPageContext } from 'next'
-import axios from 'axios'
-import { getSession } from 'next-auth/react'
+import dynamic from 'next/dynamic'
+import { useEffect } from 'react'
+import { getSession, useSession } from 'next-auth/react'
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
+import { queryOptions } from '@/lib/ReactQuery/queryOptions'
+import { useLandActions, useLandStore } from '@/store/island/land'
+import { Background } from '@/components/common/Layout'
+import { IslandContent, IslandControl } from '@/components/common/Island'
+import { useIsEdit } from '@/store/island/isEdit'
+
+const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
 const Island = () => {
-  return <>disland</>
+  // This useQuery could just as well happen in some deeper child to
+  // the "Posts"-page, data will be available immediately either way
+  const { data: session } = useSession()
+  const ownerId = session?.user.user_id
+  const ownerName = session?.user.name
+  const { queryKey, queryFn, enabled } = queryOptions.island(ownerId)
+  const { data: island } = useQuery({ queryKey, queryFn, enabled })
+
+  const { setLand } = useLandActions()
+  const land = useLandStore()
+  const isEdit = useIsEdit()
+
+  useEffect(() => {
+    if (island) {
+      console.log(island.land)
+      setLand({ type: island.land.state, src: island.land.land_img })
+    }
+  }, [island])
+
+  return (
+    <>
+      <Background type={`island/${land.type}`}>
+        <IslandControl name={ownerName} />
+        <IslandContent />
+      </Background>
+      {isEdit && <IslandEdit />}
+    </>
+  )
 }
 
-export default Island
-/*
 export const getServerSideProps = async (ctx: NextPageContext) => {
-  const session = await getSession(ctx)
-  // console.log(session?.user.pk, session?.user.access)
+  const session = await getSession({ req: ctx.req })
+  const ownerId = session?.user.user_id
 
- const { data: response } = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/lands/${session?.user.pk}/`,
-    {
-      headers: { Authorization: `Bearer ${session?.user.access}` },
-    },
-  )
-  console.log(
-    session?.user.pk,
-    session?.user.access,
-    response.data,
-    response.status
-  )
-  const data = {
-    'user or land': 'test@gmail.com',
-    'land&item': [
-      {
-        lands: {
-          state: '1',
-          land_img:
-            'https://s3.amazonaws.com/cognisle.shop/media/lands/background/land1',
-          bg_img:
-            'https://s3.amazonaws.com/cognisle.shop/media/lands/background/bg1',
-        },
-        items: [],
-      },
-    ],
-  }
+  const queryClient = new QueryClient()
+  const { queryKey, queryFn } = queryOptions.island(ownerId)
+
+  await queryClient.prefetchQuery({ queryKey, queryFn })
 
   return {
     props: {
-      data: response.data,
+      dehydratedState: dehydrate(queryClient),
     },
   }
 }
-*/
+
+export default Island

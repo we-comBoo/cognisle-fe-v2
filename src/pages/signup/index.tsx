@@ -1,4 +1,4 @@
-import { Background, FormBtn } from '@/components/common'
+import { Background } from '@/components/common/Layout'
 import SignupForm from '@/components/pages/Signup/form'
 import Header from '@/components/pages/Signup/header'
 import styled from '@emotion/styled'

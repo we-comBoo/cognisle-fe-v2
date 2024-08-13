@@ -1,8 +1,8 @@
-export interface backgroundTypeInfoProps {
-  [key: string]: backgroundInfoProps
+export interface BackgroundTypeInfoProps {
+  [key: string]: BackgroundInfoProps
 }
 
-export interface backgroundInfoProps {
+export interface BackgroundInfoProps {
   img: {
     src: string
     width: number

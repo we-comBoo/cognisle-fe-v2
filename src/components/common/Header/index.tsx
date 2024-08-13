@@ -1,25 +1,16 @@
-import styled from '@emotion/styled'
 import Link from 'next/link'
-import Logo from '../Logo'
-import Triangle from '../Triangle'
-
+import Logo from '@/components/common/Logo'
+import Triangle from '@/components/common/Triangle'
+import St from './style'
 const Header = () => {
   return (
-    <Container>
+    <St.Root>
       <Triangle type="header" />
       <Link href="/">
         <Logo type="secondary" />
       </Link>
-    </Container>
+    </St.Root>
   )
 }
 
 export default Header
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 3.2rem;
-`

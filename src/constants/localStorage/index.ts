@@ -1,0 +1,3 @@
+export const LOCAL_STORAGE_KEY = {
+  EMAIL_CHECK_BOX: 'LS_EMAIL',
+}

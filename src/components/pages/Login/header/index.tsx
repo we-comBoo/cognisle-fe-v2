@@ -1,4 +1,5 @@
-import { Logo, Triangle } from '@/components/common'
+import Logo from '@/components/common/Logo'
+import Triangle from '@/components/common/Triangle'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 

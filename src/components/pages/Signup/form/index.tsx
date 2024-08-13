@@ -1,4 +1,5 @@
-import { FormBtn, StateModal } from '@/components/common'
+import { FormBtn } from '@/components/common/Button/style'
+import { StateModal } from '@/components/common/Modal'
 import { useModalActions, useModalStore } from '@/store/modal'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
@@ -8,7 +9,7 @@ import {
   SIGNUP_FORM,
   SIGNUP_INITIAL_VALUES,
   SIGNUP_VALIDATION,
-} from '@/constants'
+} from '@/constants/form'
 import useDiscordOAuth from './useDiscordOAuth'
 import { useEffect } from 'react'
 

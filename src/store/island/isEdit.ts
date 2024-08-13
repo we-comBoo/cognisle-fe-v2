@@ -1,4 +1,4 @@
-import { IsEditStoreProps } from '@/types/island/edit'
+import { IsEditStoreProps } from '@/types/island'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 

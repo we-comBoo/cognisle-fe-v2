@@ -1,3 +1,3 @@
-export type visitProps = string
+export type VisitProps = string
 
-export type visitValidationProps = (value: visitProps) => string
+export type VisitValidationProps = (value: VisitProps) => string

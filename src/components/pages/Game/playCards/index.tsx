@@ -1,11 +1,11 @@
 import usePlayCards from './usePlayCards'
 import CardContainer from './card'
-import StateModal from '@/components/common/Modal/Game'
+import { GameStateModal } from '@/components/common/Modal'
 import { useModalStore, useModalActions } from '@/store/modal'
 import { useEffect } from 'react'
 import styled from '@emotion/styled'
 import Status from './status'
-import { GameStatus } from '@/types'
+import { GameStatus } from '@/types/game'
 
 const PlayCards = () => {
   const {
@@ -27,7 +27,7 @@ const PlayCards = () => {
     <GameWrapper>
       {isOpen && (
         <>
-          <StateModal
+          <GameStateModal
             type={userStatus}
             isOpen={isOpen}
             content={{ currentMatched, obtained, clicked, userStatus, time }}
