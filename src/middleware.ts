@@ -35,7 +35,7 @@ const withOutAuth = async (
     // 토큰 있는 경우
     url.pathname = to ?? FALLBACK_URL
     url.search = ''
-    // console.log('토큰있는 경우', url)
+    console.log('토큰있는 경우', url)
 
     return NextResponse.redirect(url)
   }

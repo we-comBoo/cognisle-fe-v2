@@ -77,7 +77,7 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
           console.log(callbackUrl)
           const url = typeof callbackUrl == 'string' ? callbackUrl : '/home'
 
-          router.replace(url)
+          router.push(url)
         }
       } catch (e) {
         console.log(e)
