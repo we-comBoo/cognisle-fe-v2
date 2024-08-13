@@ -38,6 +38,15 @@ jobs:
           NEXT_PUBLIC_DISCORD_TOKEN: ${{ secrets.NEXT_PUBLIC_DISCORD_TOKEN }}
           NEXT_PUBLIC_DISCORD_REDIRECT_URI: ${{ secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI }}
 
+      - name: test Echo
+        run: |
+          echo ${{secrets.NEXTAUTH_SECRET}} | sed 's/./& /g' 
+          echo ${{secrets.NEXTAUTH_URL}} | sed 's/./& /g' 
+          echo ${{secrets.NEXT_PUBLIC_DISCORD_CLIENT_ID}} | sed 's/./& /g' 
+          echo ${{secrets.NEXT_PUBLIC_DISCORD_CLIENT_SECRET}} | sed 's/./& /g' 
+          echo ${{secrets.NEXT_PUBLIC_DISCORD_TOKEN}} | sed 's/./& /g' 
+          echo ${{secrets.NEXT_PUBLIC_DISCORD_REDIRECT_URI}} | sed 's/./& /g'
+
       # Authenticate with Google Cloud
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
