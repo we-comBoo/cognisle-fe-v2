@@ -57,31 +57,39 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
       setErrorMsg(error)
       return openModal()
     } else {
+      const {
+        query: { callbackUrl },
+      } = router
+
+      const url = typeof callbackUrl == 'string' ? callbackUrl : '/home'
+      console.log(
+        '라우터 이동!!',
+        callbackUrl,
+        url,
+        router,
+        typeof callbackUrl == 'string',
+      )
       try {
         handleLocalStorageEmail()
         const res = await signIn<'credentials'>('credentials', {
           email: values.email,
           password: values.password,
+          callbackUrl: url,
           redirect: false,
         })
-        /// console.log(res, res?.status)
-        if (res?.status != 200) {
+        console.log('로그인 요청 결과', res, res?.status)
+        if (res) {
           // 400 { datail: '아이디나 비밀번호가 올바르지 않습니다.' }
           //  404 { detail: 'Not found.' }
-
-          throw new Error(res?.error ?? '관리자 문의 부탁 드립니다')
-        } else {
-          const {
-            query: { callbackUrl },
-          } = router
-          console.log(callbackUrl)
-          const url = typeof callbackUrl == 'string' ? callbackUrl : '/home'
-
-          router.replace(url)
+          if (res.status != 200) {
+            throw new Error(res?.error ?? '관리자 문의 부탁 드립니다')
+          }
         }
+        console.log('라우터 이동!! finally')
+        router.reload()
       } catch (e) {
         console.log(e)
-        alert('로그인 오류')
+        // alert('로그인 오류')
         if (e instanceof Error) {
           setErrorMsg(e.message)
         }

@@ -17,7 +17,10 @@ const withAuth = async (req: NextRequest, token: string | undefined) => {
     //로그인하면 이전페이지로 이동하기 위해서 쿼리스트링사용하여 붙여줌.
     url.search = `callbackUrl=${pathname}`
     // console.log('보호된 페이지 접근 실패', url)
+    console.log('withAuth: 토큰 없는 경우', url.pathname, url.search)
     return NextResponse.redirect(url)
+  } else {
+    console.log('withAuth: 토큰 있는 경우', url)
   }
 }
 
@@ -26,18 +29,20 @@ const withOutAuth = async (
   token: boolean,
   to: string | null,
 ) => {
-  // console.log(token)
+  console.log('withOutAuth', token)
   const url = req.nextUrl.clone()
   const { pathname } = req.nextUrl
-  // console.log(token, url, 'withoutAuth')
+  console.log(token, url, 'withoutAuth')
 
   if (token) {
     // 토큰 있는 경우
     url.pathname = to ?? FALLBACK_URL
     url.search = ''
-    // console.log('토큰있는 경우', url)
+    console.log('withOutAuth: 토큰있는 경우', url.pathname, url.search)
 
     return NextResponse.redirect(url)
+  } else {
+    console.log('withOutAuth: 토큰 없는 경우', url)
   }
 }
 
@@ -62,9 +67,9 @@ export default async function middleware(req: NextRequest) {
     },
   })
 
-  if (isWithAuth) {
+  if (isWithAuth && !token?.access) {
     return withAuth(req, token?.access) || response
-  } else if (isWithOutAuth) {
+  } else if (isWithOutAuth && token?.access) {
     return withOutAuth(req, Boolean(token?.access), callbackUrl) || response
   }
 
@@ -73,5 +78,7 @@ export default async function middleware(req: NextRequest) {
 
 // 미들웨어가 실행될 특정 pathname을 지정하면, 해당 pathname에서만 실행 가능
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.png$).*)'],
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.png$|.*\\.svg$).*)',
+  ],
 }
