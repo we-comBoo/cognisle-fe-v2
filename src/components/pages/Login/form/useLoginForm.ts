@@ -65,6 +65,7 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
       console.log(
         '라우터 이동!!',
         callbackUrl,
+        url,
         router,
         typeof callbackUrl == 'string',
       )
@@ -73,7 +74,8 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
         const res = await signIn<'credentials'>('credentials', {
           email: values.email,
           password: values.password,
-          redirect: false,
+          callbackUrl: url,
+          redirect: true,
         })
         console.log('로그인 요청 결과', res, res?.status)
         if (res) {
