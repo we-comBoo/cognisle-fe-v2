@@ -86,10 +86,10 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
           }
         }
         console.log('라우터 이동!! finally')
-        router.push(url)
+        router.reload()
       } catch (e) {
         console.log(e)
-        alert('로그인 오류')
+        // alert('로그인 오류')
         if (e instanceof Error) {
           setErrorMsg(e.message)
         }
