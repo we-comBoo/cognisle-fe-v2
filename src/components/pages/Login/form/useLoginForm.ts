@@ -75,7 +75,7 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
           email: values.email,
           password: values.password,
           callbackUrl: url,
-          redirect: true,
+          redirect: false,
         })
         console.log('로그인 요청 결과', res, res?.status)
         if (res) {
