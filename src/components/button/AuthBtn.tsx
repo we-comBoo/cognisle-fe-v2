@@ -8,7 +8,7 @@ const AuthBtn = () => {
   const { data: session } = useSession()
 
   const LogoutBtn = () => {
-    console.log('로그아웃 로직 작성')
+    // console.log('로그아웃 로직 작성')
     signOut({ callbackUrl: '/login' })
   }
 

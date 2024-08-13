@@ -1,6 +1,6 @@
-import { triangleTypeInfoProps } from '@/types'
+import { TriangleTypeInfoProps } from '@/types/styles'
 
-export const TRIANGLE_TYPE_INFO: triangleTypeInfoProps = {
+export const TRIANGLE_TYPE_INFO: TriangleTypeInfoProps = {
   original: {
     src: '/assets/triangle/original.svg',
     width: 430,

@@ -12,4 +12,10 @@ interface IsEditActionsProps {
   setEdit: () => void
 }
 
-export type { IsEditStoreProps }
+interface TabMenuProps {
+  id: number
+  title: string
+  value: string
+}
+
+export type { IsEditStoreProps, TabMenuProps }

@@ -1,4 +1,4 @@
-import { BottomMenuInfoProps } from '@/types'
+import { BottomMenuInfoProps } from '@/types/styles'
 
 export const BOTTOM_MENU_INFO: BottomMenuInfoProps[] = [
   {

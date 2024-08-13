@@ -1,5 +1,5 @@
 import LoginForm from '@/components/pages/Login/form'
-import { Background, Logo } from '@/components/common'
+import { Background } from '@/components/common/Layout'
 import styled from '@emotion/styled'
 import Header from '@/components/pages/Login/header'
 

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import { MouseEventHandler } from 'react'
 import Image from 'next/image'
-import { GameCardStatus, GameCardStatusKey } from '@/types'
-import { IMAGE_ADDRESS } from '@/constants'
+import { GameCardStatus, GameCardStatusKey } from '@/types/game'
+import { IMAGE_ADDRESS } from '@/constants/styles'
 interface CardProps {
   onClick?: MouseEventHandler<HTMLButtonElement>
   status: GameCardStatusKey
@@ -10,7 +10,7 @@ interface CardProps {
 }
 
 const CardContent = ({ status, symbol }: CardProps) => {
-  console.log(status, status === GameCardStatus.FACE_DOWN)
+  // console.log(status, status === GameCardStatus.FACE_DOWN)
   return (
     <St.ContentContainer>
       {status === GameCardStatus.FACE_DOWN ? (

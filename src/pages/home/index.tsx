@@ -1,5 +1,6 @@
 import LogoutBtn from '@/components/button/LogoutBtn'
-import { Background, Logo } from '@/components/common'
+import { Background } from '@/components/common/Layout'
+import Logo from '@/components/common/Logo'
 import MenuBtn from '@/components/pages/Home/MenuBtn'
 import UserPointBtn from '@/components/pages/Home/UserPointBtn'
 

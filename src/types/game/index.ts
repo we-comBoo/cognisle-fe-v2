@@ -6,13 +6,13 @@ export const GameCardStatus = {
 export type GameCardStatusKey =
   (typeof GameCardStatus)[keyof typeof GameCardStatus]
 
-export const playStateAction = {
+export const PlayStateAction = {
   INCREASE_CLICKED: 'INCREASE_CLICKED',
   OBTAIN_CARD: 'OBTAIN_CARD',
   CHANGE_USER_STATUS: 'CHANGE_USER_STATUS',
 } as const
 export type playStateActionKey =
-  (typeof playStateAction)[keyof typeof playStateAction]
+  (typeof PlayStateAction)[keyof typeof PlayStateAction]
 
 export const GameStatus = {
   START: 'START',
@@ -42,9 +42,9 @@ export interface StateModalProps {
   isOpen: boolean
   handleClose: () => void
   type: GameStatusKey
-  content?: playStateProps
+  content?: PlayStateProps
 }
-export interface playStateProps {
+export interface PlayStateProps {
   currentMatched: GameCardProps | null
   obtained: GameCardsProps
   clicked: number
@@ -52,7 +52,7 @@ export interface playStateProps {
   time: TimeStateProps
 }
 
-export type playStateActionProps =
+export type PlayStateActionProps =
   | { type: 'INCREASE_CLICKED' }
   | {
       type: 'OBTAIN_CARD'

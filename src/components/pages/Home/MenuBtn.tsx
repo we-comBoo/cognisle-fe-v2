@@ -1,15 +1,15 @@
-import { PointBtn } from '@/components/common'
-import { MENU_POINT_BTN } from '@/constants'
+import PointBtn from '@/components/common/Button'
+import { MENU_POINT_BTN } from '@/constants/styles'
 import Link from 'next/link'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
-import { MENU_INFO } from '@/constants/menu/home'
+import { HOME_MENU_INFO } from '@/constants/menu'
 
 const MenuBtn = () => {
   return (
     <Container>
-      {MENU_INFO.map(({ link, img, text }, idx) => (
+      {HOME_MENU_INFO.map(({ link, img, text }, idx) => (
         <PointBtn item={MENU_POINT_BTN} key={idx}>
           <Link href={link}>
             <Image

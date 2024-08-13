@@ -1,4 +1,4 @@
-import { Background } from '@/components/common'
+import { Background } from '@/components/common/Layout'
 import PlayCards from '@/components/pages/Game/playCards'
 
 const Game = () => {

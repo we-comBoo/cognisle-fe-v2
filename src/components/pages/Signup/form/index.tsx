@@ -1,4 +1,5 @@
-import { FormBtn, StateModal } from '@/components/common'
+import { FormBtn } from '@/components/common/Button/style'
+import { StateModal } from '@/components/common/Modal'
 import { useModalActions, useModalStore } from '@/store/modal'
 import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
@@ -8,7 +9,7 @@ import {
   SIGNUP_FORM,
   SIGNUP_INITIAL_VALUES,
   SIGNUP_VALIDATION,
-} from '@/constants'
+} from '@/constants/form'
 import useDiscordOAuth from './useDiscordOAuth'
 import { useEffect } from 'react'
 
@@ -20,7 +21,7 @@ const SignupForm = () => {
 
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
-  const { values, errorMsg, handleInputChange, submitSignupForm } =
+  const { values, modalContent, handleInputChange, submitSignupForm } =
     useSignupForm({
       initialValues: SIGNUP_INITIAL_VALUES,
       validate: SIGNUP_VALIDATION,
@@ -35,11 +36,11 @@ const SignupForm = () => {
 
   return (
     <Section onSubmit={submitSignupForm}>
-      {errorMsg && (
+      {modalContent.content && (
         <>
           <StateModal
-            content={errorMsg}
-            type="warning"
+            content={modalContent.content}
+            type={modalContent.type}
             isOpen={isOpen}
             handleClose={closeModal}
           />
@@ -60,7 +61,7 @@ const SignupForm = () => {
               onChange={(e) => handleInputChange(e.target.name, e.target.value)}
             />
             {name == 'dsName' && (
-              <DiscordIdBtn onClick={handleDiscordOAuthPopup}>
+              <DiscordIdBtn type="button" onClick={handleDiscordOAuthPopup}>
                 아이디 <br />
                 찾기
               </DiscordIdBtn>

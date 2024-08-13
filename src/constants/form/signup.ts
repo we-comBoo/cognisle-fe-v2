@@ -1,4 +1,4 @@
-import { signupProps, signupValidationProps } from '@/types'
+import { signupProps, signupValidationProps } from '@/types/form'
 
 export const SIGNUP_VALIDATION: signupValidationProps = ({
   name,

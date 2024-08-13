@@ -1,6 +1,10 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useModalActions, useModalStore } from '@/store/modal'
-import { signupProps, signupValidationProps } from '@/types'
+import { signupProps, signupValidationProps } from '@/types/form'
+
+import { StateModalContentProps } from '@/types/modal'
+
+import axios from 'axios'
 
 interface useSignupFormProps {
   initialValues: signupProps
@@ -9,7 +13,10 @@ interface useSignupFormProps {
 
 const useSignupForm = ({ initialValues, validate }: useSignupFormProps) => {
   const [values, setValues] = useState<signupProps>(initialValues)
-  const [errorMsg, setErrorMsg] = useState('')
+  const [modalContent, setModalContent] = useState<StateModalContentProps>({
+    type: 'warning',
+    content: '',
+  })
   const isOpen = useModalStore()
   const { openModal } = useModalActions()
   const handleInputChange = (name: string, value: string) => {
@@ -17,79 +24,40 @@ const useSignupForm = ({ initialValues, validate }: useSignupFormProps) => {
     setValues((prev) => ({ ...prev, [name]: value }))
   }
 
-  /**
-   * 
-   * 
-   *     const email = '0321minji@naver.com'
-    const password = '12341234'
-   */
   useEffect(() => {
     if (!isOpen) {
-      setErrorMsg('')
+      setModalContent({ type: 'warning', content: '' })
     }
   }, [isOpen])
   const submitSignupForm = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault()
     const error = validate(values)
-    console.log(error)
+    console.error(error)
     if (error) {
-      setErrorMsg(error)
+      setModalContent({ type: 'warning', content: error })
       return openModal()
     } else {
-      console.log(values)
-    }
+      console.info(values)
+      try {
+        const response = await axios.post('/api/user/signup', values)
 
-    /* if (!inputRefs.current[0].value) {
-      setErrorMsg('이메일 주소를 입력하시오')
-      return openModal()
-    } else {
-      if (!email_format.test(inputRefs.current[0].value)) {
-        setErrorMsg('올바른 형식의 이메일을 입력해 주세요')
-        return openModal()
+        setModalContent({
+          type: 'success',
+          content: '회원가입 성공했습니다!',
+        })
+      } catch (error) {
+        console.log('가입 중 에러 발생', error)
+        setModalContent({
+          type: 'warning',
+          content: '가입 과정에서 오류 발생! 관리자 문의 요청 드립니다!',
+        })
+      } finally {
+        openModal()
       }
-    }*/
-    /*
-    if (!inputRefs.current[1].value) {
-      setErrorMsg('비밀번호를 입력하시오')
-      return openModal()
     }
-    if (!inputRefs.current[2].value) {
-      setErrorMsg('이름을 입력하시오')
-      return openModal()
-    }
-    if (!inputRefs.current[3].value) {
-      setErrorMsg('디스코드 아이디를 입력하시오')
-      return openModal()
-    }*/
-    /*
-    try {
-      const res = await signIn<'credentials'>('credentials', {
-        email: inputRefs.current[0].value,
-        password: inputRefs.current[1].value,
-        redirect: false,
-      })
-      if (res && res.status != 200) {
-        //const errorMsg = res.error || res.response.data
-        const errorMsg = res.error || '로그인 재시도 요청'
-        const errorStatus = res.status
-        console.log('Error', errorMsg, errorStatus)
-        setErrorMsg({ email: '', password: '등록되지 않은 계정 입니다' })
-        return openModal()
-      } else {
-        router.replace('/home')
-      }
-    } catch (e) {
-      console.log(e)
-      alert('로그인 오류')
-      setErrorMsg('관리자 문의 부탁 드립니다')
-      return openModal()
-      //const errorMsg = e.error || e.response.data
-      //const errorStatus = e.status
-      //console.log('Error', errorMsg, errorStatus)
-    }*/
   }
 
-  return { values, errorMsg, handleInputChange, submitSignupForm }
+  return { values, modalContent, handleInputChange, submitSignupForm }
 }
 
 export default useSignupForm

@@ -1,0 +1,40 @@
+name: Develop CI/CD
+
+on:
+  push:
+    branches:
+      - develop # main 브랜치에 "push"될 때만 본 workflow 실행
+
+env:
+  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+  NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+  PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_NAME }}
+  REGION: us-east1
+  # project-name but it can be anything you want
+  REPO_NAME: nextjs-cloud-run
+
+jobs:
+  preview-deploy:
+    name: Setup, Build, and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.AUTO_ACTIONS_KEY }}
+          fetch-depth: 0
+          ref: develop
+
+      - name: Add remote-url
+        run: |
+          git remote add forked-repo https://JangAyeon:${{ secrets.AUTO_ACTIONS_KEY }}@github.com/JangAyeon/cognisle-fe-v2
+          git config user.name JangAyeon
+          git config user.email ${{ secrets.AUTO_ACTIONS_EMAIL}}
+
+      - name: Push changes to forked-repo
+        run: |
+          git push -f forked-repo develop
+
+      - name: Clean up
+        run: |
+          git remote remove forked-repo

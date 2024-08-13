@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig } from 'axios'
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { getToken } from 'next-auth/jwt'
+import axios from 'axios'
+import { getSession } from 'next-auth/react'
+import type { NextApiRequest } from 'next'
 
 const BASE_URL = 'https://www.cognisle.shop'
 
@@ -15,14 +15,15 @@ function createAuthAxios(req: NextApiRequest) {
   })
 
   instance.interceptors.request.use(
-    async (config) => {
-      const token = await getToken({ req })
+    async (request) => {
+      const session = await getSession({ req })
 
-      if (token?.access) {
-        config.headers.Authorization = `Bearer ${token?.access}`
+      if (session?.user.access) {
+        // console.log('setSession', `Bearer ${session?.user.access}`)
+        request.headers.Authorization = `Bearer ${session?.user.access}`
       }
 
-      return config
+      return request
     },
     (error) => {
       return Promise.reject(error)
@@ -42,13 +43,4 @@ function createDefatultAxios() {
   return instance
 }
 
-// nextjs api
-function createNextHttp() {
-  const instance = axios.create({
-    baseURL: '/api',
-  })
-
-  return instance
-}
-
-export { createAuthAxios, createDefatultAxios, createNextHttp }
+export { createAuthAxios, createDefatultAxios }

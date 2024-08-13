@@ -1,4 +1,4 @@
-import { GameCardStatus, GameResultProps } from '@/types'
+import { GameCardStatus, GameResultProps } from '@/types/game'
 
 export const symbols = [
   '🍏',
@@ -49,7 +49,7 @@ const selectIndex = (totalIndex: number, selectingNumber: number) => {
 }
 export function shuffle() {
   const pickedIndex = selectIndex(symbols.length, 8)
-  console.log(pickedIndex)
+  // console.log(pickedIndex)
   const picked = pickedIndex.map((index) => symbols[index])
   const cards = [...picked, ...picked]
     .sort(() => Math.random() - 0.5)

@@ -18,3 +18,8 @@ export interface ModalStateInfoProps {
     alt: string
   }
 }
+
+export interface StateModalContentProps {
+  content: string
+  type: ModalStateKeyProps
+}

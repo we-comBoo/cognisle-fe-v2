@@ -1,18 +1,18 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { useModalActions, useModalStore } from '@/store/modal'
-import { visitProps, visitValidationProps } from '@/types'
+import { VisitProps, VisitValidationProps } from '@/types/visit'
 
 interface useVisitFormProps {
-  initialValue: visitProps
-  validate: visitValidationProps
+  initialValue: VisitProps
+  validate: VisitValidationProps
 }
 
 const useVisitForm = ({ initialValue, validate }: useVisitFormProps) => {
-  const [value, setValue] = useState<visitProps>(initialValue)
+  const [value, setValue] = useState<VisitProps>(initialValue)
   const [errorMsg, setErrorMsg] = useState('')
   const isOpen = useModalStore()
   const { openModal } = useModalActions()
-  const handleInputChange = (value: visitProps) => {
+  const handleInputChange = (value: VisitProps) => {
     // console.log(name, value)
     setValue(value)
   }

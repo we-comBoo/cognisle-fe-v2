@@ -3,11 +3,11 @@ export interface LogoProps {
   padding?: number
 }
 
-export interface logoTypeInfoProps {
-  [key: string]: logoInfoProps
+export interface LogoTypeInfoProps {
+  [key: string]: LogoInfoProps
 }
 
-export interface logoInfoProps {
+export interface LogoInfoProps {
   src: string
   width: number
   height: number

@@ -49,3 +49,11 @@ next-env.d.ts
 
 # zip 
 *.zip
+
+# cypress
+cypress/videos
+cypress/screenshots
+cypress/downloads
+
+# husky
+.husky/*
