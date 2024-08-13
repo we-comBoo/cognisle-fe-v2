@@ -21,7 +21,6 @@ const withAuth = async (req: NextRequest, token: string | undefined) => {
     return NextResponse.redirect(url)
   } else {
     console.log('withAuth: 토큰 있는 경우', url)
-    return NextResponse.redirect(url)
   }
 }
 
@@ -44,7 +43,6 @@ const withOutAuth = async (
     return NextResponse.redirect(url)
   } else {
     console.log('withOutAuth: 토큰 없는 경우', url)
-    return NextResponse.redirect(url)
   }
 }
 
@@ -69,9 +67,9 @@ export default async function middleware(req: NextRequest) {
     },
   })
 
-  if (isWithAuth) {
+  if (isWithAuth && !token?.access) {
     return withAuth(req, token?.access) || response
-  } else if (isWithOutAuth) {
+  } else if (isWithOutAuth && token?.access) {
     return withOutAuth(req, Boolean(token?.access), callbackUrl) || response
   }
 
