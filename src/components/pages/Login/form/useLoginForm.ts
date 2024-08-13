@@ -81,10 +81,12 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
         if (res) {
           // 400 { datail: '아이디나 비밀번호가 올바르지 않습니다.' }
           //  404 { detail: 'Not found.' }
-          if (res?.status != 200) {
+          if (res.status != 200) {
             throw new Error(res?.error ?? '관리자 문의 부탁 드립니다')
           }
         }
+        console.log('라우터 이동!! finally')
+        router.push(url)
       } catch (e) {
         console.log(e)
         alert('로그인 오류')
@@ -92,8 +94,6 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
           setErrorMsg(e.message)
         }
         return openModal()
-      } finally {
-        router.push(url)
       }
     }
   }
