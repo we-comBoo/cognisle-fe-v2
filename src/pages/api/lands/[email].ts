@@ -5,12 +5,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { user_id } = req.query
+  const { email } = req.query
 
   try {
     const authAxios = createAuthAxios(req)
 
-    const { data } = await authAxios.get(`/lands/${user_id}/`)
+    const { data } = await authAxios.get(`/lands/?email=${email}`)
     console.log(data)
 
     res.status(200).json({ ...data.data })

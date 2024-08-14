@@ -15,9 +15,9 @@ const Island = () => {
   // This useQuery could just as well happen in some deeper child to
   // the "Posts"-page, data will be available immediately either way
   const { data: session } = useSession()
-  const ownerId = session?.user.user_id
+  const ownerEmail = session?.user.email
   const ownerName = session?.user.name
-  const { queryKey, queryFn, enabled } = queryOptions.island(ownerId)
+  const { queryKey, queryFn, enabled } = queryOptions.island(ownerEmail)
   const { data: island } = useQuery({ queryKey, queryFn, enabled })
 
   const { setLand } = useLandActions()

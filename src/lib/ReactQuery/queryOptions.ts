@@ -6,7 +6,7 @@ const defaultKey = {
 }
 
 const queryKeys = {
-  island: (ownerId: number) => [...defaultKey.island, ownerId] as const,
+  island: (ownerEmail: number) => [...defaultKey.island, ownerEmail] as const,
   /*
   detailComments: (photoId: number) =>
     [...queryKeys.detail(photoId), 'comments'] as const,
@@ -26,14 +26,14 @@ async () => {
   return await api.getProfileByUsername({ username });
 }*/
 export const queryOptions = {
-  island: (ownerId: User['user_id']) => ({
-    queryKey: queryKeys.island(ownerId),
+  island: (ownerEmail: User['email']) => ({
+    queryKey: queryKeys.island(ownerEmail),
 
     queryFn: async () => {
-      const response = await axios.get(`/api/lands/${ownerId}`)
+      const response = await axios.get(`/api/lands/${ownerEmail}`)
       return response.data
     },
-    enabled: !!ownerId,
+    enabled: !!ownerEmail,
   }),
   /*
   comments: (photoId: number) => ({
