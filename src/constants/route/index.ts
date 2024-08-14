@@ -3,7 +3,7 @@ export const WITH_AUTH_URLs = [
   '/home',
   '/collection',
   '/game',
-  'island',
+  '/island',
   '/visit',
 ]
 export const WITHOUT_AUTH_URLs = ['/signup', '/login']

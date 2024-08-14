@@ -58,7 +58,7 @@ export default async function middleware(req: NextRequest) {
 
   const isWithAuth = WITH_AUTH_URLs.includes(pathname)
   const isWithOutAuth = WITHOUT_AUTH_URLs.includes(pathname)
-  // console.log(pathname)
+  console.log(pathname, !token?.access)
 
   const response = NextResponse.next({
     request: {
@@ -68,7 +68,7 @@ export default async function middleware(req: NextRequest) {
   })
 
   if (isWithAuth && !token?.access) {
-    return withAuth(req, token?.access) || response
+    return withAuth(req, token?.access)
   } else if (isWithOutAuth && token?.access) {
     return withOutAuth(req, Boolean(token?.access), callbackUrl) || response
   }
