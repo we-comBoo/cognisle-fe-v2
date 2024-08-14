@@ -17,13 +17,13 @@ export const MENU_INFO: MenuInfoProps[] = [
   {
     text: '나의 섬',
     link: '/island',
-    img: { src: '/assets/yellow/island.svg', width: 48, height: 33 },
+    img: { src: '/assets/yellow/island.svg', width: 47, height: 36 },
   },
   {
     text: '놀러가기',
 
     link: '/visit',
-    img: { src: '/assets/yellow/visit.svg', width: 48, height: 33 },
+    img: { src: '/assets/yellow/visit.svg', width: 62, height: 36 },
   },
   {
     text: '모아보기',

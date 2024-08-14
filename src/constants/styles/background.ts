@@ -8,7 +8,7 @@ const BACKGROUND_COLOR = {
 
 export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
   login: {
-    img: { src: '/assets/background/triangle.svg', width: 43, height: 84.9 },
+    img: { src: '/assets/background/triangle.svg', width: 430, height: 211 },
     color: {
       start: '--gradient-yellow-100',
       end: '--color-green-300',
@@ -16,7 +16,7 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
     },
   },
   home: {
-    img: { src: '/assets/background/island.svg', width: 25, height: 25 },
+    img: { src: '/assets/background/island.svg', width: 386, height: 294 },
     color: {
       start: '--gradient-yellow-100',
       end: '--color-pink-100',
@@ -24,7 +24,7 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
     },
   },
   signup: {
-    img: { src: '/assets/background/triangle.svg', width: 43, height: 84.9 },
+    img: { src: '/assets/background/triangle.svg', width: 430, height: 211 },
     color: {
       start: '--gradient-yellow-100',
       end: '--color-blue-100',
@@ -32,7 +32,7 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
     },
   },
   'visit/loading': {
-    img: { src: '/assets/background/bubble.svg', width: 43, height: 84.9 },
+    img: { src: '/assets/background/bubble.svg', width: 430, height: 849 },
     color: {
       start: '--color-blue-100',
       end: '--color-green-300',
@@ -40,7 +40,7 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
     },
   },
   'visit/form': {
-    img: { src: '', width: 43, height: 84.9 },
+    img: { src: '', width: 430, height: 84.9 },
     color: {
       start: '--color-blue-100',
       end: '--color-green-300',
@@ -48,7 +48,7 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
     },
   },
   game: {
-    img: { src: '', width: 43, height: 84.9 },
+    img: { src: '', width: 430, height: 84.9 },
     color: {
       start: '--color-orange-100',
       end: '--color-pink-100',
