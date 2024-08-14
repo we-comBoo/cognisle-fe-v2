@@ -1,5 +1,5 @@
 import { BACKGROUND_TYPE_INFO } from '@/constants/styles'
-import { ReactNode } from 'react'
+import { ReactNode, useMemo } from 'react'
 import St from './style'
 import Image from 'next/image'
 interface backgroundProps {
@@ -8,7 +8,7 @@ interface backgroundProps {
 }
 
 const Background = ({ type, children }: backgroundProps) => {
-  const { img, color } = BACKGROUND_TYPE_INFO[type]
+  const { img, color } = useMemo(() => BACKGROUND_TYPE_INFO[type], [type])
   return (
     <St.Root backgroundColor={color}>
       {img.src && (
