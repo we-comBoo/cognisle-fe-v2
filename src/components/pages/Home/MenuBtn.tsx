@@ -16,7 +16,7 @@ const MenuBtn = () => {
               src={img.src}
               width={img.width}
               height={img.height}
-              alt={text}
+              alt=""
               priority
             />
             <Text>{text}</Text>
@@ -37,5 +37,6 @@ const Container = styled.div`
 
 const Text = styled.div`
   color: var(--color-yellow-100);
+  margin-top: 1rem;
   ${FONTS.body5}
 `

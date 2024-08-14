@@ -32,7 +32,7 @@ export const sendPushNotification = (title: string, body: string) => {
       registration
         .showNotification(title, {
           body,
-          icon: 'icon.png',
+          icon: 'icon/icon.png',
         })
         .catch((error) => {
           requestNotificationPermission()
