@@ -1,14 +1,21 @@
 import { LOGO_TYPE_INFO } from '@/constants/styles'
-import Image from 'next/image'
+
 import St from './style'
 import { LogoProps } from '@/types/styles'
+import Icon from '@/components/icon'
 
 const Logo = ({ type, padding }: LogoProps) => {
-  const { src, width, height, alt } = LOGO_TYPE_INFO[type]
+  const { icon, width, height } = LOGO_TYPE_INFO[type]
 
   return (
     <St.Root padding={padding ?? 0}>
-      <Image src={src} width={width} height={height} alt={alt} priority />
+      <Icon
+        path="assets/logo"
+        file="logo"
+        icon={icon}
+        width={width}
+        height={height}
+      />
     </St.Root>
   )
 }

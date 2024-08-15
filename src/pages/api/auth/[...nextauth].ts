@@ -4,8 +4,8 @@ import NextAuth, { Awaitable, User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { createDefatultAxios } from '@/lib/axios'
-
-export default NextAuth({
+import type { NextAuthOptions } from 'next-auth'
+export const nextAuthOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -58,7 +58,15 @@ export default NextAuth({
       //console.log('JWT', token)
       return token
     },
-    async session({ session, token, user }) {
+    async session({
+      session,
+      token,
+      user,
+    }: {
+      session: any
+      token: any
+      user: any
+    }) {
       session.user = token
       console.log('Session', session, token)
       return session
@@ -70,4 +78,5 @@ export default NextAuth({
   pages: {
     signIn: '/login',
   },
-})
+}
+export default NextAuth(nextAuthOptions)

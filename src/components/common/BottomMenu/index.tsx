@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
+
 import { BOTTOM_MENU_INFO } from '@/constants/menu'
 import { BottomMenuInfoProps } from '@/types/styles'
 import St from './style'
 import Divider from '@components/common/Divider'
+import Icon from '@/components/icon'
 
 const BottomMenu = () => {
   const { pathname } = useRouter()
@@ -13,17 +14,15 @@ const BottomMenu = () => {
     <St.Root>
       {BOTTOM_MENU_INFO.map(
         (
-          {
-            image: { active, inactive, alt, width, height },
-            link,
-          }: BottomMenuInfoProps,
+          { image: { icon, width, height }, link }: BottomMenuInfoProps,
           idx,
         ) => (
           <>
             <Link href={link}>
-              <Image
-                src={link === pathname ? active : inactive}
-                alt={alt}
+              <Icon
+                path={`assets/${link === pathname ? 'green' : 'yellow'}`}
+                file="menu"
+                icon={icon}
                 width={width}
                 height={height}
               />

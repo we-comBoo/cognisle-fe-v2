@@ -1,10 +1,19 @@
 import { TRIANGLE_TYPE_INFO } from '@/constants/styles'
 import { TriangleProps } from '@/types/styles'
-import Image from 'next/image'
+
+import Icon from '@/components/icon'
 
 const Triangle = ({ type }: TriangleProps) => {
-  const { src, width, height, alt } = TRIANGLE_TYPE_INFO[type]
-  return <Image src={src} width={width} height={height} alt={alt} priority />
+  const { icon, width, height } = TRIANGLE_TYPE_INFO[type]
+  return (
+    <Icon
+      icon={icon}
+      path="assets/triangle"
+      file="triangle"
+      width={width}
+      height={height}
+    />
+  )
 }
 
 export default Triangle

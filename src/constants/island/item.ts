@@ -1,44 +1,46 @@
 export const items = [
   {
-    id: 1,
-    x: 298,
-    y: 351,
-    z: 7,
-    src: 'https://cdn-icons-png.flaticon.com/512/495/495976.png',
+    no: 1,
+    item_image:
+      'https://s3.ap-northeast-2.amazonaws.com/cognisle.shop/media/items/1.svg',
+    locations: {
+      x: 10,
+      y: 11,
+      z: 80,
+      show: true,
+    },
   },
   {
-    id: 2,
-    x: 184,
-    y: 348,
-    z: 8,
-    src: 'https://cdn-icons-png.flaticon.com/512/3094/3094965.png',
+    no: 10,
+    item_image:
+      'https://s3.ap-northeast-2.amazonaws.com/cognisle.shop/media/items/10.svg',
+    locations: {
+      x: 10,
+      y: 11,
+      z: 20,
+      show: true,
+    },
   },
   {
-    id: 3,
-    x: 179,
-    y: 244,
-    z: 9,
-    src: 'https://cdn-icons-png.flaticon.com/512/489/489969.png',
+    no: 12,
+    item_image:
+      'https://s3.ap-northeast-2.amazonaws.com/cognisle.shop/media/items/12.svg',
+    locations: {
+      x: 0,
+      y: 0,
+      z: 0,
+      show: false,
+    },
   },
   {
-    id: 4,
-    x: 190,
-    y: 300,
-    z: 10,
-    src: 'https://cdn-icons-png.flaticon.com/512/489/489970.png',
-  },
-  {
-    id: 5,
-    x: 210,
-    y: 400,
-    z: 11,
-    src: 'https://cdn-icons-png.flaticon.com/512/489/489971.png',
-  },
-  {
-    id: 6,
-    x: 250,
-    y: 600,
-    z: 12,
-    src: 'https://cdn-icons-png.flaticon.com/512/489/489972.png',
+    no: 20,
+    item_image:
+      'https://s3.ap-northeast-2.amazonaws.com/cognisle.shop/media/items/20.svg',
+    locations: {
+      x: 20,
+      y: 11,
+      z: 3,
+      show: true,
+    },
   },
 ]

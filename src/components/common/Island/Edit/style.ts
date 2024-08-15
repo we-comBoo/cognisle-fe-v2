@@ -5,6 +5,7 @@ const Root = styled.div`
   position: absolute;
   bottom: -7.5rem;
   width: inherit;
+  z-index: 2;
 `
 const Select = styled.div`
   height: 16.8rem;

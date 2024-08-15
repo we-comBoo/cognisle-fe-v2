@@ -8,8 +8,7 @@ export interface LogoTypeInfoProps {
 }
 
 export interface LogoInfoProps {
-  src: string
+  icon: string
   width: number
   height: number
-  alt: string
 }

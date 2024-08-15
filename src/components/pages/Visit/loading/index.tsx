@@ -1,19 +1,19 @@
 import { Background } from '@/components/common/Layout'
-import { Bounce, IMAGE_ADDRESS } from '@/constants/styles'
+import { Bounce } from '@/constants/styles'
 import styled from '@emotion/styled'
-import Image from 'next/image'
+import Icon from '@/components/icon'
 
 const Loading = () => {
   return (
     <Background type="visit/loading">
       <IconWrapper>
         <div>
-          <Image
-            src={IMAGE_ADDRESS.LAND_LOADING}
-            width="240"
-            height="245"
-            alt="loading"
-            priority
+          <Icon
+            icon="loading"
+            width={240}
+            height={245}
+            path="assets/land"
+            file="land"
           />
         </div>
       </IconWrapper>

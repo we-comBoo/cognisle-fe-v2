@@ -1,17 +1,16 @@
-import { createAuthAxios } from '@/lib/axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
+import { createAuthAxios } from '../axios'
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { user_id } = req.query
+  const { email } = req.query
 
   try {
-    const authAxios = createAuthAxios(req)
+    const authAxios = createAuthAxios(req, res)
 
-    const { data } = await authAxios.get(`/lands/${user_id}/`)
-    console.log(data)
+    const { data } = await authAxios.get(`/lands/?email=${email}`)
+    console.log('GET /lands/items/ 결과', data)
 
     res.status(200).json({ ...data.data })
   } catch (error) {

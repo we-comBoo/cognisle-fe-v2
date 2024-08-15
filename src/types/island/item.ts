@@ -17,19 +17,23 @@ interface ItemsStoreProps extends ItemsStateProps {
 
 interface ItemsStateActions {
   addItem: (item: ItemProps) => void
-  removeItem: (id: ItemProps['id']) => void
+  removeItem: (id: ItemProps['no']) => void
   updateItem: (item: ItemProps) => void
+  batchUpdateItem: (item: ItemProps[]) => void
 }
 interface ItemsStateProps {
   items: ItemProps[]
 }
 
 interface ItemProps {
-  id: number
-  x: number
-  y: number
-  z: number
-  src: string
+  no: number
+  item_image: string
+  locations: {
+    x: number
+    y: number
+    z: number
+    show: boolean
+  }
 }
 
 export type { ZIndexStoreProps, ItemsStoreProps, ItemProps, ItemsStateActions }

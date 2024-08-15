@@ -1,5 +1,6 @@
 import { mouseEventHandler } from '@/lib/mouseEvent'
 import { touchEventHandler } from '@/lib/touchEvent'
+import { useIsEdit } from '@/store/island/isEdit'
 
 import { ItemProps, ItemsStateActions } from '@/types/island/item'
 
@@ -8,14 +9,13 @@ export const isTouchScreen =
   window.matchMedia('(hover: none) and (pointer: coarse)').matches
 
 export const dragEventHandler = (
-  updateItem: ItemsStateActions['updateItem'],
-  x: ItemProps['x'],
-  y: ItemProps['y'],
-  z: ItemProps['z'],
-  id: ItemProps['id'],
-  src: ItemProps['src'],
+  updateItem: any,
+  x: ItemProps['locations']['x'],
+  y: ItemProps['locations']['y'],
+  z: ItemProps['locations']['z'],
+  no: ItemProps['no'],
+  item_image: ItemProps['item_image'],
 ) => {
-  console.log(isTouchScreen)
   /*if (isTouchScreen) {
     return {
       onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) =>
@@ -27,10 +27,11 @@ export const dragEventHandler = (
         mouseEventHandler(mouseEvent, updateItem, x, y, z, id, src),
     }
   }*/
+
   return {
     onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) =>
-      touchEventHandler(touchEvent, updateItem, x, y, z, id, src),
+      touchEventHandler(touchEvent, updateItem, x, y, z, no, item_image),
     onMouseDown: (mouseEvent: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-      mouseEventHandler(mouseEvent, updateItem, x, y, z, id, src),
+      mouseEventHandler(mouseEvent, updateItem, x, y, z, no, item_image),
   }
 }

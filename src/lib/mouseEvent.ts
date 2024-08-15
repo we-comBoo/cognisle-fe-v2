@@ -3,11 +3,11 @@ import { ItemsStateActions, ItemProps } from '@/types/island/item'
 export const mouseEventHandler = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   updateItem: ItemsStateActions['updateItem'],
-  x: ItemProps['x'],
-  y: ItemProps['y'],
-  z: ItemProps['z'],
-  id: ItemProps['id'],
-  src: ItemProps['src'],
+  x: ItemProps['locations']['x'],
+  y: ItemProps['locations']['y'],
+  z: ItemProps['locations']['z'],
+  no: ItemProps['no'],
+  item_image: ItemProps['item_image'],
 ) => {
   const initX = e.screenX
   const initY = e.screenY
@@ -16,19 +16,26 @@ export const mouseEventHandler = (
     if (e.cancelable) e.preventDefault()
     {
       /*console.log('mouseMove', id, {
-      x: x + e.screenX - initX,
-      y: y + e.screenY - initY,
-      z: z,
-      id: id,
-      src: src,
+{
+  no: number
+  item_image: string
+  locations: {
+    x: number
+    y: number
+    z: number
+    show: boolean
+  }
     })*/
     }
     updateItem({
-      x: x + e.screenX - initX,
-      y: y + e.screenY - initY,
-      z: z,
-      id: id,
-      src: src,
+      no,
+      item_image,
+      locations: {
+        x: x + e.screenX - initX,
+        y: y + e.screenY - initY,
+        z: z,
+        show: true,
+      },
     })
   }
   const mouseDownHandler = (e: MouseEvent) => {

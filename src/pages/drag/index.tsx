@@ -3,10 +3,11 @@ import { getMax } from '@/lib'
 import { useZIndexActions } from '@/store/island/zIndex'
 import styled from '@emotion/styled'
 import { useEffect, useState } from 'react'
-import { useItems } from '@/store/island/items'
+
+import { items } from '@/constants/island'
 export default function DragPage() {
   const { setZIndex } = useZIndexActions()
-  const items = useItems()
+
   useEffect(() => {
     const maxZ = getMax('z', items) + 1
     // console.log(maxZ)
@@ -16,8 +17,8 @@ export default function DragPage() {
     <div>
       <span>fdnskankl</span>
       <Container>
-        {items.map((d, idx) => (
-          <Drag key={idx} id={d.id} x={d.x} y={d.y} z={d.z} src={d.src} />
+        {items.map(({ no, locations: { x, y, z }, item_image }, idx) => (
+          <Drag key={idx} no={no} x={x} y={y} z={z} item_image={item_image} />
         ))}
       </Container>
     </div>

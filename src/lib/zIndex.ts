@@ -1,7 +1,7 @@
 export function getMax(key: string, lst: any) {
   let max_ = Number.MIN_SAFE_INTEGER
   for (const item of lst) {
-    max_ = Math.max(max_, item[key])
+    max_ = Math.max(max_, item['locations'][key])
   }
   return max_
 }
