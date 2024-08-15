@@ -14,7 +14,9 @@ const LogoutBtn = () => {
 
   return (
     <>
-      <Button onClick={LogoutBtn}>로그아웃</Button>
+      <Button aria-label="logout" onClick={LogoutBtn}>
+        로그아웃
+      </Button>
     </>
   )
 }

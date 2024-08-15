@@ -29,7 +29,8 @@ describe('Login and Redirect Flow for Multiple Protected Pages', () => {
 
       // 다음 URL 테스트를 위해 다시 홈 페이지로 돌아가야서 로그아웃
       cy.visit('/home')
-      cy.get('button') // 로그아웃 버틎
+      // 'aria-label' 속성을 사용하여 '로그아웃' 버튼 찾기
+      cy.get('button[aria-label="logout"]') // 로그아웃 버틎
         .contains('로그아웃')
         .click()
     })
