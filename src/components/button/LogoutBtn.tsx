@@ -2,12 +2,16 @@ import { FONTS } from '@/styles/font'
 import styled from '@emotion/styled'
 import { useSession, signOut } from 'next-auth/react'
 import { useCallback } from 'react'
+
+import { useRouter } from 'next/router'
 const LogoutBtn = () => {
   const { data: session } = useSession()
+  const router = useRouter()
 
   const LogoutBtn = () => {
     // console.log('로그아웃 로직 작성')
     signOut({ callbackUrl: '/login' })
+    router.reload()
   }
   const renderButton = useCallback(() => {
     if (session) {
