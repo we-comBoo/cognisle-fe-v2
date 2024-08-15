@@ -5,20 +5,29 @@ import { ItemProps } from '@/types/island/item'
 import { useItemsActions } from '@/store/island/items'
 import { useZIndex } from '@/store/island/zIndex'
 
-export default function Drag({ id, x, y, z, src }: ItemProps) {
+interface DragProps {
+  no: ItemProps['no']
+  x: ItemProps['locations']['x']
+  y: ItemProps['locations']['y']
+  z: ItemProps['locations']['z']
+  item_image: ItemProps['item_image']
+}
+
+export default function Drag({ no, x, y, z, item_image }: DragProps) {
   const { updateItem } = useItemsActions()
+
   const zIndex = useZIndex()
-  // console.log('item', id, x, y)
+
   return (
     <DragComponent
       x={x}
       y={y}
       z={z}
-      {...dragEventHandler(updateItem, x, y, zIndex, id, src)}
+      {...dragEventHandler(updateItem, x, y, zIndex, no, item_image)}
     >
       <Image
-        src={src}
-        alt={`item_${id}`}
+        src={item_image}
+        alt={`item_${no}`}
         draggable={'false'}
         width={30}
         height={30}
@@ -28,9 +37,9 @@ export default function Drag({ id, x, y, z, src }: ItemProps) {
 }
 
 const DragComponent = styled.div<{
-  x: ItemProps['x']
-  y: ItemProps['y']
-  z: ItemProps['z']
+  x: ItemProps['locations']['x']
+  y: ItemProps['locations']['y']
+  z: ItemProps['locations']['z']
 }>`
   transform: ${({ x, y }) => `translateX(${x}px) translateY(${y}px)`};
   z-index: ${({ z }) => `${z}`};

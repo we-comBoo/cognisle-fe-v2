@@ -1,20 +1,22 @@
 import 'swiper/css'
 import Image from 'next/image'
 import styled from '@emotion/styled'
-import { items } from '@/constants/island'
+
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useSwiper } from '@/hooks'
+import { useItemsStore } from '@/store/island/items'
 
 const ItemSelect = () => {
+  const items = useItemsStore()
   const { swiperSetting, currentSlide } = useSwiper()
   return (
     <SliderWrapper>
       <Swiper {...swiperSetting}>
-        {items.map(({ src, id }, idx) => (
+        {items.map(({ no, item_image }, idx) => (
           <SwiperSlide key={idx}>
             <Image
-              src={src}
-              alt={`item_${id}`}
+              src={item_image}
+              alt={`item_${no}`}
               draggable={'false'}
               width={100}
               height={100}

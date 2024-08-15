@@ -8,6 +8,7 @@ import { useLandActions, useLandStore } from '@/store/island/land'
 import { Background } from '@/components/common/Layout'
 import { IslandContent, IslandControl } from '@/components/common/Island'
 import { useIsEdit } from '@/store/island/isEdit'
+import { useItemsActions } from '@/store/island/items'
 
 const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
@@ -21,13 +22,15 @@ const Island = () => {
   const { data: island } = useQuery({ queryKey, queryFn, enabled })
 
   const { setLand } = useLandActions()
+  const { batchUpdateItem } = useItemsActions()
   const land = useLandStore()
   const isEdit = useIsEdit()
 
   useEffect(() => {
     if (island) {
-      console.log(island.land)
-      setLand({ type: island.land.state, src: island.land.land_img })
+      console.log(island.items)
+      setLand({ type: Number(island.land.state), src: island.land.land_img })
+      //batchUpdateItem(island.items)
     }
   }, [island])
 

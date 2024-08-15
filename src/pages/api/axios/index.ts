@@ -1,11 +1,11 @@
 import axios from 'axios'
-import { getSession, useSession } from 'next-auth/react'
-import type { NextApiRequest } from 'next'
-
+import { getServerSession } from 'next-auth/next'
+import type { NextApiRequest, NextApiResponse } from 'next'
+import { nextAuthOptions } from '../auth/[...nextauth]'
 const BASE_URL = 'https://www.cognisle.shop'
 
 // 쿠키에 저장된 토큰을 인증 헤더에 자동으로 추가하여 요청을 보낼 수 있습니다.
-function createAuthAxios(req: NextApiRequest) {
+function createAuthAxios(req: NextApiRequest, res: NextApiResponse) {
   const instance = axios.create({
     baseURL: BASE_URL,
     headers: {
@@ -16,7 +16,7 @@ function createAuthAxios(req: NextApiRequest) {
 
   instance.interceptors.request.use(
     async (request) => {
-      const session = await getSession({ req })
+      const session = await getServerSession(req, res, nextAuthOptions)
       console.log('setSession', `Bearer ${session?.user?.access}`)
       if (session?.user.access) {
         // console.log('setSession', `Bearer ${session?.user.access}`)

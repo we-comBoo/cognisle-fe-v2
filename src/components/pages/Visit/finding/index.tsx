@@ -1,9 +1,8 @@
 import { Background } from '@/components/common/Layout'
 import VisitForm from './form'
 import Header from './header'
-import Image from 'next/image'
 import styled from '@emotion/styled'
-import { IMAGE_ADDRESS } from '@/constants/styles'
+import Icon from '@/components/icon'
 
 const VistFinding = () => {
   return (
@@ -14,11 +13,12 @@ const VistFinding = () => {
           <VisitForm />
         </div>
 
-        <Image
-          src={IMAGE_ADDRESS.LAND_FRIEND}
+        <Icon
+          path="/assets/land"
+          file="land"
+          icon="friend"
           width={280}
           height={381}
-          alt="friend"
         />
       </Container>
     </Background>

@@ -1,23 +1,23 @@
 import PointBtn from '@/components/common/Button'
 import { MENU_POINT_BTN } from '@/constants/styles'
 import Link from 'next/link'
-import Image from 'next/image'
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
 import { HOME_MENU_INFO } from '@/constants/menu'
+import Icon from '@/components/icon'
 
 const MenuBtn = () => {
   return (
     <Container>
-      {HOME_MENU_INFO.map(({ link, img, text }, idx) => (
+      {HOME_MENU_INFO.map(({ link, icon, text, height, width }, idx) => (
         <PointBtn item={MENU_POINT_BTN} key={idx}>
           <Link href={link}>
-            <Image
-              src={img.src}
-              width={img.width}
-              height={img.height}
-              alt=""
-              priority
+            <Icon
+              path="assets/yellow"
+              file="menu"
+              icon={icon}
+              height={height}
+              width={width}
             />
             <Text>{text}</Text>
           </Link>

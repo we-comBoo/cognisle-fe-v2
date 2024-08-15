@@ -7,8 +7,7 @@ export interface TriangleTypeInfoProps {
 }
 
 export interface TriangleInfoProps {
-  src: string
+  icon: string
   width: number
   height: number
-  alt: string
 }

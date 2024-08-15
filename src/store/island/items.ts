@@ -1,37 +1,42 @@
 import { items } from '@/constants/island'
+
 import { ItemProps, ItemsStoreProps } from '@/types/island'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-function updateLst(list: ItemProps[], item: ItemProps) {
+function updateList(list: ItemProps[], item: ItemProps) {
+  console.log('updateList', list, item)
   for (const t of list) {
-    if (t.id === item.id) {
-      t.x = item.x
-      t.y = item.y
-      t.z = item.z
+    if (t.no === item.no) {
+      const newLocation = { ...item.locations }
+      console.log('new location', newLocation)
+      t.locations = newLocation
     }
   }
 
   return list
 }
+const initial: ItemProps[] = items
 
 export const ItemsStore = create<ItemsStoreProps>()(
   devtools((set) => ({
-    items: items,
+    items: initial,
     actions: {
       addItem: (item) => set((prev) => ({ items: [...prev.items, item] })),
 
-      removeItem: (id) =>
-        set((prev) => ({ items: prev.items.filter((e) => e.id !== id) })),
+      removeItem: (no) =>
+        set((prev) => ({ items: prev.items.filter((e) => e.no !== no) })),
 
       updateItem: (newItem) =>
         set((prev) => ({
-          items: [...updateLst(prev.items, newItem)],
+          items: [...updateList(prev.items, newItem)],
         })),
+      batchUpdateItem: (item) =>
+        set((prev) => ({ items: [...prev.items, ...item] })),
     },
   })),
 )
 
-const useItems = () => ItemsStore((state) => state.items)
+const useItemsStore = () => ItemsStore((state) => state.items)
 const useItemsActions = () => ItemsStore((state) => state.actions)
-export { useItems, useItemsActions }
+export { useItemsStore, useItemsActions }
