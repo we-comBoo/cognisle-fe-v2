@@ -17,7 +17,7 @@ const useIslandContol = () => {
   const items = useItemsStore()
   const land = useLandStore()
   const handleSaveBtn = async () => {
-    console.log('handle Save Click')
+    console.log('handle Save Click', { items, land })
     try {
       const response = await axios.put('/api/lands/item', { items, land })
       console.log(response)

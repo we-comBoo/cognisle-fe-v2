@@ -1,20 +1,23 @@
-import Image from 'next/image'
 import useIslandContol from './useIslandControl'
-import PointBtn from '@/components/common/Button'
 import { StateModal } from '@/components/common/Modal'
-import { Name_POINT_BTN } from '@/constants/styles/pointBtn'
 import { useModalActions, useModalStore } from '@/store/modal'
-import { useIsEdit } from '@/store/island/isEdit'
-import St from './style'
-const IslandControl = ({ name }: { name: string }) => {
+import Name from './Button/Name'
+import EditMode from './Button/EditMode'
+import { Layout as St } from './style'
+
+interface IslandControlProps {
+  name: string
+  isOwner: boolean
+}
+
+const IslandControl = ({ name, isOwner }: IslandControlProps) => {
   const { modalContent, handleSaveBtn, handleModeBtn } = useIslandContol()
-  const isEdit = useIsEdit()
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
-  console.log('편집 모드', isEdit)
+  console.log(name, isOwner)
 
   return (
-    <St.Root>
+    <St.styledRoot>
       {modalContent.content && (
         <>
           <StateModal
@@ -25,21 +28,11 @@ const IslandControl = ({ name }: { name: string }) => {
           />
         </>
       )}
-      <PointBtn item={Name_POINT_BTN}>
-        <St.Text>{name}</St.Text>
-      </PointBtn>
-      <St.Btn.Wrapper>
-        {isEdit && <St.Btn.Save onClick={handleSaveBtn}>저장</St.Btn.Save>}
-        <St.Btn.Mode onClick={handleModeBtn}>
-          <Image
-            src={`/assets/${isEdit ? 'green' : 'yellow'}/edit.svg`}
-            alt="dfsd"
-            height={48}
-            width={48}
-          />
-        </St.Btn.Mode>
-      </St.Btn.Wrapper>
-    </St.Root>
+      <Name name={name} />
+      {isOwner && (
+        <EditMode handleSaveBtn={handleSaveBtn} handleModeBtn={handleModeBtn} />
+      )}
+    </St.styledRoot>
   )
 }
 
