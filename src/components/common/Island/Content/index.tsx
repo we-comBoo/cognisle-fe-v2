@@ -1,13 +1,13 @@
 import Land from './Land'
 import Items from './Items'
-import St from './style'
+import { Layout as St } from './style'
 
 const IslandContent = () => {
   return (
-    <St.Root>
+    <St.StyledRoot>
       <Land />
       <Items />
-    </St.Root>
+    </St.StyledRoot>
   )
 }
 
