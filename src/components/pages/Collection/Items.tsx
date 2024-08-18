@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react'
 import { useQuery } from '@tanstack/react-query'
 import { queryOptions } from '@/lib/ReactQuery/queryOptions'
 import Image from 'next/image'
-import styled from '@emotion/styled'
+import { Item as St } from './style'
 interface ItemProps {
   own: boolean
   no: number
@@ -10,13 +10,12 @@ interface ItemProps {
 const Items = () => {
   const { data: session } = useSession()
   const ownerEmail = session?.user.email
-  const ownerName = session?.user.name
   const { queryKey, queryFn, enabled } = queryOptions.collection(ownerEmail)
   const { data: Items } = useQuery({ queryKey, queryFn, enabled })
   console.log(Items)
 
   return (
-    <StyledRoot>
+    <St.StyledRoot>
       {Items?.length &&
         Items.map(({ no, own }: ItemProps) => (
           <div key={no}>
@@ -28,15 +27,8 @@ const Items = () => {
             />
           </div>
         ))}
-    </StyledRoot>
+    </St.StyledRoot>
   )
 }
 
 export default Items
-
-const StyledRoot = styled.div`
-  display: grid;
-  grid-template-columns: min-content min-content min-content;
-  column-gap: 2.6rem;
-  row-gap: 3.1rem;
-`

@@ -55,6 +55,14 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
       degree: '180deg',
     },
   },
+  collection: {
+    img: { src: '', width: 430, height: 211 },
+    color: {
+      start: '--color-blue-200',
+      end: '--color-orange-200',
+      degree: '180deg',
+    },
+  },
 
   'island/1': {
     img: {

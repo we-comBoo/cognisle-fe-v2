@@ -5,7 +5,10 @@ import { getSession } from 'next-auth/react'
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { queryOptions } from '@/lib/ReactQuery/queryOptions'
 import Items from '@/components/pages/Collection/Items'
+import { Background } from '@/components/common/Layout'
 import styled from '@emotion/styled'
+import Divider from '@/components/pages/Collection/Divider'
+import Status from '@/components/pages/Collection/Status'
 
 /// import { sendPushNotification, registerServiceWorker } from '@/lib/notification'
 
@@ -22,11 +25,14 @@ const Collection = () => {
   }, [])
 */
   return (
-    <div>
+    <Background type="collection">
       {/**  <button onClick={clickPushHandler}>알림 보내기</button>*/}
-
-      <Items />
-    </div>
+      <StyledRoot>
+        <Status />
+        <Divider />
+        <Items />
+      </StyledRoot>
+    </Background>
   )
 }
 
@@ -47,3 +53,10 @@ export const getServerSideProps = async (ctx: NextPageContext) => {
 }
 
 export default Collection
+
+const StyledRoot = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 7rem 0;
+`
