@@ -16,8 +16,8 @@ interface ItemsStoreProps extends ItemsStateProps {
 }
 
 interface ItemsStateActions {
-  addItem: (item: ItemProps) => void
-  removeItem: (id: ItemProps['no']) => void
+  addItem: (item_no: ItemProps['no']) => void
+  removeItem: (item_no: ItemProps['no']) => void
   updateItem: (item: ItemProps) => void
   batchUpdateItem: (item: ItemProps[]) => void
 }

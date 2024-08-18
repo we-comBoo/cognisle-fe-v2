@@ -4,7 +4,7 @@ import { ItemProps, ItemsStoreProps } from '@/types/island'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-function updateList(list: ItemProps[], item: ItemProps) {
+function updateLocation(list: ItemProps[], item: ItemProps) {
   console.log('updateList', list, item)
   for (const t of list) {
     if (t.no === item.no) {
@@ -13,26 +13,50 @@ function updateList(list: ItemProps[], item: ItemProps) {
       t.locations = newLocation
     }
   }
-
   return list
 }
+
+function removeLocation(list: ItemProps[], item_no: ItemProps['no']) {
+  console.log('updateList', list, item_no)
+  for (const t of list) {
+    if (t.no === item_no) {
+      const newLocation = { ...t.locations, show: false }
+      console.log('new location', newLocation)
+      t.locations = newLocation
+    }
+  }
+  return list
+}
+
+function addLocation(list: ItemProps[], item_no: ItemProps['no']) {
+  console.log('updateList', list, item_no)
+  for (const t of list) {
+    if (t.no === item_no) {
+      const newLocation = { ...t.locations, show: true }
+      console.log('new location', newLocation)
+      t.locations = newLocation
+    }
+  }
+  return list
+}
+
 const initial: ItemProps[] = items
 
 export const ItemsStore = create<ItemsStoreProps>()(
   devtools((set) => ({
-    items: initial,
+    items: [],
     actions: {
-      addItem: (item) => set((prev) => ({ items: [...prev.items, item] })),
+      addItem: (item_no) =>
+        set((prev) => ({ items: [...addLocation(prev.items, item_no)] })),
 
-      removeItem: (no) =>
-        set((prev) => ({ items: prev.items.filter((e) => e.no !== no) })),
+      removeItem: (item_no) =>
+        set((prev) => ({ items: [...removeLocation(prev.items, item_no)] })),
 
       updateItem: (newItem) =>
         set((prev) => ({
-          items: [...updateList(prev.items, newItem)],
+          items: [...updateLocation(prev.items, newItem)],
         })),
-      batchUpdateItem: (item) =>
-        set((prev) => ({ items: [...prev.items, ...item] })),
+      batchUpdateItem: (item) => set((prev) => ({ items: [...item] })),
     },
   })),
 )
