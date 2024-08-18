@@ -1,6 +1,5 @@
-import { shuffle } from '@/lib'
+import { shuffle } from '@/lib/game'
 import {
-  GameCardsProps,
   GameCardStatus,
   GameCardStatusKey,
   PlayStateProps,
@@ -8,6 +7,7 @@ import {
   PlayStateAction,
   GameStatus,
 } from '@/types/game'
+import { GameCardsProps } from '@/types/game'
 import { useEffect, useReducer, useRef, useState } from 'react'
 
 /**

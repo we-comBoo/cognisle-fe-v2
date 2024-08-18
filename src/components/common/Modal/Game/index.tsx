@@ -14,7 +14,7 @@ import {
   StateModalProps,
 } from '@/types/game'
 import { IMAGE_ADDRESS } from '@/constants/styles'
-import { getDuration } from '@/lib'
+import { getDuration } from '@/lib/game'
 import { useKeyEscape, useTimer, useOutsideClick } from '@/hooks'
 import St from './style'
 
