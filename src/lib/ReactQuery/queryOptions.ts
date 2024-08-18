@@ -3,10 +3,13 @@ import { User } from 'next-auth'
 
 const defaultKey = {
   island: ['island'] as const,
+  collection: ['collection'] as const,
 }
 
 const queryKeys = {
   island: (ownerEmail: number) => [...defaultKey.island, ownerEmail] as const,
+  collection: (ownerEmail: number) =>
+    [...defaultKey.collection, ownerEmail] as const,
   /*
   detailComments: (photoId: number) =>
     [...queryKeys.detail(photoId), 'comments'] as const,
@@ -31,6 +34,15 @@ export const queryOptions = {
 
     queryFn: async () => {
       const response = await axios.get(`/api/lands/${ownerEmail}`)
+      return response.data
+    },
+    enabled: !!ownerEmail,
+  }),
+  collection: (ownerEmail: User['email']) => ({
+    queryKey: queryKeys.collection(ownerEmail),
+
+    queryFn: async () => {
+      const response = await axios.get(`/api/items/${ownerEmail}`)
       return response.data
     },
     enabled: !!ownerEmail,
