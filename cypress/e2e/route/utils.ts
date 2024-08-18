@@ -1,5 +1,5 @@
 export function getRandomInt(min: number, max: number) {
-  return Math.round(Math.random() * (max - min)) + min
+  return Math.floor(Math.random() * (max - min)) + min
 }
 
 export const loginUrl = '/login' // 로그인 페이지 URL
