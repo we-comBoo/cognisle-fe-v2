@@ -1,4 +1,9 @@
-import { GameCardStatus, GameResultProps } from '@/types/game'
+import {
+  GameCardStatus,
+  GameResultProps,
+  GameStatus,
+  GameStatusKey,
+} from '@/types/game'
 
 export const symbols = Array.from({ length: 24 }, (_, index) => index + 1)
 
@@ -37,5 +42,15 @@ export function getDuration(time: GameResultProps['time']) {
       minute: Math.floor(duration / 60),
     }
     return MMSS
+  }
+}
+
+export function closeTime(type: GameStatusKey) {
+  if (type === GameStatus.RESULT) {
+    return 5000
+  } else if (type === GameStatus.CLEAR) {
+    return 4000
+  } else {
+    return 3000
   }
 }

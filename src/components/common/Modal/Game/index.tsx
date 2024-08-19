@@ -1,61 +1,17 @@
-import { GAME_START_POINT_BTN } from '@/constants/styles'
-import { STATE_MODAL_TYPE_OVERLAY } from '@/constants/modal'
-
 import { useRouter } from 'next/router'
-
 import { useRef } from 'react'
-import PointBtn from '@/components/common/Button'
 import PortalModal from '@/components/common/Modal/PortalModal'
-import Image from 'next/image'
 import {
-  GameStatus,
-  GameStatusKey,
-  PlayStateProps,
-  StateModalProps,
-} from '@/types/game'
-import { IMAGE_ADDRESS } from '@/constants/styles'
-import { getDuration } from '@/lib/game'
+  Clear,
+  Start,
+  Result,
+  Matched,
+} from '@/components/common/Modal/Game/Status'
 import { useKeyEscape, useTimer, useOutsideClick } from '@/hooks'
+import { GameStatus, StateModalProps } from '@/types/game'
+import { closeTime } from '@/lib/Game'
+import { STATE_MODAL_TYPE_OVERLAY } from '@/constants/modal'
 import St from './style'
-
-const Start = () => {
-  return (
-    <PointBtn item={GAME_START_POINT_BTN}>
-      <St.Text>게임 시작</St.Text>
-    </PointBtn>
-  )
-}
-
-const Clear = () => {
-  return (
-    <Image
-      src={IMAGE_ADDRESS.GAME_CLEAR}
-      width={254}
-      height={254}
-      alt="gameClear"
-    />
-  )
-}
-
-const Result = ({ content }: { content: PlayStateProps }) => {
-  const duration = getDuration(content.time)
-  // console.log('게임 경과 시간: ', duration, '획득한 아이템', content.obtained)
-  return <div> 게임 결과 보이기 모달 {duration?.second} </div>
-}
-
-const Matched = ({ content }: { content: PlayStateProps }) => {
-  return <div>현재 획득한 아이템 정보 {content.currentMatched?.symbol}</div>
-}
-
-const closeTime = (type: GameStatusKey) => {
-  if (type === GameStatus.RESULT) {
-    return 5000
-  } else if (type === GameStatus.CLEAR) {
-    return 4000
-  } else {
-    return 3000
-  }
-}
 
 const StateModal = ({
   type,

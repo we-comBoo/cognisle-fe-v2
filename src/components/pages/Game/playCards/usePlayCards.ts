@@ -1,4 +1,4 @@
-import { shuffle } from '@/lib/game'
+import { shuffle } from '@/lib/Game'
 import {
   GameCardStatus,
   GameCardStatusKey,
