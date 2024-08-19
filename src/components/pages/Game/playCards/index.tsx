@@ -37,12 +37,12 @@ const PlayCards = () => {
       )}
       <Status obtain={obtained} />
       <CardsContainer>
-        {cards.map(({ symbol, status }, idx) => (
+        {cards.map(({ number, status }, idx) => (
           <CardContainer
             key={idx}
             onClick={() => handleClick(idx)}
             status={status}
-            symbol={symbol}
+            number={number}
           />
         ))}
       </CardsContainer>

@@ -1,37 +1,7 @@
 import { GameCardStatus, GameResultProps } from '@/types/game'
 
-export const symbols = [
-  '🍏',
-  '🍎',
-  '🍋',
-  '🍈',
-  '🍇',
-  '🍈',
-  '🍌',
-  '🥕',
-  '🥐',
-  '🍞',
-  '🥦',
-  '🍄‍🟫',
-  '🥮',
-  '🍱',
-  '🥨',
-  '🫓',
-  '🥖',
-  '🥜',
-  '🫘',
-  '😀',
-  '😉',
-  '😊',
-  '😚',
-  '😙',
-  '🥲',
-  '😏',
-  '😋',
-  '🫣',
-  '😎',
-  '🤥',
-]
+export const symbols = Array.from({ length: 24 }, (_, index) => index + 1)
+
 //selecting random index without same element
 const selectIndex = (totalIndex: number, selectingNumber: number) => {
   let randomIndexArray = []
@@ -53,7 +23,7 @@ export function shuffle() {
   const picked = pickedIndex.map((index) => symbols[index])
   const cards = [...picked, ...picked]
     .sort(() => Math.random() - 0.5)
-    .map((symbol) => ({ symbol, status: GameCardStatus.FACE_DOWN }))
+    .map((number) => ({ number, status: GameCardStatus.FACE_DOWN }))
 
   return cards
 }
