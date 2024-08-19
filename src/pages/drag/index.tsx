@@ -1,8 +1,8 @@
 import Drag from '@/components/drag'
-import { getMax } from '@/lib'
+import { getMax } from '@/lib/Draggable/zIndex'
 import { useZIndexActions } from '@/store/island/zIndex'
 import styled from '@emotion/styled'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { items } from '@/constants/island'
 export default function DragPage() {

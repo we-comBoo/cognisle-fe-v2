@@ -5,14 +5,21 @@ import styled from '@emotion/styled'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useSwiper } from '@/hooks'
 import { useItemsStore } from '@/store/island/items'
+import { ItemProps } from '@/types/island'
 
 const ItemSelect = () => {
   const items = useItemsStore()
   const { swiperSetting, currentSlide } = useSwiper()
+  const handleItemClick = (
+    no: ItemProps['no'],
+    show: ItemProps['locations']['show'],
+  ) => {
+    console.log(no, show)
+  }
   return (
     <SliderWrapper>
       <Swiper {...swiperSetting}>
-        {items.map(({ no, item_image }, idx) => (
+        {items.map(({ no, item_image, locations: { show } }, idx) => (
           <SwiperSlide key={idx}>
             <Image
               src={item_image}
@@ -20,6 +27,7 @@ const ItemSelect = () => {
               draggable={'false'}
               width={100}
               height={100}
+              onClick={() => handleItemClick(no, show)}
             />
           </SwiperSlide>
         ))}

@@ -2,10 +2,8 @@ import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
 const Root = styled.div`
   /*z-index: 9998;*/
-  position: absolute;
-  bottom: -7.5rem;
-  width: inherit;
-  z-index: 2;
+
+  width: 100%;
 `
 const Select = styled.div`
   height: 16.8rem;

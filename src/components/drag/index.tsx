@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import Image from 'next/image'
-import { dragEventHandler } from '@/lib/dragEvent'
+import { dragEventHandler } from '@/lib/Draggable/dragEvent'
 import { ItemProps } from '@/types/island/item'
 import { useItemsActions } from '@/store/island/items'
 import { useZIndex } from '@/store/island/zIndex'

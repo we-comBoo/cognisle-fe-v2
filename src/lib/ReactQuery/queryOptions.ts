@@ -1,5 +1,7 @@
+import { ItemProps, LandStateProps } from '@/types/island'
 import axios from 'axios'
 import { User } from 'next-auth'
+import { QueryClient } from '@tanstack/react-query'
 
 const defaultKey = {
   island: ['island'] as const,
@@ -35,6 +37,24 @@ export const queryOptions = {
     queryFn: async () => {
       const response = await axios.get(`/api/lands/${ownerEmail}`)
       return response.data
+    },
+    mutationFn: async ({
+      items,
+      land,
+    }: {
+      items: ItemProps[]
+      land: LandStateProps
+    }) => {
+      return await axios.put('/api/lands/item', { items, land })
+    },
+    onSuccess: ({
+      queryClient,
+      queryKey,
+    }: {
+      queryClient: QueryClient
+      queryKey: readonly ['island', number]
+    }) => {
+      queryClient.invalidateQueries({ queryKey })
     },
     enabled: !!ownerEmail,
   }),

@@ -2,11 +2,14 @@ import { useState } from 'react'
 import { StateModalContentProps } from '@/types/modal'
 import { useModalActions } from '@/store/modal'
 import { useIsEdit, useIsEditActions } from '@/store/island/isEdit'
-import axios from 'axios'
+
 import { useItemsStore } from '@/store/island/items'
 import { useLandStore } from '@/store/island/land'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { queryOptions } from '@/lib/ReactQuery/queryOptions'
+import { User } from '@/types/user'
 
-const useIslandContol = () => {
+const useIslandContol = (ownerEmail: User['email']) => {
   const isEdit = useIsEdit()
   const { setIsEdit } = useIsEditActions()
   const [modalContent, setModalContent] = useState<StateModalContentProps>({
@@ -16,11 +19,19 @@ const useIslandContol = () => {
   const { openModal } = useModalActions()
   const items = useItemsStore()
   const land = useLandStore()
+  const { queryKey, mutationFn, onSuccess } = queryOptions.island(ownerEmail)
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation({
+    mutationFn,
+    onSuccess: () => onSuccess({ queryClient, queryKey }),
+  })
+
   const handleSaveBtn = async () => {
-    console.log('handle Save Click')
+    console.log('handle Save Click', { items, land })
+
     try {
-      const response = await axios.put('/api/lands/item', { items, land })
-      console.log(response)
+      mutation.mutate({ items, land })
     } catch (error) {}
     setModalContent({
       type: 'success',

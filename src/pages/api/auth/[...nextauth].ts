@@ -1,9 +1,8 @@
 import axios from 'axios'
-
 import NextAuth, { Awaitable, User } from 'next-auth'
 import { JWT } from 'next-auth/jwt'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import { createDefatultAxios } from '@/lib/axios'
+import { createDefatultAxios } from '../axios'
 import type { NextAuthOptions } from 'next-auth'
 export const nextAuthOptions: NextAuthOptions = {
   providers: [

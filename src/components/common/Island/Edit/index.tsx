@@ -10,11 +10,8 @@ import St from './style'
 const ItemSelect = dynamic(() => import('./ItemSelect'))
 
 const Edit = () => {
-  const [tabId, setTabId] = useState<TabMenuProps['id']>(1)
+  const [tabId, setTabId] = useState<TabMenuProps['id']>(0)
 
-  useEffect(() => {
-    console.log(tabId)
-  }, [tabId])
   return (
     <St.Root>
       <Tab menu={TAB_MENU} tabId={tabId} setId={setTabId} />

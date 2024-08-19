@@ -1,9 +1,9 @@
 import Drag from '@/components/drag'
-import { getMax } from '@/lib'
+import { getMax } from '@/lib/Draggable/zIndex'
 import { useZIndexActions } from '@/store/island/zIndex'
 import { useEffect } from 'react'
 import { useItemsStore } from '@/store/island/items'
-import St from './style'
+import { Items as St } from './style'
 
 const Items = () => {
   const { setZIndex } = useZIndexActions()
@@ -15,7 +15,7 @@ const Items = () => {
     setZIndex(maxZ)
   }, [items])
   return (
-    <St.Items.Root>
+    <St.StyledRoot>
       {items.map(({ no, item_image, locations: { x, y, z, show } }, idx) => (
         <>
           {show && (
@@ -23,7 +23,7 @@ const Items = () => {
           )}
         </>
       ))}
-    </St.Items.Root>
+    </St.StyledRoot>
   )
 }
 

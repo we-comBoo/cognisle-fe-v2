@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { createDefatultAxios } from '@/lib/axios'
+import { createDefatultAxios } from '../axios'
 
 export default async function handler(
   req: NextApiRequest,
