@@ -20,10 +20,10 @@ export default async function handler(
   const data = { land_back_id: land.type, items: itemsArr }
 
   try {
-    const authAxios = createAuthAxios(req, res)
+    const authAxios = await createAuthAxios(req, res)
 
     const response = await authAxios.put(`/lands/items/`, data)
-    console.log('PUT /lands/items/ 결과', response)
+    console.log('PUT /lands/items/ 결과', data, response)
 
     res.status(200).json({ message: 'success' })
   } catch (error) {

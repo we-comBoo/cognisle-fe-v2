@@ -4,17 +4,17 @@ import { useModalActions, useModalStore } from '@/store/modal'
 import Name from './Button/Name'
 import EditMode from './Button/EditMode'
 import { Layout as St } from './style'
+import { useOwner } from '@/store/island/owner'
+import { useSession } from 'next-auth/react'
 
-interface IslandControlProps {
-  name: string
-  isOwner: boolean
-}
-
-const IslandControl = ({ name, isOwner }: IslandControlProps) => {
-  const { modalContent, handleSaveBtn, handleModeBtn } = useIslandContol()
+const IslandControl = () => {
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
-  console.log(name, isOwner)
+  const owner = useOwner()
+  const { data: user } = useSession()
+  const { modalContent, handleSaveBtn, handleModeBtn } = useIslandContol(
+    owner.email,
+  )
 
   return (
     <St.styledRoot>
@@ -28,8 +28,8 @@ const IslandControl = ({ name, isOwner }: IslandControlProps) => {
           />
         </>
       )}
-      <Name name={name} />
-      {isOwner && (
+      <Name name={owner.name} />
+      {user?.user.email === owner.email && (
         <EditMode handleSaveBtn={handleSaveBtn} handleModeBtn={handleModeBtn} />
       )}
     </St.styledRoot>

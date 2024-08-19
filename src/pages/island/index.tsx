@@ -9,6 +9,7 @@ import { IslandContent, IslandControl } from '@/components/common/Island'
 import { useLandActions, useLandStore } from '@/store/island/land'
 import { useIsEdit } from '@/store/island/isEdit'
 import { useItemsActions } from '@/store/island/items'
+import { useOnwerActions } from '@/store/island/owner'
 
 const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
@@ -17,27 +18,29 @@ const Island = () => {
   // the "Posts"-page, data will be available immediately either way
   const { data: session } = useSession()
   const ownerEmail = session?.user.email
-  const ownerName = session?.user.name
+
   const { queryKey, queryFn, enabled } = queryOptions.island(ownerEmail)
   const { data: island } = useQuery({ queryKey, queryFn, enabled })
 
   const { setLand } = useLandActions()
   const { batchUpdateItem } = useItemsActions()
+  const { setOwner } = useOnwerActions()
   const land = useLandStore()
   const isEdit = useIsEdit()
 
   useEffect(() => {
     if (island) {
-      console.log(island.items)
+      const owner = { name: island.owner, email: island.owner }
       setLand({ type: island.land.state, src: island.land.land_img })
       batchUpdateItem(island.items)
+      setOwner({ owner })
     }
-  }, [island])
+  }, [island.land.state, island.items])
 
   return (
     <>
       <Background type={`island/${land.type}`}>
-        <IslandControl name={ownerName} isOwner={true} />
+        <IslandControl />
         <IslandContent />
         {isEdit && <IslandEdit />}
       </Background>
