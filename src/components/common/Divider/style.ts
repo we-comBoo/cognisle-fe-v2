@@ -6,6 +6,10 @@ const Root = styled.div`
   background-color: var(--color-green-200);
 `
 
-const St = { Root }
+const StyledRoot = styled.div`
+  margin: 0.3rem;
+`
+
+const St = { Root, StyledRoot }
 
 export default St

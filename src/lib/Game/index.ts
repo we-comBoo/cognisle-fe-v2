@@ -47,7 +47,7 @@ export function getDuration(time: GameResultProps['time']) {
 
 export function closeTime(type: GameStatusKey) {
   if (type === GameStatus.RESULT) {
-    return 5000
+    return 1000000000
   } else if (type === GameStatus.CLEAR) {
     return 4000
   } else {

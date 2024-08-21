@@ -1,0 +1,178 @@
+export const GAME_ITEM: {
+  [key: number]: {
+    id: number
+    title: string
+    subject: string
+    time: string
+    description: string
+  }
+} = {
+  1: {
+    id: 1,
+    title: '터줏대감',
+    subject: '지니',
+    time: '201시간 37분 51초',
+    description: '총 공부 시간이 가장 긴 사람',
+  },
+  2: {
+    id: 2,
+    title: '한다면 하는 여자',
+    subject: '자두',
+    time: '12시간 27분',
+    description: '단일 접속 시 최장시간 공부한 사람',
+  },
+  3: {
+    id: 3,
+    title: '새 나라의 어린이',
+    subject: '호빵',
+    time: '4번',
+    description: '아침 시간대 제일 많이 공부한 사람',
+  },
+  4: {
+    id: 4,
+    title: '불침번',
+    subject: '쿠스',
+    time: '22시간 48분',
+    description: '새벽 시간대 최장시간 공부한 사람',
+  },
+  5: {
+    id: 5,
+    title: '불금의 제왕',
+    subject: '지니',
+    time: '36시간 8분',
+    description: '금요일 최장시간 공부한 사람',
+  },
+  6: {
+    id: 6,
+    title: '올빼미',
+    subject: '영수',
+    time: '177배(2분 42초, 2시간 5분 15초)',
+    description: '점심-저녁보다 밤-새벽에 많이 공부하는 사람',
+  },
+  7: {
+    id: 7,
+    title: '종달새',
+    subject: '레기',
+    time: '8배(2시간 38분, 21시간 15분)',
+    description: '밤-새벽보다 점심-저녁에 많이 공부하는 사람',
+  },
+  8: {
+    id: 8,
+    title: '잠방 스트리머',
+    subject: '이규민',
+    time: '새벽 2시 접속 - 아침 10시 퇴장 2번',
+    description: '켜놓고 잔 건 아닌지 의심되는 사람',
+  },
+  9: {
+    id: 9,
+    title: '휴면 고객',
+    subject: '룡깅',
+    time: '6일 22시간 49분',
+    description: '평균 접속 텀이 가장 긴 사람',
+  },
+  10: {
+    id: 10,
+    title: '성실한 청년',
+    subject: '큐브',
+    time: '8시간 46분',
+    description: '평균 접속 텀이 가장 짧은 사람',
+  },
+  11: {
+    id: 11,
+    title: '벼락치기 용의자',
+    subject: '그려',
+    time: '12/13, 12/14 이틀간 4시간 28분 공부 후 접속 X',
+    description: '벼락치기 의심되는 사람',
+  },
+  12: {
+    id: 12,
+    title: '프로출튀러',
+    subject: '피로',
+    time: '4번',
+    description: '10초 미만 공부횟수 가장 많은 사람',
+  },
+  13: {
+    id: 13,
+    title: '월요일',
+    subject: '월요일',
+    time: '평균 14.5명',
+    description: '평균 학습자 수가 가장 많은 요일',
+  },
+  14: {
+    id: 14,
+    title: '과탑 집합소',
+    subject: '인문대',
+    time: '341시간 33분 7초',
+    description: '공부시간 가장 많은 단대',
+  },
+  15: {
+    id: 15,
+    title: '총 공부시간',
+    subject: '15subject',
+    time: '807시간',
+    description: '디스코드 이용자 27명의 공부시간 합계',
+  },
+  16: {
+    id: 16,
+    title: '잘못 눌렀어요',
+    subject: '하암',
+    time: '1초',
+    description: '단일 접속시 최단시간 공부한 사람',
+  },
+  17: {
+    id: 17,
+    title: '발등 화형의 날',
+    subject: '12월 13일',
+    time: '12명(총 31번 접속)',
+    description: '가장 많은 사람이 공부한 날',
+  },
+  18: {
+    id: 18,
+    title: '뱀파이어',
+    subject: '소히',
+    time: '2번',
+    description: '새벽 접속, 아침 퇴장 가장 많이 한 사람',
+  },
+  19: {
+    id: 19,
+    title: '개근상',
+    subject: '지니',
+    time: '27일',
+    description: '한달(31일)동안 가장 많이 출석한 사람',
+  },
+  20: {
+    id: 20,
+    title: '군중 속의 고독',
+    subject: '퍼랭',
+    time: '조예대',
+    description: '단과대에서 혼자 공부한 사람',
+  },
+  21: {
+    id: 21,
+    title: '군중',
+    subject: '공대',
+    time: '7명',
+    description: '접속자가 가장 많은 단과대',
+  },
+  22: {
+    id: 22,
+    title: '주5일제 수호자',
+    subject: '피로',
+    time: '평일 접속 18번, 주말접속 0번',
+    description: '평일에만 공부한 사람',
+  },
+  23: {
+    id: 23,
+    title: '중꺾마',
+    subject: '쿠스',
+    time: '7일 연속(11/23 ~ 11/29)',
+    description: '가장 오랜 기간 매일 공부한 사람',
+  },
+  24: {
+    id: 24,
+    title: '20학번',
+    subject: '20학번',
+    time: '138번',
+    description: '공부 횟수가 가장 많은 학번',
+  },
+}

@@ -1,4 +1,21 @@
 import { PointBtnInfoProps } from '@/types/button'
+
+const GAME_RESULT_POINT_BTN: PointBtnInfoProps = {
+  size: {
+    width: 30,
+    height: 48,
+  },
+  point: {
+    width: 15,
+    height: 10,
+  },
+  color: {
+    main: '--color-yellow-100',
+    point: '--color-pink-100',
+  },
+  round: true,
+}
+
 const MENU_POINT_BTN: PointBtnInfoProps = {
   size: {
     width: 12,
@@ -81,4 +98,5 @@ export {
   MENU_POINT_BTN,
   USER_POINT_BTN,
   GAME_START_POINT_BTN,
+  GAME_RESULT_POINT_BTN,
 }
