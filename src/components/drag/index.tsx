@@ -1,16 +1,16 @@
 import styled from '@emotion/styled'
 import Image from 'next/image'
 import { dragEventHandler } from '@/lib/Draggable/dragEvent'
-import { ItemProps } from '@/types/island/item'
+import { ItemInfoProps } from '@/types/island/item'
 import { useItemsActions } from '@/store/island/items'
 import { useZIndex } from '@/store/island/zIndex'
 
 interface DragProps {
-  no: ItemProps['no']
-  x: ItemProps['locations']['x']
-  y: ItemProps['locations']['y']
-  z: ItemProps['locations']['z']
-  item_image: ItemProps['item_image']
+  no: ItemInfoProps['no']
+  x: ItemInfoProps['locations']['x']
+  y: ItemInfoProps['locations']['y']
+  z: ItemInfoProps['locations']['z']
+  item_image: ItemInfoProps['item_image']
 }
 
 export default function Drag({ no, x, y, z, item_image }: DragProps) {
@@ -37,13 +37,13 @@ export default function Drag({ no, x, y, z, item_image }: DragProps) {
 }
 
 const DragComponent = styled.div<{
-  x: ItemProps['locations']['x']
-  y: ItemProps['locations']['y']
-  z: ItemProps['locations']['z']
+  x: ItemInfoProps['locations']['x']
+  y: ItemInfoProps['locations']['y']
+  z: ItemInfoProps['locations']['z']
 }>`
   transform: ${({ x, y }) => `translateX(${x}px) translateY(${y}px)`};
   z-index: ${({ z }) => `${z}`};
-  position: relative;
+  position: absolute;
   width: fit-content;
   height: fit-content;
 `

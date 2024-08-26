@@ -1,7 +1,7 @@
 import { mouseEventHandler } from '@/lib/Draggable/mouseEvent'
 import { touchEventHandler } from '@/lib/Draggable/touchEvent'
 
-import { ItemProps } from '@/types/island/item'
+import { ItemInfoProps } from '@/types/island/item'
 
 export const isTouchScreen =
   typeof window !== 'undefined' &&
@@ -9,11 +9,11 @@ export const isTouchScreen =
 
 export const dragEventHandler = (
   updateItem: any,
-  x: ItemProps['locations']['x'],
-  y: ItemProps['locations']['y'],
-  z: ItemProps['locations']['z'],
-  no: ItemProps['no'],
-  item_image: ItemProps['item_image'],
+  x: ItemInfoProps['locations']['x'],
+  y: ItemInfoProps['locations']['y'],
+  z: ItemInfoProps['locations']['z'],
+  no: ItemInfoProps['no'],
+  item_image: ItemInfoProps['item_image'],
 ) => {
   /*if (isTouchScreen) {
     return {

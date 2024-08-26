@@ -2,9 +2,13 @@ import Image from 'next/image'
 import { useLandStore } from '@/store/island/land'
 
 const Land = () => {
-  const { src, type } = useLandStore()
+  const { state, land_img } = useLandStore()
   return (
-    <>{src && <Image src={src} alt={`${type}`} fill priority sizes="100%" />}</>
+    <>
+      {land_img && (
+        <Image src={land_img} alt={`${state}`} fill priority sizes="100%" />
+      )}
+    </>
   )
 }
 

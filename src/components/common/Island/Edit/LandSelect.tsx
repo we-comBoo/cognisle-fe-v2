@@ -6,7 +6,11 @@ import { useLandActions } from '@/store/island/land'
 const LandSelect = () => {
   const { setLand } = useLandActions()
   const handleClick = (id: number) => {
-    const selectedLand = { type: id, src: LAND_INFO[id].img.land }
+    const selectedLand = {
+      state: id,
+      land_img: LAND_INFO[id].img.land,
+      bg_img: LAND_INFO[id].img.bg,
+    }
     setLand(selectedLand)
   }
   return (

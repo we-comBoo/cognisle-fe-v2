@@ -30,16 +30,17 @@ const Island = () => {
 
   useEffect(() => {
     if (island) {
-      const owner = { name: island.owner, email: island.owner }
-      setLand({ type: island.land.state, src: island.land.land_img })
-      batchUpdateItem(island.items)
+      const { owner, items, land } = island
+      setLand({ ...land })
+      batchUpdateItem(items)
       setOwner({ owner })
     }
-  }, [island.land.state, island.items])
+    console.log(island?.items, island?.owner, island?.items)
+  }, [island])
 
   return (
     <>
-      <Background type={`island/${land.type}`}>
+      <Background type={`island/${land.state}`}>
         <IslandControl />
         <IslandContent />
         {isEdit && <IslandEdit />}

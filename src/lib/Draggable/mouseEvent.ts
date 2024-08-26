@@ -1,13 +1,13 @@
-import { ItemsStateActions, ItemProps } from '@/types/island/item'
+import { ItemsStateActions, ItemInfoProps } from '@/types/island/item'
 
 export const mouseEventHandler = (
   e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   updateItem: ItemsStateActions['updateItem'],
-  x: ItemProps['locations']['x'],
-  y: ItemProps['locations']['y'],
-  z: ItemProps['locations']['z'],
-  no: ItemProps['no'],
-  item_image: ItemProps['item_image'],
+  x: ItemInfoProps['locations']['x'],
+  y: ItemInfoProps['locations']['y'],
+  z: ItemInfoProps['locations']['z'],
+  no: ItemInfoProps['no'],
+  item_image: ItemInfoProps['item_image'],
 ) => {
   const initX = e.screenX
   const initY = e.screenY

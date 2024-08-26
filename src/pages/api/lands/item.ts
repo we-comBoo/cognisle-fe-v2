@@ -8,6 +8,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   const { items, land } = req.body
+  /*
   const itemsArr = items.map(
     ({ no, locations: { x, y, z, show } }: ItemProps) => ({
       no,
@@ -29,9 +30,9 @@ export default async function handler(
   } catch (error) {
     console.log(error)
     res.status(404).json({ data: error })
-  }
+  }*/
   //console.log('handler', req.body, req.url)
-  //res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({ name: 'John Doe' })
 }
 
 /*
