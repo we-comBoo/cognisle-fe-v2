@@ -38,7 +38,7 @@ const Island = () => {
       batchUpdateItem(items)
       setOwner({ owner })
     }
-    console.log(island?.items, island?.owner, island?.items)
+    // console.log('useEffect', island?.items, island?.owner, island?.items)
   }, [island])
 
   return (

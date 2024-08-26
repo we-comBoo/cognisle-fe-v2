@@ -12,7 +12,6 @@ const Items = () => {
   const ownerEmail = session?.user.email
   const { queryKey, queryFn, enabled } = queryOptions.collection(ownerEmail)
   const { data: Items } = useQuery({ queryKey, queryFn, enabled })
-  console.log(Items)
 
   return (
     <St.StyledRoot>

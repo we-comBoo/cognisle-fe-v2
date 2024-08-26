@@ -14,19 +14,6 @@ export const mouseEventHandler = (
 
   const mouseMoveHandler = (e: MouseEvent) => {
     if (e.cancelable) e.preventDefault()
-    {
-      /*console.log('mouseMove', id, {
-{
-  no: number
-  item_image: string
-  locations: {
-    x: number
-    y: number
-    z: number
-    show: boolean
-  }
-    })*/
-    }
     updateItem({
       no,
       item_image,
