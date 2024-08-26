@@ -4,6 +4,7 @@ import { dragEventHandler } from '@/lib/Draggable/dragEvent'
 import { ItemInfoProps } from '@/types/island/item'
 import { useItemsActions } from '@/store/island/items'
 import { useZIndex } from '@/store/island/zIndex'
+import { useIsEdit } from '@/store/island/isEdit'
 
 interface DragProps {
   no: ItemInfoProps['no']
@@ -15,7 +16,7 @@ interface DragProps {
 
 export default function Drag({ no, x, y, z, item_image }: DragProps) {
   const { updateItem } = useItemsActions()
-
+  const isEdit = useIsEdit()
   const zIndex = useZIndex()
 
   return (
@@ -23,7 +24,7 @@ export default function Drag({ no, x, y, z, item_image }: DragProps) {
       x={x}
       y={y}
       z={z}
-      {...dragEventHandler(updateItem, x, y, zIndex, no, item_image)}
+      {...dragEventHandler(updateItem, isEdit, x, y, zIndex, no, item_image)}
     >
       <Image
         src={item_image}
