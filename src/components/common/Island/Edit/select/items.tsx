@@ -4,27 +4,26 @@ import styled from '@emotion/styled'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useSwiper } from '@/hooks'
-import { useItemsActions, useItemsStore } from '@/store/island/items'
-import { ItemInfoProps } from '@/types/island'
-
+import { useItemsStore } from '@/store/island/items'
+import useIslandEdit from './useIslandEdit'
+import { StateModal } from '@/components/common/Modal'
 const ItemSelect = () => {
   const items = useItemsStore()
-  const { removeItem, addItem } = useItemsActions()
   const { swiperSetting, currentSlide } = useSwiper()
-  const handleItemClick = (
-    no: ItemInfoProps['no'],
-    show: ItemInfoProps['locations']['show'],
-  ) => {
-    if (no) {
-      if (show) {
-        removeItem(no) // remove
-      } else {
-        addItem(no)
-      }
-    }
-  }
+  const { handleItemClick, modalContent, isOpen, closeModal } = useIslandEdit()
+
   return (
     <SliderWrapper>
+      {modalContent.content && (
+        <>
+          <StateModal
+            content={modalContent.content}
+            type={modalContent.type}
+            isOpen={isOpen}
+            handleClose={closeModal}
+          />
+        </>
+      )}
       <Swiper {...swiperSetting}>
         {Object.entries(items).map(
           ([
