@@ -4,8 +4,9 @@ interface LandStoreProps {
 }
 
 interface LandStateProps {
-  type: number
-  src: string
+  state: number
+  land_img: string
+  bg_img: string
 }
 
 interface LandActionsProps {
