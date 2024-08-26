@@ -15,8 +15,6 @@ const EditMode = ({ handleSaveBtn, handleModeBtn }: EditModeProps) => {
     setRead()
   }, [])
 
-  console.log('편집 모드', isEdit)
-
   return (
     <St.StyledRoot>
       {isEdit && <St.Save onClick={handleSaveBtn}>저장</St.Save>}

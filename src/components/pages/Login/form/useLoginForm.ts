@@ -38,7 +38,6 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
   }, [isOpen])
 
   useEffect(() => {
-    console.log('emailFlagCheck', emailFlagCheck)
     handleLocalStorageEmail()
   }, [emailFlagCheck])
 
@@ -51,7 +50,6 @@ const useLoginForm = ({ initialValues, validate }: useLoginFormProps) => {
 
   const submitLoginForm = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault()
-    console.log(values)
     const error = validate(values)
     if (error) {
       setErrorMsg(error)

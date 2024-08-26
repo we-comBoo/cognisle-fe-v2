@@ -12,7 +12,6 @@ const Items = () => {
 
   useEffect(() => {
     const maxZ = getMax('z', items) + 1
-    console.log('getMax', maxZ)
     setZIndex(maxZ)
   }, [items])
 

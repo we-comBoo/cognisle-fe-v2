@@ -1,5 +1,6 @@
 import { mouseEventHandler } from '@/lib/Draggable/mouseEvent'
 import { touchEventHandler } from '@/lib/Draggable/touchEvent'
+import { useIsEdit } from '@/store/island/isEdit'
 
 import { ItemInfoProps } from '@/types/island/item'
 
@@ -15,22 +16,13 @@ export const dragEventHandler = (
   no: ItemInfoProps['no'],
   item_image: ItemInfoProps['item_image'],
 ) => {
-  /*if (isTouchScreen) {
+  const isEdit = useIsEdit()
+  if (isEdit) {
     return {
       onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) =>
-        touchEventHandler(touchEvent, updateItem, x, y, z, id, src),
-    }
-  } else {
-    return {
+        touchEventHandler(touchEvent, updateItem, x, y, z, no, item_image),
       onMouseDown: (mouseEvent: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-        mouseEventHandler(mouseEvent, updateItem, x, y, z, id, src),
+        mouseEventHandler(mouseEvent, updateItem, x, y, z, no, item_image),
     }
-  }*/
-
-  return {
-    onTouchStart: (touchEvent: React.TouchEvent<HTMLDivElement>) =>
-      touchEventHandler(touchEvent, updateItem, x, y, z, no, item_image),
-    onMouseDown: (mouseEvent: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-      mouseEventHandler(mouseEvent, updateItem, x, y, z, no, item_image),
   }
 }

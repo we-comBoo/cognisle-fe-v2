@@ -9,7 +9,6 @@ const useGameState = () => {
 
   const parseObtained = (items: PlayStateProps['obtained']) => {
     const item_nos = items.map((item) => item.number)
-    console.log(item_nos)
     return item_nos
   }
   const submitItems = async (content: PlayStateProps) => {

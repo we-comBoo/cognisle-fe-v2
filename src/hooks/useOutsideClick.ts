@@ -5,8 +5,6 @@ const useOutsideClick = <T extends HTMLElement = HTMLElement>(
 ) => {
   useEffect(() => {
     const listener = (event: Event) => {
-      console.log('      ㅍㅎ퍼ㅗ', ref?.current)
-      // console.log('ㅗ퍼ㅗ', event.target)
       if (ref && !ref.current) {
         return
       } else if (
