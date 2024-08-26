@@ -23,7 +23,7 @@ const StateModal = ({ isOpen, type, handleClose, content }: StateModalProp) => {
   const { img, color } = STATE_MODAL_TYPE_INFO[type]
   useOutsideClick(contentRef, handleClose)
   useKeyEscape('escape', handleClose)
-  useTimer(5000, handleClose)
+  useTimer(3000, handleClose)
 
   if (!isOpen || !router.isReady) return null
   return (

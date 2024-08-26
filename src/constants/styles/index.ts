@@ -11,6 +11,7 @@ import {
   MENU_POINT_BTN,
   GAME_START_POINT_BTN,
   EDIT_TAB_POINT_BTN,
+  GAME_RESULT_POINT_BTN,
 } from './pointBtn'
 
 export {
@@ -22,6 +23,7 @@ export {
   MENU_POINT_BTN,
   EDIT_TAB_POINT_BTN,
   GAME_START_POINT_BTN,
+  GAME_RESULT_POINT_BTN,
   Bounce,
   Colors,
   Shadows,

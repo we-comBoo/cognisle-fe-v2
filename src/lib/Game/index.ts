@@ -1,37 +1,12 @@
-import { GameCardStatus, GameResultProps } from '@/types/game'
+import {
+  GameCardStatus,
+  GameResultProps,
+  GameStatus,
+  GameStatusKey,
+} from '@/types/game'
 
-export const symbols = [
-  '🍏',
-  '🍎',
-  '🍋',
-  '🍈',
-  '🍇',
-  '🍈',
-  '🍌',
-  '🥕',
-  '🥐',
-  '🍞',
-  '🥦',
-  '🍄‍🟫',
-  '🥮',
-  '🍱',
-  '🥨',
-  '🫓',
-  '🥖',
-  '🥜',
-  '🫘',
-  '😀',
-  '😉',
-  '😊',
-  '😚',
-  '😙',
-  '🥲',
-  '😏',
-  '😋',
-  '🫣',
-  '😎',
-  '🤥',
-]
+export const symbols = Array.from({ length: 24 }, (_, index) => index + 1)
+
 //selecting random index without same element
 const selectIndex = (totalIndex: number, selectingNumber: number) => {
   let randomIndexArray = []
@@ -53,7 +28,7 @@ export function shuffle() {
   const picked = pickedIndex.map((index) => symbols[index])
   const cards = [...picked, ...picked]
     .sort(() => Math.random() - 0.5)
-    .map((symbol) => ({ symbol, status: GameCardStatus.FACE_DOWN }))
+    .map((number) => ({ number, status: GameCardStatus.FACE_DOWN }))
 
   return cards
 }
@@ -67,5 +42,15 @@ export function getDuration(time: GameResultProps['time']) {
       minute: Math.floor(duration / 60),
     }
     return MMSS
+  }
+}
+
+export function closeTime(type: GameStatusKey) {
+  if (type === GameStatus.RESULT) {
+    return 1000000000
+  } else if (type === GameStatus.CLEAR) {
+    return 4000
+  } else {
+    return 3000
   }
 }

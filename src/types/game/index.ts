@@ -24,7 +24,7 @@ export const GameStatus = {
 export type GameStatusKey = (typeof GameStatus)[keyof typeof GameStatus]
 
 export type GameCardProps = {
-  symbol: string
+  number: number
   status: GameCardStatusKey
 }
 export type GameCardsProps = GameCardProps[] | []

@@ -1,4 +1,4 @@
-import { shuffle } from '@/lib/game'
+import { shuffle } from '@/lib/Game'
 import {
   GameCardStatus,
   GameCardStatusKey,
@@ -148,7 +148,7 @@ const usePlayCards = () => {
 
     // 짝이 맞는 경우
     // 5. If card symbols match
-    if (curr.symbol === prev.symbol) {
+    if (curr.number === prev.number) {
       //console.log('짝 맞음')
       updateStatus([curr, prev], GameCardStatus.MATCHED)
       dispatch({

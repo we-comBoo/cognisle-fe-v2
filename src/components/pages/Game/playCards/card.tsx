@@ -6,11 +6,11 @@ import { IMAGE_ADDRESS } from '@/constants/styles'
 interface CardProps {
   onClick?: MouseEventHandler<HTMLButtonElement>
   status: GameCardStatusKey
-  symbol: string
+  number: number
 }
 
-const CardContent = ({ status, symbol }: CardProps) => {
-  // console.log(status, status === GameCardStatus.FACE_DOWN)
+const CardContent = ({ status, number }: CardProps) => {
+  console.log(number, status === GameCardStatus.FACE_DOWN)
   return (
     <St.ContentContainer>
       {status === GameCardStatus.FACE_DOWN ? (
@@ -21,16 +21,21 @@ const CardContent = ({ status, symbol }: CardProps) => {
           height={124}
         />
       ) : (
-        <>{symbol}</>
+        <Image
+          src={`${IMAGE_ADDRESS.CARD_FACE_UP}/${number}.png`}
+          alt="card faceDown"
+          width={82}
+          height={124}
+        />
       )}
     </St.ContentContainer>
   )
 }
 
-const CardContainer = ({ onClick, status, symbol }: CardProps) => {
+const CardContainer = ({ onClick, status, number }: CardProps) => {
   return (
-    <St.CardContainer onClick={onClick} status={status}>
-      <CardContent status={status} symbol={symbol} />
+    <St.CardContainer onClick={onClick}>
+      <CardContent status={status} number={number} />
     </St.CardContainer>
   )
 }
@@ -38,12 +43,8 @@ const CardContainer = ({ onClick, status, symbol }: CardProps) => {
 export default CardContainer
 
 const St = {
-  CardContainer: styled.button<{ status: string }>`
-    background-color: ${({ status }) =>
-      status === GameCardStatus.FACE_DOWN
-        ? 'transparent'
-        : `var(--color-green-100)`};
-
+  CardContainer: styled.button`
+    background-color: 'transparent';
     box-shadow: 0rem 0.3rem 0.6rem var(--color-pink-100);
     margin: 0.3rem;
   `,

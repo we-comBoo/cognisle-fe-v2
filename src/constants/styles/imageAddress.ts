@@ -5,4 +5,6 @@ export const IMAGE_ADDRESS = {
 
   GAME_CLEAR: '/assets/card/clear.svg',
   CARD_FACE_DOWN: '/assets/card/faceDown.svg',
+  CARD_FACE_UP:
+    'https://s3.ap-northeast-2.amazonaws.com/cognisle.shop/media/items/game',
 } as const
