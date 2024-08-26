@@ -1,14 +1,14 @@
 import { DragPositionProps } from '@/types/drag'
-import { ItemProps, ItemsStateActions } from '@/types/island/item'
+import { ItemInfoProps, ItemsStateActions } from '@/types/island/item'
 
 export const touchEventHandler = (
   e: React.TouchEvent<HTMLDivElement>,
   updateItem: ItemsStateActions['updateItem'],
-  x: ItemProps['locations']['x'],
-  y: ItemProps['locations']['y'],
-  z: ItemProps['locations']['z'],
-  no: ItemProps['no'],
-  item_image: ItemProps['item_image'],
+  x: ItemInfoProps['locations']['x'],
+  y: ItemInfoProps['locations']['y'],
+  z: ItemInfoProps['locations']['z'],
+  no: ItemInfoProps['no'],
+  item_image: ItemInfoProps['item_image'],
 ) => {
   const initX = e.touches[0].pageX
   const initY = e.touches[0].pageY

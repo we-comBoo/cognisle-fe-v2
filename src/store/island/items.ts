@@ -1,62 +1,62 @@
-import { items } from '@/constants/island'
-
-import { ItemProps, ItemsStoreProps } from '@/types/island'
+import { ItemProps, ItemsStoreProps, ItemInfoProps } from '@/types/island'
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
 
-function updateLocation(list: ItemProps[], item: ItemProps) {
-  console.log('updateList', list, item)
-  for (const t of list) {
-    if (t.no === item.no) {
-      const newLocation = { ...item.locations }
-      console.log('new location', newLocation)
-      t.locations = newLocation
-    }
-  }
-  return list
+function addLocation(items: ItemProps, item_no: number) {
+  console.log('addList', items, item_no)
+  const new_items_dic = { ...items }
+  new_items_dic[item_no].locations.show = true
+  return new_items_dic
 }
 
-function removeLocation(list: ItemProps[], item_no: ItemProps['no']) {
-  console.log('updateList', list, item_no)
-  for (const t of list) {
-    if (t.no === item_no) {
-      const newLocation = { ...t.locations, show: false }
-      console.log('new location', newLocation)
-      t.locations = newLocation
-    }
-  }
-  return list
+function removeLocation(items: ItemProps, item_no: number) {
+  console.log('removeLocation', items, item_no)
+  const new_items_dic = { ...items }
+  new_items_dic[item_no].locations.show = false
+  return new_items_dic
 }
 
-function addLocation(list: ItemProps[], item_no: ItemProps['no']) {
-  console.log('updateList', list, item_no)
-  for (const t of list) {
-    if (t.no === item_no) {
-      const newLocation = { ...t.locations, show: true }
-      console.log('new location', newLocation)
-      t.locations = newLocation
-    }
+function updateLocation(items: ItemProps, item_info: ItemInfoProps) {
+  console.log('updateLocation', items, item_info)
+  const new_items_dic = { ...items }
+  const { no, item_image, locations } = item_info
+  if (no) {
+    new_items_dic[no] = { locations, item_image }
   }
-  return list
+
+  return new_items_dic
 }
 
-const initial: ItemProps[] = items
+function batchLocation(items: ItemProps, new_items: ItemInfoProps[]) {
+  const new_items_dic = { ...items }
+  for (let item of new_items) {
+    const { no, item_image, locations } = item
+    if (no) {
+      new_items_dic[no] = { item_image, locations }
+    }
+  }
+  return new_items_dic
+}
 
 export const ItemsStore = create<ItemsStoreProps>()(
   devtools((set) => ({
-    items: [],
+    items: {},
     actions: {
+      // 소유했지만 미사용에서 섬에 추가해 사용함
       addItem: (item_no) =>
-        set((prev) => ({ items: [...addLocation(prev.items, item_no)] })),
+        set((prev) => ({ items: addLocation(prev.items, item_no) })),
 
+      // 제거
       removeItem: (item_no) =>
-        set((prev) => ({ items: [...removeLocation(prev.items, item_no)] })),
+        set((prev) => ({ items: removeLocation(prev.items, item_no) })),
 
-      updateItem: (newItem) =>
+      // 위치 변경
+      updateItem: (item_info) =>
         set((prev) => ({
-          items: [...updateLocation(prev.items, newItem)],
+          items: updateLocation(prev.items, item_info),
         })),
-      batchUpdateItem: (item) => set((prev) => ({ items: [...item] })),
+      batchUpdateItem: (new_items) =>
+        set((prev) => ({ items: batchLocation(prev.items, new_items) })),
     },
   })),
 )

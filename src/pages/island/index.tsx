@@ -14,13 +14,16 @@ import { useOnwerActions } from '@/store/island/owner'
 const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
 const Island = () => {
-  // This useQuery could just as well happen in some deeper child to
-  // the "Posts"-page, data will be available immediately either way
   const { data: session } = useSession()
   const ownerEmail = session?.user.email
 
   const { queryKey, queryFn, enabled } = queryOptions.island(ownerEmail)
-  const { data: island } = useQuery({ queryKey, queryFn, enabled })
+  const { data: island } = useQuery({
+    queryKey,
+    queryFn,
+    enabled,
+    refetchOnMount: 'always', // staleTime과 gcTime 무관 마운트 되는 순간 항상 refetch
+  })
 
   const { setLand } = useLandActions()
   const { batchUpdateItem } = useItemsActions()
@@ -30,16 +33,17 @@ const Island = () => {
 
   useEffect(() => {
     if (island) {
-      const owner = { name: island.owner, email: island.owner }
-      setLand({ type: island.land.state, src: island.land.land_img })
-      batchUpdateItem(island.items)
+      const { owner, items, land } = island
+      setLand({ ...land })
+      batchUpdateItem(items)
       setOwner({ owner })
     }
-  }, [island.land.state, island.items])
+    // console.log('useEffect', island?.items, island?.owner, island?.items)
+  }, [island])
 
   return (
     <>
-      <Background type={`island/${land.type}`}>
+      <Background type={`island/${land.state}`}>
         <IslandControl />
         <IslandContent />
         {isEdit && <IslandEdit />}

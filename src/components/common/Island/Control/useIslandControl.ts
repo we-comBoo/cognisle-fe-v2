@@ -28,10 +28,24 @@ const useIslandContol = (ownerEmail: User['email']) => {
   })
 
   const handleSaveBtn = async () => {
-    console.log('handle Save Click', { items, land })
+    const parsedItems = Object.entries(items).map(
+      ([
+        key,
+        {
+          locations: { x, y, z, show },
+        },
+      ]) => ({
+        no: Number(key),
+        x,
+        y,
+        z,
+        show,
+      }),
+    )
+    console.log('handle Save Click', parsedItems, land.state)
 
     try {
-      mutation.mutate({ items, land })
+      mutation.mutate({ items: parsedItems, land_back_id: land.state })
     } catch (error) {}
     setModalContent({
       type: 'success',

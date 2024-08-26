@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { createDefatultAxios } from '../axios'
+import { createAuthAxios, createDefatultAxios } from '../axios'
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -7,9 +7,9 @@ export default async function handler(
   const { email } = req.query
 
   try {
-    const defaultAxios = createDefatultAxios()
+    const authAxios = await createAuthAxios(req, res)
 
-    const { data } = await defaultAxios.get(`/lands/?email=${email}`)
+    const { data } = await authAxios.get(`/lands/?email=${email}`)
     console.log('GET /lands/ 결과', data)
 
     res.status(200).json({ ...data.data })

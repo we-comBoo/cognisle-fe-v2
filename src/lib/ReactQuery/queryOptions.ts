@@ -1,4 +1,4 @@
-import { ItemProps, LandStateProps } from '@/types/island'
+import { ItemInfoProps, ItemProps, LandStateProps } from '@/types/island'
 import axios from 'axios'
 import { User } from 'next-auth'
 import { QueryClient } from '@tanstack/react-query'
@@ -40,12 +40,15 @@ export const queryOptions = {
     },
     mutationFn: async ({
       items,
-      land,
+      land_back_id,
     }: {
       items: ItemProps[]
-      land: LandStateProps
+      land_back_id: LandStateProps['state']
     }) => {
-      return await axios.put('/api/lands/item', { items, land })
+      return await axios.put('/api/lands/item', {
+        items,
+        land_back_id,
+      })
     },
     onSuccess: ({
       queryClient,

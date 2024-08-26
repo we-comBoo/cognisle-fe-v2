@@ -4,8 +4,9 @@ import { devtools } from 'zustand/middleware'
 
 const initialState: { land: LandStateProps } = {
   land: {
-    type: 3,
-    src: '',
+    state: 3,
+    land_img: '',
+    bg_img: '',
   },
 }
 
