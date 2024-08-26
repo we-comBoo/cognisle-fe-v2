@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { PlayStateProps } from '@/types/game'
 import { getDuration } from '@/lib/Game'
@@ -7,11 +8,20 @@ import { GAME_ITEM } from '@/constants/game'
 import PointBtn from '@/components/common/Button'
 import Dotted from '@/components/common/Divider/Dotted'
 import { St } from './style'
+import { useEffect } from 'react'
+import useGameState from './useGameState'
 
 const Result = ({ content }: { content: PlayStateProps }) => {
   const duration = getDuration(content.time)
   const { data: session } = useSession()
+  const { submitItems } = useGameState()
+
   console.log('게임 경과 시간: ', duration, '획득한 아이템', content.obtained)
+  useEffect(() => {
+    if (content.obtained) {
+      submitItems(content)
+    }
+  }, [content.obtained])
   return (
     <PointBtn item={GAME_RESULT_POINT_BTN}>
       <St.ColunmWrap>
