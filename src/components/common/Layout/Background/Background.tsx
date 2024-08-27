@@ -28,5 +28,3 @@ const Background = ({ type, children }: backgroundProps) => {
 }
 
 export default Background
-
-/*width: ${({ width }) => ( `${width}rem` : 'auto')};*/
