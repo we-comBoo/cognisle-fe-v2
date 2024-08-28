@@ -1,11 +1,19 @@
 import { Container, Divider, PrimaryBtn, SecondaryBtn } from '../common/style'
 import Image from 'next/image'
 
-const MyFriendItem = () => {
+import { useSession } from 'next-auth/react'
+import { queryOptions } from '@lib/ReactQuery/queryOptions'
+import { useQuery } from '@tanstack/react-query'
+import { FriendProps } from '@/types/friends'
+
+const MyFriendItem = ({ name, email }: FriendProps) => {
+  const handleBtnClick = () => {
+    console.log(email)
+  }
   return (
     <Container>
-      <div>list</div>
-      <button>
+      <div>{name}</div>
+      <button onClick={handleBtnClick}>
         <Image
           src="/assets/green/edit.svg"
           width={36}
@@ -18,15 +26,20 @@ const MyFriendItem = () => {
 }
 
 const Friends = () => {
-  const numbers = Array.from({ length: 100 }, (_, index) => index + 1)
+  const { data: session } = useSession()
+  const ownerEmail = session?.user.email
+  const { queryKey, queryFn, enabled } = queryOptions.myFriendsList(ownerEmail)
+  const { data: Friends } = useQuery({ queryKey, queryFn, enabled })
+  console.log(Friends)
   return (
     <>
-      {numbers.map((item, idx) => (
-        <>
-          <MyFriendItem />
-          {idx != numbers.length - 1 && <Divider />}
-        </>
-      ))}
+      {Friends &&
+        Friends.map(({ name, email }, idx) => (
+          <>
+            <MyFriendItem name={name} email={email} key={email} />
+            {idx !== Friends.length - 1 && <Divider />}
+          </>
+        ))}
     </>
   )
 }
