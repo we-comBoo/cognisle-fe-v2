@@ -1,31 +1,26 @@
 import { FormEvent, useState } from 'react'
 import { SearchProps } from '@/types/friends'
+import { useSession } from 'next-auth/react'
 
-interface useSerchFormProps {
-  initialValue: SearchProps
-}
-
-const useFindFriends = ({ initialValue }: useSerchFormProps) => {
-  const [value, setValue] = useState<SearchProps>(initialValue)
+const useFindFriends = () => {
+  const [email, setEmail] = useState<SearchProps>('')
   const [errorMsg, setErrorMsg] = useState('')
 
-  const handleInputChange = (value: SearchProps) => {
-    // console.log(name, value)
-    setValue(value)
-  }
-
-  const submitVisitForm = async (e: FormEvent<HTMLElement>) => {
+  const submitSearchForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const formData = new FormData(e.currentTarget)
+    setEmail(formData.get('friendEmail') as string)
+
     const error = 'Error Msg'
     console.log(error)
     if (error) {
       setErrorMsg(error)
     } else {
-      console.log(value)
+      console.log('ssa')
     }
   }
 
-  return { value, errorMsg, handleInputChange, submitVisitForm }
+  return { errorMsg, submitSearchForm, email }
 }
 
 export default useFindFriends
