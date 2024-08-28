@@ -15,7 +15,7 @@ const Friends = () => {
       <Header />
       {type === 'lens' && <Finding />}
       {type === 'list' && <List />}
-      {type === 'plus' && <Finding />}
+      {type === 'plus' && <List />}
     </Background>
   )
 }
