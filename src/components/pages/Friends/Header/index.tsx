@@ -20,6 +20,5 @@ const Container = styled.div`
   justify-content: space-between;
   width: 31rem;
   align-items: center;
-  position: relative;
-  top: 3rem;
+  margin: 3rem 0;
 `

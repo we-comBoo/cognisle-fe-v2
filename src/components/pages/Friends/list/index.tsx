@@ -2,12 +2,16 @@ import styled from '@emotion/styled'
 import RequestItem from './requests'
 import FriendItem from './friends'
 import { FONTS } from '@/styles/font'
-
+import { useRouter } from 'next/router'
+import { FRIENDS_MENU_ROUTE } from '@/constants/menu/friends'
 const List = () => {
+  const {
+    query: { type },
+  } = useRouter()
   return (
     <StyledRoot>
-      <RequestItem />
-      <FriendItem />
+      {type === FRIENDS_MENU_ROUTE.LIST && <FriendItem />}
+      {type === FRIENDS_MENU_ROUTE.PLUS && <RequestItem />}
     </StyledRoot>
   )
 }
@@ -17,9 +21,8 @@ export default List
 const StyledRoot = styled.div`
   box-sizing: border-box;
   padding: 3rem;
-  margin-top: 5.6rem;
   width: 32rem;
-  height: 62rem;
+  height: 70rem;
   background-color: var(--color-yellow-100);
   color: var(--color-green-400);
   ${FONTS.body5}

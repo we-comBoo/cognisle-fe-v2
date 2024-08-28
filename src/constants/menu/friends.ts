@@ -1,17 +1,23 @@
 import { FriendsHeaderProps, T_FRIENDS_MENU_INFO_OBJ } from '@/types/styles'
 
+export const FRIENDS_MENU_ROUTE = {
+  LIST: 'list',
+  PLUS: 'PLUS',
+  LENS: 'lens',
+} as const
+
 export const FRIENDS_MENU_INFO: FriendsHeaderProps[] = [
   {
-    link: 'list',
+    link: FRIENDS_MENU_ROUTE.LIST,
     title: '친구 목록',
     image: {
       height: 48,
       width: 48,
-      icon: 'list',
+      icon: FRIENDS_MENU_ROUTE.LENS,
     },
   },
   {
-    link: 'plus',
+    link: FRIENDS_MENU_ROUTE.PLUS,
     title: '친구 신청',
     image: {
       height: 48,
@@ -20,12 +26,12 @@ export const FRIENDS_MENU_INFO: FriendsHeaderProps[] = [
     },
   },
   {
-    link: 'lens',
+    link: FRIENDS_MENU_ROUTE.LENS,
     title: '친구 찾기',
     image: {
       height: 48,
       width: 48,
-      icon: 'lens',
+      icon: FRIENDS_MENU_ROUTE.LENS,
     },
   },
 ]
