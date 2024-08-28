@@ -1,5 +1,4 @@
 import SearchForm from './form'
-import Title from '../Header/title'
 import styled from '@emotion/styled'
 import Icon from '@/components/icon'
 import Result from './result'
@@ -9,7 +8,6 @@ const FriendsFinding = () => {
   return (
     <Container>
       <SearchWrapper>
-        <Title title="친구 찾기" />
         <SearchForm />
         <Result />
       </SearchWrapper>
@@ -32,7 +30,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   min-height: inherit;
-  gap: 9rem;
+  gap: 20rem;
   justify-content: end;
 `
 

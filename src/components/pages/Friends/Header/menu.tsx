@@ -1,9 +1,5 @@
 import { FRIENDS_MENU_INFO } from '@/constants/menu/friends'
 
-import { IMAGE_ADDRESS } from '@/constants/styles'
-import { FONTS } from '@/styles/font'
-import Image from 'next/image'
-
 import { BottomMenuInfoProps } from '@/types/styles'
 import Icon from '@/components/icon'
 import { useRouter } from 'next/router'
@@ -15,7 +11,6 @@ const Header = () => {
     pathname,
     query: { type },
   } = router
-  console.log(type)
 
   const handleClick = (link: string) => {
     console.log(link)

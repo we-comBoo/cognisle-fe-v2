@@ -1,16 +1,12 @@
 import styled from '@emotion/styled'
-import { useRouter } from 'next/router'
 
 import Menu from './menu'
 import Title from './title'
 
 const Header = () => {
-  const {
-    query: { type },
-  } = useRouter()
   return (
     <Container>
-      <Title title={type as string} />
+      <Title />
       <Menu />
     </Container>
   )
