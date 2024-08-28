@@ -2,7 +2,7 @@ import { FriendsHeaderProps, T_FRIENDS_MENU_INFO_OBJ } from '@/types/styles'
 
 export const FRIENDS_MENU_ROUTE = {
   LIST: 'list',
-  PLUS: 'PLUS',
+  PLUS: 'plus',
   LENS: 'lens',
 } as const
 
