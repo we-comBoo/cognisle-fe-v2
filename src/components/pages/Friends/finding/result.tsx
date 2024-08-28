@@ -1,24 +1,17 @@
+import { FriendProps } from '@/types/friends'
 import styled from '@emotion/styled'
 import { Container, PrimaryBtn } from '../common/style'
 
-const Friend = () => {
+const FriendItem = ({ name, email }: FriendProps) => {
   const handleRequestBtn = () => {
-    console.log('handleRequestBtn')
+    console.log('handleRequestBtn', email)
   }
   return (
     <Container>
-      <span>친구분 이름</span>
+      <span>{name}</span>
       <PrimaryBtn onClick={handleRequestBtn}>친구 신청</PrimaryBtn>
     </Container>
   )
 }
 
-const NoData = () => {
-  return <span>검색 결과가 없습니다.</span>
-}
-
-const Result = () => {
-  return <NoData />
-}
-
-export default Result
+export default FriendItem

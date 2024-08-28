@@ -3,13 +3,25 @@ import styled from '@emotion/styled'
 import Icon from '@/components/icon'
 import Result from './result'
 import { FONTS } from '@/styles/font'
+import useFindFriends from './useFindFriends'
+import { queryOptions } from '@/lib/ReactQuery/queryOptions'
+import { useQuery } from '@tanstack/react-query'
+import NoData from './noData'
 
 const FriendsFinding = () => {
+  const { errorMsg, submitSearchForm, email } = useFindFriends()
+  const { queryKey, queryFn, enabled } = queryOptions.friend(email)
+  const { data: Item } = useQuery({ queryKey, queryFn, enabled })
+
   return (
     <Container>
       <SearchWrapper>
-        <SearchForm />
-        <Result />
+        <SearchForm submitSearchForm={submitSearchForm} />
+        {Item?.length ? (
+          <Result name={Item[0].name} email={Item[0].email} />
+        ) : (
+          <NoData />
+        )}
       </SearchWrapper>
 
       <Icon

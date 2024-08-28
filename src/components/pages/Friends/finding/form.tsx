@@ -1,22 +1,23 @@
-import useFindFriends from './useFindFriends'
 import Image from 'next/image'
 import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
 import { IMAGE_ADDRESS } from '@/constants/styles'
 
-const SearchForm = () => {
-  const { value, errorMsg, handleInputChange, submitVisitForm } =
-    useFindFriends({ initialValue: '' })
+import { FormEvent } from 'react'
+
+const SearchForm = ({
+  submitSearchForm,
+}: {
+  submitSearchForm: (e: FormEvent<HTMLFormElement>) => Promise<void>
+}) => {
   return (
     <>
-      <Form onSubmit={submitVisitForm}>
+      <Form onSubmit={submitSearchForm}>
         <Input
-          name="friendId"
+          name="friendEmail"
           placeholder="친구 이메일"
           type="text"
-          id="friendId"
-          value={value}
-          onChange={(e) => handleInputChange(e.target.value)}
+          id="friendEmail"
         />
         <button>
           <Image
