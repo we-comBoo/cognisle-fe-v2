@@ -7,7 +7,11 @@ import {
   TriangleProps,
 } from './triangle'
 import { IMAGE_ADDRESS_KEY } from './styleSheet'
-import { BottomMenuInfoProps } from './bottomMenu'
+import {
+  BottomMenuInfoProps,
+  FriendsHeaderProps,
+  T_FRIENDS_MENU_INFO_OBJ,
+} from './menu'
 
 export type {
   LogoProps,
@@ -21,4 +25,6 @@ export type {
   TriangleProps,
   IMAGE_ADDRESS_KEY,
   BottomMenuInfoProps,
+  FriendsHeaderProps,
+  T_FRIENDS_MENU_INFO_OBJ,
 }

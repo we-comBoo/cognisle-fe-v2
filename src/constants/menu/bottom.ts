@@ -26,6 +26,14 @@ export const BOTTOM_MENU_INFO: BottomMenuInfoProps[] = [
     },
   },
   {
+    link: '/friends?type=list',
+    image: {
+      height: 36,
+      width: 63,
+      icon: 'friends',
+    },
+  },
+  {
     link: '/collection',
     image: {
       height: 36,

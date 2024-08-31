@@ -15,9 +15,9 @@ export const Root = styled.div<{
   display: flex;
   align-items: center;
   flex-direction: column;
-  div {
+  /*div {
     z-index: 1;
-  }
+  }*/
 `
 
 const St = {

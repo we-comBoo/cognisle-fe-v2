@@ -1,17 +1,26 @@
-import { ItemInfoProps, ItemProps, LandStateProps } from '@/types/island'
+import { ItemProps, LandStateProps } from '@/types/island'
 import axios from 'axios'
 import { User } from 'next-auth'
 import { QueryClient } from '@tanstack/react-query'
+import { FriendProps } from '@/types/friends'
 
 const defaultKey = {
   island: ['island'] as const,
   collection: ['collection'] as const,
+  friends: ['friends'] as const,
 }
 
 const queryKeys = {
-  island: (ownerEmail: number) => [...defaultKey.island, ownerEmail] as const,
-  collection: (ownerEmail: number) =>
+  island: (ownerEmail: User['email']) =>
+    [...defaultKey.island, ownerEmail] as const,
+  collection: (ownerEmail: User['email']) =>
     [...defaultKey.collection, ownerEmail] as const,
+  myFriendsList: (ownerEmail: User['email']) =>
+    [...defaultKey.friends, ownerEmail] as const, // 사용자 친구 목록
+  myFriendsRequest: (ownerEmail: User['email']) =>
+    [...defaultKey.friends, 'request', ownerEmail] as const, // 사용자 친구 신청 목록
+  friend: (friendEmail: User['email']) =>
+    [...defaultKey.friends, 'search', friendEmail] as const, // 사용자 검색 결과
   /*
   detailComments: (photoId: number) =>
     [...queryKeys.detail(photoId), 'comments'] as const,
@@ -69,6 +78,55 @@ export const queryOptions = {
       return response.data
     },
     enabled: !!ownerEmail,
+  }),
+  myFriendsList: (ownerEmail: User['email']) => ({
+    queryKey: queryKeys.myFriendsList(ownerEmail),
+
+    queryFn: async (): Promise<FriendProps[]> => {
+      const response = await axios.get(`/api/friends`)
+      return response.data.data
+    },
+    enabled: !!ownerEmail,
+  }),
+  myFriendsRequest: (ownerEmail: User['email']) => ({
+    queryKey: queryKeys.myFriendsRequest(ownerEmail),
+
+    queryFn: async (): Promise<FriendProps[]> => {
+      const response = await axios.get(`/api/friends/request`)
+      return response.data.data
+    },
+    acceptRequest: async (email: User['email']) => {
+      const response = await axios.post(`/api/friends/accept`, { email })
+      console.log(response)
+      return response.data.data
+    },
+    rejectRequest: async (email: User['email']) => {
+      const response = await axios.post(`/api/friends/reject`, { email })
+      console.log(response)
+      return response.data.data
+    },
+    enabled: !!ownerEmail,
+  }),
+  friend: (userEmail: User['email']) => ({
+    queryKey: queryKeys.friend(userEmail),
+
+    queryFn: async (userEmail: User['email']): Promise<FriendProps> => {
+      try {
+        const response = await axios.post(`/api/friends/find`, {
+          email: userEmail,
+        })
+        // 성공적으로 데이터를 받았을 때
+        if (response.data.status === 'success') {
+          return response.data.data
+        }
+        // 실패일 경우 에러를 throw
+        throw new Error(response.data.data)
+      } catch (error: any) {
+        // 에러를 throw하여 React Query가 에러로 인식하도록 함
+        throw new Error(error.message)
+      }
+    },
+    enabled: !!userEmail,
   }),
   /*
   comments: (photoId: number) => ({

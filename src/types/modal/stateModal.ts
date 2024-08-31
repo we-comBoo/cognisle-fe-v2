@@ -1,4 +1,4 @@
-export type ModalStateKeyProps = 'warning' | 'success'
+export type ModalStateKeyProps = 'warning' | 'success' | 'accept' | 'reject'
 type PageProps = '/login' | '/signup'
 export type ModalStateTypeOverlayInfoProps = {
   [key in string]: string

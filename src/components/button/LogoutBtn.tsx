@@ -26,5 +26,6 @@ export default LogoutBtn
 const Button = styled.button`
   color: var(--color-green-400);
   text-decoration: underline;
+  z-index: 2;
   ${FONTS.body4};
 `

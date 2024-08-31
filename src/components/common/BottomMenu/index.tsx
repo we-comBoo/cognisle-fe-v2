@@ -18,7 +18,7 @@ const BottomMenu = () => {
           idx,
         ) => (
           <>
-            <Link href={link}>
+            <Link href={link} key={idx}>
               <Icon
                 path={`assets/${link === pathname ? 'green' : 'yellow'}`}
                 file="menu"

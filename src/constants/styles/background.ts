@@ -31,6 +31,14 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
       degree: '180deg',
     },
   },
+  friends: {
+    img: { src: '', width: 430, height: 84.9 },
+    color: {
+      start: '--color-blue-100',
+      end: '--color-green-300',
+      degree: '180deg',
+    },
+  },
   'visit/loading': {
     img: { src: '/assets/background/bubble.svg', width: 430, height: 849 },
     color: {
