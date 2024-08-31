@@ -8,7 +8,7 @@ import { FriendProps } from '@/types/friends'
 
 const MyFriendItem = ({ name, email }: FriendProps) => {
   const handleBtnClick = () => {
-    console.log(email)
+    console.log('친구섬 방문하기', email)
   }
   return (
     <Container>
