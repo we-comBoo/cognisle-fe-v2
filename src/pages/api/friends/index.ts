@@ -5,6 +5,18 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+  switch (req.method) {
+    case 'GET': // 나의 친구 조회
+      // GET 요청 처리
+      return handleGet(req, res)
+    default:
+      // 지원하지 않는 HTTP 메서드 처리
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE'])
+      res.status(405).end(`Method ${req.method} Not Allowed`)
+  }
+}
+
+export async function handleGet(req: NextApiRequest, res: NextApiResponse) {
   try {
     const authAxios = await createAuthAxios(req, res)
 
