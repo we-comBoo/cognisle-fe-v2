@@ -1,15 +1,14 @@
 import { FriendProps } from '@/types/friends'
-import styled from '@emotion/styled'
 import { Container, PrimaryBtn } from '../common/style'
+import useMakeFriends from './useMakeFriends'
 
 const FriendItem = ({ name, email }: FriendProps) => {
-  const handleRequestBtn = () => {
-    console.log('handleRequestBtn', email)
-  }
+  const { handleMakeBtn } = useMakeFriends()
+
   return (
     <Container>
       <span>{name}</span>
-      <PrimaryBtn onClick={handleRequestBtn}>친구 신청</PrimaryBtn>
+      <PrimaryBtn onClick={() => handleMakeBtn(email)}>친구 신청</PrimaryBtn>
     </Container>
   )
 }

@@ -3,22 +3,34 @@ import styled from '@emotion/styled'
 import Icon from '@/components/icon'
 import Result from './result'
 import { FONTS } from '@/styles/font'
-import useFindFriends from './useFindFriends'
-import { queryOptions } from '@/lib/ReactQuery/queryOptions'
-import { useQuery } from '@tanstack/react-query'
+import useMakeFriends from './useMakeFriends'
 import NoData from './noData'
+import StateModal from '@/components/common/Modal/State'
+import { useModalActions, useModalStore } from '@/store/modal'
 
 const FriendsFinding = () => {
-  const { errorMsg, submitSearchForm, email } = useFindFriends()
-  const { queryKey, queryFn, enabled } = queryOptions.friend(email)
-  const { data: Item } = useQuery({ queryKey, queryFn, enabled })
+  const { modal, submitSearchForm, email, Item, isLoading } = useMakeFriends()
+  const isOpen = useModalStore()
+  const { closeModal } = useModalActions()
 
   return (
     <Container>
+      {modal.content && (
+        <>
+          <StateModal
+            content={modal.content}
+            type={modal.type}
+            isOpen={isOpen}
+            handleClose={closeModal}
+          />
+        </>
+      )}
       <SearchWrapper>
         <SearchForm submitSearchForm={submitSearchForm} />
-        {Item?.length ? (
-          <Result name={Item[0].name} email={Item[0].email} />
+        {isLoading ? (
+          <div>로딩 중...</div>
+        ) : Item ? (
+          <Result name={Item.name} email={Item.email} />
         ) : (
           <NoData />
         )}
