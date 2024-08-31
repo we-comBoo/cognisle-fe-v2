@@ -10,14 +10,19 @@ import { useLandActions, useLandStore } from '@/store/island/land'
 import { useIsEdit } from '@/store/island/isEdit'
 import { useItemsActions } from '@/store/island/items'
 import { useOnwerActions } from '@/store/island/owner'
+import { useRouter } from 'next/router'
 
 const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
 const Island = () => {
   const { data: session } = useSession()
   const ownerEmail = session?.user.email
+  const {
+    query: { email: friendEmail },
+  } = useRouter()
+  const email = friendEmail ? friendEmail : ownerEmail
 
-  const { queryKey, queryFn, enabled } = queryOptions.island(ownerEmail)
+  const { queryKey, queryFn, enabled } = queryOptions.island(email)
   const { data: island } = useQuery({
     queryKey,
     queryFn,
@@ -54,10 +59,14 @@ const Island = () => {
 
 export const getServerSideProps = async (ctx: NextPageContext) => {
   const session = await getSession({ req: ctx.req })
-  const ownerId = session?.user.user_id
+  const ownerEmail = session?.user.email
+  const {
+    query: { email: friendEmail },
+  } = ctx
+  const email = friendEmail ? friendEmail : ownerEmail
 
   const queryClient = new QueryClient()
-  const { queryKey, queryFn } = queryOptions.island(ownerId)
+  const { queryKey, queryFn } = queryOptions.island(email)
 
   await queryClient.prefetchQuery({ queryKey, queryFn })
 

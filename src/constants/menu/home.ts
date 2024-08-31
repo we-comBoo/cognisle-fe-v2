@@ -22,8 +22,8 @@ export const MENU_INFO: MenuInfoProps[] = [
     height: 36,
   },
   {
-    text: '놀러가기',
-    link: '/visit',
+    text: '친구 관리',
+    link: '/friends?type=list',
     icon: 'visit',
     width: 62,
     height: 36,

@@ -5,11 +5,19 @@ import { useSession } from 'next-auth/react'
 import { queryOptions } from '@lib/ReactQuery/queryOptions'
 import { useQuery } from '@tanstack/react-query'
 import { FriendProps } from '@/types/friends'
-
+import { useRouter } from 'next/router'
 const MyFriendItem = ({ name, email }: FriendProps) => {
+  const router = useRouter()
   const handleBtnClick = () => {
-    console.log('친구섬 방문하기', email)
+    router.push(
+      {
+        pathname: '/island',
+        query: { email },
+      },
+      '/island',
+    )
   }
+
   return (
     <Container>
       <div>{name}</div>
