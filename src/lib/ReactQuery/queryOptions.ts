@@ -1,4 +1,4 @@
-import { ItemInfoProps, ItemProps, LandStateProps } from '@/types/island'
+import { ItemProps, LandStateProps } from '@/types/island'
 import axios from 'axios'
 import { User } from 'next-auth'
 import { QueryClient } from '@tanstack/react-query'
@@ -95,14 +95,36 @@ export const queryOptions = {
       const response = await axios.get(`/api/friends/request`)
       return response.data.data
     },
+    acceptRequest: async (email: User['email']) => {
+      const response = await axios.post(`/api/friends/accept`, { email })
+      console.log(response)
+      return response.data.data
+    },
+    rejectRequest: async (email: User['email']) => {
+      const response = await axios.post(`/api/friends/reject`, { email })
+      console.log(response)
+      return response.data.data
+    },
     enabled: !!ownerEmail,
   }),
   friend: (userEmail: User['email']) => ({
     queryKey: queryKeys.friend(userEmail),
 
-    queryFn: async (userEmail: User['email']): Promise<FriendProps[]> => {
-      const response = await axios.get(`/api/friends/${userEmail}`)
-      return response.data.data
+    queryFn: async (userEmail: User['email']): Promise<FriendProps> => {
+      try {
+        const response = await axios.post(`/api/friends/find`, {
+          email: userEmail,
+        })
+        // 성공적으로 데이터를 받았을 때
+        if (response.data.status === 'success') {
+          return response.data.data
+        }
+        // 실패일 경우 에러를 throw
+        throw new Error(response.data.data)
+      } catch (error: any) {
+        // 에러를 throw하여 React Query가 에러로 인식하도록 함
+        throw new Error(error.message)
+      }
     },
     enabled: !!userEmail,
   }),
