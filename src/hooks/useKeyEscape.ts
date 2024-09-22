@@ -7,7 +7,7 @@ const useKeyEscape = <T extends HTMLElement = HTMLElement>(
   useEffect(() => {
     const listener = (event: KeyboardEvent) => {
       if (event.key.toLowerCase().includes(key)) {
-        console.log('ESC 누름')
+        // console.log('ESC 누름')
         handler(event)
       }
     }

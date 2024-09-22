@@ -31,13 +31,13 @@ const useVisitForm = ({ initialValue, validate }: useVisitFormProps) => {
   const submitVisitForm = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault()
     const error = validate(value)
-    console.log(error)
+    // console.log(error)
     if (error) {
       setErrorMsg(error)
       return openModal()
-    } else {
+    } /*else {
       console.log(value)
-    }
+    }*/
 
     /* if (!inputRefs.current[0].value) {
       setErrorMsg('이메일 주소를 입력하시오')

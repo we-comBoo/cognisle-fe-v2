@@ -69,7 +69,7 @@ export const queryOptions = {
       queryClient: QueryClient
       queryKey: readonly ['island', number]
     }) => {
-      console.log('success', queryKey)
+      // console.log('success', queryKey)
       queryClient.invalidateQueries({ queryKey: queryKeys.island(ownerEmail) })
     },
     enabled: !!ownerEmail,
@@ -101,12 +101,12 @@ export const queryOptions = {
     },
     acceptRequest: async (email: User['email']) => {
       const response = await axios.post(`/api/friends/accept`, { email })
-      console.log(response)
+      // console.log(response)
       return response.data.data
     },
     rejectRequest: async (email: User['email']) => {
       const response = await axios.post(`/api/friends/reject`, { email })
-      console.log(response)
+      // console.log(response)
       return response.data.data
     },
     enabled: !!ownerEmail,
@@ -119,7 +119,6 @@ export const queryOptions = {
         const response = await axios.post(`/api/friends/find`, {
           email: userEmail,
         })
-        console.log(response.data)
         // 성공적으로 데이터를 받았을 때
         if (response.data.status === 'success') {
           return response.data.data

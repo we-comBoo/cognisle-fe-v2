@@ -16,7 +16,7 @@ const Result = ({ content }: { content: PlayStateProps }) => {
   const { data: session } = useSession()
   const { submitItems } = useGameState()
 
-  console.log('게임 경과 시간: ', duration, '획득한 아이템', content.obtained)
+  //('게임 경과 시간: ', duration, '획득한 아이템', content.obtained)
   useEffect(() => {
     if (content.obtained) {
       submitItems(content)
