@@ -9,7 +9,8 @@ import StateModal from '@/components/common/Modal/State'
 import { useModalActions, useModalStore } from '@/store/modal'
 
 const FriendsFinding = () => {
-  const { modal, submitSearchForm, email, Item, isLoading } = useMakeFriends()
+  const { modal, submitSearchForm, Item, setEmail, isLoading } =
+    useMakeFriends()
   const isOpen = useModalStore()
   const { closeModal } = useModalActions()
 
@@ -26,7 +27,7 @@ const FriendsFinding = () => {
         </>
       )}
       <SearchWrapper>
-        <SearchForm submitSearchForm={submitSearchForm} />
+        <SearchForm submitSearchForm={submitSearchForm} setEmail={setEmail} />
         {isLoading ? (
           <div>로딩 중...</div>
         ) : Item ? (

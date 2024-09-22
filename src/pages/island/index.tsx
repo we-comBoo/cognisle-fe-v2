@@ -5,19 +5,28 @@ import { getSession, useSession } from 'next-auth/react'
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { queryOptions } from '@/lib/ReactQuery/queryOptions'
 import { Background } from '@/components/common/Layout'
-import { IslandContent, IslandControl } from '@/components/common/Island'
+import {
+  IslandContent,
+  IslandControl,
+  IslandSocial,
+} from '@/components/common/Island'
 import { useLandActions, useLandStore } from '@/store/island/land'
 import { useIsEdit } from '@/store/island/isEdit'
 import { useItemsActions } from '@/store/island/items'
 import { useOnwerActions } from '@/store/island/owner'
+import { useRouter } from 'next/router'
 
 const IslandEdit = dynamic(() => import('@/components/common/Island/Edit'))
 
 const Island = () => {
   const { data: session } = useSession()
   const ownerEmail = session?.user.email
+  const {
+    query: { email: friendEmail },
+  } = useRouter()
+  const email = friendEmail ? friendEmail : ownerEmail
 
-  const { queryKey, queryFn, enabled } = queryOptions.island(ownerEmail)
+  const { queryKey, queryFn, enabled } = queryOptions.island(email)
   const { data: island } = useQuery({
     queryKey,
     queryFn,
@@ -33,8 +42,12 @@ const Island = () => {
 
   useEffect(() => {
     if (island) {
-      const { owner, items, land } = island
-      setLand({ ...land })
+      const {
+        owner,
+        items,
+        land: { bg_img, land_img, state },
+      } = island
+      setLand({ bg_img, land_img, state })
       batchUpdateItem(items)
       setOwner({ owner })
     }
@@ -47,6 +60,7 @@ const Island = () => {
         <IslandControl />
         <IslandContent />
         {isEdit && <IslandEdit />}
+        {!isEdit && <IslandSocial />}
       </Background>
     </>
   )
@@ -54,10 +68,14 @@ const Island = () => {
 
 export const getServerSideProps = async (ctx: NextPageContext) => {
   const session = await getSession({ req: ctx.req })
-  const ownerId = session?.user.user_id
+  const ownerEmail = session?.user.email
+  const {
+    query: { email: friendEmail },
+  } = ctx
+  const email = friendEmail ? friendEmail : ownerEmail
 
   const queryClient = new QueryClient()
-  const { queryKey, queryFn } = queryOptions.island(ownerId)
+  const { queryKey, queryFn } = queryOptions.island(email)
 
   await queryClient.prefetchQuery({ queryKey, queryFn })
 

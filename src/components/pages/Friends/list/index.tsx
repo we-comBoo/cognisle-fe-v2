@@ -11,7 +11,7 @@ const List = () => {
   return (
     <StyledRoot>
       {type === FRIENDS_MENU_ROUTE.LIST && <FriendItem />}
-      {type === FRIENDS_MENU_ROUTE.PLUS && <RequestsList />}
+      {type === FRIENDS_MENU_ROUTE.ADD && <RequestsList />}
     </StyledRoot>
   )
 }
@@ -22,7 +22,7 @@ const StyledRoot = styled.div`
   box-sizing: border-box;
   padding: 1.5rem;
   width: 32rem;
-  height: 70rem;
+  height: 60rem;
   background-color: var(--color-yellow-100);
   color: var(--color-green-400);
   ${FONTS.body5}

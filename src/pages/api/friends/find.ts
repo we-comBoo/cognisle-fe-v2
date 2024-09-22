@@ -4,17 +4,22 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const { email } = req.body
-  console.log('GET /friends/email/ 결과', email)
-  try {
-    const authAxios = await createAuthAxios(req, res)
+  console.log(req.method)
+  if (req.method === 'POST') {
+    const { email } = req.body
+    console.log('GET /friends/email/ 결과', email)
+    try {
+      const authAxios = await createAuthAxios(req, res)
 
-    const { data } = await authAxios.get(`/friends/?email=${email}`)
-    console.log('GET /friends/email/ 결과', data, email)
+      const response = await authAxios.get(`/friends/?email=${email}`)
+      console.log('GET /friends/email/ 결과', response, email)
 
-    res.status(200).json({ ...data })
-  } catch (error) {
-    console.log(error)
-    res.status(404).json({ data: error })
+      res.status(200).json({ ...response.data })
+    } catch (error) {
+      console.log(error)
+      res.status(404).json({ data: error })
+    }
+  } else {
+    res.status(404).json({ data: 'method not found' })
   }
 }

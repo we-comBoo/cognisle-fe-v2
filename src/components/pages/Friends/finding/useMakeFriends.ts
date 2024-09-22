@@ -13,7 +13,7 @@ const useMakeFriends = () => {
     content: '',
   })
 
-  const { queryKey, queryFn, enabled } = queryOptions.friend(email)
+  const { queryKey, findFriends, enabled } = queryOptions.friend(email)
   const {
     data: Item,
     isError,
@@ -21,7 +21,7 @@ const useMakeFriends = () => {
     isLoading,
   } = useQuery({
     queryKey,
-    queryFn: () => queryFn(email),
+    queryFn: () => findFriends(email),
     enabled,
   })
 
@@ -38,6 +38,7 @@ const useMakeFriends = () => {
         content: '검색할 친구를 입력하세요.',
       })
       openModal()
+      return
     } else {
       setEmail(formEmail)
     }
@@ -45,10 +46,27 @@ const useMakeFriends = () => {
 
   const handleMakeBtn = async (requestEmail: string) => {
     console.log('handleMakeBtn', requestEmail)
-    const response = await axios.post('/api/friends/request', {
-      email: requestEmail,
-    })
-    console.log(response)
+
+    try {
+      const response = await axios.post('/api/friends/request', {
+        email: requestEmail,
+      })
+      const errorMsg = response.data.data
+      const status = response.data.status
+      console.log(errorMsg, status)
+
+      if (status.includes('error')) {
+        console.log(errorMsg)
+        throw new Error(errorMsg)
+      }
+    } catch (error: any) {
+      console.log(error)
+      setModal({
+        type: 'reject',
+        content: error.message,
+      })
+      openModal()
+    }
   }
 
   useEffect(() => {
@@ -61,7 +79,15 @@ const useMakeFriends = () => {
     }
   }, [isError])
 
-  return { submitSearchForm, handleMakeBtn, email, modal, Item, isLoading }
+  return {
+    submitSearchForm,
+    handleMakeBtn,
+    setEmail,
+    email,
+    modal,
+    Item,
+    isLoading,
+  }
 }
 
 export default useMakeFriends

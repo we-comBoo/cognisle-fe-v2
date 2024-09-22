@@ -3,12 +3,14 @@ import styled from '@emotion/styled'
 import { FONTS } from '@/styles/font'
 import { IMAGE_ADDRESS } from '@/constants/styles'
 
-import { FormEvent } from 'react'
+import { FormEvent, Dispatch, SetStateAction } from 'react'
 
 const SearchForm = ({
   submitSearchForm,
+  setEmail,
 }: {
   submitSearchForm: (e: FormEvent<HTMLFormElement>) => Promise<void>
+  setEmail: Dispatch<SetStateAction<string>>
 }) => {
   return (
     <>
