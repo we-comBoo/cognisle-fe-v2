@@ -108,4 +108,16 @@ export const BACKGROUND_TYPE_INFO: BackgroundTypeInfoProps = {
       degree: '180deg',
     },
   },
+  chat: {
+    img: {
+      src: '',
+      width: 43,
+      height: 100,
+    },
+    color: {
+      start: '--color-pink-100',
+      end: '--color-pink-100',
+      degree: '180deg',
+    },
+  },
 }

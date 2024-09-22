@@ -113,6 +113,7 @@ const StatusWrapper = styled.button`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 `
 
 const StyledRoot = styled.div`
