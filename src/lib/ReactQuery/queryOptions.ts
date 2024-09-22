@@ -59,6 +59,9 @@ export const queryOptions = {
         land_back_id,
       })
     },
+    mutationLikes: async (ownerEmail: User['email']) => {
+      return await axios.post('/api/lands/likes', { email: ownerEmail })
+    },
     onSuccess: ({
       queryClient,
       queryKey,
@@ -66,7 +69,8 @@ export const queryOptions = {
       queryClient: QueryClient
       queryKey: readonly ['island', number]
     }) => {
-      queryClient.invalidateQueries({ queryKey })
+      console.log('success', queryKey)
+      queryClient.invalidateQueries({ queryKey: queryKeys.island(ownerEmail) })
     },
     enabled: !!ownerEmail,
   }),
@@ -110,11 +114,12 @@ export const queryOptions = {
   friend: (userEmail: User['email']) => ({
     queryKey: queryKeys.friend(userEmail),
 
-    queryFn: async (userEmail: User['email']): Promise<FriendProps> => {
+    findFriends: async (userEmail: User['email']): Promise<FriendProps> => {
       try {
         const response = await axios.post(`/api/friends/find`, {
           email: userEmail,
         })
+        console.log(response.data)
         // 성공적으로 데이터를 받았을 때
         if (response.data.status === 'success') {
           return response.data.data
@@ -126,6 +131,7 @@ export const queryOptions = {
         throw new Error(error.message)
       }
     },
+
     enabled: !!userEmail,
   }),
   /*

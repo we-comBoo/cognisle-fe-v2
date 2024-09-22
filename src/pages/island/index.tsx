@@ -5,7 +5,11 @@ import { getSession, useSession } from 'next-auth/react'
 import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import { queryOptions } from '@/lib/ReactQuery/queryOptions'
 import { Background } from '@/components/common/Layout'
-import { IslandContent, IslandControl } from '@/components/common/Island'
+import {
+  IslandContent,
+  IslandControl,
+  IslandSocial,
+} from '@/components/common/Island'
 import { useLandActions, useLandStore } from '@/store/island/land'
 import { useIsEdit } from '@/store/island/isEdit'
 import { useItemsActions } from '@/store/island/items'
@@ -38,8 +42,12 @@ const Island = () => {
 
   useEffect(() => {
     if (island) {
-      const { owner, items, land } = island
-      setLand({ ...land })
+      const {
+        owner,
+        items,
+        land: { bg_img, land_img, state },
+      } = island
+      setLand({ bg_img, land_img, state })
       batchUpdateItem(items)
       setOwner({ owner })
     }
@@ -52,6 +60,7 @@ const Island = () => {
         <IslandControl />
         <IslandContent />
         {isEdit && <IslandEdit />}
+        {!isEdit && <IslandSocial />}
       </Background>
     </>
   )

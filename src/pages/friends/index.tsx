@@ -14,9 +14,9 @@ const Friends = () => {
   return (
     <Background type={`friends`}>
       <Header />
-      {type === FRIENDS_MENU_ROUTE.LENS && <Finding />}
+      {type === FRIENDS_MENU_ROUTE.SEARCH && <Finding />}
       {type === FRIENDS_MENU_ROUTE.LIST && <List />}
-      {type === FRIENDS_MENU_ROUTE.PLUS && <List />}
+      {type === FRIENDS_MENU_ROUTE.ADD && <List />}
     </Background>
   )
 }

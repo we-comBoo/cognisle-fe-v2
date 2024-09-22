@@ -23,7 +23,7 @@ const MyFriendItem = ({ name, email }: FriendProps) => {
       <div>{name}</div>
       <button onClick={handleBtnClick}>
         <Image
-          src="/assets/green/edit.svg"
+          src="/assets/green/visit.svg"
           width={36}
           height={36}
           alt="public state Image"
