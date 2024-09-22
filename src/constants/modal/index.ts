@@ -8,7 +8,7 @@ export const STATE_MODAL_TYPE_OVERLAY: ModalStateTypeOverlayInfoProps = {
   '/visit': 'rgba(145, 206, 237, 0.6)',
   '/game': 'rgba(255, 195, 97, 0.6)',
   '/island': 'rgba(115, 216, 156, 0.6)',
-  '/friends': 'rgba(115, 216, 156, 0.6)',
+  '/friends': 'rgba(43, 114, 216, 0.5)',
 }
 
 export const STATE_MODAL_TYPE_INFO: ModalStateTypeInfoProps = {
@@ -38,7 +38,7 @@ export const STATE_MODAL_TYPE_INFO: ModalStateTypeInfoProps = {
       text: '--color-green-400',
     },
     img: {
-      src: '/assets/green/success.svg',
+      src: '/assets/green/accept.svg',
       alt: 'accept icon svg',
     },
   },
@@ -48,7 +48,7 @@ export const STATE_MODAL_TYPE_INFO: ModalStateTypeInfoProps = {
       text: '--color-green-300',
     },
     img: {
-      src: '/assets/yellow/warning.svg',
+      src: '/assets/green/reject.svg',
       alt: 'reject icon svg',
     },
   },

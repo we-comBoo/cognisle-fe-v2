@@ -21,7 +21,7 @@ const SearchForm = ({
           type="text"
           id="friendEmail"
         />
-        <button>
+        <button type="submit">
           <Image
             src={IMAGE_ADDRESS.LAND_FORM}
             width={21}

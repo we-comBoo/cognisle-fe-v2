@@ -23,16 +23,18 @@ const useMakeFriends = () => {
     queryKey,
     queryFn: () => findFriends(email),
     enabled,
+    retry: false,
   })
 
   const { openModal } = useModalActions()
   const submitSearchForm = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     const formData = new FormData(e.currentTarget)
     const formEmail = formData.get('friendEmail') as string
 
     if (!formEmail) {
-      console.log(formEmail)
+      //console.log(formEmail)
       setModal({
         type: 'reject',
         content: '검색할 친구를 입력하세요.',
@@ -45,7 +47,7 @@ const useMakeFriends = () => {
   }
 
   const handleMakeBtn = async (requestEmail: string) => {
-    console.log('handleMakeBtn', requestEmail)
+    //console.log('handleMakeBtn', requestEmail)
 
     try {
       const response = await axios.post('/api/friends/request', {
@@ -53,14 +55,12 @@ const useMakeFriends = () => {
       })
       const errorMsg = response.data.data
       const status = response.data.status
-      console.log(errorMsg, status)
+      // console.log(errorMsg, status)
 
-      if (status.includes('error')) {
-        console.log(errorMsg)
+      if (!status.includes('success')) {
         throw new Error(errorMsg)
       }
     } catch (error: any) {
-      console.log(error)
       setModal({
         type: 'reject',
         content: error.message,
@@ -70,6 +70,7 @@ const useMakeFriends = () => {
   }
 
   useEffect(() => {
+    console.log(isError)
     if (isError) {
       setModal({
         type: 'warning',
@@ -87,6 +88,7 @@ const useMakeFriends = () => {
     modal,
     Item,
     isLoading,
+    isError,
   }
 }
 
