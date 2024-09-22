@@ -20,7 +20,7 @@ async function createAuthAxios(req: NextApiRequest, res: NextApiResponse) {
   instance.interceptors.request.use(
     async (request) => {
       const session = await getServerSession(req, res, nextAuthOptions)
-      console.log('setSession', `Bearer ${session?.user?.access}`)
+      // console.log('setSession', `Bearer ${session?.user?.access}`)
       if (session?.user.access) {
         // console.log('setSession', `Bearer ${session?.user.access}`)
         request.headers.Authorization = `Bearer ${session?.user.access}`

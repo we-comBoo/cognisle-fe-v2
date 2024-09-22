@@ -14,7 +14,7 @@ const useGameState = () => {
   const submitItems = async (content: PlayStateProps) => {
     if (content.obtained) {
       const data = parseObtained(content.obtained)
-      console.log('submitItems', data)
+      //console.log('submitItems', data)
       try {
         const response = await axios.post('/api/items/game', data)
       } catch (error) {

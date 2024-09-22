@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   const email = req.body
-  console.log(email)
+  // console.log(email)
 
   try {
     const authAxios = await createAuthAxios(req, res)
@@ -16,11 +16,11 @@ export default async function handler(
     const response = await authAxios.post(`/friends/request/accept/`, {
       ...email,
     })
-    console.log('POST /friends/request/accept/ 결과', response)
+    // console.log('POST /friends/request/accept/ 결과', response)
 
     res.status(200).json({ message: 'success' })
   } catch (error) {
-    console.log(error)
+    // console.log(error)
     res.status(404).json({ data: error })
   }
   //console.log('handler', req.body, req.url)

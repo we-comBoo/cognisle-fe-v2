@@ -46,7 +46,7 @@ const useSignupForm = ({ initialValues, validate }: useSignupFormProps) => {
           content: '회원가입 성공했습니다!',
         })
       } catch (error) {
-        console.log('가입 중 에러 발생', error)
+        // console.log('가입 중 에러 발생', error)
         setModalContent({
           type: 'warning',
           content: '가입 과정에서 오류 발생! 관리자 문의 요청 드립니다!',

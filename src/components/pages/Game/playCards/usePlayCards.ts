@@ -85,12 +85,12 @@ const usePlayCards = () => {
 
   useEffect(() => {
     const cards = shuffle()
-    console.log(cards)
+    // console.log(cards)
     setCards(cards)
   }, [])
 
   useEffect(() => {
-    console.log(playState)
+    // console.log(playState)
     const { userStatus, obtained } = playState
     if (userStatus === GameStatus.MATCHED) {
       setTimeout(() => {

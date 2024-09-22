@@ -16,7 +16,7 @@ export default async function handler(
     const response = await authAxios.put(`/lands/items/game/`, {
       item_nos: item_nos,
     })
-    console.log('PUT /lands/items/game/ 결과', response)
+    console.log('PUT /lands/items/game/ 결과', response.data)
 
     res.status(200).json({ message: 'success' })
   } catch (error) {

@@ -6,7 +6,6 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   const data = req.body
-  console.log('sadf')
   try {
     const defaultAxios = createDefatultAxios()
 

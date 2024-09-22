@@ -60,12 +60,17 @@ const useFriendRequest = ({ email }: { email: User['email'] }) => {
   })
 
   const handleAcceptBtn = () => {
-    console.log('handleAcceptBtn', email)
+    // console.log('handleAcceptBtn', email)
     acceptMutation.mutate()
   }
   const handleRejectBtn = () => {
-    console.log('handleDismissBtn', email)
-    rejectMutation.mutate()
+    // console.log('handleDismissBtn', email)
+    // rejectMutation.mutate()
+    setModal({
+      type: 'reject',
+      content: '친구 신청을 거절했습니다.',
+    })
+    openModal()
   }
 
   return { handleAcceptBtn, handleRejectBtn, modal, Friends }

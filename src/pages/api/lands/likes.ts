@@ -13,7 +13,7 @@ export default async function handler(
     const authAxios = await createAuthAxios(req, res)
 
     const response = await authAxios.post(`/lands/likes/`, data)
-    console.log('PUT /lands/likes/ 결과', data, response)
+    console.log('PUT /lands/likes/ 결과', data, response.data)
 
     res.status(200).json({ message: 'success' })
   } catch (error) {

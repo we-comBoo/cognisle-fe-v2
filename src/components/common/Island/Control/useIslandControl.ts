@@ -42,7 +42,7 @@ const useIslandContol = (ownerEmail: User['email']) => {
         show,
       }),
     )
-    console.log('handle Save Click', parsedItems, land.state)
+    //console.log('handle Save Click', parsedItems, land.state)
 
     try {
       mutation.mutate({ items: parsedItems, land_back_id: land.state })

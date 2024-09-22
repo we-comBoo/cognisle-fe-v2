@@ -13,7 +13,7 @@ const Header = () => {
   } = router
 
   const handleClick = (link: string) => {
-    console.log(link)
+    // console.log(link)
     router.push(`${pathname}?type=${link}`)
   }
 

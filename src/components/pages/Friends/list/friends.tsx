@@ -38,7 +38,7 @@ const Friends = () => {
   const ownerEmail = session?.user.email
   const { queryKey, queryFn, enabled } = queryOptions.myFriendsList(ownerEmail)
   const { data: Friends } = useQuery({ queryKey, queryFn, enabled })
-  console.log(Friends)
+  // console.log(Friends)
   return (
     <>
       {Friends &&
