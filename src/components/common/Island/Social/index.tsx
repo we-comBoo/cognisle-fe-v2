@@ -7,6 +7,8 @@ import styled from '@emotion/styled'
 import { useState } from 'react'
 import { StateModalContentProps } from '@/types/modal'
 import StateModal from '@/components/common/Modal/State'
+import Image from 'next/image'
+import { FONTS } from '@/styles/font'
 
 const Social = () => {
   const [modal, setModal] = useState<StateModalContentProps>({
@@ -16,6 +18,7 @@ const Social = () => {
 
   const { data: session } = useSession()
   const ownerEmail = session?.user.email
+  const router = useRouter()
   const {
     query: { email: friendEmail },
   } = useRouter()
@@ -62,18 +65,71 @@ const Social = () => {
           />
         </>
       )}
-      <LikesBtn onClick={() => likeMutation.mutate()}>좋아요 버튼</LikesBtn>
-      {island && island.land.like_cnt} 개
+
+      {island && (
+        <SocialContainer>
+          <StatusWrapper>
+            <div>{island.land.like_cnt}</div>
+            <button
+              onClick={() =>
+                router.push(
+                  {
+                    pathname: '/chat',
+                    query: { email },
+                  },
+                  '/chat',
+                )
+              }
+            >
+              <Image
+                src={`/assets/likes/inactive.svg`}
+                width={48}
+                height={48}
+                alt="채팅 아이콘"
+              />
+            </button>
+          </StatusWrapper>
+          <StatusWrapper>
+            <div>{island.land.like_cnt}</div>
+            <button onClick={() => likeMutation.mutate()}>
+              <Image
+                src={`/assets/likes/${island.land.user_likes ? 'active' : 'inactive'}.svg`}
+                width={48}
+                height={48}
+                alt="섬 좋아요 여부 아이콘"
+              />
+            </button>
+          </StatusWrapper>
+        </SocialContainer>
+      )}
     </StyledRoot>
   )
 }
 
 export default Social
 
-const LikesBtn = styled.button`
-  background: white;
+const StatusWrapper = styled.button`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
 `
 
 const StyledRoot = styled.div`
-  background: white;
+  position: relative;
+  right: 2.5rem;
+  bottom: 2.4rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  color: var(--color-green-400);
+  ${FONTS.body3}
+`
+const SocialContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
 `
