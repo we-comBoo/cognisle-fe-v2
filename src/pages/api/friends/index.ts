@@ -20,7 +20,7 @@ export async function handleGet(req: NextApiRequest, res: NextApiResponse) {
   try {
     const authAxios = await createAuthAxios(req, res)
 
-    const response = await authAxios.get(`/friends/`)
+    const response = await authAxios.get(`/friends/list/`)
     console.log('GET /friends/ 결과', response.data)
 
     res.status(200).json({ ...response.data })
