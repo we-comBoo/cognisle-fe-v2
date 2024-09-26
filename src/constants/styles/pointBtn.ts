@@ -1,4 +1,5 @@
 import { PointBtnInfoProps } from '@/types/button'
+import { LAND_INFO } from '../island'
 
 const GAME_RESULT_POINT_BTN: PointBtnInfoProps = {
   size: {
@@ -44,8 +45,27 @@ const EDIT_TAB_POINT_BTN: PointBtnInfoProps = {
   },
   round: false,
 }
+//:()=> PointBtnInfoProps
+const Name_POINT_BTN = (state: number): PointBtnInfoProps => {
+  return {
+    size: {
+      width: 20,
+      height: 5,
+    },
+    point: {
+      width: 20,
+      height: 50,
+    },
+    color: {
+      main: LAND_INFO[state].color.base.alias,
+      point: LAND_INFO[state].color.primary.alias,
+      secondary: LAND_INFO[state].color.secondary.alias,
+    },
+    round: true,
+  }
+}
 
-const Name_POINT_BTN: PointBtnInfoProps = {
+const CHAT_POINT_BTN: PointBtnInfoProps = {
   size: {
     width: 20,
     height: 5,
@@ -60,7 +80,6 @@ const Name_POINT_BTN: PointBtnInfoProps = {
   },
   round: true,
 }
-
 const USER_POINT_BTN: PointBtnInfoProps = {
   size: {
     width: 20,
@@ -95,6 +114,7 @@ const GAME_START_POINT_BTN: PointBtnInfoProps = {
 export {
   EDIT_TAB_POINT_BTN,
   Name_POINT_BTN,
+  CHAT_POINT_BTN,
   MENU_POINT_BTN,
   USER_POINT_BTN,
   GAME_START_POINT_BTN,

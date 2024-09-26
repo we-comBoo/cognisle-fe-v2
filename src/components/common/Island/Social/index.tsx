@@ -9,8 +9,16 @@ import { StateModalContentProps } from '@/types/modal'
 import StateModal from '@/components/common/Modal/State'
 import Image from 'next/image'
 import { FONTS } from '@/styles/font'
+import HeartIcon from '../../Icon/heart'
+import { useLandStore } from '@/store/island/land'
+import { LAND_INFO } from '@/constants/island'
+import TalkIcon from '../../Icon/talk'
 
 const Social = () => {
+  const { state } = useLandStore()
+  const {
+    color: { primary, secondary, base },
+  } = LAND_INFO[state]
   const [modal, setModal] = useState<StateModalContentProps>({
     type: 'accept',
     content: '',
@@ -68,7 +76,7 @@ const Social = () => {
 
       {island && (
         <SocialContainer>
-          <StatusWrapper>
+          <StatusWrapper color={primary.hex}>
             <div>{island.land.like_cnt}</div>
             <button
               onClick={() =>
@@ -81,22 +89,16 @@ const Social = () => {
                 )
               }
             >
-              <Image
-                src={`/assets/likes/inactive.svg`}
-                width={48}
-                height={48}
-                alt="채팅 아이콘"
-              />
+              <TalkIcon primary={primary.hex} secondary={base.hex} />
             </button>
           </StatusWrapper>
-          <StatusWrapper>
+          <StatusWrapper color={primary.hex}>
             <div>{island.land.like_cnt}</div>
             <button onClick={() => likeMutation.mutate()}>
-              <Image
-                src={`/assets/likes/${island.land.user_likes ? 'active' : 'inactive'}.svg`}
-                width={48}
-                height={48}
-                alt="섬 좋아요 여부 아이콘"
+              <HeartIcon
+                isActive={island.land.user_likes}
+                primary={primary.hex}
+                secondary={secondary.hex}
               />
             </button>
           </StatusWrapper>
@@ -108,12 +110,13 @@ const Social = () => {
 
 export default Social
 
-const StatusWrapper = styled.button`
+const StatusWrapper = styled.button<{ color: string }>`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  color: ${({ color }) => `${color}`};
 `
 
 const StyledRoot = styled.div`

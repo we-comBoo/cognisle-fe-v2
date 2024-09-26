@@ -11,6 +11,11 @@ export const LAND_INFO: { [key: number]: LandInfoProps } = {
   1: {
     id: 1,
     title: 'morning',
+    color: {
+      primary: { hex: '#036B57', alias: '--color-green-400' },
+      secondary: { hex: '#73D89C', alias: '--color-green-300' },
+      base: { hex: '#FFF9BE', alias: '--color-yellow-100' },
+    },
     img: {
       thumbnail: `${THUMBNAIL_IMG_SRC}1.png`,
       land: `${LAND_IMG_SRC}1.png`,
@@ -20,6 +25,11 @@ export const LAND_INFO: { [key: number]: LandInfoProps } = {
   2: {
     id: 2,
     title: 'evening',
+    color: {
+      primary: { hex: '#FFC361', alias: '--color-orange-100' },
+      secondary: { hex: '#FF6B57', alias: '--color-orange-300' },
+      base: { hex: '#FFF9BE', alias: '--color-yellow-100' },
+    },
     img: {
       thumbnail: `${THUMBNAIL_IMG_SRC}2.png`,
       land: `${LAND_IMG_SRC}2.png`,
@@ -29,6 +39,11 @@ export const LAND_INFO: { [key: number]: LandInfoProps } = {
   3: {
     id: 3,
     title: 'night',
+    color: {
+      primary: { hex: '#69BFFF', alias: '--color-blue-100' },
+      secondary: { hex: '#2B72D8', alias: '--color-blue-300' },
+      base: { hex: '#FFF9BE', alias: '--color-yellow-100' },
+    },
     img: {
       thumbnail: `${THUMBNAIL_IMG_SRC}3.png`,
       land: `${LAND_IMG_SRC}3.png`,

@@ -18,10 +18,17 @@ interface LandImageProps {
   land: string
   bg: string
 }
+
+type Color = { hex: string; alias: string }
 interface LandInfoProps {
   id: number
   title: string
   img: LandImageProps
+  color: {
+    primary: Color
+    secondary: Color
+    base: Color
+  }
 }
 
 export type { LandStoreProps, LandStateProps, LandImageProps, LandInfoProps }

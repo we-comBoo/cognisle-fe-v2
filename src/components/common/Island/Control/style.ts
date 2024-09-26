@@ -19,9 +19,9 @@ const Btn = {
     flex-direction: row;
     gap: 1.2rem;
   `,
-  Save: styled.button`
+  Save: styled.button<{ color: string }>`
     background-color: var(--color-yellow-100);
-    color: var(--color-green-400);
+    color: ${({ color }) => `var(${color})`};
     ${FONTS.body5};
     border-radius: 50%;
     width: 4.8rem;
@@ -33,8 +33,8 @@ const Btn = {
   `,
 }
 
-const Text = styled.div`
-  color: var(--color-green-400);
+const Text = styled.div<{ color: string }>`
+  color: ${({ color }) => `var(${color})`};
   ${FONTS.body5};
 `
 

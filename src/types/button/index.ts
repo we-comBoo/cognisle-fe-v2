@@ -10,6 +10,7 @@ interface PointBtnInfoProps {
   color: {
     main: string
     point: string
+    secondary?: string
   }
   round: boolean
 }
